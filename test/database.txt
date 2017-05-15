@@ -1,0 +1,9 @@
+CREATE TABLE `saw`.`Users` ( 
+	`username` VARCHAR(40) NOT NULL ,
+	`mail` VARCHAR(40) NOT NULL , 
+	`pass` VARCHAR(40) NOT NULL , 
+	PRIMARY KEY (`username`), 
+	UNIQUE `mail` (`mail`)
+	) 
+	ENGINE = InnoDB 
+	COMMENT = 'tabella users progetto saw';
