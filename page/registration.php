@@ -20,7 +20,7 @@
 		
 </head>
 <body id="reg" class="reg-body index-body-size">
-	<div class="reg-form" id="reg">
+	<div class="reg-form" id="reg-form">
 			<h1 class="index-title index-title-size">Registrazione</h1>
 			<form name="reg-form" onsubmit="return check_reg();" method="post" action="check_registration.php">
 				<p>

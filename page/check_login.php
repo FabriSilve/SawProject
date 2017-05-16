@@ -4,7 +4,7 @@
 
 	$con = new mysqli($mysql_server, $mysql_user, $mysql_pass, $mysql_db);
 
-	if($con->connect_error) die ("connection faild: ".$con->connect_error)
+	if($con->connect_error) die ("connection faild: ".$con->connect_error);
 
 	$email = $_POST['email'];  //nome campo passato
 	$pass = $_POST['pass'];		//nome campo passato
@@ -21,7 +21,7 @@
 		$surname = $row["surname"];
 		echo "login successful. welcome $name $surname!";
 	} else {
-		echo "wrong username o password"
+		echo "wrong username o password";
 	}
 
 	$con->close();
