@@ -22,7 +22,7 @@
 			</h4>
 			<input type="range" min="5" max="50" value="10" step="5" onchange="showValue(this.value)" value="15" />
 			<span id="range">10 km</span>
-			
+
 			<h4>
 				eventi
 			</h4>
@@ -48,12 +48,12 @@
 					</td>
 				</tr>
 			</table>
-			
+
 			<p>
 				<button type="submit">
 					Search
 				</button>
-			</p>			
+			</p>
 		</form>
 		<div id="test">
 			test
@@ -78,7 +78,7 @@
 					accedi
 				</button>
 			</p>
-			
+
 		</form>
 	</div>
 
@@ -253,7 +253,7 @@
 		        case error.TIMEOUT:
 		            x.innerHTML = "The request to get user location timed out."
 		            break;
-		        case error.UNKNOWN_ERROR:
+		        default:
 		            x.innerHTML = "An unknown error occurred."
 		            break;
 		    }
