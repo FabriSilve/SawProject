@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test login</title>
+	<style>
+		
+	</style>
+
+</head>
+<body>
+
+	<div>
+		<h1>Login</h1>
+		<form name="login-form" onsubmit="return checkLogin()" method="post" action="checkLogin.php">
+			<p>
+				<input type="text" name="loginUsername" id="loginUsername" placeholder="Username" >
+			</p>
+			<p>
+				<input type="password" name="loginPassword" id="loginPassword" placeholder="Password">
+			</p>
+			<p>
+				<button type="submit">
+					accedi
+				</button>
+			</p>
+
+		</form>
+	</div>
+
+	
+
+	<script type="text/javascript">
+
+		function checkLogin() {
+			alert("check login");
+			if(document.getElementById("loginUsername").value == "") {
+				document.getElementById("loginUsername").focus();
+				return false;
+			}
+			if(document.getElementById("loginPassword").value == "") {
+				document.getElementById("loginPassword").focus();
+				return false;
+			}
+			return true;
+		}
+	</script>
+	
+</body>
+</html>

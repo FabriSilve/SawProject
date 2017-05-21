@@ -5,32 +5,37 @@
  * Date: 20/05/2017
  * Time: 09:49
  */
+    //variabili inizializzate
+    $city = "Genova";
+    $lat;
+    $lon;
+    $distance;
+    $type = array();
+
     //INSERIRE VALIDAZIONE E CONTROLLO INPUT
     if(isset($_POST['position'])) {
-        if($_POST['position'] == '') {
-            $city = "Defautl";
-        } else {
+        if($_POST['position'] != '') {
             $city = $_POST['position'];
         }
-        echo "city: ".$city;
+        echo "city: ".$city."<br/>";
     } else {
-        echo "position Unset";
+        echo "position Unset"."<br/>";
     }
     if(isset($_POST['lat']) and isset($_POST['lon'])) {
-        $cordinate = $_POST['lat'].";".$_POST['lon'];
-        echo "cordinate: ".$cordinate;
+        $lat = $_POST['lat'];
+        $lon = $_POST['lon'];
+        echo "cordinate: ".$lat.";".$lon."<br/>";
     }
 
 
     if(isset($_POST['distance'])) {
         $distance = $_POST['distance'];
-        echo "distanza: ".$distance;
+        echo "distanza: ".$distance."<br/>";
     }
-    $type = array();
     $i = 0;
     if(isset($_POST['party'])) {
         if($_POST['party'] == 1) {
-            $type[$i++] = "party";
+            $type[$i++] = "party"."<br/>";
         }
     }
     if(isset($_POST['show'])) {
@@ -50,9 +55,7 @@
     }
 
     foreach ($type as $t) {
-        echo "type: " . $t;
+        echo "type: " . $t."<br/>";
     }
-
-
 
 ?>
