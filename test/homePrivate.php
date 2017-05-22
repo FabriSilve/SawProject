@@ -5,7 +5,7 @@
  * Date: 21/05/2017
  * Time: 10:38
  */
-    echo <<<PRIVATE
+?>
     area privata<br>
     aggiungere:<br>
         logout<br>
@@ -13,5 +13,4 @@
         preferiti<br>
         personale<br>
         messaggi<br>
-PRIVATE;
-    ?>
+

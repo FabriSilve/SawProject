@@ -5,12 +5,7 @@
  * Date: 20/05/2017
  * Time: 09:49
  */
-    //variabili inizializzate
-    $city = "Genova";
-    $lat;
-    $lon;
-    $distance;
-    $type = array();
+
 
     //INSERIRE VALIDAZIONE E CONTROLLO INPUT
     if(isset($_POST['position'])) {
