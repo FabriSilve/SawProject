@@ -8,9 +8,11 @@
 ?>
     area privata<br>
     aggiungere:<br>
-        logout<br>
         aggiungi evento<br>
         preferiti<br>
         personale<br>
         messaggi<br>
 
+<?php
+    include("formLogout.php");
+?>

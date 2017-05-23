@@ -5,8 +5,6 @@
  * Date: 21/05/2017
  * Time: 10:43
  */
-    $logged = 0;
-
     if(isset($_COOKIE["myCookie"])) {
         if($_COOKIE["myCookie"] ==true) {
             $logged = 1;

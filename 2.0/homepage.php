@@ -1,13 +1,16 @@
 <?php
+
+	//variabili inizializzate
+	$city = "Genova";
+	$lat = 44.414165;
+	$lon = 8.942184;
+	$distance;
+	$type = array();
+	$logged = 0;
 	include("header.php");
 	include("coockieSessionChecker.php");
 
-    //variabili inizializzate
-    $city = "Genova";
-    $lat;
-    $lon;
-    $distance;
-    $type = array();
+
 
 	if(isset($_GET['from']) && $_GET['from'] == "search") {
         include("checkSearch.php");

@@ -16,7 +16,7 @@ function checkLogin() {
 
 function checkReg() {
     alert("check reg");
-    //non funziona test mail valida
+    //non funziona 2.0 mail valida
     var pattern = new RegExp("[^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$]]");
 
     if(document.getElementById("regUsername").value == "") {
@@ -54,7 +54,7 @@ function checkSearch() {
     return true;
 }
 
-//var x = document.getElementById("test");
+//var x = document.getElementById("2.0");
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(sendPosition);
@@ -66,14 +66,14 @@ function getLocation() {
 function sendPosition(position) {
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-    // document.getElementById("test").innerHTML="#"+lat+";"+lon;
+    // document.getElementById("2.0").innerHTML="#"+lat+";"+lon;
     document.getElementById("lat").value = lat;
     document.getElementById("lon").value = lon;
 
 }
 
 function showPosition(lat, lon) {
-    //test
+    //2.0
     var locations = [
         ['You Are Here', lat, lon, 1],
         ['Bondi Beach', lat, lon+0.0001, 4],
@@ -129,3 +129,4 @@ function showPosition(lat, lon) {
      });
      marker.setMap(map);*/
 }
+

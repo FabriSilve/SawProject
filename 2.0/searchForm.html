@@ -59,8 +59,8 @@
             </button>
         </p>
     </form>
-   <!--<div id="test">
-        test
+   <!--<div 2.0test">
+    2.0test
     </div>
     <button onclick="getLocation()">
         position
@@ -84,26 +84,26 @@
         return true;
     }
 
-    //var x = document.getElementById("test");
+    //var x = document.getElementById("2.0");
     function getLocation() {
         if (navigator.geolocation) {
            navigator.geolocation.getCurrentPosition(sendPosition);
         } else {
-            //document.getElementById("test").innerHTML = "null";
+            //document.getElementById("2.0").innerHTML = "null";
         }
     }
 
     function sendPosition(position) {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
-       // document.getElementById("test").innerHTML="#"+lat+";"+lon;
+       // document.getElementById("2.0").innerHTML="#"+lat+";"+lon;
         document.getElementById("lat").value = lat;
         document.getElementById("lon").value = lon;
 
     }
 
     /*function showPosition(position) {
-        //test
+        //2.0
         var locations = [
             ['You Are Here', position.coords.latitude, position.coords.longitude, 1],
             ['Bondi Beach', position.coords.latitude+0.0001, position.coords.longitude+0.0001, 4],
