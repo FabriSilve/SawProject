@@ -9,5 +9,5 @@
 
     require("homepage.php");
 
-    require("footer.php");
+    require("endPage.php");
 ?>

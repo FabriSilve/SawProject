@@ -10,11 +10,67 @@
 
     <div id="googleMap" style="width:100%;height: 400px;"></div>
 
+<?php
+$servername = "localhost";
+$user = "root";
+$pass = "";
+$dbname = "saw";
+
+
+
+try {
+    $dbh = new mysqli($servername, $user, $pass, $dbname);
+    $query = "SELECT username FROM accounts";
+    $res = mysqli_query($dbh, $query);
+    $row = mysqli_fetch_row($res);
+    echo $row[0];
+    mysqli_close($dbh);
+/*
+    //$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);	//force to not emulate
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // prepared statements
+    $stmt_acc = $dbh->prepare("SELECT username FROM accounts");
+
+
+    $dbh->beginTransaction();
+
+    /****** accounts BLOCK *****
+    {
+        $stmt_acc->bindParam(':username', $username);
+
+        $username = "fabri";
+
+        $stmt_acc->execute();
+    }
+
+    $dbh->commit();
+
+    $result = $stmt_acc->get_result();
+
+    echo $result;
+
+    echo '<h2> Registrato con successo!<h2>';
+
+    $dbh = null;  //termino la connessione.
+*/
+}
+catch(PDOException $e){
+    /*$dbh->rollback();
+    echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
+    echo '<h2> Si è verificato un errore. <h2>';
+    echo '<h3><a href="../registrazione.html">torna indietro</a></h3>';*/
+}
+
+
+
+?>
+
     <script>
         function myMap() {
             //chiedo permesso per ricevere posizione
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showMap, error);
+                navigator.geolocation.getCurrentPosition(showMap, error,{timeout:10000});
             } else {
                 alert("geolocalizetion not supported");
             }
@@ -39,7 +95,7 @@
             var marker = new google.maps.Marker({
                 position: mapCenter,
                 //animation:google.maps.Animation.BOUNCE
-                //icon: '../media/map-marker-orange.png',
+                icon: '../media/map-marker-orange.png',
             });
 
             marker.setMap(map);
@@ -49,13 +105,13 @@
                 content:"tu sei qui"
             });
 
-            infowindow.open(map,marker);
 
             //definisco un listener sul marker
             google.maps.event.addListener(marker,'click',function() {
                 var pos = map.getZoom();
                 map.setZoom(18);
                 map.setCenter(marker.getPosition());
+                infowindow.open(map,marker);
 
                 //dopo tre secondi faccio tornare lo zoom della mappa normale
                 window.setTimeout(function() {map.setZoom(pos);},3000);
