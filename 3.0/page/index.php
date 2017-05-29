@@ -5,9 +5,5 @@
  * Date: 23/05/2017
  * Time: 16:11
  */
-    require("header.php");
-
-    require("homepage.php");
-
-    require("endPage.php");
+    header("Location: homepage.php");
 ?>
