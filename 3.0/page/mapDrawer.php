@@ -47,7 +47,7 @@
 
             //creo infowindow su marker
             var infowindow = new google.maps.InfoWindow({
-                content:"tu sei qui "+lat+";"+lon
+                content:"you are here"
             });
 
             //definisco un listener sul marker

@@ -5,6 +5,10 @@
  * Date: 23/05/2017
  * Time: 16:14
  */
+    require("pageStart.php");
+    require("navbar.php");
+
+
     $eventDB = [];
     $count = 0;
     $servername = "localhost";
@@ -26,26 +30,23 @@
         }
     }
     $conn->close();
-    include("pageStart.php");
-    include("navbar.php");
+
 ?>
 
-<div class="jumbotron">
+<div class="jumbotron liteOrange">
     <div class="container text-center">
         <h1>Event Around</h1>
         <p>The events that surround you!</p>
     </div>
 </div>
-
+<br>
 <?php include("mapDrawer.php"); ?>
-
+<br>
 <?php include("eventList.php"); ?>
+<br>
 
-<footer class="container-fluid text-center">
-    <p>Footer Text</p>
-</footer>
+<?php require("footer.php"); ?>
 
-</body>
-</html>
+
 
 
