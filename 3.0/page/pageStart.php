@@ -83,6 +83,65 @@
 
     </style>
 
+    <script>
+        function checkLogin() {
+            alert("check login");
+            if(document.getElementById("loginUsername").value == "") {
+                document.getElementById("loginUsername").focus();
+                return false;
+            }
+            if(document.getElementById("loginPassword").value == "") {
+                document.getElementById("loginPassword").focus();
+                return false;
+            }
+            return true;
+        }
+
+        function checkReg() {
+            alert("check reg");
+            //non funziona 2.0 mail valida
+            var pattern = new RegExp("[^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$]]");
+
+            if(document.getElementById("regUsername").value == "") {
+                document.getElementById("regUsername").focus();
+                return false;
+            }
+            if(document.getElementById("mail1").value == "" || /[^[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]]/.test(document.getElementById("mail1").value)) {
+                document.getElementById("mail1").focus();
+                return false;
+            }
+            if(document.getElementById("mail2").value == "" || document.getElementById("mail1").value != document.getElementById("mail2").value) {
+                document.getElementById("mail2").focus();
+                return false;
+            }
+            if(document.getElementById("password1").value == "") {
+                document.getElementById("password1").focus();
+                return false;
+            }
+
+            if(document.getElementById("password2").value == "" || document.getElementById("password1").value != document.getElementById("password2").value) {
+                document.getElementById("password2").focus();
+                return false;
+            }
+            return true;
+        }
+
+        function showValue(newValue)
+        {
+            document.getElementById("range").innerHTML=newValue+" km";
+        }
+
+        function checkSearch() {
+            alert("check search");
+            getLocation();
+            return true;
+        }
+
+        function showFilter() {
+            document.getElemtentById("filter").style.display = "block";
+        }
+    </script>
+
 </head>
 <body>
 

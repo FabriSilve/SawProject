@@ -37,6 +37,18 @@
     <div class="container text-center">
         <h1>Event Around</h1>
         <p>The events that surround you!</p>
+        <?php
+            if(isset($logged) && $logged)
+                echo "<p>Sai che sei anche loggato? ;)</p>";
+        ?>
+    </div>
+</div>
+<br>
+<div class="container container-table">
+    <div class="row vertical-center-row">
+        <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
+            <?php require("formSearch.php") ?>
+        </div>
     </div>
 </div>
 <br>

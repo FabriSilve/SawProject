@@ -13,15 +13,15 @@
     <div class="row vertical-center-row margin5">
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
             <h1>Login</h1>
-            <form name="login-form" onsubmit="return checkLogin()" method="post" action="homepage.php">
+            <form name="login-form" method="post" action="checkLogin.php"> <!--onsubmit="return checkLogin()"-->
                 <p>
-                    <input type="text" name="loginUsername" id="loginUsername" placeholder="Username" class="radiusDiv padding5">
+                    <input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required>
                 </p>
                 <p>
-                    <input type="password" name="loginPassword" id="loginPassword" placeholder="Password" class="radiusDiv padding5">
+                    <input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required>
                 </p>
                 <p>
-                <span><input type="checkbox" name="loginkeep" id="loginkeep" value="1"></span>
+                <span><input type="checkbox" name="keepme" id="keepme" value="1" checked></span>
                 <span>Remember Me</span>
                 </p>
                 <button type="submit" class="radiusDiv">

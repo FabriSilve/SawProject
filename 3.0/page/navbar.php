@@ -23,7 +23,14 @@
                 <li><a href="#">Contact</a></li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li>
+                    <?php
+                    if(isset($logged) && $logged)
+                        echo '<a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a>';
+                    else
+                        echo '<a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a>';
+                    ?>
+                </li>
             </ul>
         </div>
     </div>
