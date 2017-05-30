@@ -6,4 +6,5 @@
  * Time: 16:10
  */
     header("Location: page/index.php");
+    /*ciao*/
 ?>
