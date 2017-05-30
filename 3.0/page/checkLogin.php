@@ -37,15 +37,18 @@
 				header("Location: homepage.php");  //automatically redirect to homepage on login success.
 			}
 			else
-				echo "ERROR: uncorrect username and/or password";
+				throw new Exception();
 		}
 		else
-			echo "ERROR: uncorrect username and/or password";
+			throw new Exception();
 	}
 	catch(PDOException $e){
 	    echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
 	    //header("Location: login.php");
 	
+	}
+	catch(Exception $f){
+		echo "Invalid username and/or password.";
 	}
 	$dbh = null;  //termino la connessione.
 
