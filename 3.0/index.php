@@ -7,4 +7,5 @@
  */
     header("Location: page/index.php");
     /*CioaMondo!!*/
+    /*ciao 2.0*/
 ?>
