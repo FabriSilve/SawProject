@@ -77,6 +77,12 @@
             font-weight: bold;
         }
 
+        h2 {
+            color: #FF8100;
+            text-shadow: 4px 2px 4px #B2B2B2;
+            font-weight: bold;
+        }
+
         .padding5 {
             padding-left: 5px;
         }
@@ -86,11 +92,11 @@
     <script>
         function checkLogin() {
             alert("check login");
-            if(document.getElementById("loginUsername").value == "") {
+            if(document.getElementById("loginUsername").value === "") {
                 document.getElementById("loginUsername").focus();
                 return false;
             }
-            if(document.getElementById("loginPassword").value == "") {
+            if(document.getElementById("loginPassword").value === "") {
                 document.getElementById("loginPassword").focus();
                 return false;
             }
@@ -102,24 +108,24 @@
             //non funziona 2.0 mail valida
             var pattern = new RegExp("[^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$]]");
 
-            if(document.getElementById("regUsername").value == "") {
+            if(document.getElementById("regUsername").value === "") {
                 document.getElementById("regUsername").focus();
                 return false;
             }
-            if(document.getElementById("mail1").value == "" || /[^[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]]/.test(document.getElementById("mail1").value)) {
+            if(document.getElementById("mail1").value === "" || /[^[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]]/.test(document.getElementById("mail1").value)) {
                 document.getElementById("mail1").focus();
                 return false;
             }
-            if(document.getElementById("mail2").value == "" || document.getElementById("mail1").value != document.getElementById("mail2").value) {
+            if(document.getElementById("mail2").value === "" || document.getElementById("mail1").value !== document.getElementById("mail2").value) {
                 document.getElementById("mail2").focus();
                 return false;
             }
-            if(document.getElementById("password1").value == "") {
+            if(document.getElementById("password1").value === "") {
                 document.getElementById("password1").focus();
                 return false;
             }
 
-            if(document.getElementById("password2").value == "" || document.getElementById("password1").value != document.getElementById("password2").value) {
+            if(document.getElementById("password2").value === "" || document.getElementById("password1").value !== document.getElementById("password2").value) {
                 document.getElementById("password2").focus();
                 return false;
             }
@@ -137,8 +143,15 @@
             return true;
         }
 
+        var hider = true;
         function showFilter() {
-            document.getElemtentById("filter").style.display = "block";
+            if(hider) {
+                document.getElementById("filter").style.display = "block";
+                hider = false;
+            } else {
+                document.getElementById("filter").style.display = "none";
+                hider = true;
+            }
         }
     </script>
 

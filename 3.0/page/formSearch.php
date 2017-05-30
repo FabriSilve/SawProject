@@ -16,24 +16,22 @@
     <p>
         <input type="text" name="position" id="position" placeholder="Città" class="radiusDiv padding5">
         <button type="submit" class="radiusDiv">
-            Search
+            <img src="../media/search.png">
         </button>
-        <button class="radiusDiv" onclick="showFilter()">
-            Filter
-        </button>
+        <img src="../media/filter.png" onclick="showFilter()" alt="filter">
     </p>
     <div style="display: none;" id="filter">
         <input type="hidden" name="lat" id="lat" value="" >
         <input type="hidden" name="lon" id="lon" value="" >
-        <h4>
+        <h2>
             distance
-        </h4>
+        </h2>
         <input name="distance" type="range" min="5" max="50" value="10" step="5" onchange="showValue(this.value)" />
         <span id="range">10 km</span>
 
-        <h4>
+        <h2>
             eventi
-        </h4>
+        </h2>
         <table>
             <tr>
                 <td>

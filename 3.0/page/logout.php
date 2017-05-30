@@ -5,11 +5,12 @@
  * Date: 29/05/2017
  * Time: 23:14
  */
+    session_start();
     if(isset($_COOKIE['EAkeep'])) {
         setcookie('EAkeep',null);
-
     }
-    $_SESSION ["authorized"] = 0;
+    session_unset();
+    session_destroy();
     header('location: index.php');
 
     /*TODO

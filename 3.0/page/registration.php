@@ -16,13 +16,13 @@
             <h1>Registration</h1>
             <form name="register-form" onsubmit="return checkReg()" method="post" action="checkReg.php">
                 <p>
-                    <input type="text" name="regUsername" id="regUsername" placeholder="Username" class="radiusDiv padding5">
+                    <input type="text" name="regUsername" id="regUsername" placeholder="Username" class="radiusDiv padding5" required>
                 </p>
                 <p>
-                    <input type="mail" name="mail1" id="mail1" placeholder="Mail" class="radiusDiv padding5">
+                    <input type="email" name="mail1" id="mail1" placeholder="Mail" class="radiusDiv padding5">
                 </p>
                 <p>
-                    <input type="mail" name="mail2" id="mail2" placeholder="Repeat Mail" class="radiusDiv padding5">
+                    <input type="email" name="mail2" id="mail2" placeholder="Repeat Mail" class="radiusDiv padding5">
                 </p>
                 <p>
                     <input type="password" name="password1" id="password1" placeholder="Password" class="radiusDiv padding5">
