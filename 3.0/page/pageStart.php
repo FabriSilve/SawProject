@@ -87,6 +87,10 @@
             padding-left: 5px;
         }
 
+        .leftAlign {
+            text-align: left;
+        }
+
     </style>
 
     <script>

@@ -32,24 +32,32 @@
         <h2>
             eventi
         </h2>
-        <table>
+        <table class="table">
             <tr>
                 <td>
                     <input type="checkbox" name="party" id="party" value="1">
+                </td>
+                <td class="leftAlign">
                     festa
                 </td>
                 <td>
                     <input type="checkbox" name="show" id="show" value="1">
+                </td>
+                <td class="leftAlign">
                     spettacolo
                 </td>
             </tr>
             <tr>
                 <td>
                     <input type="checkbox" name="art" id="art" value="1">
+                </td>
+                <td class="leftAlign">
                     mostra
                 </td>
                 <td>
                     <input type="checkbox" name="sport" id="sport" value="1">
+                </td>
+                <td class="leftAlign">
                     sport
                 </td>
             </tr>
