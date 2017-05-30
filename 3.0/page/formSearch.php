@@ -21,8 +21,6 @@
         <img src="../media/filter.png" onclick="showFilter()" alt="filter">
     </p>
     <div style="display: none;" id="filter">
-        <input type="hidden" name="lat" id="lat" value="" >
-        <input type="hidden" name="lon" id="lon" value="" >
         <h2>
             distance
         </h2>

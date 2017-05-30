@@ -19,16 +19,16 @@
                     <input type="text" name="regUsername" id="regUsername" placeholder="Username" class="radiusDiv padding5" required>
                 </p>
                 <p>
-                    <input type="email" name="mail1" id="mail1" placeholder="Mail" class="radiusDiv padding5">
+                    <input type="email" name="mail1" id="mail1" placeholder="Mail" class="radiusDiv padding5" required>
                 </p>
                 <p>
-                    <input type="email" name="mail2" id="mail2" placeholder="Repeat Mail" class="radiusDiv padding5">
+                    <input type="email" name="mail2" id="mail2" placeholder="Repeat Mail" class="radiusDiv padding5" required>
                 </p>
                 <p>
-                    <input type="password" name="password1" id="password1" placeholder="Password" class="radiusDiv padding5">
+                    <input type="password" name="password1" id="password1" placeholder="Password" class="radiusDiv padding5" required>
                 </p>
                 <p>
-                    <input type="password" name="password2" id="password2" placeholder="Repeat Password" class="radiusDiv padding5">
+                    <input type="password" name="password2" id="password2" placeholder="Repeat Password" class="radiusDiv padding5" required>
                 </p>
                 <br>
                 <p>

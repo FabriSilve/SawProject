@@ -144,8 +144,9 @@
         function checkSearch() {
             alert("check search");
             var geocoder = new google.maps.Geocoder();
+            var address = document.getElementById("position").value;
             geocoder.geocode( { 'address': address}, function(results, status) {
-                if (status == 'OK') {
+                if (status === 'OK') {
                     map.setCenter(results[0].geometry.location);
                     var marker = new google.maps.Marker({
                         map: map,
@@ -156,8 +157,20 @@
                 }
             });
 
-            getLocation();
             return true;
+        }
+
+        function codeAddress(address) {
+            geocoder.geocode( { 'address': address}, function(results, status){
+                if(status === google.maps.GeocoderStatus.OK){
+                    map.setCenter(results[0].geometry.location);
+                    marker.setPosition(results[0].geometry.location);
+                    lat =  results[0].geometry.location.lat();
+                    lon = results[0].geometry.location.lng();
+                }else{
+                    alert("Geocode ha rilevato questo errore: " + status);
+                }
+            });
         }
 
         var hider = true;

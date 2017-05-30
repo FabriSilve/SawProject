@@ -9,9 +9,10 @@
 ?>
 
 <div class="container-fluid bg-3 text-center">
-    <div id="googleMap" style="width:100%;height: 400px; border-radius: 20px; overflow: hidden;"></div>
+    <div id="googleMap" style="width:100%;height: 400px; border-radius: 20px; overflow: hidden;" ></div>
 
     <script language="javascript">
+
         function myMap() {
             //chiedo permesso per ricevere posizione
             if (navigator.geolocation) {
@@ -104,7 +105,6 @@
                     }
                 })(event, j));
             }
-
         }
 
         function error(msg) {
@@ -112,6 +112,7 @@
         }
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQO1FBU7ngY0Wv20d3-gPI1sj5_ApCZ3M&callback=myMap"></script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQO1FBU7ngY0Wv20d3-gPI1sj5_ApCZ3M&callback=myMap"></script>
+
 </div>
 
