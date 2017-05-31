@@ -43,11 +43,12 @@
 	}
 	catch(PDOException $e){
 	    echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
+        header ("Location: login.php");
 	    //header("Location: login.php");
 	
 	}
 	catch(Exception $f){
-		echo "Invalid username and/or password.";
+		header ("Location: login.php");
 	}
 	$dbh = null;  //termino la connessione.
 
