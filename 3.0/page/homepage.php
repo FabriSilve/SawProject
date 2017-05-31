@@ -11,11 +11,8 @@
 
     $eventDB = [];
     $count = 0;
-    $servername = "localhost";
-    $user = "root";
-    $pass = "";
-    $dbname = "saw";
-    $conn = new mysqli($servername, $user, $pass, $dbname);
+    require("dbAccess.php");
+    $conn = new mysqli($servername, $dbUser, $dbPass, $dbName);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

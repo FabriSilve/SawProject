@@ -112,11 +112,11 @@
             //non funziona 2.0 mail valida
             var pattern = new RegExp("[^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$]]");
 
-            if(document.getElementById("regUsername").value === "") {
-                document.getElementById("regUsername").focus();
+            if(document.getElementById("username").value === "") {
+                document.getElementById("username").focus();
                 return false;
             }
-            if(document.getElementById("mail1").value === "" || /[^[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]]/.test(document.getElementById("mail1").value)) {
+            if(document.getElementById("mail1").value === "" ) {
                 document.getElementById("mail1").focus();
                 return false;
             }
