@@ -6,12 +6,12 @@
 	<link href="https://fonts.googleapis.com/css?family=Montez" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 </head>
-<body>
+
 <body>
 	<header>
 		<div class="menu">
 			<div class="logo">
-				<a href="../index.html">
+				<a href="../index.php">
 					<img class="imglogo" src="../home2.png">
 				</a>
 			</div>
@@ -41,7 +41,7 @@
 
 					    // prepared statements
 					    $stmt_acc = $dbh->prepare("INSERT INTO accounts (username, password) VALUES (:username, :password);");
-					    $stmt_prof = $dbh->prepare("INSERT INTO profilo (nome, cognome, email, residenza, link_social, auto_descizione) VALUES (:nome, :cognome, :email, :residenza, :link_social, :auto_descizione);");
+					    $stmt_prof = $dbh->prepare("INSERT INTO profilo (email, nome, cognome, residenza, auto_descizione, link_social) VALUES (:email, :nome, :cognome, :residenza, :auto_descizione, :link_social);");
 
 					    $dbh->beginTransaction();
 
@@ -80,23 +80,24 @@
 
 					    /******* profilo BLOCK *******/
 					    {
-					    	$stmt_prof->bindParam(':nome', $nome); 
+                            $stmt_prof->bindParam(':nome', $nome);
 						    $stmt_prof->bindParam(':cognome', $cognome);
-						    $stmt_prof->bindParam(':email', $email); 
+                            $stmt_prof->bindParam(':email', $email);
 						    $stmt_prof->bindParam(':residenza', $residenza);
-						    $stmt_prof->bindParam(':link_social', $link_social); 
-						    $stmt_prof->bindParam(':auto_descizione', $auto_descizione);
-							
+                            $stmt_prof->bindParam(':auto_descizione', $auto_descizione);
+						    $stmt_prof->bindParam(':link_social', $link_social);
+
+
+                            $email = trim($_POST["email"]);
 							$nome = trim($_POST["nome"]);
 							$cognome = trim($_POST["cognome"]);
-							$email = trim($_POST["email"]);
 							$residenza = trim($_POST["residenza"]);
+                            $auto_descizione = trim($_POST["auto_descizione"]);
 							$link_social = trim($_POST["link_social"]);
-							$auto_descizione = trim($_POST["auto_descizione"]);
 
 							$profile_arr = array($nome, $cognome, $email, $residenza);
 
-							foreach ($profilo_arr as $i) {
+                            foreach ($profile_arr as $i) {
 								if (empty($i)){
 									$profileErr = "Empty field found.";
 									throw new Exception();
@@ -108,7 +109,7 @@
 							}
 							
 							if (!filter_var($link_social, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED)){
-								$profileErr = $link_social + " : invalid format.";
+								$profileErr = $link_social . " : invalid format.";
 								throw new Exception();
 							}
 
@@ -124,7 +125,7 @@
 						$dbh->rollback();
 					    echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
 					    echo '<h2> Si è verificato un errore. <h2>';
-						echo '<h3><a href="../registrazione.html">torna indietro</a></h3>';
+						echo '<h3><a href="registration.php">torna indietro</a></h3>';
 					}
 					catch(Exception $k){
 						$dbh->rollback();
@@ -135,7 +136,7 @@
 					    if (isset($profileErr))
 					    	echo $profileErr;
 
-					    echo '<h3><a href="../registrazione.html">torna indietro</a></h3>';
+					    echo '<h3><a href="registration.php">torna indietro</a></h3>';
 					}
 					$dbh = null;  //termino la connessione.
 

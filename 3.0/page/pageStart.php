@@ -91,6 +91,20 @@
             text-align: left;
         }
 
+        .menu{
+            width: 350;
+            margin: 0;
+            border: 0 none;
+            padding: 0;
+            list-style: none;
+            background: #FF8100;
+            height: 30px;
+            font: bold 12px/28px Verdana, Arial;
+            border-left: #FF8100 1px solid;
+            display: inline;
+        }
+
+
     </style>
 
     <script>

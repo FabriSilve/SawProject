@@ -13,15 +13,15 @@
     $count = 0;
     $servername = "localhost";
     $user = "root";
-    $pass = "";
-    $dbname = "saw";
+    $pass = "root";
+    $dbname = "sawdb";
     $conn = new mysqli($servername, $user, $pass, $dbname);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $query = "SELECT * FROM events ORDER BY day ASC LIMIT 8";
+    $query = 'SELECT * FROM events ORDER BY day ASC LIMIT 8';
     $res = $conn->query($query);
     if($res->num_rows > 0) {
         while($row = $res->fetch_row()) {
