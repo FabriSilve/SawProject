@@ -6,7 +6,7 @@
  * Time: 22:06
  */
 
-    require("pageStart.php");
+    require("header.php");
     require("navbar.php");
 ?>
 

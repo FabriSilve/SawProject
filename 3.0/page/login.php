@@ -5,7 +5,7 @@
  * Date: 29/05/2017
  * Time: 21:40
  */
-    require("pageStart.php");
+    require("header.php");
     require("navbar.php");
 ?>
 <html>

@@ -6,7 +6,7 @@
  * Time: 8.53
  */
 
-require("pageStart.php");
+require("header.php");
 require("navbar.php");
 ?>
 

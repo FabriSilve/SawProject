@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Fabrizio
- * Date: 29/05/2017
- * Time: 12:06
- */
-?>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">

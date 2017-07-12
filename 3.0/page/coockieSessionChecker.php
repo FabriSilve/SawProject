@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Fabrizio
- * Date: 21/05/2017
- * Time: 10:43
- */
+    $logged = 0;
     if(isset($_COOKIE["EAkeep"])) {
         if($_COOKIE["EAkeep"] ==true) {
             $logged = 1;
