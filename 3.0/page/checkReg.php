@@ -105,7 +105,7 @@
         $dbh->rollback();
         echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
         echo '<h2> Si è verificato un errore. <h2>';
-        echo '<h3><a href="../registrazione.html">torna indietro</a></h3>';
+        echo '<h3><a href="registration.php">torna indietro</a></h3>';
     }
     catch(Exception $k){
         $dbh->rollback();
@@ -116,7 +116,7 @@
         if (isset($profileErr))
             echo $profileErr;
         echo "expeption";
-        echo '<h3><a href="../registrazione.html">torna indietro</a></h3>';
+        echo '<h3><a href="registration.php">torna indietro</a></h3>';
     }
     $dbh = null;  //termino la connessione.
 

@@ -28,7 +28,7 @@
         case 1:
             $servername = "localhost";
             $dbUser = "root";
-            $dbPass = "";
+            $dbPass = "root";
             $dbName = "sawdb";
             break;
         case 2:
@@ -36,7 +36,7 @@
         default:
             $servername = "localhost";
             $dbUser = "root";
-            $dbPass = "";
+            $dbPass = "root";
             $dbName = "saw";
     }
 ?>

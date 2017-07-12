@@ -6,11 +6,10 @@
  * Date: 03/06/17
  * Time: 8.53
  */
-require("../page/pageStart.php");
-require("../page/navbar.php");
+//require("../page/pageStart.php");
+//require("../page/navbar.php");
+//require("auth.php"); // dove meglio mettere??
 ?>
-
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -57,10 +56,31 @@ require("../page/navbar.php");
 </head>
 <body>
 
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="../page/homepage.php">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../page/homepage.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <p><a href="#" class="glyphicon glyphicon-user"> VedereTuttiUtenti</a></p>
+            <p><a href="mostraUtenti.php" class="glyphicon glyphicon-user"> VedereTuttiUtenti</a></p>
             <p><a href="#" class="glyphicon glyphicon-list-alt"> VedereTuttiEventi</a></p>
             <p><a href="addUser.php" class="glyphicon glyphicon-plus"> AddAdmin</a></p>
             <p><a href="#" class="glyphicon glyphicon-pencil"> ModUser</a></p>
