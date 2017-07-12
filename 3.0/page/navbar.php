@@ -18,7 +18,7 @@
                 <li>
                     <?php
                     if(isset($logged) && $logged)
-                        echo '<a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a>';
+                        echo '<a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>';
                     else
                         echo '<a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a>';
                     ?>

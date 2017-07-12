@@ -31,7 +31,7 @@
         <p>The events that surround you!</p>
         <?php
             if(isset($logged) && $logged)
-                echo "<p>Sai che sei anche loggato? ;)</p>";
+                echo "<p>Ciao ".$username."!</p>";
         ?>
     </div>
 </div>

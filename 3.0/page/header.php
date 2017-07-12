@@ -34,6 +34,11 @@
             -o-background-size: cover;
             background-size: cover;
         }
+        @media screen and (max-width: 400px){
+            body {
+                background: khaki;
+            }
+        }
 
         .liteBackground {
             background-color: rgba(225, 225, 225, 0.8);
@@ -102,12 +107,12 @@
     <script> //TODO spostare in file esterno
         function checkLogin() {
             alert("check login");
-            if(document.getElementById("loginUsername").value === "") {
-                document.getElementById("loginUsername").focus();
+            if(document.getElementById("username").value === "") {
+                document.getElementById("username").focus();
                 return false;
             }
-            if(document.getElementById("loginPassword").value === "") {
-                document.getElementById("loginPassword").focus();
+            if(document.getElementById("password").value === "") {
+                document.getElementById("password").focus();
                 return false;
             }
             return true;
