@@ -11,7 +11,6 @@
         $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        //TODO trasformare in query per eventi più seguiti
         $stmt = $conn->prepare("SELECT id, name, description, day, lat, lon, image FROM Events NATURAL JOIN Followed WHERE day > CURDATE() GROUP BY(id) ORDER BY Count(username) ASC LIMIT 8");
         $stmt->execute();
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

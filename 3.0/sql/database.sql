@@ -5,7 +5,7 @@
 CREATE TABLE IF NOT EXISTS `Users` (
   `username` varchar(40) CHARACTER SET ascii NOT NULL,
   `email` varchar(40) CHARACTER SET ascii NOT NULL,
-  `password` varchar(100) CHARACTER SET ascii NOT NULL,
+  `password` varchar(50) CHARACTER SET ascii NOT NULL,
   PRIMARY KEY (`username`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -69,11 +69,7 @@ INSERT INTO `Events` (`id`, `name`, `description`, `image`, `day`, `address`, `l
 
 CREATE TABLE IF NOT EXISTS `Followed` (
   `id` int(11) NOT NULL REFERENCES Events(id),
-<<<<<<< Updated upstream
   `username` varchar(40) CHARACTER SET ascii NOT NULL REFERENCES Users(usenrame),
-=======
-  `username` varchar(40) CHARACTER SET ascii NOT NULL REFERENCES Users(username),
->>>>>>> Stashed changes
   PRIMARY KEY (`id`,`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -95,13 +91,8 @@ INSERT INTO `Followed` (`id`, `username`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Signaled` (
   `id` int(11) NOT NULL REFERENCES Events(id),
-<<<<<<< Updated upstream
   `username` varchar(40) CHARACTER SET ascii NOT NULL REFERENCES Users(username),
   PRIMARY KEY (`id`,`username`)
-=======
-  `user` varchar(30) CHARACTER SET ascii NOT NULL REFERENCES Users(username),
-  PRIMARY KEY (`id`,`user`)
->>>>>>> Stashed changes
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --

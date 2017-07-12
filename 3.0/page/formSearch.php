@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Fabrizio
- * Date: 29/05/2017
- * Time: 22:37
- */
-
     /*TODO
       correggere div filtri ricerca e responsiv dei bottoni
         sostituire testo bottoni con icone
@@ -14,7 +7,8 @@
 
 <form name="search-form" onsubmit="return checkSearch()" method="post" action="homepage.php">
     <p>
-        <input type="text" name="position" id="position" placeholder="Città" class="radiusDiv padding5">
+        <!-- todo implementare ricerca nei dintorni partendo da posizione utente-->
+        <input type="text" name="position" id="position" placeholder="Position" class="radiusDiv padding5" required>
         <button type="submit" class="radiusDiv">
             <img src="../media/search.png">
         </button>
@@ -22,11 +16,18 @@
     </p>
     <div style="display: none;" id="filter">
         <h2>
-            distance
+            Distance
         </h2>
-        <input name="distance" type="range" min="5" max="50" value="10" step="5" onchange="showValue(this.value)" />
-        <span id="range">10 km</span>
+        <input name="distance" type="range" min="5" max="50" value="10" step="5" onchange="showValue('range', this.value)" />
+        <span id="range">10</span><span> km</span>
 
+        <h2>
+            Days
+        </h2>
+        <input name="days" type="range" min="1" max="7" value="3" step="1" onchange="showValue('days',this.value)" />
+        <span id="days">3</span><span> day(s)</span>
+
+        <!--todo implementare o rimuovere
         <h2>
             eventi
         </h2>
@@ -60,5 +61,6 @@
                 </td>
             </tr>
         </table>
+        -->
     </div>
 </form>

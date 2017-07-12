@@ -147,9 +147,9 @@
             return true;
         }
 
-        function showValue(newValue)
+        function showValue(id, newValue)
         {
-            document.getElementById("range").innerHTML=newValue+" km";
+            document.getElementById(id).innerHTML=newValue+" ";
         }
 
         function checkSearch() {
