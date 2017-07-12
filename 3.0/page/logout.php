@@ -9,6 +9,9 @@
     if(isset($_COOKIE['EAkeep'])) {
         setcookie('EAkeep',null);
     }
+    if(isset($_COOKIE['EAusername'])) {
+        setcookie('EAusername',null);
+    }
     session_unset();
     session_destroy();
     header('location: index.php');

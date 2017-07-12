@@ -127,12 +127,12 @@
                 document.getElementById("username").focus();
                 return false;
             }
-            if(document.getElementById("mail1").value === "" ) {
-                document.getElementById("mail1").focus();
+            if(document.getElementById("email1").value === "" ) {
+                document.getElementById("email1").focus();
                 return false;
             }
-            if(document.getElementById("mail2").value === "" || document.getElementById("mail1").value !== document.getElementById("mail2").value) {
-                document.getElementById("mail2").focus();
+            if(document.getElementById("email2").value === "" || document.getElementById("mail1").value !== document.getElementById("mail2").value) {
+                document.getElementById("email2").focus();
                 return false;
             }
             if(document.getElementById("password1").value === "") {

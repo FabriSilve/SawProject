@@ -9,7 +9,7 @@
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // prepared statements
-        $stmt_acc = $dbh->prepare("INSERT INTO accounts (username, email, password) VALUES (:username, :email, :password);");
+        $stmt_acc = $dbh->prepare("INSERT INTO Users (username, email, password) VALUES (:username, :email, :password);");
         //$stmt_prof = $dbh->prepare("INSERT INTO profilo (nome, cognome, email, residenza, link_social, auto_descizione) VALUES (:nome, :cognome, :email, :residenza, :link_social, :auto_descizione);");
 
         $dbh->beginTransaction();
@@ -97,9 +97,17 @@
         }*/
 
         $dbh->commit();
-        echo '<h2> Registrato con successo!<h2>';
-
-
+        if(isset($_COOKIE['EAkeep'])) {
+            setcookie('EAkeep',null);
+        }
+        if(isset($_COOKIE['EAusername'])) {
+            setcookie('EAusername',null);
+        }
+        session_unset();
+        session_destroy();
+        session_start();
+        $_SESSION["authorized"] = 1;
+        header("Location: homepage.php");
     }
     catch(PDOException $e){
         $dbh->rollback();
