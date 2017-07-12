@@ -44,7 +44,7 @@
             var lon= longitude;
 
             var mapCenter = new google.maps.LatLng(lat,lon);
-            var mapZoom = 15;
+            var mapZoom = 12;
 
             //specifico proprietà mappa e creo oggetto google.maps.Map
             var mapProp= {
@@ -71,7 +71,7 @@
             //definisco un listener sul marker
             google.maps.event.addListener(marker,'click',function() {
                 var pos = map.getZoom();
-                map.setZoom(18);
+                map.setZoom(14);
                 map.setCenter(marker.getPosition());
                 infowindow.open(map,marker);
 
