@@ -1,27 +1,32 @@
 <?php
-    require("coockieSessionChecker.php");
-    require("header.php");
+/**
+ * Created by PhpStorm.
+ * User: Fabrizio
+ * Date: 23/05/2017
+ * Time: 16:14
+ */
+    require("pageStart.php");
     require("navbar.php");
 
-    //isolare accesso db
+
     $eventDB = [];
     $count = 0;
     require("dbAccess.php");
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = new mysqli($servername, $dbUser, $dbPass, $dbName);
 
-        //TODO trasformare in query per eventi più seguiti
-        $stmt = $conn->prepare("SELECT id, name, description, day, lat, lon, image FROM Events NATURAL JOIN Followed WHERE day > CURDATE() GROUP BY(id) ORDER BY Count(username) ASC LIMIT 8");
-        $stmt->execute();
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $eventDB[$count++] = [$row["id"],$row["name"],$row["description"],$row["day"], $row["lat"],$row["lon"], "../uploads/".$row["image"]];
-        }
-        $conn = null;
-    } catch(PDOException $e) {
-        echo "ERROR ".$e->getMessage();
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
+    $query = "SELECT * FROM events ORDER BY day ASC LIMIT 8";
+    $res = $conn->query($query);
+    if($res->num_rows > 0) {
+        while($row = $res->fetch_row()) {
+            //echo "locations[i++] = ['".$row[0]."','".$row[1]."',lat+".$row[2].",lon+".$row[3].",'".$row[4]."'];\r\n";
+            $eventDB[$count++] = [$row[0],$row[1],$row[2],$row[3],$row[4]];
+        }
+    }
+    $conn->close();
 
 ?>
 
@@ -31,7 +36,7 @@
         <p>The events that surround you!</p>
         <?php
             if(isset($logged) && $logged)
-                echo "<p>Ciao ".$username."!</p>";
+                echo "<p>Sai che sei anche loggato? ;)</p>";
         ?>
     </div>
 </div>

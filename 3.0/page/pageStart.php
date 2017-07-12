@@ -1,3 +1,12 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Fabrizio
+ * Date: 23/05/2017
+ * Time: 16:13
+ */
+    require("coockieSessionChecker.php");
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -6,12 +15,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!--<script src="http://maps.google.com/maps/api/js?key=AIzaSyAQO1FBU7ngY0Wv20d3-gPI1sj5_ApCZ3M&sensor=true"></script>-->
 
-    <style> //TODO spostare in file esterno
+    <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
         .navbar {
             margin-bottom: 0;
@@ -33,11 +43,6 @@
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
-        }
-        @media screen and (max-width: 400px){
-            body {
-                background: khaki;
-            }
         }
 
         .liteBackground {
@@ -89,7 +94,7 @@
         }
 
         .menu{
-            width: 350px;
+            width: 350;
             margin: 0;
             border: 0 none;
             padding: 0;
@@ -104,15 +109,15 @@
 
     </style>
 
-    <script> //TODO spostare in file esterno
+    <script>
         function checkLogin() {
             alert("check login");
-            if(document.getElementById("username").value === "") {
-                document.getElementById("username").focus();
+            if(document.getElementById("loginUsername").value === "") {
+                document.getElementById("loginUsername").focus();
                 return false;
             }
-            if(document.getElementById("password").value === "") {
-                document.getElementById("password").focus();
+            if(document.getElementById("loginPassword").value === "") {
+                document.getElementById("loginPassword").focus();
                 return false;
             }
             return true;
@@ -127,12 +132,12 @@
                 document.getElementById("username").focus();
                 return false;
             }
-            if(document.getElementById("email1").value === "" ) {
-                document.getElementById("email1").focus();
+            if(document.getElementById("mail1").value === "" ) {
+                document.getElementById("mail1").focus();
                 return false;
             }
-            if(document.getElementById("email2").value === "" || document.getElementById("mail1").value !== document.getElementById("mail2").value) {
-                document.getElementById("email2").focus();
+            if(document.getElementById("mail2").value === "" || document.getElementById("mail1").value !== document.getElementById("mail2").value) {
+                document.getElementById("mail2").focus();
                 return false;
             }
             if(document.getElementById("password1").value === "") {

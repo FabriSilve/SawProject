@@ -97,17 +97,9 @@
         }*/
 
         $dbh->commit();
-        if(isset($_COOKIE['EAkeep'])) {
-            setcookie('EAkeep',null);
-        }
-        if(isset($_COOKIE['EAusername'])) {
-            setcookie('EAusername',null);
-        }
-        session_unset();
-        session_destroy();
-        session_start();
-        $_SESSION["authorized"] = 1;
-        header("Location: homepage.php");
+        echo '<h2> Registrato con successo!<h2>';
+
+
     }
     catch(PDOException $e){
         $dbh->rollback();
