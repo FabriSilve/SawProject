@@ -11,7 +11,11 @@
      *  faber = 2
      *  default = webdev vera
      */
+<<<<<<< Updated upstream
     $whereIAm = 11;
+=======
+    $whereIAm = 1;
+>>>>>>> Stashed changes
 
     /*$servername;
     $dbUser;
@@ -28,7 +32,7 @@
         case 1:
             $servername = "localhost";
             $dbUser = "root";
-            $dbPass = "root";
+            $dbPass = "";
             $dbName = "sawdb";
             break;
         case 2:
@@ -39,3 +43,4 @@
             $dbPass = "Minsk";
             $dbName = "S4116422";
     }
+?>

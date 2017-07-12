@@ -16,7 +16,11 @@ require ("dbAccess.php");
 	    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	    // prepared statements
+<<<<<<< Updated upstream
 	    $query = "SELECT password FROM Users WHERE username = :username;";
+=======
+	    $query = "SELECT password FROM Users WHERE email = :email;";
+>>>>>>> Stashed changes
 	    $stmt = $dbh->prepare($query);	//parameterized queries
 
 	    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -28,6 +32,7 @@ require ("dbAccess.php");
 		//var_dump($passw);   //debugging print
 
             //$pass_corr = password_verify($password, $passw['password']);
+<<<<<<< Updated upstream
 	    	if ($passw = password_hash($pass_corr, PASSWORD_BCRYPT)){
 		    	session_start();
 				$_SESSION["authorized"] = 1;
@@ -39,6 +44,20 @@ require ("dbAccess.php");
 			}
 			else
 				throw new Exception();
+=======
+			if() {
+                if ($passw = password_hash($pass_corr, PASSWORD_BCRYPT)){
+                    session_start();
+                    $_SESSION["authorized"] = 1;
+                    if($keep == 1) {
+                        setcookie('EAkeep', 'true', time()+86400);
+                    }
+                    header("Location: homepage.php");  //automatically redirect to homepage on login success.
+                }
+                else
+                    throw new Exception();
+            }
+>>>>>>> Stashed changes
 
 	}
 	catch(PDOException $e){
