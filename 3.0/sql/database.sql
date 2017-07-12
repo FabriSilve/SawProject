@@ -30,10 +30,6 @@ INSERT INTO `Users` (`username`, `email`, `password`) VALUES
 ('eu.', 'qwerty@mail5.it', '$2y$10$2LINpDlMTzjTRJlvD263nOPN8Wq2ORfxjYqNMvUZSW5FGdmUfIkDW'),
 ('silvia', 'silvia@mail.it', '$2y$10$zW/5JNO8AcEkjL9zzK0ahOFdXNGf4yQpwBf.9.GFA/ATw2WmBKGea');
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 -- --------------------------------------------------------
 
 --
@@ -74,14 +70,14 @@ INSERT INTO `Events` (`id`, `name`, `description`, `image`, `day`, `address`, `l
 CREATE TABLE IF NOT EXISTS `Followed` (
   `id` int(11) NOT NULL REFERENCES Events(id),
   `username` varchar(40) CHARACTER SET ascii NOT NULL REFERENCES Users(usenrame),
-  PRIMARY KEY (`id`,`user`)
+  PRIMARY KEY (`id`,`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dump dei dati per la tabella `Followed`
 --
 
-INSERT INTO `Followed` (`id`, `user`) VALUES
+INSERT INTO `Followed` (`id`, `username`) VALUES
 (1, 'faber'),
 (2, 'faber'),
 (4, 'faber'),
@@ -95,15 +91,15 @@ INSERT INTO `Followed` (`id`, `user`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Signaled` (
   `id` int(11) NOT NULL REFERENCES Events(id),
-  `user` varchar(30) CHARACTER SET ascii NOT NULL Users(username),
-  PRIMARY KEY (`id`,`user`)
+  `username` varchar(40) CHARACTER SET ascii NOT NULL REFERENCES Users(username),
+  PRIMARY KEY (`id`,`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dump dei dati per la tabella `Signaled`
 --
 
-INSERT INTO `Signaled` (`id`, `user`) VALUES
+INSERT INTO `Signaled` (`id`, `username`) VALUES
 (1, 'faber'),
 (2, 'faber'),
 (1023, 'richard');
