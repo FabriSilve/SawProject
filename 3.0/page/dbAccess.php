@@ -13,10 +13,10 @@
      */
     $whereIAm = 3;
 
-    $servername;
+    /*$servername;
     $dbUser;
     $dbPass;
-    $dbName;
+    $dbName;*/
 
     switch($whereIAm) {
         case 0:
@@ -26,7 +26,10 @@
             $dbName = "S4095697";
             break;
         case 1:
-            //dati vera
+            $servername = "localhost";
+            $dbUser = "root";
+            $dbPass = "root";
+            $dbName = "sawdb";
             break;
         case 2:
             //dati faber;
