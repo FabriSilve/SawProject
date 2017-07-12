@@ -18,15 +18,10 @@ require("../page/navbar.php");
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
            <!-- <form name="login-form" method="post" action="addAdmin.php"> <!--onsubmit="return checkLogin()"-->
              <form name="login-form" method="post"> <!--onsubmit="return checkLogin()"-->
-                 <p>
-                     <input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required>
-                 </p>
-                <p>
-                    <input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required>
-                </p>
-                <p>
-                    <input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required>
-                </p>
+                 <!--<p><input type="nome" name="nome" id="nome" placeholder="Nome" class="radiusDiv padding5" required></p>-->
+
+                <p><input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required></p>
+                <p><input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required></p>
                 <button type="submit" class="radiusDiv">
                     Add
                 </button>
