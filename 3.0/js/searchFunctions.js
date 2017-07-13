@@ -5,41 +5,34 @@
 
     function searchEvents() {
         alert("search");
-        var urlSimple = "eventsSearcher.php";
-        var position = document.getElementById('position').value;
-        var distance = document.getElementById('distance').value;
-        var days = document.getElementById('days').value;
+        urlSimple = "eventsSearcher.php";
+        if(document.getElementById('position').value === "")
+            position = "default";
+        else
+            position = document.getElementById('position').value;
+        distance = document.getElementById('distance').value;
+        days = document.getElementById('days').value;
         console.info("distance "+distance+" days "+days+" position= "+position);
-        var request = getXMLHttpRequestObject();
-        var url = urlSimple+"?position="+position+"&distance="+distance+"&days="+days;
-        request.open('GET',url,true);
-        request.onreadystatechange = ajaxCallback;
-        request.send();
-
-        /*var geocoder = new google.maps.Geocoder();
-         var address = document.getElementById("position").value;
-         geocoder.geocode( { 'address': address}, function(results, status) {
-         if (status === 'OK') {
-         showMap(results[0].geometry.location);
-         /*var marker = new google.maps.Marker({
-         map: map,
-         position: results[0].geometry.location
-         } else {
-         alert('Geocode was not successful for the following reason: ' + status);
-         }
-         });
-         */
+        url = urlSimple+"?position="+position+"&distance="+distance+"&days="+days;
+        console.info(url);
+        xhr = getXMLHttpRequestObject();
+        xhr.onreadystatechange = ajaxCallback;
+        xhr.open('GET',url,true);
+        xhr.send(null);
     }
 
     function ajaxCallback() {
-        if (request.readyState == 4) {
-            if (request.status == 200) {
-                if (request.responseText != null)
-                    res.innerHTML = request.responseText;
-                else alert("Ajax error: no data received");
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                if (xhr.responseText != null) {
+                    console.info("respose is: " + xhr.responseText);
+                    document.getElementById('googleMaps').innerText = xhr.responseText;
+                }
+                else
+                    alert("Ajax error: no data received");
             }
-        else
-            alert("Ajax error: " + request.statusText);
+            else
+                alert("Ajax error: " + xhr.statusText);
         }
     }
 

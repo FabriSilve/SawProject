@@ -1,4 +1,6 @@
 <?php
+    header("Content-Type: application/json");
+
     $position = "genova";
     $distance = 0.01;
     $days = 2;
@@ -8,7 +10,7 @@
     $eventDB = [];
     $count = 0;
 
-    if(isset($_GET['position']) && $_GET['position'] !== "default")
+    if(isset($_GET['position']) && $_GET['position'] !== "")
         $position = trim($_GET['position']);
 
     if(isset($_GET['distance']))
@@ -19,7 +21,7 @@
 
     $Address = urlencode($position);
 
-    set_time_limit(10);
+
     $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=".$Address."&sensor=true";
     if(!($xml = simplexml_load_file($request_url))) {
         //TODO inserire output
@@ -33,7 +35,7 @@
         //TODO INSERIRE OUTPUT
         die("xml status faild: ".$status);
     }
-    set_time_limit(15);
+
 
     $where_position = "lat BETWEEN (".$lat."-".$distance.") AND (".$lat."+".$distance.") AND ".
         "lon BETWEEN (".$lon."-".$distance.") AND (".$lon."+".$distance.")";

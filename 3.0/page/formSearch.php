@@ -18,14 +18,14 @@
         <h2>
             Distance
         </h2>
-        <input id="distance" name="distance" type="range" min="5" max="50" value="10" step="5" onchange="showValue('range', this.value)" />
-        <span id="range">10</span><span> km</span>
+        <input id="distance" name="distance" type="range" min="5" max="50" value="10" step="5" onchange="showValue('distanceRange', this.value)" />
+        <span id="distanceRange">10</span><span> km</span>
 
         <h2>
             Days
         </h2>
-        <input id="days" name="days" type="range" min="1" max="7" value="3" step="1" onchange="showValue('days',this.value)" />
-        <span id="days">3</span><span> day(s)</span>
+        <input id="days" name="days" type="range" min="1" max="7" value="3" step="1" onchange="showValue('daysRange',this.value)" />
+        <span id="daysRange">3</span><span> day(s)</span>
 
         <!--todo implementare o rimuovere
         <h2>
