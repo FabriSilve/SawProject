@@ -20,7 +20,7 @@ require("header.php");
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <p><a href="mostraUtenti.php" class="glyphicon glyphicon-user"> VedereTuttiUtenti</a></p>
-            <p><a href="#" class="glyphicon glyphicon-list-alt"> VedereTuttiEventi</a></p>
+            <p><a href="mostraEventi.php" class="glyphicon glyphicon-list-alt"> VedereTuttiEventi</a></p>
             <p><a href="add.php" class="glyphicon glyphicon-plus"> AddAdmin</a></p>
             <p><a href="#" class="glyphicon glyphicon-pencil"> ModUser</a></p>
             <p><a href="#" class="glyphicon glyphicon-pencil"> ModEvento</a></p>
