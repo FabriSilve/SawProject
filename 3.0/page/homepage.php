@@ -24,8 +24,8 @@
 
 ?>
 
-<div class="jumbotron liteOrange">
-    <div class="container text-center">
+<!--<div class="liteOrange jumbotron">-->
+    <div class="container text-center liteOrange">
         <h1>Event Around</h1>
         <p>The events that surround you!</p>
         <?php
@@ -33,7 +33,7 @@
                 echo "<p>Ciao ".$username."!</p>";
         ?>
     </div>
-</div>
+<!--</div>-->
 <br>
 <div class="container container-table">
     <div class="row vertical-center-row">

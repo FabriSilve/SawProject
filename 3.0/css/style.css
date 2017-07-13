@@ -1,3 +1,89 @@
-/*THEME*/
+body {
+    background: url(../media/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+@media screen and (max-width: 400px){
+    body {
+        background-color: rgb(255, 154, 0) ;
+    }
+}
 
-/*CLASS*/
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+    padding: 25px;
+}
+
+.jumbotron {
+    padding: 0;
+}
+
+.liteBackground {
+    background-color: rgba(225, 225, 225, 0.8);
+    padding: 15px 15px 15px 15px;
+}
+
+.liteOrange {
+    background: rgba(255, 154, 0, 0.9);
+}
+
+.radiusDiv {
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+}
+
+.margin5 {
+    margin: 5%;
+}
+
+.marginBottom {
+    margin-bottom: 20px;
+}
+
+.link {
+    color: #FF8100;
+    font-weight: bold;
+}
+
+h1 {
+    color: #FF8100;
+    text-shadow: 4px 2px 4px #B2B2B2;
+    font-weight: bold;
+}
+
+h2 {
+    color: #FF8100;
+    text-shadow: 4px 2px 4px #B2B2B2;
+    font-weight: bold;
+}
+
+.padding5 {
+    padding-left: 5px;
+}
+
+.leftAlign {
+    text-align: left;
+}
+
+.menu{
+    width: 350px;
+    margin: 0;
+    border: 0 none;
+    padding: 0;
+    list-style: none;
+    background: #FF8100;
+    height: 30px;
+    font: bold 12px/28px Verdana, Arial;
+    border-left: #FF8100 1px solid;
+    display: inline;
+}
+

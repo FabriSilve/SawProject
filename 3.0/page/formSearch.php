@@ -5,11 +5,11 @@
     */
 ?>
 
-<form name="search-form" onsubmit="searchEvents()" method="post">
+<!--<form name="search-form" onsubmit="searchEvents()" method="post">-->
     <p>
         <!-- todo implementare ricerca nei dintorni partendo da posizione utente-->
         <input type="text" name="position" id="position" placeholder="Position" class="radiusDiv padding5" required>
-        <button type="submit" class="radiusDiv">
+        <button class="radiusDiv" onclick="searchEvents()">
             <img src="../media/search.png">
         </button>
         <img src="../media/filter.png" onclick="showFilter()" alt="filter">
@@ -18,13 +18,13 @@
         <h2>
             Distance
         </h2>
-        <input name="distance" type="range" min="5" max="50" value="10" step="5" onchange="showValue('range', this.value)" />
+        <input id="distance" name="distance" type="range" min="5" max="50" value="10" step="5" onchange="showValue('range', this.value)" />
         <span id="range">10</span><span> km</span>
 
         <h2>
             Days
         </h2>
-        <input name="days" type="range" min="1" max="7" value="3" step="1" onchange="showValue('days',this.value)" />
+        <input id="days" name="days" type="range" min="1" max="7" value="3" step="1" onchange="showValue('days',this.value)" />
         <span id="days">3</span><span> day(s)</span>
 
         <!--todo implementare o rimuovere
@@ -63,4 +63,4 @@
         </table>
         -->
     </div>
-</form>
+<!--</form>-->

@@ -1,3 +1,3 @@
 <?php
-header("Location: 3.0");
+header("Location: 3.0/index.php");
 ?>
