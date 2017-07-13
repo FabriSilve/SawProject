@@ -6,14 +6,18 @@
  * Time: 19.40
  */
 require ("Access.php");
+/*
+if(isset($_POST["username"]))
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);*/
 
 try {
     $dbh = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
-
+    $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // prepared statements
-    $stmt_acc = $dbh->prepare("INSERT INTO Users (username, email, password) VALUES (:username, :email, :password);");
+    $stmt_acc = $dbh->prepare("INSERT INTO Admin (username, email, password) VALUES (:username, :email, :password);");
 
     $dbh->beginTransaction();
 
@@ -31,7 +35,7 @@ try {
             throw new Exception();
         }
 
-        $email = trim($_POST["email1"]);
+        $email = trim($_POST["email"]);
 
         if ((empty($email))) { /*|| (!preg_match("/[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]/",$email))) {*/
             $emailErr = "email error";
@@ -39,7 +43,7 @@ try {
             throw new Exception();
         }
 
-        $pass_pre_hash = trim($_POST["password1"]);
+        $pass_pre_hash = trim($_POST["password"]);
 
         if(empty($pass_pre_hash)){
             $passErr = "Password is required";
@@ -54,7 +58,8 @@ try {
 
 
     $dbh->commit();
-    echo '<h2> L`utente admin e` agguinto con successo!<h2>';
+    //echo '<h2> L`utente admin e` agguinto con successo!<h2>';
+    require("admin.php");
 
 
 }
