@@ -11,7 +11,6 @@
         $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        //TODO trasformare in query per eventi più seguiti
         $stmt = $conn->prepare("SELECT id, name, description, day, lat, lon, image FROM Events NATURAL JOIN Followed WHERE day > CURDATE() GROUP BY(id) ORDER BY Count(username) ASC LIMIT 8");
         $stmt->execute();
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -25,8 +24,8 @@
 
 ?>
 
-<div class="jumbotron liteOrange">
-    <div class="container text-center">
+<!--<div class="liteOrange jumbotron">-->
+    <div class="container text-center liteOrange">
         <h1>Event Around</h1>
         <p>The events that surround you!</p>
         <?php
@@ -34,7 +33,7 @@
                 echo "<p>Ciao ".$username."!</p>";
         ?>
     </div>
-</div>
+<!--</div>-->
 <br>
 <div class="container container-table">
     <div class="row vertical-center-row">

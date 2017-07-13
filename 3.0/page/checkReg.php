@@ -98,15 +98,23 @@
         }*/
 
         $dbh->commit();
-        echo '<h2> Registrato con successo!<h2>';
-
-
+        if(isset($_COOKIE['EAkeep'])) {
+            setcookie('EAkeep',null);
+        }
+        if(isset($_COOKIE['EAusername'])) {
+            setcookie('EAusername',null);
+        }
+        session_unset();
+        session_destroy();
+        session_start();
+        $_SESSION["authorized"] = 1;
+        header("Location: homepage.php");
     }
     catch(PDOException $e){
         $dbh->rollback();
         echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
         echo '<h2> Si è verificato un errore. <h2>';
-        echo '<h3><a href="registration.php">torna indietro</a></h3>';
+        echo '<h3><a href="../registrazione.html">torna indietro</a></h3>';
     }
     catch(Exception $k){
         $dbh->rollback();
@@ -117,7 +125,7 @@
         if (isset($profileErr))
             echo $profileErr;
         echo "expeption";
-        echo '<h3><a href="registration.php">torna indietro</a></h3>';
+        echo '<h3><a href="../registrazione.html">torna indietro</a></h3>';
     }
     $dbh = null;  //termino la connessione.
 
