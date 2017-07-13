@@ -9,9 +9,9 @@
      *  ste = 0
      *  vera = 1
      *  faber = 2
-     *  default = localhost
+     *  default = webdev vera
      */
-    $whereIAm = 1;
+    $whereIAm = 11;
 
     /*$servername;
     $dbUser;
@@ -35,8 +35,7 @@
             //dati faber;
         default:
             $servername = "localhost";
-            $dbUser = "root";
-            $dbPass = "root";
-            $dbName = "saw";
+            $dbUser = "S4116422";
+            $dbPass = "Minsk";
+            $dbName = "S4116422";
     }
-?>
