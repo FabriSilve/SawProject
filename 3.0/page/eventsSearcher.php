@@ -8,14 +8,14 @@
     $eventDB = [];
     $count = 0;
 
-    if(isset($_POST['position']) && $_POST['position'] !== "default")
-        $position = trim($_POST['position']);
+    if(isset($_GET['position']) && $_GET['position'] !== "default")
+        $position = trim($_GET['position']);
 
-    if(isset($_POST['distance']))
-        $distance = trim($_POST['distance'])*0.005;
+    if(isset($_GET['distance']))
+        $distance = trim($_GET['distance'])*0.005;
 
-    if(isset($_POST['days']))
-        $days = trim($_POST['days']);
+    if(isset($_GET['days']))
+        $days = trim($_GET['days']);
 
     $Address = urlencode($position);
 
@@ -50,42 +50,32 @@
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
+        echo "[";
+        echo '{"id":"000",';
+        echo '"name":"Your Search",';
+        echo '"description":"",';
+        echo '"day":"2017-06-06",';
+        echo '"address":"word",';
+        echo '"image":"default.jpg",';
+        echo '"lat":"'.$lat.'",';
+        echo '"lon": "'.$lon.'",';
+        echo '"owner": "null"}';
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $eventDB[$count++] = [$row["id"],$row["name"],$row["description"],$row["day"], $row["lat"],$row["lon"], "../uploads/".$row["image"]];
+            echo ',{"id":"'.$row["id"].'",';
+            echo '"name":"'.$row["name"].'",';
+            echo '"description":"'.$row["description"].'",';
+            echo '"day":"'.$row["day"].'",';
+            echo '"address":"'.$row["address"].'",';
+            echo '"image":'.$row["image"].'",';
+            echo '"lat":"'.$row["lat"].'",';
+            echo '"lon":"'.$row["lon"].'",';
+            echo '"owner":"'.$row["owner"].'"}';
         }
+        echo "]";
         $conn = null;
     } catch(PDOException $e) {
         //TODO inserire output
         echo "ERROR ".$e->getMessage();
     }
-    //-------------------
-
-//TODO RIMASTO QUI
-
-
-    echo "[";
-    echo '{"id":"000",';
-    echo '"name":"Your Search",';
-    echo '"description":"",';
-    echo '"day":"2017-06-06",';
-    echo '"address":"word",';
-    echo '"image":"default.jpg",';
-    echo '"lat":"'.$lat.'",';
-    echo '"lon": "'.$lon.'",';
-    echo '"owner": "null"}';
-    while($row = mysqli_fetch_assoc($result)) {
-        echo ',{"id":"'.$row["id"].'",';
-        echo '"name":"'.$row["name"].'",';
-        echo '"description":"'.$row["description"].'",';
-        echo '"day":"'.$row["day"].'",';
-        echo '"address":"'.$row["address"].'",';
-        echo '"image":'.$row["image"].'",';
-        echo '"lat":"'.$row["lat"].'",';
-        echo '"lon":"'.$row["lon"].'",';
-        echo '"owner":"'.$row["owner"].'"}';
-    }
-    echo "]";
-
-    $conn->close();
-
 ?>
