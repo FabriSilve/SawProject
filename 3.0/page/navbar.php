@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Fabrizio
- * Date: 29/05/2017
- * Time: 12:06
- */
-?>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -26,7 +18,7 @@
                 <li>
                     <?php
                     if(isset($logged) && $logged)
-                        echo '<a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a>';
+                        echo '<a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>';
                     else
                         echo '<a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a>';
                     ?>

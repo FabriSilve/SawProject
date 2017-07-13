@@ -5,7 +5,7 @@
     */
 ?>
 
-<form name="search-form" onsubmit="return checkSearch()" method="post" action="homepage.php">
+<form name="search-form" onsubmit="searchEvents()" method="post">
     <p>
         <!-- todo implementare ricerca nei dintorni partendo da posizione utente-->
         <input type="text" name="position" id="position" placeholder="Position" class="radiusDiv padding5" required>

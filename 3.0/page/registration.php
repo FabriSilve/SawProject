@@ -6,7 +6,7 @@
  * Time: 22:06
  */
 
-    require("pageStart.php");
+    require("header.php");
     require("navbar.php");
 ?>
 
@@ -22,10 +22,10 @@
                     <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
                 </p>
                 <p>
-                    <input type="email" name="email1" id="mail1" placeholder="Mail" class="radiusDiv padding5" required>
+                    <input type="email" name="email1" id="email1" placeholder="Mail" class="radiusDiv padding5" required>
                 </p>
                 <p>
-                    <input type="email" name="email2" id="mail2" placeholder="Repeat Mail" class="radiusDiv padding5" required>
+                    <input type="email" name="email2" id="email2" placeholder="Repeat Mail" class="radiusDiv padding5" required>
                 </p>
                 <p>
                     <input type="password" name="password1" id="password1" placeholder="Password" class="radiusDiv padding5" required>

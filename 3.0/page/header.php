@@ -1,12 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Fabrizio
- * Date: 23/05/2017
- * Time: 16:13
- */
-    require("coockieSessionChecker.php");
-?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -15,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!--<script src="http://maps.google.com/maps/api/js?key=AIzaSyAQO1FBU7ngY0Wv20d3-gPI1sj5_ApCZ3M&sensor=true"></script>-->
 
-    <style>
+    <style> //TODO spostare in file esterno
         /* Remove the navbar's default margin-bottom and rounded borders */
         .navbar {
             margin-bottom: 0;
@@ -43,6 +33,11 @@
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
+        }
+        @media screen and (max-width: 400px){
+            body {
+                background: khaki;
+            }
         }
 
         .liteBackground {
@@ -94,7 +89,7 @@
         }
 
         .menu{
-            width: 350;
+            width: 350px;
             margin: 0;
             border: 0 none;
             padding: 0;
@@ -109,15 +104,15 @@
 
     </style>
 
-    <script>
+    <script> //TODO spostare in file esterno
         function checkLogin() {
             alert("check login");
-            if(document.getElementById("loginUsername").value === "") {
-                document.getElementById("loginUsername").focus();
+            if(document.getElementById("username").value === "") {
+                document.getElementById("username").focus();
                 return false;
             }
-            if(document.getElementById("loginPassword").value === "") {
-                document.getElementById("loginPassword").focus();
+            if(document.getElementById("password").value === "") {
+                document.getElementById("password").focus();
                 return false;
             }
             return true;
@@ -132,12 +127,12 @@
                 document.getElementById("username").focus();
                 return false;
             }
-            if(document.getElementById("mail1").value === "" ) {
-                document.getElementById("mail1").focus();
+            if(document.getElementById("email1").value === "" ) {
+                document.getElementById("email1").focus();
                 return false;
             }
-            if(document.getElementById("mail2").value === "" || document.getElementById("mail1").value !== document.getElementById("mail2").value) {
-                document.getElementById("mail2").focus();
+            if(document.getElementById("email2").value === "" || document.getElementById("mail1").value !== document.getElementById("mail2").value) {
+                document.getElementById("email2").focus();
                 return false;
             }
             if(document.getElementById("password1").value === "") {
@@ -157,24 +152,29 @@
             document.getElementById(id).innerHTML=newValue+" ";
         }
 
-        function checkSearch() {
-            alert("check search");
-            var geocoder = new google.maps.Geocoder();
+        function searchEvents() {
+            alert("search");
+            var position = document.getElementById('position').value;
+            var distance = document.getElementById('distance').value;
+            var days = document.getElementById('days').value;
+            console.error("distance "+distance+" days "+days+" position= "+position);
+            return false;
+            /*var geocoder = new google.maps.Geocoder();
             var address = document.getElementById("position").value;
             geocoder.geocode( { 'address': address}, function(results, status) {
                 if (status === 'OK') {
                     showMap(results[0].geometry.location);
                     /*var marker = new google.maps.Marker({
                         map: map,
-                    position: results[0].geometry.location*/
+                    position: results[0].geometry.location
                 } else {
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
             });
-
+            */
         }
 
-        function codeAddress(address) {
+        /*function codeAddress(address) {
             geocoder.geocode( { 'address': address}, function(results, status){
                 if(status === google.maps.GeocoderStatus.OK){
                     map.setCenter(results[0].geometry.location);
@@ -185,7 +185,7 @@
                     alert("Geocode ha rilevato questo errore: " + status);
                 }
             });
-        }
+        }*/
 
         var hider = true;
         function showFilter() {

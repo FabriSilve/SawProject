@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Fabrizio
- * Date: 29/05/2017
- * Time: 21:40
- */
-    require("pageStart.php");
+    require("header.php");
     require("navbar.php");
 ?>
 <html>
@@ -15,9 +9,9 @@
     <div class="row vertical-center-row margin5">
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
             <h1>Login</h1>
-            <form name="login-form" method="post" action="checkLogin.php"> <!--onsubmit="return checkLogin()"-->
+            <form name="login-form" method="post" action="checkLogin.php" onsubmit="return checkLogin()">
                 <p>
-                    <input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required>
+                    <input type="name" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
                 </p>
                 <p>
                     <input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required>
