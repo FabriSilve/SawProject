@@ -7,8 +7,8 @@
  */
 
     $servername = "localhost";
-    $dbUser = "root";
-    $dbPass = "root";
-    $dbName = "sawdb";
+    $dbUser = "S4116422";
+    $dbPass = "Minsk";
+    $dbName = "S4116422";
 
 ?>
