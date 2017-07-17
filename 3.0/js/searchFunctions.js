@@ -12,9 +12,9 @@
             position = document.getElementById('position').value;
         distance = document.getElementById('distance').value;
         days = document.getElementById('days').value;
-        console.info("distance "+distance+" days "+days+" position= "+position);
+        //console.info("distance "+distance+" days "+days+" position= "+position);
         url = urlSimple+"?position="+position+"&distance="+distance+"&days="+days;
-        console.info(url);
+        //console.info(url);
         xhr = getXMLHttpRequestObject();
         xhr.onreadystatechange = ajaxCallback;
         xhr.open('GET',url,true);
@@ -22,11 +22,14 @@
     }
 
     function ajaxCallback() {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                if (xhr.responseText != null) {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                if (xhr.responseText !== null) {
                     console.info("respose is: " + xhr.responseText);
-                    document.getElementById('googleMaps').innerText = xhr.responseText;
+                    events = JSON.parse(xhr.responseText);
+                    console.info(events[0].lat+" "+events[0].lon);
+                    showMap(events[0].lat, events[0].lon);
+                    drawEventsList();
                 }
                 else
                     alert("Ajax error: no data received");
