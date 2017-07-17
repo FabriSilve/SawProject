@@ -24,7 +24,7 @@ require("header.php");
             <p><a href="add.php" class="glyphicon glyphicon-plus"> AddAdmin</a></p>
             <p><a href="#" class="glyphicon glyphicon-pencil"> ModUser</a></p>
             <p><a href="#" class="glyphicon glyphicon-pencil"> ModEvento</a></p>
-            <p><a href="#" class="glyphicon glyphicon-trash"> DeleteUser</a></span></p>
+            <p><a href="deleteUser.php" class="glyphicon glyphicon-trash"> DeleteUser</a></span></p>
             <p><a href="#" class="glyphicon glyphicon-trash"> DeleteEvento</a></span></p>
         </div>
         <div class="col-sm-8 text-left">
