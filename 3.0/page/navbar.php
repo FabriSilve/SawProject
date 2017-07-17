@@ -10,6 +10,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
+                <?php
+                    if(isset($logged) && $logged)
+                        echo '<li class="active"><a href="addEvent.php">Add Event</a></li>';
+                ?>
                 <!--<li class="active"><a href="#">Eventi</a></li>
                 <li><a href="#">Gallery</a></li>
                 <li><a href="#">Contact</a></li>-->

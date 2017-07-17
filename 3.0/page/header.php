@@ -10,6 +10,7 @@
     <script src="../js/searchFunctions.js"></script>
     <script src="../js/mapFunctions.js"></script>
     <script src="../js/eventsListFunctions.js"></script>
+    <script src="../js/addEventFunctions.js"></script>
     <script src="../js/utils.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
@@ -22,6 +23,7 @@
 
     <script>
         var events = <?php include("followedEvents.php"); ?>;
+        var owner = "<?php if(isset($_SESSION["username"])) echo $_SESSION["username"]; else echo 0; ?>";
     </script>
 
 

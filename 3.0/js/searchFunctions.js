@@ -16,12 +16,12 @@
         url = urlSimple+"?position="+position+"&distance="+distance+"&days="+days;
         //console.info(url);
         xhr = getXMLHttpRequestObject();
-        xhr.onreadystatechange = ajaxCallback;
+        xhr.onreadystatechange = searchCallback;
         xhr.open('GET',url,true);
         xhr.send(null);
     }
 
-    function ajaxCallback() {
+    function searchCallback() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 if (xhr.responseText !== null) {
@@ -39,15 +39,7 @@
         }
     }
 
-    function getXMLHttpRequestObject() {
-        var request = null;
-        if (window.XMLHttpRequest) {
-            request = new XMLHttpRequest();
-        } else if (window.ActiveXObject) { // Older IE.
-            request = new ActiveXObject("MSXML2.XMLHTTP.3.0");
-        }
-        return request;
-    }
+
 
     /*function codeAddress(address) {
      geocoder.geocode( { 'address': address}, function(results, status){
