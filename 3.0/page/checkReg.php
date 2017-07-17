@@ -2,6 +2,7 @@
     /*variabili*/
     require("dbAccess.php");
 
+
     try {
         $dbh = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
 
