@@ -21,21 +21,18 @@
                     $count = 0;
                     require("Access.php");
 
-                    $conn = new PDO($servername, $dbUser, $dbPass, $dbName);
+                    $conn = new mysqli($servername, $dbUser, $dbPass, $dbName);
 
                     if ($conn->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                     }
-
-                    $stmt->bindParam(':name', $name);
-                    $stmt = $dbh->prepare("SELECT * FROM Users WHERE username = $username");
+                    $query = "SELECT * FROM Users";
                     $res = $conn->query($query);
                     //echo "Utenti: nome\t, email\t, password\n";
                     if($res->num_rows > 0) {
                         while($row = $res->fetch_row()) {
                             //$DB[$count++] = [$row[0],$row[1],$row[2]];
-                           // echo "\n['".$row[0]."',\r\n'".$row[1]."',\t\r\n'".$row[2]."'];\t\r\n";
-                            $stmt->execute(array($_GET[':name']));
+                            echo "\n['".$row[0]."',\r\n'".$row[1]."',\t\r\n'".$row[2]."'];\t\r\n";
                         }
                     }
                     $conn->close();
