@@ -60,7 +60,7 @@ function showMap (latitude, longitude) {
 
     //creo infowindow su marker
     var infowindow = new google.maps.InfoWindow({
-        content:"you are here"
+        content:events[0].name
     });
 
     //definisco un listener sul marker
@@ -77,7 +77,7 @@ function showMap (latitude, longitude) {
         },3000);
     });
 
-    for (var j = 0; j < events.length; j++) {
+    for (var j = 1; j < events.length; j++) {
         var event = new google.maps.Marker({
             position: new google.maps.LatLng(events[j].lat, events[j].lon),
             map: map,
