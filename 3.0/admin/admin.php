@@ -19,13 +19,25 @@ require("header.php");
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <p><a href="mostraUtenti.php" class="glyphicon glyphicon-user"> VedereTuttiUtenti</a></p>
-            <p><a href="mostraEventi.php" class="glyphicon glyphicon-list-alt"> VedereTuttiEventi</a></p>
-            <p><a href="add.php" class="glyphicon glyphicon-plus"> AddAdmin</a></p>
-            <p><a href="#" class="glyphicon glyphicon-pencil"> ModUser</a></p>
-            <p><a href="#" class="glyphicon glyphicon-pencil"> ModEvento</a></p>
-            <p><a href="deleteUser.php" class="glyphicon glyphicon-trash"> DeleteUser</a></span></p>
-            <p><a href="#" class="glyphicon glyphicon-trash"> DeleteEvento</a></span></p>
+            <ul class="tree">
+                <li>Utenti
+                    <ul>
+                        <li><a href="mostraUtenti.php">Utenti</a></li>
+                        <li><a href="#">ModUser</a></li>
+                        <li><a href="deleteUser.php">DeleteUser</a></li>
+                        <li><a href="add.php">AddAdmin</a></li>
+                    </ul>
+                </li>
+
+                <li>Eventi
+                    <ul>
+                        <li><a href="mostraEventi.php"> Eventi</a></li>
+                        <li><a href="#"> ModEvento</a></li>
+                        <li><a href="#"> DeleteEvento</a></li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
         <div class="col-sm-8 text-left">
             <h1>Area Amministrativa</h1>
