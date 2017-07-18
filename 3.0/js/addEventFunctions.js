@@ -41,7 +41,7 @@ function addCallback() {
                 mex = xhr.responseText;
                 if(mex === "true") {
                     document.getElementById('name').value = "";
-                    document.getElementById('day').value = "gg/mm/aaa";
+                    document.getElementById('day').value = "gg/mm/aaa"; //TODO cambiate formato data qui o nel db
                     document.getElementById('address').value = "";
                     document.getElementById('description').value = "";
                     document.getElementById('addMessage').value = "<h3>Added</h3>";
