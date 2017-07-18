@@ -1,15 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Fabrizio
- * Date: 29/05/2017
- * Time: 22:06
- */
-
-    require("header.php");
-    require("navbar.php");
+require("header.php");
+require("navbar.php");
 ?>
-
 
 <html>
 <body>

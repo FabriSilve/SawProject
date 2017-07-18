@@ -1,11 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: vera
- * Date: 18/07/17
- * Time: 9.07
- */
-require("header.php"); ?>
+<?php require("header.php"); ?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -18,8 +11,8 @@ require("header.php"); ?>
         </div>
         <div class="col-sm-8 text-left">
             <h1>Utenti</h1>
-            <form method="post" action="del.php">
-                <p>Inserisci il nome utente da eleminare:</p>
+            <form method="post" action="Intermedio.php">
+                <p>Inserisci il nome utente da modificare:</p>
                 <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                 <p></p>
                 <p><input type="submit" value="Controlla"></p>

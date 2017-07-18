@@ -1,24 +1,27 @@
 <?php
+require("header.php");
+require("Access.php");
 
-    require("header.php");
-    require("Access.php");
+if(isset($_POST["username"])) {
+    $username = trim($_POST["username"]);
+    $email = trim($_POST["email"]);
+    $password = trim($_POST["password"]);
+}
 
-    if(isset($_POST['username']))
-        $username = trim($_POST['username']);
-
-    try {
+try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("DELETE FROM Users WHERE username = :username;");
+        $stmt = $conn->prepare("UPDATE Users SET username = ':username', email = ':email',password = ':password'
+                                          WHERE username = :username;");
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         $conn = null;
         echo "";
         //require("admin.php");
-    }
-    catch(PDOException $e) {
-        echo "ERROR ".$e->getMessage();
-    }
+}
+catch(PDOException $e) {
+    echo "ERROR ".$e->getMessage();
+}
 
 ?>
 
@@ -30,10 +33,10 @@
             <p><a href="admin.php"> Torna indietro</a></p>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Utenti</h1>
+            <h1>Modifica i dati utente:</h1>
             <p></p>
             <div class="well">
-                <p>Utente e` stato eliminato con successo!</p>
+                <p>I dati stati modificati con successo!</p>
             </div>
             <hr>
         </div>
