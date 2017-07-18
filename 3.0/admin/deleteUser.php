@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Utenti</h1>
+            <h1><b>Cancellazione degli utenti</b></h1>
                 <form method="post" action="del.php">
                 <p>Inserisci il nome utente da eleminare:</p>
                     <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>

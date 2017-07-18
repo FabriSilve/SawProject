@@ -25,9 +25,9 @@ require("Access.php");?>
                     $stmt->execute();
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo "<b>I valori vecchi sono:<br/></b>";
-                        echo 'name: '.$row['username']."<br/>";
-                        echo 'email: '.$row['email']."<br/>";
-                        echo 'password: '.$row['password']."<br/>";
+                        echo 'Username: '.$row['username']."<br/>";
+                        echo 'Email: '.$row['email']."<br/>";
+                        echo 'Password: '.$row['password']."<br/>";
                     }
                     $conn = null;
                 }
@@ -39,10 +39,10 @@ require("Access.php");?>
             <form method="post" action="ModificaU.php">
                 <p></p>
                 <p><b>Inserisci i nuovi dati:</b></p>
-                <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
-                <input type="text" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required><span id="status"></span>
-                <input type="text" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required><span id="status"></span>
-                <p></p>
+                    <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
+                    <input type="text" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required><span id="status"></span>
+                    <input type="text" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required><span id="status"></span>
+                    <p></p>
                 <p><input type="submit" value="Modificare"></p>
             </form>
             <hr>

@@ -1,24 +1,23 @@
 <?php
 
-    require("header.php");
-    require("Access.php");
+require("header.php");
+require("Access.php");
 
-    if(isset($_POST['username']))
-        $username = trim($_POST['username']);
+if(isset($_POST['username']))
+    $username = trim($_POST['username']);
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("DELETE FROM Users WHERE username = :username;");
-        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-        $stmt->execute();
-        $conn = null;
-        echo "";
-        //require("admin.php");
-    }
-    catch(PDOException $e) {
-        echo "ERROR ".$e->getMessage();
-    }
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $conn->prepare("DELETE FROM Users WHERE username = :username;");
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->execute();
+    $conn = null;
+    echo "";
+}
+catch(PDOException $e) {
+    echo "ERROR ".$e->getMessage();
+}
 
 ?>
 

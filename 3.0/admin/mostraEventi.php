@@ -11,33 +11,41 @@
         <div class="col-sm-8 text-left">
             <h1>Eventi</h1>
             <p><?php
-                /**
-                 * Created by PhpStorm.
-                 * User: vera
-                 * Date: 12/07/17
-                 * Time: 17.21
-                 */
                 $DB = [];
                 $count = 0;
                 require("Access.php");
-
-                $conn = new mysqli($servername, $dbUser, $dbPass, $dbName);
-
+                try {
+                $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //$conn = new mysqli($servername, $dbUser, $dbPass, $dbName);
+                /*
                 if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
+                die("Connection failed: " . $conn->connect_error);
+                }*/
+                $stmt = $conn->prepare("SELECT * FROM Events");
+                $stmt->execute();
+
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $DB[$count++] = array(
+                        "id" => $row["id"],
+                        "name" => $row["name"],
+                        "description" => $row["description"],
+                        "day" => $row["day"],
+                        "address" => $row["address"],
+                        "image" => $row["image"],
+                        "lat" => $row["lat"],
+                        "lon" => $row["lon"],
+                        "owner" => $row["owner"]
+                    );
+
                 }
-                $query = "SELECT * FROM Events";
-                $res = $conn->query($query);
-                if($res->num_rows > 0) {
-                    while($row = $res->fetch_row()) {
-                        //$DB[$count++] = [$row[0],$row[1],$row[2]];
-                        echo "['".$row[0]."','".$row[1]."',\t\r\n'".$row[2]."',
-                              '".$row[3]."','".$row[4]."','".$row[5]."',
-                              '".$row[6]."','".$row[7]."','".$row[8]."'];\r\n";
-                    }
+                echo json_encode($DB, JSON_PRETTY_PRINT);
+                $conn = null;
                 }
-                $conn->close();
-                ?></p>
+                catch(PDOException $e) {
+                    echo "ERROR ".$e->getMessage();
+                }
+                ?>
             <hr>
         </div>
     </div>
