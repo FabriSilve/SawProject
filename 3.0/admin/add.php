@@ -9,17 +9,18 @@ require("Access.php");
 require("header.php");
 ?>
 
-<html>
-
-<body>
+<!DOCTYPE html>
+<html lang="it">
 <div class="container-fluid text-center">
-<div class="row content">
-    <div class="col-sm-2 sidenav">
-        <p><a href="admin.php"> Torna indietro</a></p>
-    </div>
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <div class="well">
+                <p><a href="admin.php"> Torna indietro</a></p>
+            </div>
+        </div>
     <div class="col-sm-8 text-center">
         <div class="container container-table">
-            <div class="well">
+
               <form name="login-form" method="post" action="addAdmin.php"> <!--onsubmit="return checkLogin()"-->
                      <p>
                          <input type="username" name="username" id="username" placeholder="username" class="radiusDiv padding5" required>
@@ -35,7 +36,7 @@ require("header.php");
                     </button>
                   </form>
                 </div>
-             </div>
+
         </div>
     </div>
 </div>

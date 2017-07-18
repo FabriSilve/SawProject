@@ -19,16 +19,15 @@ require("header.php");
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <ul class="tree">
+            <ul>
                 <li>Utenti
                     <ul>
                         <li><a href="mostraUtenti.php">Utenti</a></li>
-                        <li><a href="#">ModUser</a></li>
+                        <li><a href="modUtenti.php">ModUser</a></li>
                         <li><a href="deleteUser.php">DeleteUser</a></li>
                         <li><a href="add.php">AddAdmin</a></li>
                     </ul>
                 </li>
-
                 <li>Eventi
                     <ul>
                         <li><a href="mostraEventi.php"> Eventi</a></li>
