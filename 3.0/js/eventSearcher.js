@@ -1,4 +1,4 @@
-    function showValue(id, newValue)
+    function showValue(id, newValue) //TODO spostare in utils
     {
         document.getElementById(id).innerHTML=newValue+" ";
     }
@@ -23,33 +23,22 @@
     function searchCallback() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                if (xhr.responseText !== null) {
+                if (xhr.responseText !== "") {
                     console.info("respose is: " + xhr.responseText);
                     events = JSON.parse(xhr.responseText);
-                    console.info(events[0].lat+" "+events[0].lon);
+                    //console.info(events[0].lat+" "+events[0].lon);
                     showMap(events[0].lat, events[0].lon);
                     drawEventsList();
                 }
-                else
+                else {
                     alert("Ajax error: no data received");
+                    events = [{}];
+                }
             }
-            else
-                alert("Ajax error: respose -> " + xhr.statusText);
+            else {
+                alert("Ajax error: " + xhr.responseText);
+                events = [{}];
+            }
         }
     }
-
-
-
-    /*function codeAddress(address) {
-     geocoder.geocode( { 'address': address}, function(results, status){
-     if(status === google.maps.GeocoderStatus.OK){
-     map.setCenter(results[0].geometry.location);
-     marker.setPosition(results[0].geometry.location);
-     lat =  results[0].geometry.location.lat();
-     lon = results[0].geometry.location.lng();
-     }else{
-     alert("Geocode ha rilevato questo errore: " + status);
-     }
-     });
-     }*/
 

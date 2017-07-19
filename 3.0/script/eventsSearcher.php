@@ -27,12 +27,13 @@
         die("not valid address");
     }
     $status = $xml->status;
+
     if ($status=="OK") {
         $lat = $xml->result->geometry->location->lat;
         $lon = $xml->result->geometry->location->lng;
     } else {
         //TODO INSERIRE OUTPUT
-        die("xml status faild: ".$status);
+        die("xml status faild");
     }
 
 

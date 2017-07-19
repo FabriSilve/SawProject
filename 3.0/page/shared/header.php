@@ -23,7 +23,7 @@
     <script>
         var events = <?php require("../script/followedEvents.php"); ?>;
         var owner = "<?php if(isset($_SESSION["EAusername"])) echo $_SESSION["EAusername"]; else echo 0; ?>";
-        console.info("events: "+events);
+        console.info("events: "+JSON.stringify(events));
         console.info("owner: "+owner);
     </script>
 </head>
