@@ -11,6 +11,14 @@ if(isset($_POST['username'])) {
 try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+        if(empty($username){
+            $userErr = "Username error";
+            echo "username";
+            throw new Exception();
+        }
         $stmt = $conn->prepare("UPDATE Users 
                                           SET username = :username, email = :email,password = :password
                                           WHERE username = :username;");

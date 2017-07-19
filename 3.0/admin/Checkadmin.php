@@ -18,7 +18,6 @@ try {
     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
     $query = "SELECT password FROM Users WHERE username = :username;";
     $stmt = $dbh->prepare($query);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -35,15 +34,23 @@ try {
             }
         }
     }
+    $dbh->commit();
+
+    if(isset($_COOKIE['EAkeep'])) {
+        setcookie('EAkeep',null);
+    }
+    if(isset($_COOKIE['EAusername'])) {
+        setcookie('EAusername',null);
+    }
+    session_unset();
+    session_destroy();
+    session_start();
+    //$_SESSION["authorized"] = 2;
     else
         throw new Exception();
 }
 catch(PDOException $e){
     echo "Error: " . $e->getMessage();
-    header ("Location: login.php");
-}
-catch(Exception $f){
-    header ("Location: login.php");
 }
 $dbh = null;
 ?>

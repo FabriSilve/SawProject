@@ -23,21 +23,20 @@ catch(PDOException $e) {
 
 <!DOCTYPE html>
 <html lang="it">
-<div class="container-fluid text-center">
-    <div class="row content">
-        <div class="col-sm-2 sidenav">
-            <p><a href="admin.php"> Torna indietro</a></p>
-        </div>
-        <div class="col-sm-8 text-left">
-            <h1>Utenti</h1>
-            <p></p>
-            <div class="well">
-                <p>Utente e` stato eliminato con successo!</p>
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <p><a href="admin.php"> Torna indietro</a></p>
             </div>
-            <hr>
+            <div class="col-sm-8 text-left">
+                <h1>Utenti</h1>
+                <p></p>
+                <div class="well">
+                    <p>Utente e` stato eliminato con successo!</p>
+                </div>
+                <hr>
+            </div>
         </div>
     </div>
-</div>
-
 </html>
 
