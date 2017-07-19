@@ -41,10 +41,11 @@
                     }
                     header("Location: homepage.php");  //automatically redirect to homepage on login success.
                 }
+	    	}
             else
                 throw new Exception();
             }
-	}
+
 	catch(PDOException $e){
 	    echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
         header ("Location: login.php");
