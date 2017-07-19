@@ -56,10 +56,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="../page/homepage.php">Home</a></li>
+                <li class="active"><a href="../page/pageHomepage.php">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="../page/homepage.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li><a href="../page/pageHomepage.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
         </div>
     </div>

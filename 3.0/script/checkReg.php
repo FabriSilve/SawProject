@@ -108,7 +108,7 @@
         session_destroy();
         session_start();
         $_SESSION["authorized"] = 1;
-        header("Location: homepage.php");
+        header("Location: pageHomepage.php");
     }
     catch(PDOException $e){
         $dbh->rollback();

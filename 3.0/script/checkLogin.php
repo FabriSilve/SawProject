@@ -36,7 +36,7 @@ require("dbAccess.php");
 					setcookie('EAkeep', 'true', time()+86400);
 					setcookie("EAusername", $username, time()+86400);
 				}
-				header("Location: homepage.php");  //automatically redirect to homepage on login success.
+				header("Location: pageHomepage.php");  //automatically redirect to homepage on login success.
 			}
 			else
 				throw new Exception();
@@ -44,11 +44,11 @@ require("dbAccess.php");
 	}
 	catch(PDOException $e){
 	    echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
-        header ("Location: login.php");
+        header ("Location: pageLogin.php");
 	
 	}
 	catch(Exception $f){
-		header ("Location: login.php");
+		header ("Location: pageLogin.php");
 	}
 	$dbh = null;  //termino la connessione.
 

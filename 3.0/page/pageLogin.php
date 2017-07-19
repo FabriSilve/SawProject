@@ -22,7 +22,7 @@
                 </button>
                 <hr>
                 <p>
-                    <a class="link" href="registration.php">registrati</a>
+                    <a class="link" href="pageRegistration.php">registrati</a>
                 </p>
             </form>
         </div>

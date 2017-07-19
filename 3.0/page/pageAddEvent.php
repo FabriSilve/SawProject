@@ -3,7 +3,7 @@
     require("header.php");
     //require("navbar.php");
     if(!isset($logged)||!$logged)
-        header("Location: homepage.php");
+        header("Location: pageHomepage.php");
 ?>
 
 <div class="container text-center liteOrange">
