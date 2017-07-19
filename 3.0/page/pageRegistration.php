@@ -1,10 +1,8 @@
 <?php
-require("header.php");
-require("navbar.php");
+    require("header.php");
+    //require("navbar.php");
 ?>
 
-<html>
-<body>
 <div class="container container-table">
     <div class="row vertical-center-row margin5">
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
@@ -36,5 +34,4 @@ require("navbar.php");
     </div>
 </div>
 
-</body>
-</html>
+<?php require("footer.php"); ?>

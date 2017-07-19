@@ -1,15 +1,12 @@
 <?php
     require("header.php");
-    require("navbar.php");
+    //require("navbar.php");
 ?>
-<html>
-
-<body>
 <div class="container container-table">
     <div class="row vertical-center-row margin5">
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
             <h1>Login</h1>
-            <form name="login-form" method="post" action="checkLogin.php" onsubmit="return checkLogin()">
+            <form name="login-form" method="post" action="../script/checkLogin.php" onsubmit="return checkLogin()">
                 <p>
                     <input type="name" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
                 </p>
@@ -25,12 +22,11 @@
                 </button>
                 <hr>
                 <p>
-                    <a class="link" href="registration.php">registrati</a>
+                    <a class="link" href="pageRegistration.php">registrati</a>
                 </p>
             </form>
         </div>
     </div>
 </div>
 
-</body>
-</html>
+<?php require("footer.php"); ?>

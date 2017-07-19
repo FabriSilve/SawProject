@@ -19,7 +19,7 @@
 		if($keepme == 1) {
 			setcookie('myCookie', 'true', time()+86400);
 		}
-		header("Location: homepage.php");
+		header("Location: pageHomepage.php");
 	} else {
 		header("Location: index.php");
 	}

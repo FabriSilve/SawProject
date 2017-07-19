@@ -6,13 +6,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="homepage.php">Event Around</a>
+            <a class="navbar-brand" href="../pageHomepage.php">Event Around</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <?php
                     if(isset($logged) && $logged)
-                        echo '<li class="active"><a href="addEvent.php">Add Event</a></li>';
+                        echo '<li class="active"><a href="../pageAddEvent.php">Add Event</a></li>';
                 ?>
                 <!--<li class="active"><a href="#">Eventi</a></li>
                 <li><a href="#">Gallery</a></li>
@@ -22,9 +22,9 @@
                 <li>
                     <?php
                     if(isset($logged) && $logged)
-                        echo '<a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>';
+                        echo '<a href="../../script/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>';
                     else
-                        echo '<a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a>';
+                        echo '<a href="../pageLogin.php"><span class="glyphicon glyphicon-log-in"></span> Login</a>';
                     ?>
                 </li>
             </ul>

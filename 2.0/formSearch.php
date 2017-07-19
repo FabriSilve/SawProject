@@ -9,7 +9,7 @@
 echo <<<SEARCH
     <div>
         <h1>Search</h1>
-        <form name="search-form" onsubmit="return checkSearch()" method="post" action="homepage.php?from=search ">
+        <form name="search-form" onsubmit="return checkSearch()" method="post" action="pageHomepage.php?from=search ">
             <p>
                 <input type="text" name="position" id="position" placeholder="Position">
             </p>
