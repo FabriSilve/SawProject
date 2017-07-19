@@ -14,11 +14,12 @@ try {
         $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
-        if(empty($username){
+        if(empty($username)){
             $userErr = "Username error";
             echo "username";
             throw new Exception();
         }
+
         $stmt = $conn->prepare("UPDATE Users 
                                           SET username = :username, email = :email,password = :password
                                           WHERE username = :username;");
@@ -35,7 +36,6 @@ try {
         }
 
         $email = trim($_POST['email']);
-
         if ((empty($email))) {
             $emailErr = "email error";
             echo "email";
@@ -43,19 +43,32 @@ try {
         }
 
         $pass_pre_hash = trim($_POST['password']);
-
         if(empty($pass_pre_hash)){
             $passErr = "Password is required";
             echo "pass empty";
             throw new Exception();
         }
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
-
         $stmt->execute();
-        $conn = null;
-    } catch(PDOException $e) {
-    echo "ERROR ".$e->getMessage();
+
     }
+    catch(PDOException $e){
+        $dbh->rollback();
+        echo "Error: " . $e->getMessage();
+        echo '<h2> Si è verificato un errore. <h2>';
+    }
+
+    catch(Exception $k){
+        $dbh->rollback();
+        if (isset($userErr))
+            echo $userErr;
+        if (isset($passErr))
+            echo $passErr;
+        if (isset($profileErr))
+            echo $profileErr;
+        echo "expeption";
+    }
+$dbh = null;
 
 ?>
 
