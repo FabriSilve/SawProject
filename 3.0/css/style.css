@@ -111,3 +111,19 @@ h2 {
     max-height: 750px;
 }
 
+.star {
+    visibility:hidden;
+    font-size:40px;
+    cursor:pointer;
+}
+.star:before {
+    content: "\2606";
+    color: darkorange;
+    position: absolute;
+    visibility:visible;
+}
+.star:checked:before {
+    content: "\2605";
+    color: darkorange;
+    position: absolute;
+}

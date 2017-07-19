@@ -19,6 +19,7 @@ function drawEventsList() {
             text += '<h4>' + events[i].day + '</h4></p>';
             text += '<img src = "' + events[i].image + '" class="img-responsive eventImage"  alt ="Image">';
             text += '<p>' + events[i].description + '</p>';
+            text += '<input id="'+events[i].id+'" type="checkbox" title="Follow" onchange="updateFollowed('+events[i].id+');">';
             text += '</div></div>';
 
         }
@@ -35,6 +36,7 @@ function drawEventsList() {
                     text += '<h4>' + events[i].day + '</h4></p>';
                     text += '<img src = "' + events[i].image + '" class="img-responsive eventImage" alt = "Image" >';
                     text += '<p>' + events[i].description + '</p>';
+                    text += '<input id="'+events[i].id+'" class="star" type="checkbox" title="Follow" onchange="updateFollowed('+events[i].id+');">';
                     text += '</div></div>';
                 }
             }
@@ -43,4 +45,36 @@ function drawEventsList() {
     }
     if (text !== null)
         document.getElementById('eventsList').innerHTML = text;
+}
+
+function updateFollowed(id) {
+    var check = document.getElementById(""+id+"").value;
+    console.info("check "+check);
+    console.info("id "+id);
+    urlSimple = "../script/updateFollowed.php";
+    url = urlSimple+"?id="+id+"&check="+check+"&username="+owner;
+    xhr = getXMLHttpRequestObject();
+    xhr.onreadystatechange = updateCallback;
+    xhr.open('GET',url,true);
+    xhr.send(null);
+}
+
+function updateCallback() {
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+            if (xhr.responseText !== "") {
+                console.info("respose is: " + xhr.responseText);
+                if(xhr.responseText === "true")
+                    console.info("followed")
+                else
+                    console.info("errore followed");
+            }
+            else {
+                alert("Ajax error: no data received");
+            }
+        }
+        else {
+            alert("Ajax error: " + xhr.responseText);
+        }
+    }
 }
