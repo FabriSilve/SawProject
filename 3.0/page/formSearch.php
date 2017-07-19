@@ -7,6 +7,7 @@
 
 <!--<form name="search-form" onsubmit="searchEvents()" method="post">-->
     <p>
+        <!--TODO fare griglia con bootstrap-->
         <!-- todo implementare ricerca nei dintorni partendo da posizione utente-->
         <input type="text" name="position" id="position" placeholder="Position" class="radiusDiv padding5" required>
         <button class="radiusDiv" onclick="searchEvents()">

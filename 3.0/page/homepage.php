@@ -2,10 +2,6 @@
     require("coockieSessionChecker.php");
     require("header.php");
     require("navbar.php");
-
-
-
-
 ?>
 
 <!--<div class="liteOrange jumbotron">-->
@@ -14,7 +10,7 @@
         <p>The events that surround you!</p>
         <?php
             if(isset($logged) && $logged)
-                echo "<p>Ciao ".$username."!</p>";
+                echo "<p>Ciao ".$_SESSION["username"]."!</p>";
         ?>
     </div>
 <!--</div>-->
@@ -27,10 +23,13 @@
     </div>
 </div>
 <br>
-<?php include("mapDrawer.php"); ?>
-<br>
-    <div id="eventsList" onload="drawEventsList()">
+    <div class="container-fluid bg-3 text-center">
+        <div id="googleMap" class="container map"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQO1FBU7ngY0Wv20d3-gPI1sj5_ApCZ3M&callback=myMap"></script>
     </div>
+<br>
+    <div id="eventsList" class="container"></div>
+    <script>drawEventsList();</script>
 <br>
 
 <?php require("footer.php"); ?>

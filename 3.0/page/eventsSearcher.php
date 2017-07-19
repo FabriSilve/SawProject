@@ -10,7 +10,7 @@
     $eventDB = [];
     $count = 0;
 
-    if(isset($_GET['position']) && $_GET['position'] !== "")
+    if(isset($_GET['position']) && $_GET['position'] !== "default")
         $position = trim($_GET['position']);
 
     if(isset($_GET['distance']))
@@ -52,14 +52,39 @@
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        echo "[";
+        $count = 0;
+        $eventDB[$count++] = array(
+            "id" => "000",
+            "name" => "You",
+            "descriptione" => "",
+            "address" => "",
+            "day" => "",
+            "lat" => "".$lat."",
+            "lon" => "".$lon."",
+            "image" => ""
+        );
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $eventDB[$count++] = array(
+                "id" => $row["id"],
+                "name" => $row["name"],
+                "description" => $row["description"],
+                "address" => $row["address"],
+                "day" => $row["day"],
+                "lat" => $row["lat"],
+                "lon" => $row["lon"],
+                "image" => "../uploads/".$row["image"]
+            );
+        }
+        echo json_encode($eventDB, JSON_PRETTY_PRINT);
+
+        /*echo "[";
         echo '{"id":"000",';
         echo '"name":"Your Search",';
         echo '"description":"",';
         echo '"day":"2017-06-06",';
         echo '"address":"word",';
         echo '"image":"default.jpg",';
-        echo '"lat":"'.$lat.'",';
+        echo '"lat": "'.$lat.'",';
         echo '"lon": "'.$lon.'",';
         echo '"owner": "null"}';
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -74,7 +99,7 @@
             echo '"lon":"'.$row["lon"].'",';
             echo '"owner":"'.$row["owner"].'"}';
         }
-        echo "]";
+        echo "]";*/
         $conn = null;
     } catch(PDOException $e) {
         //TODO inserire output

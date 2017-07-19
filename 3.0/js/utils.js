@@ -8,3 +8,13 @@ function showFilter() {
         hider = true;
     }
 }
+
+function getXMLHttpRequestObject() {
+    var request = null;
+    if (window.XMLHttpRequest) {
+        request = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // Older IE.
+        request = new ActiveXObject("MSXML2.XMLHTTP.3.0");
+    }
+    return request;
+}
