@@ -10,7 +10,7 @@
         $username = $_COOKIE["EAusername"];
     }
     session_start();
-    if(isset($_SESSION["authorized"]) && $_SESSION["authorized"] == 1) {
+    if(isset($_SESSION["EAauthorized"]) && $_SESSION["EAauthorized"] == 1) {
         $logged = 1;
     }
 ?>

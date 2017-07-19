@@ -1,5 +1,4 @@
 function drawEventsList() {
-    alert("eventlist");
     //todo ottimizzare cicli
     text = '<div class="container-fluid bg-3 text-center">';
     text += '<div class="row">';

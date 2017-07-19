@@ -24,7 +24,6 @@
 
     $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=".$Address."&sensor=true";
     if(!($xml = simplexml_load_file($request_url))) {
-        //TODO inserire output
         die("not valid address");
     }
     $status = $xml->status;
@@ -41,7 +40,7 @@
         "lon BETWEEN (".$lon."-".$distance.") AND (".$lon."+".$distance.")";
     $where_days = "day BETWEEN CURDATE() AND (CURDATE() + INTERVAL ".$days." DAY) ";
 
-    $sql = "SELECT * FROM Events WHERE (".$where_position.") AND (".$where_days."); ";
+    $sql = "SELECT id, name, description, address, day, lat, lon FROM Events WHERE (".$where_position.") AND (".$where_days."); ";
     //------------------------
 
     require("dbAccess.php");
@@ -56,7 +55,7 @@
         $eventDB[$count++] = array(
             "id" => "000",
             "name" => "You",
-            "descriptione" => "",
+            "description" => "",
             "address" => "",
             "day" => "",
             "lat" => "".$lat."",
@@ -72,37 +71,12 @@
                 "day" => $row["day"],
                 "lat" => $row["lat"],
                 "lon" => $row["lon"],
-                "image" => "../uploads/".$row["image"]
+                "image" => "../uploads/".$row["id"].".jpg"
             );
         }
         echo json_encode($eventDB, JSON_PRETTY_PRINT);
-
-        /*echo "[";
-        echo '{"id":"000",';
-        echo '"name":"Your Search",';
-        echo '"description":"",';
-        echo '"day":"2017-06-06",';
-        echo '"address":"word",';
-        echo '"image":"default.jpg",';
-        echo '"lat": "'.$lat.'",';
-        echo '"lon": "'.$lon.'",';
-        echo '"owner": "null"}';
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $eventDB[$count++] = [$row["id"],$row["name"],$row["description"],$row["day"], $row["lat"],$row["lon"], "../uploads/".$row["image"]];
-            echo ',{"id":"'.$row["id"].'",';
-            echo '"name":"'.$row["name"].'",';
-            echo '"description":"'.$row["description"].'",';
-            echo '"day":"'.$row["day"].'",';
-            echo '"address":"'.$row["address"].'",';
-            echo '"image":'.$row["image"].'",';
-            echo '"lat":"'.$row["lat"].'",';
-            echo '"lon":"'.$row["lon"].'",';
-            echo '"owner":"'.$row["owner"].'"}';
-        }
-        echo "]";*/
         $conn = null;
     } catch(PDOException $e) {
-        //TODO inserire output
         echo "ERROR ".$e->getMessage();
     }
 ?>

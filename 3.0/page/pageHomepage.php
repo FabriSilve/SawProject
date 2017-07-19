@@ -1,11 +1,11 @@
 <?php
-    require("accessManager.php");
-    require("header.php");
+    require("shared/accessManager.php");
+    require("shared/header.php");
     //require("navbar.php");
 ?>
 
-<!--<div class="liteOrange jumbotron">-->
-    <div class="container text-center liteOrange">
+
+    <div class="container text-center liteOrange radiusDiv">
         <h1>Event Around</h1>
         <p>The events that surround you!</p>
         <?php
@@ -13,7 +13,7 @@
                 echo "<p>Ciao ".$_SESSION["EAusername"]."!</p>";
         ?>
     </div>
-<!--</div>-->
+
 <br>
 <div class="container container-table">
     <div class="row vertical-center-row">
@@ -32,7 +32,7 @@
     <script>drawEventsList();</script>
 <br>
 
-<?php require("footer.php"); ?>
+<?php require("shared/footer.php"); ?>
 
 
 

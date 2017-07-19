@@ -32,8 +32,8 @@
                 session_start();
                 if ($_SESSION['type'] == 'admin') require("../admin/Checkadmin.php"); //QUI!!!!!!!!!!!!!!
                 else {
-                    $_SESSION["authorized"] = 1;
-                    $_SESSION["username"] = $username;
+                    $_SESSION["EAauthorized"] = 1;
+                    $_SESSION["EAusername"] = $username;
                     if ($keep == 1) {
                         setcookie('EAkeep', 'true', time() + 86400);
                         setcookie("EAusername", $username, time() + 86400);

@@ -4,8 +4,7 @@
     }
 
     function searchEvents() {
-        alert("search");
-        urlSimple = "eventsSearcher.php";
+        urlSimple = "../script/eventsSearcher.php";
         if(document.getElementById('position').value === "")
             position = "default";
         else
@@ -35,7 +34,7 @@
                     alert("Ajax error: no data received");
             }
             else
-                alert("Ajax error: " + xhr.statusText);
+                alert("Ajax error: respose -> " + xhr.statusText);
         }
     }
 

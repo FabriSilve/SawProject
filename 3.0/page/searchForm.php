@@ -1,6 +1,6 @@
 <form name="formSearch">
     <p>
-        <input type="text" name="position" id="position" placeholder="Position" class="radiusDiv padding5" required>
+        <input type="text" name="position" id="position" placeholder="Position" class="radiusDiv padding5">
         <button class="radiusDiv" onclick="searchEvents()">
             <img src="../media/search.png">
         </button>

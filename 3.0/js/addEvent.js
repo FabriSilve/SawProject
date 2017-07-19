@@ -1,5 +1,4 @@
 function addEvent() {
-    alert("add event");
     if(document.getElementById("name").value === "") {
         document.getElementById("name").focus();
         return false;

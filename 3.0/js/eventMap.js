@@ -35,8 +35,8 @@ function setPosition(position) {
 }
 
 function showMap (latitude, longitude) {
-    var lat= latitude;
-    var lon= longitude;
+    lat= latitude;
+    lon= longitude;
 
     var mapCenter = new google.maps.LatLng(lat,lon);
     var mapZoom = 12;

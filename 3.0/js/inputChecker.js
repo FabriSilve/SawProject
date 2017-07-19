@@ -1,6 +1,5 @@
 
 function checkLogin() {
-    alert("check login");
     if(document.getElementById("username").value === "") {
         document.getElementById("username").focus();
         return false;
@@ -13,7 +12,6 @@ function checkLogin() {
 }
 
 function checkReg() {
-    alert("check reg");
     //non funziona 2.0 mail valida
     var pattern = new RegExp("[^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$]]");
 

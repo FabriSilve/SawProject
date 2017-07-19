@@ -57,9 +57,9 @@ CREATE TABLE IF NOT EXISTS `Events` (
 
 INSERT INTO `Events` (`id`, `name`, `description`, `image`, `day`, `address`, `lat`, `lon`, `owner`) VALUES
 (1, 'pippo', 'descrizione', 'viale_carlo_canepa_genova_2017-06-29.jpg', '2017-06-29', 'viale carlo canepa genova', 44.4270998, 8.8506773, 'faber'),
-(2, 'evento', 'pippo', 'genova_2017-06-29.jpg', '2017-06-29', 'genova', 44.4056499, 8.946256, 'faber'),
-(3, 'yff', 'but ghoul', 'yhh_2017-06-29.jpg', '2017-06-29', 'yhh', 4.803069, 114.653666, 'faber'),
-(4, 's ilvia', 'piace', 'pizza_baracca_Genova_2017-06-29.jpg', '2017-06-29', 'pizza baracca Genova', 44.4251139, 8.8493762, 'faber');
+(2, 'evento', 'pippo', '4.jpg', '2017-06-29', 'genova', 44.4056499, 8.946256, 'faber'),
+(3, 'yff', 'but ghoul', '3.jpg', '2017-06-29', 'yhh', 4.803069, 114.653666, 'faber'),
+(4, 's ilvia', 'piace', '5.jpg', '2017-06-29', 'pizza baracca Genova', 44.4251139, 8.8493762, 'faber');
 
 -- --------------------------------------------------------
 
