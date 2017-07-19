@@ -4,11 +4,11 @@
 		$keep = $_POST["keepme"];
 	else
 		$keep = 0;
-	if(isset($_POST["username"]))
-	$username = trim($_POST["username"]);
-	$password = trim($_POST["password"]);
-
-require("dbAccess.php");
+	if(isset($_POST["username"])) {
+        $username = trim($_POST["username"]);
+        $password = trim($_POST["password"]);
+    }
+    require("dbAccess.php");
 
 	try {
 	    $dbh = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
@@ -28,20 +28,23 @@ require("dbAccess.php");
 		//var_dump($passw);   //debugging print
 
             //$pass_corr = password_verify($password, $passw['password']);
-	    	if ($passw = password_hash($password, PASSWORD_BCRYPT)){
-		    	session_start();
-				$_SESSION["authorized"] = 1;
-				$_SESSION["EAusername"] = $username;
-				if($keep == 1) {
-					setcookie('EAkeep', 'true', time()+86400);
-					setcookie("EAusername", $username, time()+86400);
-				}
-				header("Location: pageHomepage.php");  //automatically redirect to homepage on login success.
-			}
-			else
-				throw new Exception();
+	    	if ($passw = password_hash($pass_corr, PASSWORD_BCRYPT)) {
+                session_start();
+                if ($_SESSION['type'] == 'admin') require("../admin/Checkadmin.php"); //QUI!!!!!!!!!!!!!!
+                else {
+                    $_SESSION["authorized"] = 1;
+                    $_SESSION["username"] = $username;
+                    if ($keep == 1) {
+                        setcookie('EAkeep', 'true', time() + 86400);
+                        setcookie("EAusername", $username, time() + 86400);
+                    }
+                    header("Location: homepage.php");  //automatically redirect to homepage on login success.
+                }
+	    	}
+            else
+                throw new Exception();
+            }
 
-	}
 	catch(PDOException $e){
 	    echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
         header ("Location: pageLogin.php");

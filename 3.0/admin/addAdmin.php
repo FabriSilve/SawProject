@@ -6,10 +6,13 @@
  * Time: 19.40
  */
 require ("Access.php");
-/*
-if(isset($_POST["username"]))
-    $username = trim($_POST["username"]);
-    $password = trim($_POST["password"]);*/
+require("header.php");
+
+    if(isset($_POST["username"])) {
+        $username = trim($_POST["username"]);
+        $email = trim($_POST["email"]);
+        $password = trim($_POST["password"]);
+    }
 
 try {
     $dbh = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
@@ -50,24 +53,15 @@ try {
             echo "pass empty";
             throw new Exception();
         }
-
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
-
         $stmt_acc->execute();
     }
-
-
-    $dbh->commit();
-    //echo '<h2> L`utente admin e` agguinto con successo!<h2>';
-    require("admin.php");
-
-
+ $dbh->commit();
 }
 catch(PDOException $e){
     $dbh->rollback();
     echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
     echo '<h2> E` verificato un errore. Riprova<h2>';
-
 }
 catch(Exception $k){
     $dbh->rollback();
@@ -82,3 +76,25 @@ catch(Exception $k){
 $dbh = null;  //termino la connessione.
 
 ?>
+
+<!DOCTYPE html>
+<html lang="it">
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <div class="well">
+                <p><a href="admin.php"> Torna indietro</a></p>
+            </div>
+        </div>
+        <div class="col-sm-8 text-left">
+            <h1>Utenti</h1>
+            <p></p>
+            <div class="well">
+                <p>Il nuovo Admin e` stato agguinto con successo!</p>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+
+</html>
