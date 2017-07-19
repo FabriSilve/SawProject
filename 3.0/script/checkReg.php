@@ -1,103 +1,68 @@
 <?php
-    /*variabili*/
-    require("dbAccess.php");
 
+    require("dbAccess.php");
+    $error = "";
+    $username = "";
+    $email = "";
+    $password = "";
 
     try {
-        $dbh = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
-
-        //$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);	//force to not emulate
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // prepared statements
-        $stmt_acc = $dbh->prepare("INSERT INTO Users (username, email, password) VALUES (:username, :email, :password);");
-        //$stmt_prof = $dbh->prepare("INSERT INTO profilo (nome, cognome, email, residenza, link_social, auto_descizione) VALUES (:nome, :cognome, :email, :residenza, :link_social, :auto_descizione);");
-
-        $dbh->beginTransaction();
-
-        /****** accounts BLOCK ******/
-        {
-            $stmt_acc->bindParam(':username', $username);
-            $stmt_acc->bindParam(':email', $email);
-            $stmt_acc->bindParam(':password', $password);
-
+        if (isset($_POST["username"]) && $_POST["username"] !== "") {
             $username = trim($_POST["username"]);
-
-            if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))) {
-                $userErr = "Username error";
-                echo "username";
-                throw new Exception();
-            }
-
-            $email = trim($_POST["email1"]);
-
-            if ((empty($email))) { /*|| (!preg_match("/[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]/",$email))) {*/
-                $emailErr = "email error";
-                echo "email";
-                throw new Exception();
-            }
-
-            $pass_pre_hash = trim($_POST["password1"]);
-
-            if(empty($pass_pre_hash)){
-                $passErr = "Password is required";
-                echo "pass wmpty";
-                throw new Exception();
-            }
-            /*if(!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
-                $passErr = "Invalid password, it must contain at least: 1 lowercase, 1 uppercase, 1 decimal, 1 special char, and a min of 8 total characters.";
-                echo "pass";
-                throw new Exception();
-            }*/
-
-            $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
-            //libsodium extension from paragon.
-            /*$password = \Sodium\crypto_pwhash_str(
-                                                    $pass_pre_hash,
-                                                    \Sodium\CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE,
-                                                    \Sodium\CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE
-                                                );*/
-            $stmt_acc->execute();
+        } else {
+            $error = "Username non inserito!";
+            throw new Exception();
         }
 
-        /******* profilo BLOCK *******/
-        /*{
-            $stmt_prof->bindParam(':nome', $nome);
-            $stmt_prof->bindParam(':cognome', $cognome);
-            $stmt_prof->bindParam(':email', $email);
-            $stmt_prof->bindParam(':residenza', $residenza);
-            $stmt_prof->bindParam(':link_social', $link_social);
-            $stmt_prof->bindParam(':auto_descizione', $auto_descizione);
+        if (!preg_match("/^[ -~]*$/", $username)) {
+            $error = "Username non valido";
+            throw new Exception();
+        }
 
-            $nome = trim($_POST["nome"]);
-            $cognome = trim($_POST["cognome"]);
-            $email = trim($_POST["email"]);
-            $residenza = trim($_POST["residenza"]);
-            $link_social = trim($_POST["link_social"]);
-            $auto_descizione = trim($_POST["auto_descizione"]);
+        if (isset($_POST["email1"]) && $_POST["email1"] !== "") {
+            $email = trim($_POST["email1"]);
+        } else {
+            $error = "Email non inserita";
+             throw new Exception();
+        }
 
-            $profile_arr = array($nome, $cognome, $email, $residenza);
-
-            foreach ($profilo_arr as $i) {
-                if (empty($i)){
-                    $profileErr = "Empty field found.";
-                    throw new Exception();
-                }
-                if (!preg_match("/^[ -~]*$/",$i)){
-                    $profileErr = $i + " : invalid format.";
-                    throw new Exception();
-                }
-            }
-
-            if (!filter_var($link_social, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED)){
-                $profileErr = $link_social + " : invalid format.";
-                throw new Exception();
-            }
-
-            $stmt_prof->execute();
+        //TODO testare espressione regolare
+        /*if (!preg_match("/[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]/", $email)) {
+            $error = "Email non valida";
+            throw new Exception();
         }*/
 
-        $dbh->commit();
+        if (isset($_POST["password1"]) && $_POST["password1"] !== "") {
+            $pass_pre_hash = trim($_POST["password1"]);
+        } else {
+            $error = "Username non inserito!";
+            throw new Exception();
+        }
+
+        //TODO controllare espressione regolare
+        /*if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)) {
+            $error = "Password non valida";
+            throw new Exception();
+        }*/
+
+        $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
+
+    } catch(Exception $e) {
+        header("Location: ../page/pageRegistration.php?registerError=".$error);
+    }
+    try{
+        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $stmt = $conn->prepare("INSERT INTO Users (username, email, password) VALUES (:username, :email, :password);");
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+
+        $stmt->execute();
+
+        $conn = null;
+
         if(isset($_COOKIE['EAkeep'])) {
             setcookie('EAkeep',null);
         }
@@ -107,26 +72,13 @@
         session_unset();
         session_destroy();
         session_start();
-        $_SESSION["authorized"] = 1;
-        header("Location: pageHomepage.php");
+        $_SESSION["EAauthorized"] = 1;
+        $_SESSION["EAusername"] = $username;
+        header("Location: ../page/pageHomepage.php");
+
     }
     catch(PDOException $e){
-        $dbh->rollback();
-        echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
-        echo '<h2> Si è verificato un errore. <h2>';
-        echo '<h3><a href="../registrazione.html">torna indietro</a></h3>';
+        $error=  "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
+        header("Location: ../page/pageRegistration.php?registerError=".$error);
     }
-    catch(Exception $k){
-        $dbh->rollback();
-        if (isset($userErr))
-            echo $userErr;
-        if (isset($passErr))
-            echo $passErr;
-        if (isset($profileErr))
-            echo $profileErr;
-        echo "expeption";
-        echo '<h3><a href="../registrazione.html">torna indietro</a></h3>';
-    }
-    $dbh = null;  //termino la connessione.
-
 ?>

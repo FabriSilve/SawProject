@@ -1,4 +1,5 @@
 <?php
+    require("dbAccess.php");
     header("Content-Type: application/json");
 
     $position = "genova";
@@ -44,7 +45,7 @@
     $sql = "SELECT id, name, description, address, day, lat, lon FROM Events WHERE (".$where_position.") AND (".$where_days."); ";
     //------------------------
 
-    require("dbAccess.php");
+
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -64,6 +65,9 @@
             "image" => ""
         );
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $image_file = "../uploads/default.jpg";
+            if(file_exists("../uploads/".$row["id"].".jpg"))
+                $image_file = "../uploads/".$row["id"].".jpg";
             $eventDB[$count++] = array(
                 "id" => $row["id"],
                 "name" => $row["name"],
@@ -72,7 +76,7 @@
                 "day" => $row["day"],
                 "lat" => $row["lat"],
                 "lon" => $row["lon"],
-                "image" => "../uploads/".$row["id"].".jpg"
+                "image" => $image_file
             );
         }
         echo json_encode($eventDB, JSON_PRETTY_PRINT);

@@ -18,6 +18,7 @@
         xhr.onreadystatechange = searchCallback;
         xhr.open('GET',url,true);
         xhr.send(null);
+        if(!hider) showFilter();
     }
 
     function searchCallback() {

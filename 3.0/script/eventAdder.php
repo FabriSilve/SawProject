@@ -11,13 +11,13 @@
     else
         die("description unset");
 
-    if(isset($_POST['day']) && $_POST['day'] !== "")
-        $day = trim($_POST['day']);
-    else
-        die("day unset");
-
     if(isset($_POST['address']) && $_POST['address'] !== "")
         $address = trim($_POST['address']);
+    else
+        die("address unset");
+
+    if(isset($_POST['day']) && $_POST['day'] !== "")
+        $day = trim($_POST['day']);
     else
         die("day unset");
 
@@ -26,10 +26,9 @@
     }
 
     if(isset($_POST['owner']) && $_POST['owner'] !== "")
-        $owner = trim($_POST['owner']);
+        $owner =$_POST['owner'];
     else
-        die("day unset");
-
+        die("owner unset");
 
     $lat;
     $lon;
@@ -80,6 +79,7 @@
 
         $conn = null;
 
+
         //upload image
         $image_path = "../uploads/";
         $image_format = ".jpg";
@@ -88,12 +88,14 @@
         if (!$is_img) {
             die('Puoi inviare solo immagini');
         }
+        echo "true";
 
-        if (move_uploaded_file($image_tmp, $image_path . $image_name . $image_format)) {
-            echo 'true';
-        }else{
-            echo 'Upload error!';
-        }
+        /*TODO Farsi dare permessi dalla prof
+       if (move_uploaded_file($image_tmp, $image_path . $image_name . $image_format)) {
+           echo 'true';
+       }else{
+           echo 'Upload error!';
+       }*/
     } catch(Exception $e) {
         echo "ERROR ".$e->getMessage();
     }

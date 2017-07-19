@@ -1,36 +1,47 @@
 <?php
+	require("dbAccess.php");
 
-	if(isset($_POST["keepme"]))
-		$keep = $_POST["keepme"];
-	else
-		$keep = 0;
-	if(isset($_POST["username"])) {
-        $username = trim($_POST["username"]);
-        $password = trim($_POST["password"]);
+	if(isset($_POST["keepme"])) {
+        $keep = $_POST["keepme"];
+    } else {
+        $keep = 0;
     }
-    require("dbAccess.php");
+
+	if(isset($_POST["username"]) && isset($_POST["password"])) {
+		if($_POST["username"] !== "" && $_POST["password"] !== "" ) {
+            $username = trim($_POST["username"]);
+            $password = trim($_POST["password"]);
+        } else {
+			die("username or password empty");
+		}
+    } else {
+		die("username or password unset");
+	}
 
 	try {
-	    $dbh = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
-	    $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
-	    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	    $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+	    $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
+	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	    // prepared statements
 	    $query = "SELECT password FROM Users WHERE username = :username;";
-	    $stmt = $dbh->prepare($query);	//parameterized queries
+	    $stmt = $conn->prepare($query);	//parameterized queries
 
 	    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
 
 	    $stmt->execute();
 
-	    $passw = $stmt->fetch(PDO::FETCH_ASSOC);
+	    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		//var_dump($passw);   //debugging print
 
             //$pass_corr = password_verify($password, $passw['password']);
-	    	if ($passw = password_hash($pass_corr, PASSWORD_BCRYPT)) {
+	    	if ($result['password'] = password_hash($password, PASSWORD_BCRYPT)) {
                 session_start();
+
                 if ($_SESSION['type'] == 'admin') require("../admin/Checkadmin.php"); //QUI!!!!!!!!!!!!!!
+				//TODO FABER: non capisco cosa serva questo if
+
                 else {
                     $_SESSION["EAauthorized"] = 1;
                     $_SESSION["EAusername"] = $username;
@@ -38,7 +49,7 @@
                         setcookie('EAkeep', 'true', time() + 86400);
                         setcookie("EAusername", $username, time() + 86400);
                     }
-                    header("Location: homepage.php");  //automatically redirect to homepage on login success.
+                    header("Location: ../page/pageHomepage.php");  //automatically redirect to homepage on login success.
                 }
 	    	}
             else
@@ -47,12 +58,12 @@
 
 	catch(PDOException $e){
 	    echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
-        header ("Location: pageLogin.php");
+        header ("Location: ../page/pageLogin.php");
 	
 	}
 	catch(Exception $f){
-		header ("Location: pageLogin.php");
+		header ("Location: ../page/pageLogin.php");
 	}
-	$dbh = null;  //termino la connessione.
+	$conn = null;  //termino la connessione.
 
 ?>

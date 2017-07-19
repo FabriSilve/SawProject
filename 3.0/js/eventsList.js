@@ -12,7 +12,7 @@ function drawEventsList() {
         text += '<div class="liteBackground radiusDiv">';
         text += '<p ><h2>'+events[i].name+'</h2>';
         text += '<h4>'+events[i].day+'</h4></p>';
-        text += '<img src = "'+events[i].image+'" class="img-responsive" style="width:100%" alt ="Image">';
+        text += '<img src = "'+events[i].image+'" class="img-responsive eventImage"  alt ="Image">';
         text += '<p>'+events[i].description+'</p>';
         text += '</div></div>';
 
@@ -28,7 +28,7 @@ function drawEventsList() {
                 text += '<div class="liteBackground radiusDiv">';
                 text += '<p ><h2>' + events[i].name + '</h2>';
                 text += '<h4>' + events[i].day + '</h4></p>';
-                text += '<img src = "' + events[i].image + '" class="img-responsive" style = "width:100%" alt = "Image" >';
+                text += '<img src = "' + events[i].image + '" class="img-responsive eventImage" alt = "Image" >';
                 text += '<p>' + events[i].description + '</p>';
                 text += '</div></div>';
             }

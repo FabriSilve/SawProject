@@ -6,7 +6,7 @@
         header("Location: pageHomepage.php");
 ?>
 
-<div class="container text-center liteOrange">
+<div class="container text-center liteOrange radiusDiv">
     <h1>Add Event</h1>
     <h3>What's New?</h3>
 </div>
@@ -14,7 +14,7 @@
 <div class="container bg-3 text-center radiusDiv liteBackground">
     <div class="container-fluid text-center">
         <h1>New Event</h1>
-        <form enctype="multipart/form-data" name="formAddEvent" method="post">
+        <form enctype="multipart/form-data" name="formAddEvent" method="post" onsubmit="addEvent()" action="../script/eventAdder.php">
             <div class="row">
                 <div class="col-sm-4">
                     <input type="text" name="name" id="name" placeholder="Name" class="radiusDiv padding5 margin5" required>
@@ -30,7 +30,7 @@
                 <div class="col-sm-6">
                     <br>
                     <p>Description:</p>
-                    <textarea rows="8" name="description" id="description" class="radiusDiv margin5" title="Description"  required>
+                    <textarea cols="20" rows="5" name="description" id="description" class="radiusDiv margin5 padding5" title="Description"  required>
                 </textarea>
                 </div>
                 <div class="col-sm-6">
@@ -38,14 +38,15 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6">
-                    <input type="file" id="image" name="image" required>
+                <div class="col-sm-6">.</div>
+                <div class="col-sm-6 text-center">
+                    <input type="file" id="image" name="image" class="align-center" required>
                 </div>
             </div>
+            <input name="owner" id="owner" type="text" hidden>
             <div class="row">
                 <div class="col-sm-12">
-                    <button class="radiusDiv margin5" onclick="addEvent()">
+                    <button type="submit" class="radiusDiv margin5"">
                         <img src="../media/plus.png">
                     </button>
                 </div>

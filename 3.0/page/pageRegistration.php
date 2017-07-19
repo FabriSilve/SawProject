@@ -1,5 +1,5 @@
 <?php
-    require("header.php");
+    require("shared/header.php");
     //require("navbar.php");
 ?>
 
@@ -7,7 +7,7 @@
     <div class="row vertical-center-row margin5">
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
             <h1>Registration</h1>
-            <form name="register-form" onsubmit="return checkReg()" method="post" action="checkReg.php">
+            <form name="register-form" onsubmit="return checkReg()" method="post" action="../script/checkReg.php">
                 <p>
                     <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
                 </p>
@@ -30,8 +30,12 @@
                     </button>
                 </p>
             </form>
+            <?php if(isset($_GET["registerError"]) && $_GET["registerError"] !== "" ) {
+                echo '<h5>'.$_GET["registerError"].'</h5>';
+            }
+            ?>
         </div>
     </div>
 </div>
 
-<?php require("footer.php"); ?>
+<?php //require("shared/footer.php"); ?>

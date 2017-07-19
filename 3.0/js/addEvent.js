@@ -15,9 +15,13 @@ function addEvent() {
         document.getElementById("description").focus();
         return false;
     }
-    //TODO inserire controllo file
-
-    urlSimple = "eventAdder.php";
+    if(document.getElementById("image").value === "") {
+        document.getElementById("image").focus();
+        return false;
+    }
+    document.getElementById("owner").value = owner;
+    return true;
+   /* urlSimple = "../script/eventAdder.php";
 
     name = document.getElementById('name').value;
     day = document.getElementById('day').value;
@@ -29,10 +33,10 @@ function addEvent() {
     xhr = getXMLHttpRequestObject();
     xhr.onreadystatechange = addCallback;
     xhr.open('GET',url,true);
-    xhr.send(null);
+    xhr.send(null);*/
 }
 
-function addCallback() {
+/*function addCallback() {
     if (xhr.readyState === 4) {
         if (xhr.status === 200) {
             if (xhr.responseText !== null) {
@@ -54,4 +58,4 @@ function addCallback() {
         else
             alert("Ajax error: " + xhr.statusText);
     }
-}
+}*/

@@ -1,5 +1,5 @@
 <?php
-    require("header.php");
+    require("shared/header.php");
     //require("navbar.php");
 ?>
 <div class="container container-table">
@@ -29,4 +29,4 @@
     </div>
 </div>
 
-<?php require("footer.php"); ?>
+<?php //require("shared/footer.php"); ?>
