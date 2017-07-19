@@ -31,7 +31,7 @@ require("dbAccess.php");
 	    	if ($passw = password_hash($pass_corr, PASSWORD_BCRYPT)){
 		    	session_start();
 				$_SESSION["authorized"] = 1;
-				$_SESSION["username"] = $username;
+				$_SESSION["EAusername"] = $username;
 				if($keep == 1) {
 					setcookie('EAkeep', 'true', time()+86400);
 					setcookie("EAusername", $username, time()+86400);

@@ -10,7 +10,7 @@
         <p>The events that surround you!</p>
         <?php
             if(isset($logged) && $logged)
-                echo "<p>Ciao ".$_SESSION["username"]."!</p>";
+                echo "<p>Ciao ".$_SESSION["EAusername"]."!</p>";
         ?>
     </div>
 <!--</div>-->
@@ -18,7 +18,7 @@
 <div class="container container-table">
     <div class="row vertical-center-row">
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
-            <?php require("formSearch.php") ?>
+            <?php require("formSearch.php") ?> <!--TODO necessario altro file? -->
         </div>
     </div>
 </div>
