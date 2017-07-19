@@ -24,6 +24,8 @@
     <script>
         var events = <?php include("../script/followedEvents.php"); ?>;
         var owner = "<?php if(isset($_SESSION["username"])) echo $_SESSION["username"]; else echo 0; ?>";
+        console.info("events: "+events);
+        console.info("owner: "+owner);
     </script>
 </head>
 <body>

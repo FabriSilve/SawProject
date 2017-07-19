@@ -28,7 +28,7 @@ require("dbAccess.php");
 		//var_dump($passw);   //debugging print
 
             //$pass_corr = password_verify($password, $passw['password']);
-	    	if ($passw = password_hash($pass_corr, PASSWORD_BCRYPT)){
+	    	if ($passw = password_hash($password, PASSWORD_BCRYPT)){
 		    	session_start();
 				$_SESSION["authorized"] = 1;
 				$_SESSION["EAusername"] = $username;

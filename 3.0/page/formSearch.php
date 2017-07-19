@@ -1,3 +1,4 @@
+<form name="formSearch">
     <p>
         <input type="text" name="position" id="position" placeholder="Position" class="radiusDiv padding5" required>
         <button class="radiusDiv" onclick="searchEvents()">
@@ -18,3 +19,4 @@
         <input id="days" name="days" type="range" min="1" max="7" value="3" step="1" onchange="showValue('daysRange',this.value)" />
         <span id="daysRange">3</span><span> day(s)</span>
     </div>
+</form>
