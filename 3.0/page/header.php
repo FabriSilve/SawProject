@@ -30,4 +30,4 @@
 
 </head>
 <body>
-
+    <?php require("navbar.php"); ?>

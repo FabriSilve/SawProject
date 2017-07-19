@@ -1,7 +1,7 @@
 <?php
-    require("coockieSessionChecker.php");
+    require("accessManager.php");
     require("header.php");
-    require("navbar.php");
+    //require("navbar.php");
 ?>
 
 <!--<div class="liteOrange jumbotron">-->

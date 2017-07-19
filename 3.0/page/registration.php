@@ -1,23 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Fabrizio
- * Date: 29/05/2017
- * Time: 22:06
- */
-
     require("header.php");
-    require("navbar.php");
+    //require("navbar.php");
 ?>
 
-
-<html>
-<body>
 <div class="container container-table">
     <div class="row vertical-center-row margin5">
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
             <h1>Registration</h1>
-            <form name="register-form" onsubmit="return checkReg()" method="post" action="checkReg.php">
+            <form name="register-form" onsubmit="return checkReg()" method="post" action="../script/checkReg.php">
                 <p>
                     <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
                 </p>
