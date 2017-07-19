@@ -1,69 +1,79 @@
 <?php
 	require("dbAccess.php");
+	$keep = 0;
+	$username = "";
+	$password = "";
 
 	if(isset($_POST["keepme"])) {
         $keep = $_POST["keepme"];
     } else {
         $keep = 0;
     }
-
-	if(isset($_POST["username"]) && isset($_POST["password"])) {
-		if($_POST["username"] !== "" && $_POST["password"] !== "" ) {
-            $username = trim($_POST["username"]);
-            $password = trim($_POST["password"]);
+	try {
+        if (isset($_POST["username"])) {
+            if ($_POST["username"] !== "" ) {
+                $username = trim($_POST["username"]);
+            } else {
+                $error="Username vuoto";
+                throw new Exception();
+            }
         } else {
-			die("username or password empty");
-		}
-    } else {
-		die("username or password unset");
+            $error="Username non inserito";
+            throw new Exception();
+        }
+
+        if (isset($_POST["password"])) {
+            if ($_POST["password"] !== "") {
+                $password = trim($_POST["password"]);
+            } else {
+                $error="Password vuota";
+                throw new Exception();
+            }
+        } else {
+            $error="Password non inserita";
+            throw new Exception();
+        }
+    } catch(Exception $e) {
+        header("Location: ../page/pageLogin.php?loginError=".$error);
 	}
 
 	try {
-	    $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
-	    $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
-	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	    // prepared statements
-	    $query = "SELECT password FROM Users WHERE username = :username;";
-	    $stmt = $conn->prepare($query);	//parameterized queries
+        $stmt = $conn->prepare("SELECT password FROM Users WHERE username = :username;");
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
 
-	    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-	    $stmt->execute();
+        if ($result['password'] = password_hash($password, PASSWORD_BCRYPT)) {
+            session_start();
 
-	    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($_SESSION['type'] == 'admin') require("../admin/Checkadmin.php"); //QUI!!!!!!!!!!!!!!
+            //TODO FABER: non capisco cosa serva questo if
 
-		//var_dump($passw);   //debugging print
-
-            //$pass_corr = password_verify($password, $passw['password']);
-	    	if ($result['password'] = password_hash($password, PASSWORD_BCRYPT)) {
-                session_start();
-
-                if ($_SESSION['type'] == 'admin') require("../admin/Checkadmin.php"); //QUI!!!!!!!!!!!!!!
-				//TODO FABER: non capisco cosa serva questo if
-
-                else {
-                    $_SESSION["EAauthorized"] = 1;
-                    $_SESSION["EAusername"] = $username;
-                    if ($keep == 1) {
-                        setcookie('EAkeep', 'true', time() + 86400);
-                        setcookie("EAusername", $username, time() + 86400);
-                    }
-                    header("Location: ../page/pageHomepage.php");  //automatically redirect to homepage on login success.
+            else {
+                $_SESSION["EAauthorized"] = 1;
+                $_SESSION["EAusername"] = $username;
+                if ($keep == 1) {
+                    setcookie('EAkeep', 'true', time() + 86400);
+                    setcookie("EAusername", $username, time() + 86400);
                 }
-	    	}
-            else
-                throw new Exception();
+                header("Location: ../page/pageHomepage.php");  //automatically redirect to homepage on login success.
             }
+        } else {
+            $error = "Credenziali non valide";
+            throw new Exception();
+        }
 
-	catch(PDOException $e){
-	    echo "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
-        header ("Location: ../page/pageLogin.php");
-	
+    }catch(PDOException $e){
+        header ("Location: ../page/pageLogin.php?loginErr="."Error: " . $e->getMessage());
 	}
 	catch(Exception $f){
-		header ("Location: ../page/pageLogin.php");
+        header("Location: ../page/pageLogin.php?loginError=".$error);
 	}
-	$conn = null;  //termino la connessione.
+	$conn = null;
 
 ?>

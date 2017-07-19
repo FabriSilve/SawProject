@@ -20,6 +20,10 @@
                 <button type="submit" class="radiusDiv">
                     accedi
                 </button>
+                <?php if(isset($_GET["loginError"]) && $_GET["loginError"] !== "" ) {
+                    echo '<h5>'.$_GET["loginError"].'</h5>';
+                }
+                ?>
                 <hr>
                 <p>
                     <a class="link" href="pageRegistration.php">registrati</a>

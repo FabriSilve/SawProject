@@ -52,8 +52,10 @@
                 </div>
             </div>
         </form>
-        <div id="addMessage" class="row">
-        </div>
+        <?php if(isset($_GET["addError"]) && $_GET["addError"] !== "" ) {
+            echo '<h5>'.$_GET["addError"].'</h5>';
+        }
+        ?>
     </div>
 </div>
 <br>

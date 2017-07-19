@@ -1,49 +1,73 @@
 <?php
     require("dbAccess.php");
+    $error = "";
+    $name = "";
+    $description = "";
+    $address = "";
+    $day = "";
+    $owner = "";
 
-    if(isset($_POST['name']) && $_POST['name'] !== "")
-        $name = trim($_POST['name']);
-    else
-        die("name unset");
+    try {
+        if (isset($_POST['name']) && $_POST['name'] !== "") {
+            $name = trim($_POST['name']);
+        } else {
+            $error="Nome non inserito";
+            throw new Exception();
+        }
 
-    if(isset($_POST['description']) && $_POST['description'] !== "")
-        $description = trim($_POST['description']);
-    else
-        die("description unset");
+        if (isset($_POST['description']) && $_POST['description'] !== "") {
+            $description = trim($_POST['description']);
+        } else {
+            $error="Descrizione non inserita";
+            throw new Exception();
+        }
 
-    if(isset($_POST['address']) && $_POST['address'] !== "")
-        $address = trim($_POST['address']);
-    else
-        die("address unset");
+        if (isset($_POST['address']) && $_POST['address'] !== "") {
+            $address = trim($_POST['address']);
+        } else {
+            $error="Indirizzo non inserito";
+            throw new Exception();
+        }
 
-    if(isset($_POST['day']) && $_POST['day'] !== "")
-        $day = trim($_POST['day']);
-    else
-        die("day unset");
+        if (isset($_POST['day']) && $_POST['day'] !== "") {
+            $day = trim($_POST['day']);
+        } else {
+            $error="Data non inserita";
+            throw new Exception();
+        }
 
-    if (!isset($_FILES['image']) || !is_uploaded_file($_FILES['image']['tmp_name'])) {
-        die("file error");
+        if (!isset($_FILES['image']) || !is_uploaded_file($_FILES['image']['tmp_name'])) {
+            $error="Immagine non inserita";
+            throw new Exception();
+        }
+
+        if (isset($_POST['owner']) && $_POST['owner'] !== "") {
+            $owner = $_POST['owner'];
+        } else {
+            $error="Proprietario non inserito";
+            throw new Exception();
+        }
+
+    } catch (Exception $e) {
+        header("Location: ../page/pageAddEvent.php?addError=".$error);
     }
 
-    if(isset($_POST['owner']) && $_POST['owner'] !== "")
-        $owner =$_POST['owner'];
-    else
-        die("owner unset");
-
-    $lat;
-    $lon;
+    $lat = 0;
+    $lon = 0;
 
     $position = urlencode($address);
     $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=".$position."&sensor=true";
     if(!($xml = simplexml_load_file($request_url))) {
-        die("Not valid address");
+        $error="Indirizzo non valido";
+        throw new Exception();
     }
     $status = $xml->status;
     if ($status=="OK") {
         $lat = $xml->result->geometry->location->lat;
         $lon = $xml->result->geometry->location->lng;
     } else {
-        die($status);
+        $error="Errore indirizzo";
+        throw new Exception();
     }
 
     try {
@@ -56,7 +80,8 @@
         $stmt->bindParam(":lon",$lon);
         $stmt->execute();
         if($stmt->rowCount() > 0) {
-            die("Day and position already used");
+            $error="Giorno e luogo già utilizzati";
+            throw new Exception();
         }
 
         $stmt = $conn->prepare("INSERT INTO Events ( name, description, day, address, lat, lon, owner) VALUES ( :name, :description, :day, :address, :lat, :lon, :owner)");
@@ -86,7 +111,8 @@
         $image_tmp = $_FILES['image']['tmp_name'];
         $is_img = getimagesize($image_tmp);
         if (!$is_img) {
-            die('Puoi inviare solo immagini');
+            $error="Puoi inviare solo immagini";
+            throw new Exception();
         }
         echo "true";
 
@@ -96,7 +122,9 @@
        }else{
            echo 'Upload error!';
        }*/
-    } catch(Exception $e) {
-        echo "ERROR ".$e->getMessage();
+    } catch(PDOException $e) {
+        header("Location: ../page/pageAddEvent.php?addError="." ERROR ".$e->getMessage());
+    } catch (Exception $e) {
+        header("Location: ../page/pageAddEvent.php?addError=".$error);
     }
 ?>
