@@ -31,8 +31,7 @@ require("header.php");
                <li>Eventi
                    <ul>
                        <li><a href="mostraEventi.php"> Eventi</a></li>
-                       <li><a href="#"> ModEvento</a></li>
-                       <li><a href="#"> DeleteEvento</a></li>
+                       <li><a href="deleteEvent.php"> DeleteEvento</a></li>
                    </ul>
                </li>
            </ul>

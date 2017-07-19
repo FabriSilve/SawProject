@@ -42,13 +42,16 @@ try {
     if(isset($_COOKIE['EAusername'])) {
         setcookie('EAusername',null);
     }
-    session_unset();
-    session_destroy();
-    session_start();
+
+    //session_unset();
+    //session_destroy();
+    //session_start();
     //$_SESSION["authorized"] = 2;
-    else
-        throw new Exception();
+
+else
+    throw new Exception();
 }
+
 catch(PDOException $e){
     echo "Error: " . $e->getMessage();
 }
