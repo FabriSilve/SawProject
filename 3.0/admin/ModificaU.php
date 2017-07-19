@@ -11,9 +11,9 @@ if(isset($_POST['username'])) {
 try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare(" UPDATE Users 
-                                           SET username = :username, email = :email,password = :password
-                                           WHERE username = :username;");
+        $stmt = $conn->prepare("UPDATE Users 
+                                          SET username = :username, email = :email,password = :password
+                                          WHERE username = :username;");
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
@@ -45,11 +45,9 @@ try {
 
         $stmt->execute();
         $conn = null;
-    }
-
-catch(PDOException $e) {
+    } catch(PDOException $e) {
     echo "ERROR ".$e->getMessage();
-}
+    }
 
 ?>
 

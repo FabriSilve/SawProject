@@ -17,11 +17,6 @@
                 try {
                 $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                //$conn = new mysqli($servername, $dbUser, $dbPass, $dbName);
-                /*
-                if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-                }*/
                 $stmt = $conn->prepare("SELECT * FROM Events");
                 $stmt->execute();
 
@@ -37,7 +32,6 @@
                         "lon" => $row["lon"],
                         "owner" => $row["owner"]
                     );
-
                 }
                 echo json_encode($DB, JSON_PRETTY_PRINT);
                 $conn = null;
