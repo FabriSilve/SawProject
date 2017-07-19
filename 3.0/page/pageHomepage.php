@@ -1,9 +1,10 @@
 <?php
     require("shared/accessManager.php");
     require("shared/header.php");
-    //require("navbar.php");
 ?>
-
+    <script>
+        var events = <?php require("../script/mainEvents.php"); ?>;
+    </script>
 
     <div class="container text-center liteOrange radiusDiv">
         <h1>Event Around</h1>

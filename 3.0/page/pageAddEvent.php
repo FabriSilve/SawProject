@@ -1,7 +1,6 @@
 <?php
     require("shared/accessManager.php");
     require("shared/header.php");
-    //require("navbar.php");
     if(!isset($logged)||!$logged)
         header("Location: pageHomepage.php");
 ?>

@@ -21,10 +21,7 @@
     <!--<script src="http://maps.google.com/maps/api/js?key=AIzaSyAQO1FBU7ngY0Wv20d3-gPI1sj5_ApCZ3M&sensor=true"></script>-->
 
     <script>
-        var events = <?php require("../script/followedEvents.php"); ?>;
         var owner = "<?php if(isset($_SESSION["EAusername"])) echo $_SESSION["EAusername"]; else echo 0; ?>";
-        console.info("events: "+JSON.stringify(events));
-        console.info("owner: "+owner);
     </script>
 </head>
 <body>
