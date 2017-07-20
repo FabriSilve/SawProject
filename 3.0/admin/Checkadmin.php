@@ -25,9 +25,9 @@ try {
     $passw = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($passw = password_hash($pass_corr, PASSWORD_BCRYPT)) {
         session_start();
-        if ($_SESSION['type'] == 'admin') {
+        $_SESSION['auth'] = true;
+        if ($_SESSION[$username] == 'admin' && and $_SESSION['staus'] == 10) {
             $_SESSION["authorized"] = 2;
-            $_SESSION["username"] = $username;
             if ($keep == 1) {
                 setcookie('EAkeep', 'true', time() + 86400);
                 setcookie("EAusername", $username, time() + 86400);

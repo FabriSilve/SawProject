@@ -14,11 +14,7 @@ require("Access.php");
             <h1>Eventi</h1>
             <p><?php
                 if(isset($_POST['id']))
-                    $username = trim($_POST['id']);
-
-                $DB = [];
-                $count = 0;
-                require("Access.php");
+                    $id = trim($_POST['id']);
                 try {
                     $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

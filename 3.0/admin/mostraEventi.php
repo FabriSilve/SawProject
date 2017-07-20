@@ -22,6 +22,7 @@
                 $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conn->prepare("SELECT * FROM Events");
+                $stmt->bindParam(':id', $id, PDO::PARAM_STR);
                 $stmt->execute();
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo 'id: '.$row['id']."<br/>";
