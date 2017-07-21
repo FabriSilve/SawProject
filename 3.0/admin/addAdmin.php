@@ -83,7 +83,7 @@ $dbh = null;  //termino la connessione.
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="admin.php"> Torna indietro</a></p>
+                <p><a href="pageDashboard.php"> Torna indietro</a></p>
             </div>
         </div>
         <div class="col-sm-8 text-left">
