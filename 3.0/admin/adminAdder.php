@@ -1,6 +1,6 @@
 <?php
 
-require ("Access.php");
+require("dbAccess.php");
 require("header.php");
 
 //TODO aggiustare codice e comunicare alla pagina chiamante eventuali errori

@@ -1,6 +1,6 @@
 <?php
 require("header.php");
-require("Access.php");
+require("dbAccess.php");
 //TODO rimuovere se ajax
 ?>
 

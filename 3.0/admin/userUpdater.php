@@ -1,6 +1,6 @@
 <?php
 require("header.php");
-require("Access.php");
+require("dbAccess.php");
 
 if(isset($_POST['oldUsername']) && isset($_POST['newUsername']) && isset($_POST['email']) && isset($_POST['password'])) {
     $oldUsername = trim($_POST['oldUsername']);

@@ -11,7 +11,7 @@ if(isset($_POST["username"])) {
     $username = trim($_POST["username"]);
     $password = trim($_POST["password"]);
 }
-require ("Access.php");
+require("dbAccess.php");
 
 try {
     $dbh = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);

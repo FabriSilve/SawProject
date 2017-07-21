@@ -1,6 +1,6 @@
 <?php
 require("header.php");
-require("Access.php");
+require("dbAccess.php");
 
 if(isset($_POST['username']))
     $username = trim($_POST['username']);
