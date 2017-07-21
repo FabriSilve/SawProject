@@ -4,9 +4,6 @@ CREATE TABLE `Admin` (
 `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dump dei dati per la tabella `Admin`
---
 
 INSERT INTO `Admin` (`username`, `email`, `password`) VALUES
 ('admin', 'admin@gmail.com', '$2y$10$DnHSD3WuOXrL0Ma4Yhzd2uqK6mBYNIO4tvuynOHzfdGx67O.WQlQu'),
@@ -24,6 +21,3 @@ INSERT INTO `Admin` (`username`, `email`, `password`) VALUES
 ('ee', 'root@h.y', '$2y$10$WHFX2df2Ti0SIfNJvByOnerwZ8rmul8WFK2zfI34/DSRDgjz21RCa'),
 ('aa', 'a@j.y', '$2y$10$1IQ5aY8bvH2MCW3/V3BH9uRZ3ltbzpz8jCcIsxYaqEmkW1p2v/qQu');
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
