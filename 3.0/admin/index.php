@@ -1,9 +1,9 @@
 <?php
-    require("accessManager.php");
+    require("shared/accessManager.php");
     if($logged)
         header("Location: pageDashboard.php");
 
-    require("header.php");
+    require("shared/header.php");
 ?>
 
 <div class="container container-table marginMax">
@@ -28,5 +28,6 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+<?php
+    require("shared/footer.php");
+    ?>
