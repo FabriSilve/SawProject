@@ -15,8 +15,6 @@
         <div class="col-sm-8 text-left">
             <h1>Eventi</h1>
             <p><?php
-                $DB = [];
-                $count = 0;
                 require("Access.php");
                 try {
                 $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
@@ -35,7 +33,7 @@
                         echo 'lon: '.$row['lon']."<br/>";
                         echo "<br/>";
                     }
-                echo json_encode($DB, JSON_PRETTY_PRINT);
+
                 $conn = null;
                 }
                 catch(PDOException $e) {
