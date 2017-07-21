@@ -6,16 +6,14 @@
  * Time: 17.51
  */
 
-   /*
-
-   $servername = "localhost";
+    $servername = "localhost";
     $dbUser = "S4116422";
     $dbPass = "Minsk";
-    $dbName = "S4116422";*/
-
+    $dbName = "S4116422";
+/*
 
     $servername = "localhost";
     $dbUser = "root";
     $dbPass = "root";
-    $dbName = "sawdb";
+    $dbName = "sawdb";*/
 ?>

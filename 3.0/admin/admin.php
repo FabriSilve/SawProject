@@ -16,7 +16,7 @@ require("header.php");
 </head>
 
 <body>
-<div class="container-fluid text-center">
+<div class="container-fluid text-left">
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <ul>
