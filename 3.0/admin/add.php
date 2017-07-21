@@ -20,7 +20,7 @@ require("header.php");
         </div>
     <div class="col-sm-8 text-center">
         <div class="container container-table">
-            <form method="post" action="addAdmin.php"> <!--onsubmit="return checkLogin()"-->
+            <form method="post" action="addAdmin.php">
                 <p>
                     <input type="username" name="username" id="username" placeholder="username" class="radiusDiv padding5" required>
                 </p>
@@ -33,8 +33,7 @@ require("header.php");
                     <button type="submit" class="radiusDiv">Add</button>
             </form>
         </div>
-
-        </div>
+    </div>
     </div>
 </div>
 

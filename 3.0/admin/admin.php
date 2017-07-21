@@ -25,6 +25,7 @@ require("header.php");
                         <li><a href="mostraUtenti.php">Utenti</a></li>
                         <li><a href="modUtenti.php">ModUser</a></li>
                         <li><a href="deleteUser.php">DeleteUser</a></li>
+                        <li><a href="Ban.php">BanUser</a></li>
                         <li><a href="add.php">AddAdmin</a></li>
                    </ul>
                </li>
