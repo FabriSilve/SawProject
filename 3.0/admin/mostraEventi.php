@@ -25,15 +25,19 @@
                 $stmt->bindParam(':id', $id, PDO::PARAM_STR);
                 $stmt->execute();
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo 'id: '.$row['id']."<br/>";
-                        echo 'name: '.$row['name']."<br/>";
-                        echo 'description: '.$row['description']."<br/>";
-                        echo 'day: '.$row["day"]."<br/>";
-                        echo 'address: '.$row['address']."<br/>";
-                        echo 'image: '.$row['image']."<br/>";
-                        echo 'lat: '.$row['lat']."<br/>";
-                        echo 'lon: '.$row['lon']."<br/>";
-                        echo "<br/>";
+                        $image_file = "../uploads/default.jpg";
+                        if(file_exists("../uploads/".$row["id"].".jpg"))
+                            $image_file = "../uploads/".$row["id"].".jpg";
+
+                        echo 'id: '.$row["id"].'<br/>';
+                        echo 'name: '.$row["name"].'<br/>';
+                        echo 'description: '.$row["description"].'<br/>';
+                        echo 'day: '.$row["day"].'<br/>';
+                        echo 'address: '.$row["address"].'<br/>';
+                        echo 'image: <img src="'.$image_file.'" style="height:200px;"><br/>';
+                        echo 'lat: '.$row["lat"].'<br/>';
+                        echo 'lon: '.$row["lon"].'<br/>';
+                        echo '<br/>';
                     }
                 //echo json_encode($DB, JSON_PRETTY_PRINT);
                 $conn = null;

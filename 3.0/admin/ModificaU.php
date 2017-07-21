@@ -2,53 +2,70 @@
 require("header.php");
 require("Access.php");
 
-if(isset($_POST['username'])) {
-    $username = trim($_POST['username']);
+if(isset($_POST['oldUsername']) && isset($_POST['newUsername']) && isset($_POST['email']) && isset($_POST['password'])) {
+    $oldUsername = trim($_POST['oldUsername']);
+    $newUsername = trim($_POST['newUsername']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
+} else {
+    header("Location: Intermedio.php");
 }
 
 try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
-        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-        $stmt->execute();
-        if(empty($username)){
+        if ((empty($oldUsername)) || (!preg_match("/^[ -~]*$/",$oldUsername))) {
             $userErr = "Username error";
             echo "username";
             throw new Exception();
         }
 
-        $stmt = $conn->prepare("UPDATE Users 
-                                          SET username = :username, email = :email,password = :password
-                                          WHERE username = :username;");
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
-
-        $username = trim($_POST['username']);
-
-        if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))) {
+        if ((empty($newUsername)) || (!preg_match("/^[ -~]*$/",$newUsername))) {
             $userErr = "Username error";
             echo "username";
             throw new Exception();
         }
 
-        $email = trim($_POST['email']);
+        $email = trim($_POST['email']); //TODO aggiungere controllo mail con espressione regolare
         if ((empty($email))) {
             $emailErr = "email error";
             echo "email";
             throw new Exception();
         }
 
-        $pass_pre_hash = trim($_POST['password']);
+        $pass_pre_hash = trim($_POST['password']); //TODO controllare con espressione regolare
         if(empty($pass_pre_hash)){
             $passErr = "Password is required";
             echo "pass empty";
             throw new Exception();
         }
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
+
+        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
+        $stmt->bindParam(':username', $oldUsername, PDO::PARAM_STR);
+        $stmt->execute();
+        if($stmt -> rowCount() !== 1) {
+            //TODO utente non presente
+            throw new Exception();
+        }
+
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
+        $stmt->bindParam(':username', $newUsername, PDO::PARAM_STR);
+        $stmt->execute();
+        if($stmt -> rowCount() > 0) {
+            //TODO nuovo username già utilizzato
+            throw new Exception();
+        }
+
+
+        $stmt = $conn->prepare("UPDATE Users 
+                                          SET username = :newUsername, email = :email,password = :password
+                                          WHERE username = :oldUsername;");
+        $stmt->bindParam(':newUsername', $newUsername);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':oldUsername', $oldUsername);
+
         $stmt->execute();
 
     }
