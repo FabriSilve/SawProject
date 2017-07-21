@@ -5,7 +5,7 @@
         header("Location: pageHomepage.php");
 ?>
     <script>
-        var events = <?php require("../script/followedEvents.php"); ?>;
+        var events = <?php require("script/followedEvents.php"); ?>;
     </script>
     <div class="container text-center liteOrange radiusDiv">
         <h1>Followed Event</h1>

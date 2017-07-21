@@ -13,7 +13,7 @@
 <div class="container bg-3 text-center radiusDiv liteBackground">
     <div class="container-fluid text-center">
         <h1>New Event</h1>
-        <form enctype="multipart/form-data" name="formAddEvent" method="post" onsubmit="addEvent()" action="../script/eventAdder.php">
+        <form enctype="multipart/form-data" name="formAddEvent" method="post" onsubmit="addEvent()" action="script/eventAdder.php">
             <div class="row">
                 <div class="col-sm-4">
                     <input type="text" name="name" id="name" placeholder="Name" class="radiusDiv padding5 marginMin" required>

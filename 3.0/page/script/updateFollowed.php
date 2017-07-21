@@ -1,5 +1,5 @@
 <?php
-    require ("dbAccess.php");
+    require("dbAccess.php");
     $lat = $_GET['id'];
     $check = $_GET['check'];
     $user = $_GET['username'];
