@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-8 text-left"><!-- TODO div radice per script ajax-->
                 <h1>Utenti</h1>
-                <form method="post" action="formUpdateUser.php"> <!--TODO insereire uno script ajax per visualizzare qui file intermedio-->
+                <form method="post" action="script/formUpdateUser.php"> <!--TODO insereire uno script ajax per visualizzare qui file intermedio-->
                     <p>Inserisci il nome utente da modificare:</p>
                     <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                     <p></p>

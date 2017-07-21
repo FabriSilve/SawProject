@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="pageDashboard.php">Dashboard</a>
+            <a class="navbar-brand" href="../pageDashboard.php">Dashboard</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -15,7 +15,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!--TODO inserire passaggio intermedio per pulire la sessione-->
-                <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                <li><a href="../script/logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
             </ul>
         </div>
     </div>

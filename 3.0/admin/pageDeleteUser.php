@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-8 text-left">
                 <h1><b>Cancellazione degli utenti</b></h1>
-                    <form method="post" action="userDeleter.php"> <!--TODO inserire popup di conferma-->
+                    <form method="post" action="script/userDeleter.php"> <!--TODO inserire popup di conferma-->
                     <p>Inserisci il nome utente da eleminare:</p>
                         <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                         <p></p>

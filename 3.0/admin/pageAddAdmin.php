@@ -14,7 +14,7 @@ require("navbar.php");
             </div>
         </div>
     <div class="col-sm-8 text-left">
-            <form method="post" action="adminAdder.php">
+            <form method="post" action="script/adminAdder.php">
                 <h1>Utenti</h1>
                 <p>Inserisci le credenziali:</p>
                 <p>
