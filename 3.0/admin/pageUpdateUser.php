@@ -1,6 +1,7 @@
 <?php
-    require("header.php");
-    require("navbar.php");
+    require("shared/accessManager.php");
+    require("shared/header.php");
+    require("shared/navbar.php");
 ?>
 
     <div class="container-fluid text-center">
@@ -14,7 +15,8 @@
                 <h1>Utenti</h1>
                 <form method="post" action="script/formUpdateUser.php"> <!--TODO insereire uno script ajax per visualizzare qui file intermedio-->
                     <p>Inserisci il nome utente da modificare:</p>
-                    <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
+                    <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
+                    <span id="status"></span>
                     <p></p>
                     <p><input type="submit" value="Controlla"></p>
                 </form>
@@ -27,4 +29,6 @@
         </div>
     </div>
 
-<?php require("footer.php"); ?>
+<?php
+    require("shared/footer.php");
+?>

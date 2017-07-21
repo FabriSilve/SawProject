@@ -53,11 +53,9 @@
 
     }catch(PDOException $e){
 	    $message = "Errore Database!"."Error: " . $e->getMessage(); //TODO rimuovere errore in release
-        header ("Location: ../index.php?message=".$message);
     }
-    catch(Exception $f){
-        header("Location: ../index.php?message=".$message);
-    }
+    catch(Exception $f){}
+    header("Location: ../index.php?message=".$message);
 	$conn = null;
 
 ?>

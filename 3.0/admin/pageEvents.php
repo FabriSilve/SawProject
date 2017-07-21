@@ -1,6 +1,7 @@
 <?php
-    require("header.php");
-    require("navbar.php");
+    require("shared/accessManager.php");
+    require("shared/header.php");
+    require("shared/navbar.php");
 ?>
 
 <div class="container-fluid text-center">
@@ -12,10 +13,10 @@
         </div>
         <div class="col-sm-8 text-left">
             <h1>Eventi</h1>
-            <p><?php
+            <p><?php //TODO esportare in script e richiamare con require
                 /*$DB = [];
                 $count = 0;*/
-                require("dbAccess.php");
+                require("script/dbAccess.php");
                 try {
                 $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -49,6 +50,10 @@
         </div>
     </div>
 </div>
+
+<?php
+    require("shared/footer.php");
+?>
 
 
 

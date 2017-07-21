@@ -1,6 +1,7 @@
 <?php
-    require("header.php");
-    require("navbar.php");
+    require("shared/accessManager.php");
+    require("shared/header.php");
+    require("shared/navbar.php");
 ?>
 
     <div class="container-fluid text-center">
@@ -23,4 +24,6 @@
         </div>
     </div>
 
-<?php require("footer.php"); ?>
+<?php
+    require("shared/footer.php");
+?>

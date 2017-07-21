@@ -1,6 +1,7 @@
 <?php
-require("header.php");
-require("navbar.php");
+require("shared/accessManager.php");
+require("shared/header.php");
+require("shared/navbar.php");
 ?>
 
 <div class="container-fluid text-center">

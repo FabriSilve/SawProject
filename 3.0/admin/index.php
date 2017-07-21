@@ -1,8 +1,7 @@
 <?php
-    require("shared/accessManager.php");
-    if($logged)
+    if(isset($_SESSION["EAadmin"]) && $_SESSION["EAadmin"] == 1) {
         header("Location: pageDashboard.php");
-
+    }
     require("shared/header.php");
 ?>
 

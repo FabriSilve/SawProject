@@ -1,7 +1,6 @@
 <?php
 require("dbAccess.php");
-require("header.php");
-require("navbar.php");
+//TODO trasformare in script
 
 
 if(isset($_POST['oldUsername']) && isset($_POST['newUsername']) && isset($_POST['email']) && isset($_POST['password'])) {

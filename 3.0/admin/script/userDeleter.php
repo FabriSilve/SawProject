@@ -1,7 +1,6 @@
 <?php
 require("dbAccess.php");
-require("header.php");
-require("navbar.php");
+//TODO trasformare in script
 
 
 if(isset($_POST['username']))
