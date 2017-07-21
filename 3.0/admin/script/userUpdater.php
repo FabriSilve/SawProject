@@ -41,7 +41,7 @@ try {
         }
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
         $stmt->bindParam(':username', $oldUsername, PDO::PARAM_STR);

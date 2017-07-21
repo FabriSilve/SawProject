@@ -16,7 +16,7 @@ require("dbAccess.php");
                 if(isset($_POST['id']))
                     $id = trim($_POST['id']);
                 try {
-                    $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+                    $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $stmt = $conn->prepare("DELETE FROM Events WHERE id = :id;");
                     $stmt->bindParam(':id', $id, PDO::PARAM_STR);

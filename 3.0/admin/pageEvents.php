@@ -17,7 +17,7 @@
                 $count = 0;*/
                 require("dbAccess.php");
                 try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+                $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conn->prepare("SELECT * FROM Events");
                 $stmt->bindParam(':id', $id, PDO::PARAM_STR);

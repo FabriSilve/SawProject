@@ -13,7 +13,7 @@ require("header.php");
     }
 
 try {
-    $dbh = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+    $dbh = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

@@ -49,7 +49,7 @@
         }
 
     } catch (Exception $e) {
-        header("Location: ../page/pageAddEvent.php?addError=".$error);
+        header("Location: ../pageAddEvent.php?addError=".$error);
     }
 
     $lat = 0;
@@ -71,7 +71,7 @@
     }
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("SELECT id FROM Events WHERE day = :day AND lat = :lat AND lon = :lon");
@@ -123,8 +123,8 @@
            echo 'Upload error!';
        }*/
     } catch(PDOException $e) {
-        header("Location: ../page/pageAddEvent.php?addError="." ERROR ".$e->getMessage());
+        header("Location: ../pageAddEvent.php?addError="." ERROR ".$e->getMessage());
     } catch (Exception $e) {
-        header("Location: ../page/pageAddEvent.php?addError=".$error);
+        header("Location: ../pageAddEvent.php?addError=".$error);
     }
 ?>

@@ -48,10 +48,10 @@
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
     } catch(Exception $e) {
-        header("Location: ../page/pageRegistration.php?registerError=".$error);
+        header("Location: ../pageRegistration.php?registerError=".$error);
     }
     try{
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("INSERT INTO Users (username, email, password) VALUES (:username, :email, :password);");
@@ -74,11 +74,11 @@
         session_start();
         $_SESSION["EAauthorized"] = 1;
         $_SESSION["EAusername"] = $username;
-        header("Location: ../page/pageHomepage.php");
+        header("Location: ../pageHomepage.php");
 
     }
     catch(PDOException $e){
         $error=  "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
-        header("Location: ../page/pageRegistration.php?registerError=".$error);
+        header("Location: ../pageRegistration.php?registerError=".$error);
     }
 ?>

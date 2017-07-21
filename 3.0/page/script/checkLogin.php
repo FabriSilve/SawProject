@@ -34,11 +34,11 @@
             throw new Exception();
         }
     } catch(Exception $e) {
-        header("Location: ../page/pageLogin.php?loginError=".$error);
+        header("Location: ../pageLogin.php?loginError=".$error);
 	}
 
 	try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -56,17 +56,17 @@
                 setcookie('EAkeep', 'true', time() + 86400);
                 setcookie("EAusername", $username, time() + 86400);
             }
-            header("Location: ../page/pageHomepage.php");  //automatically redirect to homepage on login success.
+            header("Location: ../pageHomepage.php");  //automatically redirect to homepage on login success.
         } else {
             $error = "Credenziali non valide";
             throw new Exception();
         }
 
     }catch(PDOException $e){
-        header ("Location: ../page/pageLogin.php?loginErr="."Error: " . $e->getMessage());
+        header ("Location: ../pageLogin.php?loginErr="."Error: " . $e->getMessage());
 	}
 	catch(Exception $f){
-        header("Location: ../page/pageLogin.php?loginError=".$error);
+        header("Location: ../pageLogin.php?loginError=".$error);
 	}
 	$conn = null;
 

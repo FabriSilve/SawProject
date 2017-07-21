@@ -26,7 +26,7 @@ require("dbAccess.php");
 
                             $username = trim($_POST["username"]);
 
-                            $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+                            $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                             $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
                             $stmt->bindParam(':username', $username, PDO::PARAM_STR);

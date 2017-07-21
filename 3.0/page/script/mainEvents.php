@@ -3,7 +3,7 @@
     $count = 0;
     require("dbAccess.php");
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("SELECT id, name, description, address, day, lat, lon FROM Events NATURAL JOIN Followed WHERE day > CURDATE() GROUP BY(id) ORDER BY Count(username) ASC LIMIT 8");
