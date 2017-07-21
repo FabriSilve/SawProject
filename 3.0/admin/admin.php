@@ -11,11 +11,6 @@ require("header.php");
 
 <!DOCTYPE html>
 <html lang="it">
-
-<head>
-</head>
-
-<body>
 <div class="container-fluid text-left">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -54,8 +49,6 @@ require("header.php");
            </div>
        </div>
    </div>
-</div>
-</body>
 </html>
 
 

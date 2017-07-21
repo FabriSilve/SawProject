@@ -19,7 +19,7 @@ require("Access.php");
                     $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $stmt = $conn->prepare("DELETE FROM Events WHERE id = :id;");
-                    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+                    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
                     $stmt->execute();
                     $conn = null;
                     echo "";

@@ -13,7 +13,7 @@
                 <h1><b>Cancellazione degli eventi</b></h1>
                 <form method="post" action="delE.php">
                     <p>Inserisci ID dell`evento da eleminare:</p>
-                    <input type="text" name="id" id="id" placeholder="Event id" class="radiusDiv padding5" required><span id="status"></span>
+                    <input type="text" name="id" id="id" placeholder="Event id" class="radiusDiv padding5" required>
                     <p></p>
                     <p><input type="submit" value="Elimina"></p>
                 </form>
