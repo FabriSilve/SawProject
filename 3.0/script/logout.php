@@ -10,7 +10,6 @@
     session_destroy();
     header('location: ../index.php');
 
-    /*TODO il sistema non effettua ancora il logout corretto*/
 ?>
 
 

@@ -48,21 +48,15 @@
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($result['password'] = password_hash($password, PASSWORD_BCRYPT)) {
+        if (password_verify($password, $result['password'])) {
             session_start();
-
-            if ($_SESSION['type'] == 'admin') require("../admin/Checkadmin.php"); //QUI!!!!!!!!!!!!!!
-            //TODO FABER: non capisco cosa serva questo if
-
-            else {
-                $_SESSION["EAauthorized"] = 1;
-                $_SESSION["EAusername"] = $username;
-                if ($keep == 1) {
-                    setcookie('EAkeep', 'true', time() + 86400);
-                    setcookie("EAusername", $username, time() + 86400);
-                }
-                header("Location: ../page/pageHomepage.php");  //automatically redirect to homepage on login success.
+            $_SESSION["EAauthorized"] = 1;
+            $_SESSION["EAusername"] = $username;
+            if ($keep == 1) {
+                setcookie('EAkeep', 'true', time() + 86400);
+                setcookie("EAusername", $username, time() + 86400);
             }
+            header("Location: ../page/pageHomepage.php");  //automatically redirect to homepage on login success.
         } else {
             $error = "Credenziali non valide";
             throw new Exception();

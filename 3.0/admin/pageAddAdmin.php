@@ -1,6 +1,7 @@
 <?php
 require("dbAccess.php");
 require("header.php");
+require("navbar.php");
 ?>
 
 <!DOCTYPE html>

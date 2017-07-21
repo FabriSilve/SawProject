@@ -1,4 +1,7 @@
-<?php require("header.php");?>
+<?php
+    require("header.php");
+    require("navbar.php");
+?>
 
     <div class="container-fluid text-center">
         <div class="row content">

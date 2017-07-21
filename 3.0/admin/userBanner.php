@@ -1,5 +1,7 @@
 <?php
     require("dbAccess.php");
+    require("navbar.php");
+
     if(isset($_POST["username"])) {
         $username = trim($_POST["username"]);
         $password = trim($_POST["password"]);

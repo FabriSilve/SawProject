@@ -2,6 +2,7 @@
 <?php
     //TODO inserire controllo sessione
     require("header.php");
+    require("navbar.php");
 ?>
 <div class="container-fluid text-left">
     <div class="row content">
