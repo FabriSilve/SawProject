@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vera
- * Date: 12/07/17
- * Time: 16.57
- */
 require("Access.php");
 require("header.php");
 ?>
@@ -19,7 +13,7 @@ require("header.php");
             </div>
         </div>
     <div class="col-sm-8 text-left">
-            <form method="post" action="addAdmin.php">
+            <form method="post" action="adminAdder.php">
                 <h1>Utenti</h1>
                 <p>Inserisci le credenziali:</p>
                 <p>

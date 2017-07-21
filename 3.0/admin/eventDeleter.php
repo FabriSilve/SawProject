@@ -3,8 +3,8 @@ require("header.php");
 require("Access.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="it">
+<!--TODO modificare comuicazione con pagina chiamante-->
+
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -35,5 +35,5 @@ require("Access.php");
         </div>
     </div>
 
-</html>
+
 

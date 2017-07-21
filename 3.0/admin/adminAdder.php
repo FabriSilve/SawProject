@@ -1,12 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vera
- * Date: 12/07/17
- * Time: 19.40
- */
+
 require ("Access.php");
 require("header.php");
+
+//TODO aggiustare codice e comunicare alla pagina chiamante eventuali errori
+
 
     if(isset($_POST["username"])) {
         $username = trim($_POST["username"]);
@@ -76,9 +74,8 @@ catch(Exception $k){
 $dbh = null;  //termino la connessione.
 
 ?>
+<!--TODO comunicare all apagina chiamante un messaggio di successo-->
 
-<!DOCTYPE html>
-<html lang="it">
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -97,4 +94,4 @@ $dbh = null;  //termino la connessione.
     </div>
 </div>
 
-</html>
+

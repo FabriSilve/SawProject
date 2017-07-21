@@ -8,7 +8,7 @@ if(isset($_POST['oldUsername']) && isset($_POST['newUsername']) && isset($_POST[
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 } else {
-    header("Location: Intermedio.php");
+    header("Location: formUpdateUser.php");
 }
 
 try {
@@ -87,11 +87,9 @@ try {
     }
 $dbh = null;
 
+    //TODO trasformare risposta positiva in messaggio mandato alla pagina chiamante
 ?>
 
-
-<!DOCTYPE html>
-<html lang="it">
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -107,6 +105,4 @@ $dbh = null;
         </div>
     </div>
 </div>
-
-</html>
 

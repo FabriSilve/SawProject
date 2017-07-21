@@ -15,13 +15,13 @@ try {
     echo "";
 }
 catch(PDOException $e) {
+    //TODO comunicare errore alla pagina chiamante
     echo "ERROR ".$e->getMessage();
 }
 
 ?>
 
-<!DOCTYPE html>
-<html lang="it">
+<!--TODO non pagnia a parte ma comunica risultato alla pagina chiamante-->
     <div class="container-fluid text-center">
         <div class="row content">
             <div class="col-sm-2 sidenav">
@@ -37,5 +37,5 @@ catch(PDOException $e) {
             </div>
         </div>
     </div>
-</html>
+
 

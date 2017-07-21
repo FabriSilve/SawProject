@@ -1,10 +1,5 @@
 <?php require("header.php");?>
 
-<!DOCTYPE html>
-<html lang="it">
-
-<!DOCTYPE html>
-<html lang="it">
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -43,6 +38,7 @@
                 $conn = null;
                 }
                 catch(PDOException $e) {
+                    //TODO comunicare errori alla pagina
                     echo "ERROR ".$e->getMessage();
                 }
                 ?>
@@ -50,9 +46,6 @@
         </div>
     </div>
 </div>
-
-
-</html>
 
 
 

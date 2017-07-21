@@ -1,9 +1,10 @@
 <?php
 require("header.php");
-require("Access.php");?>
+require("Access.php");
+//TODO rimuovere se ajax
+?>
 
-<!DOCTYPE html>
-<html lang="it">
+<!--TODO trasformare in script che risponde per richiesta ajax-->
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -13,7 +14,7 @@ require("Access.php");?>
         </div>
         <div class="col-sm-8 text-left">
             <h1>Modifica i dati utente:</h1>
-            <form method="post" action="ModificaU.php">
+            <form method="post" action="userUpdater.php">
                 <p>
                     <?php
                         $error = "";
@@ -64,4 +65,4 @@ require("Access.php");?>
     </div>
 </div>
 
-</html>
+

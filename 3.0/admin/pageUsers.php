@@ -1,7 +1,5 @@
 <?php require("header.php");?>
 
-<!DOCTYPE html>
-<html lang="it">
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -11,7 +9,8 @@
         </div>
             <div class="col-sm-8 text-left">
                 <h1>Utenti</h1>
-                <p><?php
+                <p>
+                    <?php
                    /* $DB = [];
                     $count = 0;*/
                     require("Access.php");
@@ -31,13 +30,13 @@
                     catch(PDOException $e) {
                         echo "ERROR ".$e->getMessage();
                     }
-                    ?></p>
+                    ?>
+                </p>
                 <hr>
             </div>
         </div>
-</div>
+    </div>
 
-
-</html>
+<?php require("footer.php"); ?>
 
 
