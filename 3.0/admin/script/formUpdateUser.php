@@ -1,19 +1,20 @@
 <?php
 require("header.php");
-require("Access.php");?>
+require("dbAccess.php");
+//TODO rimuovere se ajax
+?>
 
-<!DOCTYPE html>
-<html lang="it">
+<!--TODO trasformare in script che risponde per richiesta ajax-->
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="pageDashboard.php"> Torna indietro</a></p>
+                <p><a href="../pageDashboard.php"> Torna indietro</a></p>
             </div>
         </div>
         <div class="col-sm-8 text-left">
             <h1>Modifica i dati utente:</h1>
-            <form method="post" action="ModificaU.php">
+            <form method="post" action="userUpdater.php">
                 <p>
                     <?php
                         $error = "";
@@ -25,7 +26,7 @@ require("Access.php");?>
 
                             $username = trim($_POST["username"]);
 
-                            $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+                            $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                             $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
                             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -64,4 +65,4 @@ require("Access.php");?>
     </div>
 </div>
 
-</html>
+

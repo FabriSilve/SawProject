@@ -1,10 +1,8 @@
-<?php require("header.php");?>
+<?php
+    require("header.php");
+    require("navbar.php");
+?>
 
-<!DOCTYPE html>
-<html lang="it">
-
-<!DOCTYPE html>
-<html lang="it">
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -17,9 +15,9 @@
             <p><?php
                 /*$DB = [];
                 $count = 0;*/
-                require("Access.php");
+                require("dbAccess.php");
                 try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+                $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conn->prepare("SELECT * FROM Events");
                 $stmt->bindParam(':id', $id, PDO::PARAM_STR);
@@ -43,6 +41,7 @@
                 $conn = null;
                 }
                 catch(PDOException $e) {
+                    //TODO comunicare errori alla pagina
                     echo "ERROR ".$e->getMessage();
                 }
                 ?>
@@ -50,9 +49,6 @@
         </div>
     </div>
 </div>
-
-
-</html>
 
 
 

@@ -1,17 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vera
- * Date: 19/07/17
- * Time: 14.45
- */
+    require("dbAccess.php");
+    require("navbar.php");
+
     if(isset($_POST["username"])) {
         $username = trim($_POST["username"]);
         $password = trim($_POST["password"]);
     }
-    require ("Access.php");
+
     try{
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username 
                                                                 AND password = :password
@@ -21,7 +18,9 @@
         $conn = null;
     }
     catch(PDOException $e) {
+        //TODO comunicare errore a pagine chiamante
         echo "ERROR ".$e->getMessage();
     }
 
+    //TODO comunicare messaggio di successo a pagina chiamente
 ?>

@@ -1,12 +1,12 @@
 <?php
-    require ("dbAccess.php");
+    require("dbAccess.php");
     $lat = $_GET['id'];
     $check = $_GET['check'];
     $user = $_GET['username'];
     //TODO inserire controlli input
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if($check === "true") {

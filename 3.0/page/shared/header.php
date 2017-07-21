@@ -24,5 +24,5 @@
         var owner = "<?php if(isset($_SESSION["EAusername"])) echo $_SESSION["EAusername"]; else echo 0; ?>";
     </script>
 </head>
-<body>
+<body class="mainbody">
     <?php require("navbar.php"); ?>

@@ -3,10 +3,10 @@
     //require("navbar.php");
 ?>
 <div class="container container-table">
-    <div class="row vertical-center-row margin5">
+    <div class="row vertical-center-row marginMin">
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
             <h1>Login</h1>
-            <form name="login-form" method="post" action="../script/checkLogin.php" onsubmit="return checkLogin()">
+            <form name="login-form" method="post" action="script/checkLogin.php" onsubmit="return checkLogin()">
                 <p>
                     <input type="name" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
                 </p>

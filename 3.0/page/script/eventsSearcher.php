@@ -5,8 +5,8 @@
     $position = "genova";
     $distance = 0.01;
     $days = 2;
-    $lat;
-    $lon;
+    $lat = 0;
+    $lon = 0;
 
     $eventDB = [];
     $count = 0;
@@ -47,7 +47,7 @@
 
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 

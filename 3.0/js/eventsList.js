@@ -4,7 +4,7 @@ function drawEventsList() {
     text += '<div class="row">';
     numEvents = events.length;
     if(numEvents <= 1) {
-        text += '<div class="col-sm-12 margin5 text-center">';
+        text += '<div class="col-sm-12 marginMin text-center">';
         text += '<div class="liteBackground radiusDiv">';
         text += '<h3>Nessun Evento</h3>';
         text += '</div></div>';

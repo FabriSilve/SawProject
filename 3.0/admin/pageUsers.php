@@ -1,7 +1,8 @@
-<?php require("header.php");?>
+<?php
+    require("header.php");
+    require("navbar.php");
+?>
 
-<!DOCTYPE html>
-<html lang="it">
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -11,12 +12,13 @@
         </div>
             <div class="col-sm-8 text-left">
                 <h1>Utenti</h1>
-                <p><?php
+                <p>
+                    <?php
                    /* $DB = [];
                     $count = 0;*/
-                    require("Access.php");
+                    require("dbAccess.php");
                     try {
-                        $conn = new PDO("mysql:host=$servername;dbname=$dbName", $dbUser, $dbPass);
+                        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $stmt = $conn->prepare("SELECT * FROM Users");
                         $stmt->execute();
@@ -31,13 +33,13 @@
                     catch(PDOException $e) {
                         echo "ERROR ".$e->getMessage();
                     }
-                    ?></p>
+                    ?>
+                </p>
                 <hr>
             </div>
         </div>
-</div>
+    </div>
 
-
-</html>
+<?php require("footer.php"); ?>
 
 

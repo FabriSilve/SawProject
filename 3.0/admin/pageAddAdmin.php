@@ -1,16 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vera
- * Date: 12/07/17
- * Time: 16.57
- */
-require("Access.php");
-require("header.php");
+    require("shared/header.php");
+    require("shared/navbar.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="it">
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -18,12 +10,12 @@ require("header.php");
                 <p><a href="pageDashboard.php"> Torna indietro</a></p>
             </div>
         </div>
-    <div class="col-sm-8 text-left">
-            <form method="post" action="addAdmin.php">
+        <div class="col-sm-8 text-left">
+            <form method="post" action="script/adminAdder.php">
                 <h1>Utenti</h1>
                 <p>Inserisci le credenziali:</p>
                 <p>
-                    <input type="username" name="username" id="username" placeholder="Enter username" class="radiusDiv padding5" required>
+                    <input type="name" name="username" id="username" placeholder="Enter username" class="radiusDiv padding5" required>
                 </p>
                 <p>
                     <input type="email" name="email" id="email" placeholder="Enter email" class="radiusDiv padding5" required>
@@ -33,6 +25,10 @@ require("header.php");
                 </p>
                     <button type="submit" class="radiusDiv">Add</button>
             </form>
+            <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                echo '<hr><div class="well">'.$_GET["message"].'</div>';
+            }
+            ?>
         </div>
     </div>
-</html>
+</div>
