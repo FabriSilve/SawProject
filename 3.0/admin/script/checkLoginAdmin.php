@@ -29,11 +29,7 @@
             $message="Password non inserita";
             throw new Exception();
         }
-    } catch(Exception $e) {
-        header("Location: index.php?message=".$message);
-    }
 
-	try {
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -48,7 +44,7 @@
             session_start();
 
             $_SESSION["EAadmin"] = 1;
-            header("Location: index.php");  //automatically redirect to homepage on login success.
+            header("Location: ../index.php");  //automatically redirect to homepage on login success.
 
         } else {
             $message = "Credenziali non valide";
@@ -56,10 +52,11 @@
         }
 
     }catch(PDOException $e){
-        header ("Location: index.php?message="."Error: " . $e->getMessage());
+	    $message = "Errore Database!"."Error: " . $e->getMessage(); //TODO rimuovere errore in release
+        header ("Location: ../index.php?message=".$message);
     }
     catch(Exception $f){
-        header("Location: index.php?message=".$message);
+        header("Location: ../index.php?message=".$message);
     }
 	$conn = null;
 
