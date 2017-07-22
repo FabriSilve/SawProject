@@ -2,6 +2,8 @@
 require("shared/accessManager.php");
 require("shared/header.php");
 require("shared/navbar.php");
+
+    /*TODO aggindere elenco utenti o utenti bannati e anche form per sbannare un utente*/
 ?>
 
 <div class="container-fluid text-center">
