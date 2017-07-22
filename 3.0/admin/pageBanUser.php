@@ -19,7 +19,10 @@ require("shared/navbar.php");
                 <p></p>
                 <p><input type="submit" value="Ban"></p>
             </form>
-            <hr>
+            <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                echo '<hr><div class="well">'.$_GET["message"].'</div>';
+            }
+            ?>
         </div>
     </div>
 </div>

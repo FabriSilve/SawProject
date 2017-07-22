@@ -1,42 +1,37 @@
 <?php
-require("dbAccess.php");
-//TODO trasformare in script
+    require("dbAccess.php");
 
+    $message = "";
+    try {
+        if(!isset($_POST['username']) || empty($_POST['username'])) {
+            $message = "Username mancante";
+        }
+        $username = trim($_POST['username']);
 
-if(isset($_POST['username']))
-    $username = trim($_POST['username']);
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
 
-try {
-    $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("DELETE FROM Users WHERE username = :username;");
-    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-    $stmt->execute();
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+        if($stmt->rowCount() !== 1) {
+            $message = "Utente non presente nel sistema";
+            throw new Exception();
+        }
+
+        $stmt = $conn->prepare("DELETE FROM Users WHERE username = :username;");
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $conn->commit();
+        $message = "Utente cancellato con successo";
+    }
+    catch(PDOException $e) {
+        $conn->rollBack();
+        $message = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+    }
     $conn = null;
-    echo "";
-}
-catch(PDOException $e) {
-    //TODO comunicare errore alla pagina chiamante
-    echo "ERROR ".$e->getMessage();
-}
-
+    header("Location: ../pageBanUser.php?message=".$message);
 ?>
-
-<!--TODO non pagnia a parte ma comunica risultato alla pagina chiamante-->
-    <div class="container-fluid text-center">
-        <div class="row content">
-            <div class="col-sm-2 sidenav">
-                <p><a href="../pageDashboard.php"> Torna indietro</a></p>
-            </div>
-            <div class="col-sm-8 text-left">
-                <h1>Utenti</h1>
-                <p></p>
-                <div class="well">
-                    <p>Utente e` stato eliminato con successo!</p>
-                </div>
-                <hr>
-            </div>
-        </div>
-    </div>
-
 
