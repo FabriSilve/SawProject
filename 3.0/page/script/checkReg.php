@@ -6,30 +6,11 @@
     $password = "";
 
     try {
-        if (isset($_POST["username"]) && $_POST["username"] !== "") {
-            $username = trim($_POST["username"]);
-        } else {
-            $error = "Username non inserito!";
+        $username = trim($_POST["username"]);
+        if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))) {
+            $error = "Username error";
             throw new Exception();
         }
-
-        if (!preg_match("/^[ -~]*$/", $username)) {
-            $error = "Username non valido";
-            throw new Exception();
-        }
-
-        if (isset($_POST["email1"]) && $_POST["email1"] !== "") {
-            $email = trim($_POST["email1"]);
-        } else {
-            $error = "Email non inserita";
-             throw new Exception();
-        }
-
-        //TODO testare espressione regolare
-        /*if (!preg_match("/[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]/", $email)) {
-            $error = "Email non valida";
-            throw new Exception();
-        }*/
 
         if (isset($_POST["password1"]) && $_POST["password1"] !== "") {
             $pass_pre_hash = trim($_POST["password1"]);
