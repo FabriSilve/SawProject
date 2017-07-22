@@ -82,7 +82,7 @@ function showMap (latitude, longitude) {
             position: new google.maps.LatLng(events[j].lat, events[j].lon),
             map: map,
             icon: '../media/map-marker-orange.png',
-            animation:google.maps.Animation.DROP,
+            animation:google.maps.Animation.DROP
         });
 
         google.maps.event.addListener(event, 'click', (function(event, j) {
@@ -108,4 +108,5 @@ function showMap (latitude, longitude) {
             }
         })(event, j));
     }
+    document.getElementById("googleMap").scrollIntoView();
 }

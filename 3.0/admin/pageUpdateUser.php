@@ -26,6 +26,9 @@
                     <p><input type="submit" value="Controlla"></p>
                 </form>
                 <hr>
+                <?php
+                    require("script/showUsers.php");
+                ?>
             </div>
         </div>
     </div>
