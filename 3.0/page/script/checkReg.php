@@ -7,18 +7,15 @@
 
     try {
         $username = trim($_POST["username"]);
+        $pass_pre_hash = trim($_POST["password1"]);
+
         if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))) {
-            $error = "Username error";
             throw new Exception();
         }
 
-        if (isset($_POST["password1"]) && $_POST["password1"] !== "") {
-            $pass_pre_hash = trim($_POST["password1"]);
-        } else {
-            $error = "Username non inserito!";
+        if(empty($pass_pre_hash)){
             throw new Exception();
         }
-
         //TODO controllare espressione regolare
         /*if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)) {
             $error = "Password non valida";
@@ -28,6 +25,7 @@
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
     } catch(Exception $e) {
+        $error = "Username or password error.";
         header("Location: ../pageRegistration.php?registerError=".$error);
     }
     try{
