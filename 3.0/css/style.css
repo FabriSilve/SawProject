@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(255, 249, 135);
+}
+
 .mainbody {
     background: url(../media/background.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;

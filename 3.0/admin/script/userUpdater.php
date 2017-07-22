@@ -65,16 +65,17 @@
         $stmt->execute();
         $conn->commit();
         $message = "Modifica eseguita con successo";
+        header("Location: ../pageUpdateUser.php?message=".$message);
     }
     catch(PDOException $e){
         $dbh->rollback();
         $message = "Si è verificato un errore."." Error: " . $e->getMessage(); //TODO rimuovere in release
+        header("Location: ../pageUpdateUserForm.php?message=".$message);
     } catch(Exception $k){
         $dbh->rollback();
+        header("Location: ../pageUpdateUserForm.php?message=".$message);
     }
     $dbh = null;
-
-    header("Location: ../pageUpdateUser.php?message=".$message);
 ?>
 
 

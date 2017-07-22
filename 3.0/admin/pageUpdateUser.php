@@ -11,9 +11,9 @@
                     <p><a href="pageDashboard.php"> Torna indietro</a></p>
                 </div>
             </div>
-            <div class="col-sm-8 text-left"><!-- TODO div radice per script ajax-->
+            <div class="col-sm-8 text-left">
                 <h1>Utenti</h1>
-                <form method="post" action="script/formUpdateUser.php"> <!--TODO insereire uno script ajax per visualizzare qui file intermedio-->
+                <form method="post" action="pageUpdateUserForm.php">
                     <p>Inserisci il nome utente da modificare:</p>
                     <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
                     <span id="status"></span>

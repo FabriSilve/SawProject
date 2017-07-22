@@ -4,31 +4,18 @@
 	$password = "";
 
 	$message = "";
-
 	try {
-        if (isset($_POST["username"])) {
-            if ($_POST["username"] !== "" ) {
-                $username = trim($_POST["username"]);
-            } else {
-                $message="Username vuoto";
-                throw new Exception();
-            }
-        } else {
-            $message="Username non inserito";
+        if (!isset($_POST["username"]) || empty(trim($_POST["username"]))) {
+            $message="Username non valido";
             throw new Exception();
         }
+        $username = trim($_POST["username"]);
 
-        if (isset($_POST["password"])) {
-            if ($_POST["password"] !== "") {
-                $password = trim($_POST["password"]);
-            } else {
-                $message="Password vuota";
-                throw new Exception();
-            }
-        } else {
-            $message="Password non inserita";
+        if (!isset($_POST["password"]) || empty(trim($_POST["password"]))) {
+            $message="Password non valida";
             throw new Exception();
         }
+        $password = trim($_POST["password"]);
 
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
@@ -42,20 +29,22 @@
 
         if (password_verify($password, $result['password'])) {
             session_start();
-
             $_SESSION["EAadmin"] = 1;
-            header("Location: ../index.php");  //automatically redirect to homepage on login success.
+            header("Location: ../pageDashboard.php");  //automatically redirect to homepage on login success.
 
         } else {
             $message = "Credenziali non valide";
             throw new Exception();
         }
+        $conn = null;
 
     }catch(PDOException $e){
 	    $message = "Errore Database!"."Error: " . $e->getMessage(); //TODO rimuovere errore in release
+        header("Location: ../index.php?message=".$message);
     }
-    catch(Exception $f){}
-    header("Location: ../index.php?message=".$message);
-	$conn = null;
+    catch(Exception $f){
+        header("Location: ../index.php?message=".$message);
+    }
+
 
 ?>

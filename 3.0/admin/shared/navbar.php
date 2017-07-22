@@ -14,7 +14,6 @@
                 <li class="active"><a>Eventi</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <!--TODO inserire passaggio intermedio per pulire la sessione-->
                 <li><a href="../script/logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
             </ul>
         </div>

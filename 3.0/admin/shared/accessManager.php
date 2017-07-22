@@ -3,7 +3,7 @@
     session_start();
     if(isset($_SESSION["EAadmin"]) && $_SESSION["EAadmin"] == 1) {
         $logged = 1;
+    } else {
+        header("Location: index.php");
     }
-    if($logged)
-        header("Location: pageDashboard.php");
 ?>

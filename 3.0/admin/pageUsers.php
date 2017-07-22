@@ -23,7 +23,7 @@
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $stmt = $conn->prepare("SELECT * FROM Users");
                         $stmt->execute();
-                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) { //TODO disegnare come tabella
                             echo 'username: '.$row['username']."<br/>";
                             echo 'email: '.$row['email']."<br/>";
                             echo "<br/>";
