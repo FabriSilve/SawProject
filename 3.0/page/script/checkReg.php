@@ -54,7 +54,7 @@
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("INSERT INTO Users (username, email, password) VALUES (:username, :email, :password);");
+        $stmt = $conn->prepare("INSERT INTO Users (username, password) VALUES (:username, :password);");
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
