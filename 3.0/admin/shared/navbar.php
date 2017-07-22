@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../pageDashboard.php">Dashboard</a>
+            <a class="navbar-brand" href="pageDashboard.php">Dashboard</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -14,7 +14,7 @@
                 <li class="active"><a>Eventi</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="../script/logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                <li><a href="script/logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
             </ul>
         </div>
     </div>
