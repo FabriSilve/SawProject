@@ -1,9 +1,7 @@
 <?php
-require("shared/accessManager.php");
-require("shared/header.php");
-require("shared/navbar.php");
-
-    /*TODO aggindere elenco utenti o utenti bannati e anche form per sbannare un utente*/
+    require("shared/accessManager.php");
+    require("shared/header.php");
+    require("shared/navbar.php");
 ?>
 
 <div class="container-fluid text-center">
@@ -24,7 +22,6 @@ require("shared/navbar.php");
                     <form method="post" onsubmit="confirm('Bannare l\'utente?');" action="script/userBanner.php">
                         <p>Inserisci username:</p>
                         <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
-                        <p></p>
                         <p><input type="submit" value="Ban"></p>
                     </form>
                 </div>
@@ -52,6 +49,7 @@ require("shared/navbar.php");
                     </thead>
                     <?php
                         require ("script/dbAccess.php");
+                        $error = "";
                         try {
                             $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -64,10 +62,16 @@ require("shared/navbar.php");
                             $conn = null;
                         }
                         catch(PDOException $e) {
-                            echo "ERROR ".$e->getMessage(); //TODO rimuovere in release
+                            $error = "ERROR ".$e->getMessage();
                         }
                     ?>
                 </table>
+                <hr>
+                <?php
+                if(!empty($error)) {
+                    echo '<div class="well">'.$error.'</div>';
+                }
+                ?>
             </div>
         </div>
     </div>

@@ -10,6 +10,11 @@
                 <div class="well">
                     <p><a href="pageDashboard.php"> Torna indietro</a></p>
                 </div>
+                <?php
+                    if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                        echo '<div class="well">'.$_GET["message"].'</div>';
+                    }
+                ?>
             </div>
             <div class="col-sm-8 text-left">
                 <h1>Utenti</h1>
@@ -20,10 +25,6 @@
                     <p></p>
                     <p><input type="submit" value="Controlla"></p>
                 </form>
-                <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
-                    echo '<div class="well">'.$_GET["message"].'</div>';
-                }
-                ?>
                 <hr>
             </div>
         </div>

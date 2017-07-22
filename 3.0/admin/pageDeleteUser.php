@@ -10,6 +10,11 @@
                 <div class="well">
                     <p><a href="pageDashboard.php"> Torna indietro</a></p>
                 </div>
+                <?php
+                    if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                        echo '<hr><div class="well">'.$_GET["message"].'</div>';
+                    }
+                ?>
             </div>
             <div class="col-sm-8 text-left">
                 <h1><b>Cancellazione degli utenti</b></h1>

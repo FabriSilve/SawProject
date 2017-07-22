@@ -13,40 +13,57 @@
         </div>
         <div class="col-sm-8 text-left">
             <h1>Eventi</h1>
-            <p><?php //TODO esportare in script e richiamare con require
-                /*$DB = [];
-                $count = 0;*/
-                require("script/dbAccess.php");
-                try {
-                $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $stmt = $conn->prepare("SELECT * FROM Events");
-                $stmt->bindParam(':id', $id, PDO::PARAM_STR);
-                $stmt->execute();
-                    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        $image_file = "../uploads/default.jpg";
-                        if(file_exists("../uploads/".$row["id"].".jpg"))
-                            $image_file = "../uploads/".$row["id"].".jpg";
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>day</th>
+                    <th>address</th>
+                    <th>image</th>
+                    <th>lat</th>
+                    <th>lon</th>
+                </tr>
+                </thead>
+                <?php
+                    require("script/dbAccess.php");
+                    $error = "";
+                    try {
+                        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $stmt = $conn->prepare("SELECT * FROM Events");
+                        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+                        $stmt->execute();
+                            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                $image_file = "../uploads/default.jpg";
+                                if(file_exists("../uploads/".$row["id"].".jpg"))
+                                    $image_file = "../uploads/".$row["id"].".jpg";
 
-                        echo 'id: '.$row["id"].'<br/>';
-                        echo 'name: '.$row["name"].'<br/>';
-                        echo 'description: '.$row["description"].'<br/>';
-                        echo 'day: '.$row["day"].'<br/>';
-                        echo 'address: '.$row["address"].'<br/>';
-                        echo 'image: <img src="'.$image_file.'" style="height:200px;"><br/>';
-                        echo 'lat: '.$row["lat"].'<br/>';
-                        echo 'lon: '.$row["lon"].'<br/>';
-                        echo '<br/>';
+                                echo '<tr>';
+                                echo '<td>'.$row["id"].'</td>';
+                                echo '<td>'.$row["name"].'</td>';
+                                echo '<td>'.$row["description"].'</td>';
+                                echo '<td>'.$row["day"].'</td>';
+                                echo '<td>'.$row["address"].'</td>';
+                                echo '<td><img src="'.$image_file.'" style="height:100px;"></td>';
+                                echo '<td>'.$row["lat"].'</td>';
+                                echo '<td>'.$row["lon"].'</td>';
+                                echo '</tr>';
+                            }
+                        $conn = null;
                     }
-                //echo json_encode($DB, JSON_PRETTY_PRINT);
-                $conn = null;
-                }
-                catch(PDOException $e) {
-                    //TODO comunicare errori alla pagina
-                    echo "ERROR ".$e->getMessage();
-                }
-                ?>
+                    catch(PDOException $e) {
+                        $error = "ERROR ".$e->getMessage();
+                    }
+                    ?>
+                </table>
             <hr>
+            <?php
+                if(!empty($error)) {
+                    echo '<div class="well">'.$error.'</div>';
+                }
+            ?>
         </div>
     </div>
 </div>

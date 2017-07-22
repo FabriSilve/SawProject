@@ -10,6 +10,11 @@
             <div class="well">
                 <p><a href="pageDashboard.php"> Torna indietro</a></p>
             </div>
+            <?php
+                if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                    echo '<hr><div class="well">'.$_GET["message"].'</div>';
+                }
+            ?>
         </div>
         <div class="col-sm-8 text-left">
             <form method="post" action="script/adminAdder.php">
@@ -26,10 +31,6 @@
                 </p>
                     <button type="submit" class="radiusDiv">Add</button>
             </form>
-            <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
-                echo '<hr><div class="well">'.$_GET["message"].'</div>';
-            }
-            ?>
         </div>
     </div>
 </div>
