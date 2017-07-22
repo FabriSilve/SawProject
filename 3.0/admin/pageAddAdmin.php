@@ -22,14 +22,10 @@
                 <p>Inserisci le credenziali:</p>
                 <p>
                     <input type="name" name="username" id="username" placeholder="Enter username" class="radiusDiv padding5" required>
-                </p>
-                <p>
                     <input type="email" name="email" id="email" placeholder="Enter email" class="radiusDiv padding5" required>
-                </p>
-                <p>
                     <input type="password" name="password" id="password" placeholder="Enter Password" class="radiusDiv padding5" required>
-                </p>
                     <button type="submit" class="radiusDiv">Add</button>
+                </p>
             </form>
         </div>
     </div>

@@ -18,7 +18,15 @@ require("shared/navbar.php");
         <div class="col-sm-8 text-left">
             <h1>Modifica i dati utente:</h1>
             <form method="post" action="script/userUpdater.php">
-                <p>
+                <h3>Dati attuali:</h3>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
                     <?php
                         $message = "";
                         try {
@@ -38,13 +46,14 @@ require("shared/navbar.php");
                                 $message = "utente non presente";
                                 throw new Exception();
                             }
-                            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) { //TODO trasformare dati in tabella
-                                echo '<h3>I valori vecchi sono:</h3>';
-                                echo 'Username: '.$row["username"].'<br/>';
-                                echo 'Email: '.$row["email"].'<br/>';
-                                echo 'Password: ******** <br/>';
-                                echo '<input type="text" name="oldUsername" value="'.$row["username"].'" hidden>';
-                            }
+                            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                            echo '<tr>';
+                            echo '<td>'.$row["username"].'</td>';
+                            echo '<td>'.$row["email"].'</td>';
+                            echo '<td>******** </td>';
+                            echo '</tr>';
+                            echo '<input type="text" name="oldUsername" value="'.$row["username"].'" hidden>';
+
                             $conn = null;
                         }
                         catch(PDOException $e) {
@@ -54,11 +63,11 @@ require("shared/navbar.php");
                             header("Location: pageUpdateUser.php?message=".$message);
                         }
                     ?>
-                </p>
+                </table>
                 <h3>Inserisci i nuovi dati:</h3>
                 <p>
-                    <input type="name" name="newUsername" id="username" placeholder="Username" class="radiusDiv padding5" required>
-                    <input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required><
+                    <input type="text" name="newUsername" id="username" placeholder="Username" class="radiusDiv padding5" required>
+                    <input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required>
                     <input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required>
                     <input type="submit" value="Modificare">
                 </p>

@@ -21,7 +21,7 @@
                     <h1>Esegui Ban</h1>
                     <form method="post" onsubmit="confirm('Bannare l\'utente?');" action="script/userBanner.php">
                         <p>Inserisci username:</p>
-                        <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
+                        <p><input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required></p>
                         <p><input type="submit" value="Ban"></p>
                     </form>
                 </div>
@@ -29,22 +29,18 @@
                     <h1>Rimuovi Ban</h1>
                     <form method="post" onsubmit="confirm('Rimuovere ban all\'utente?');" action="script/userUnbanner.php">
                         <p>Inserisci username:</p>
-                        <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
-                        <p></p>
+                        <p><input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required></p>
                         <p><input type="submit" value="Unban"></p>
                     </form>
                 </div>
             </div>
             <div class="row">
+                <h3>Utenti Bannati</h3>
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>
-                                Username
-                            </th>
-                            <th>
-                                Email
-                            </th>
+                            <th>Username</th>
+                            <th>Email</th>
                         </tr>
                     </thead>
                     <?php

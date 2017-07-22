@@ -1,10 +1,9 @@
 <?php
-    //TODO unire al file in admin e portare in zona privata
-    $server = "localhost";
+
     $dbUser = "S4116422";
+    $server = "localhost";
     $dbPass = "Minsk";
     $dbName = "S4116422";
-
 /*
     $servername = "localhost";
     $dbUser = "root";
