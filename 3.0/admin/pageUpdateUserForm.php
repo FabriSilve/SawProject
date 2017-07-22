@@ -1,26 +1,25 @@
 <?php
-require("header.php");
-require("dbAccess.php");
-//TODO rimuovere se ajax
+require("script/dbAccess.php");
+require("shared/header.php");
+require("shared/navbar.php");
 ?>
 
-<!--TODO trasformare in script che risponde per richiesta ajax-->
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="../pageDashboard.php"> Torna indietro</a></p>
+                <p><a href="pageDashboard.php"> Torna indietro</a></p>
             </div>
         </div>
         <div class="col-sm-8 text-left">
             <h1>Modifica i dati utente:</h1>
-            <form method="post" action="userUpdater.php">
+            <form method="post" action="script/userUpdater.php">
                 <p>
                     <?php
-                        $error = "";
+                        $message = "";
                         try {
-                            if(!isset($_POST["username"]) ) {
-                                $error = "Utente non inserito";
+                            if(!isset($_POST["username"]) || empty(trim($_POST["username"]))) {
+                                $message = "Username non valido";
                                 throw new Exception();
                             }
 
@@ -32,11 +31,11 @@ require("dbAccess.php");
                             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
                             $stmt->execute();
                             if($stmt->rowCount() !== 1) {
-                                $error = "utente non presente";
+                                $message = "utente non presente";
                                 throw new Exception();
                             }
-                            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                echo '<b>I valori vecchi sono:<br/></b>';
+                            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) { //TODO trasformare dati in tabella
+                                echo '<h3>I valori vecchi sono:</h3>';
                                 echo 'Username: '.$row["username"].'<br/>';
                                 echo 'Email: '.$row["email"].'<br/>';
                                 echo 'Password: ******** <br/>';
@@ -45,24 +44,32 @@ require("dbAccess.php");
                             $conn = null;
                         }
                         catch(PDOException $e) {
-                            echo "ERROR ".$e->getMessage();
+                            $message = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere errore in release
+                            header("Location: pageUpdateUser.php?message=".$message);
                         } catch(Exception $e) {
-                            header("Location: pageUpdateUser.php?error=".$error);
+                            header("Location: pageUpdateUser.php?message=".$message);
                         }
                     ?>
                 </p>
-
-                <p></p>
-                <p><b>Inserisci i nuovi dati:</b></p>
-                    <input type="text" name="newUsername" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
-                    <input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required><span id="status"></span>
-                    <input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required><span id="status"></span>
-                    <p></p>
-                <p><input type="submit" value="Modificare"></p>
+                <h3>Inserisci i nuovi dati:</h3>
+                <p>
+                    <input type="name" name="newUsername" id="username" placeholder="Username" class="radiusDiv padding5" required>
+                    <input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required><
+                    <input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required>
+                    <input type="submit" value="Modificare">
+                </p>
             </form>
             <hr>
+            <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                echo '<div class="well">'.$_GET["message"].'</div>';
+            }
+            ?>
         </div>
     </div>
 </div>
+
+<?php
+    require("shared/footer.php");
+?>
 
 

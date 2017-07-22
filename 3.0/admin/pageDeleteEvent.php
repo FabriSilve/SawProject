@@ -1,4 +1,5 @@
 <?php
+    require("shared/accessManager.php");
     require("shared/header.php");
     require("shared/navbar.php");
 ?>

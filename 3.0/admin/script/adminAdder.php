@@ -39,16 +39,14 @@
         $stmt_acc->bindParam(':password', $password_hash);
 
         $stmt_acc->execute();
+        $message = "Admin inserito con successo";
     }
     catch(PDOException $e){
         $message = "Username già utilizzato <br> Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
-        header("Location: ../pageAddAdmin.php?message=".$message);
     }
-    catch(Exception $k){
-        header("Location: ../pageAddAdmin.php?message=".$message);
-    }
+    catch(Exception $k){}
     $dbh = null;  //termino la connessione.
-    $message = "Admin inserito con successo";
+
     header("Location: ../pageAddAdmin.php?message=".$message);
 ?>
 

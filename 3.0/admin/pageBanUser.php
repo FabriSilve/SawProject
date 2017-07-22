@@ -1,6 +1,9 @@
 <?php
-require("header.php");
-require("navbar.php");
+require("shared/accessManager.php");
+require("shared/header.php");
+require("shared/navbar.php");
+
+    /*TODO aggindere elenco utenti o utenti bannati e anche form per sbannare un utente*/
 ?>
 
 <div class="container-fluid text-center">
@@ -12,13 +15,16 @@ require("navbar.php");
         </div>
         <div class="col-sm-8 text-left">
             <h1>Utenti</h1>
-            <form method="post" action="script/userBanner.php">
+            <form method="post" onsubmit="confirm('Bannare l\'utente?');" action="script/userBanner.php">
                 <p>Inserisci il nome utente da bannare:</p>
                 <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                 <p></p>
                 <p><input type="submit" value="Ban"></p>
             </form>
-            <hr>
+            <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                echo '<hr><div class="well">'.$_GET["message"].'</div>';
+            }
+            ?>
         </div>
     </div>
 </div>

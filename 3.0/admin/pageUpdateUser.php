@@ -1,6 +1,7 @@
 <?php
-    require("header.php");
-    require("navbar.php");
+    require("shared/accessManager.php");
+    require("shared/header.php");
+    require("shared/navbar.php");
 ?>
 
     <div class="container-fluid text-center">
@@ -10,16 +11,17 @@
                     <p><a href="pageDashboard.php"> Torna indietro</a></p>
                 </div>
             </div>
-            <div class="col-sm-8 text-left"><!-- TODO div radice per script ajax-->
+            <div class="col-sm-8 text-left">
                 <h1>Utenti</h1>
-                <form method="post" action="script/formUpdateUser.php"> <!--TODO insereire uno script ajax per visualizzare qui file intermedio-->
+                <form method="post" action="pageUpdateUserForm.php">
                     <p>Inserisci il nome utente da modificare:</p>
-                    <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
+                    <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
+                    <span id="status"></span>
                     <p></p>
                     <p><input type="submit" value="Controlla"></p>
                 </form>
-                <?php if(isset($_GET["error"]) && $_GET["error"] !== "" ) {
-                    echo '<div class="well">'.$_GET["error"].'</div>';
+                <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                    echo '<div class="well">'.$_GET["message"].'</div>';
                 }
                 ?>
                 <hr>
@@ -27,4 +29,6 @@
         </div>
     </div>
 
-<?php require("footer.php"); ?>
+<?php
+    require("shared/footer.php");
+?>

@@ -1,6 +1,8 @@
 <?php
     require("shared/header.php");
     //require("navbar.php");
+
+    //TODO se l'utente è stato bannato non deve poter accedere e visualizzare un messaggio "sei stato bannato contatta l'admin"
 ?>
 <div class="container container-table">
     <div class="row vertical-center-row marginMin">

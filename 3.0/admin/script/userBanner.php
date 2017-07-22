@@ -1,26 +1,39 @@
 <?php
     require("dbAccess.php");
-    require("navbar.php");
 
-    if(isset($_POST["username"])) {
-        $username = trim($_POST["username"]);
-        $password = trim($_POST["password"]);
-    }
-
+    $message = "";
     try{
+        if(!isset($_POST["username"]) || empty($_POST["username"])) {
+            $message="Username non valido";
+            throw new Exception();
+        }
+        $username = trim($_POST["username"]);
+
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username 
-                                                                AND password = :password
-                                                                AND banned !=1");
-        $stmt = $conn->prepare("UPDATE Users SET  banned=1 WHERE username = :username AND password = :password");
+        $conn->beginTransaction();
+
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username");
+        $stmt->bindParam(":username", $username);
         $stmt->execute();
-        $conn = null;
+        if($stmt->rowCount() !== 1) {
+            $message = "Utente non presente nel sistema";
+            throw new Exception();
+        }
+
+        $stmt = $conn->prepare("UPDATE Users SET  banned=1 WHERE username = :username");
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+
+        $conn->commit();
+        $message = "Utente bannato con successo";
     }
     catch(PDOException $e) {
-        //TODO comunicare errore a pagine chiamante
-        echo "ERROR ".$e->getMessage();
+        $conn->rollBack();
+        $message = "Errore nel database"." ERROR ".$e->getMessage(); //TODO rimuovere in release
+    } catch (Exception $e) {
+        $conn->rollBack();
     }
-
-    //TODO comunicare messaggio di successo a pagina chiamente
+    $conn = null;
+    header("Location: ../pageBanUser.php?message=".$message);
 ?>

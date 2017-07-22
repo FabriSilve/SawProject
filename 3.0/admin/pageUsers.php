@@ -1,6 +1,7 @@
 <?php
-    require("header.php");
-    require("navbar.php");
+    require("shared/accessManager.php");
+    require("shared/header.php");
+    require("shared/navbar.php");
 ?>
 
 <div class="container-fluid text-center">
@@ -13,16 +14,16 @@
             <div class="col-sm-8 text-left">
                 <h1>Utenti</h1>
                 <p>
-                    <?php
+                    <?php //TODO trasportare in script e incudere con require
                    /* $DB = [];
                     $count = 0;*/
-                    require("dbAccess.php");
+                    require("script/dbAccess.php");
                     try {
                         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $stmt = $conn->prepare("SELECT * FROM Users");
                         $stmt->execute();
-                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) { //TODO disegnare come tabella
                             echo 'username: '.$row['username']."<br/>";
                             echo 'email: '.$row['email']."<br/>";
                             echo "<br/>";
@@ -40,6 +41,8 @@
         </div>
     </div>
 
-<?php require("footer.php"); ?>
+<?php
+    require("shared/footer.php");
+?>
 
 
