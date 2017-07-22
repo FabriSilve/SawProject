@@ -13,7 +13,7 @@ require("shared/navbar.php");
         </div>
         <div class="col-sm-8 text-left">
             <h1>Utenti</h1>
-            <form method="post" action="script/userBanner.php">
+            <form method="post" onsubmit="confirm('Bannare l\'utente?');" action="script/userBanner.php">
                 <p>Inserisci il nome utente da bannare:</p>
                 <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                 <p></p>
