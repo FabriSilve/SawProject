@@ -37,7 +37,12 @@ function checkReg() {
         document.getElementById("formError").innerText = "Email non valida";
         return false;
     }
-    if(email2 === "" || !email1 !== email2) {
+    if(email2 === "" ) { //TODO inserire pattern per controllo mail
+        document.getElementById("email2").focus();
+        document.getElementById("formError").innerText = "Email non valida";
+        return false;
+    }
+    if(email1 !== email2) {
         document.getElementById("email2").focus();
         document.getElementById("formError").innerText = "Email diversa";
         return false;
@@ -47,11 +52,15 @@ function checkReg() {
         document.getElementById("formError").innerText = "Password non valido";
         return false;
     }
-
-    if(pass2 === "" || pass1 !== pass2) {
+    if(pass2 === "") {
+        document.getElementById("password2").focus();
+        document.getElementById("formError").innerText = "Password non valido";
+        return false;
+    }
+    if(pass1 !== pass2) {
         document.getElementById("password2").focus();
         document.getElementById("formError").innerText = "Password diversa";
         return false;
     }
-    return false;
+    return true;
 }

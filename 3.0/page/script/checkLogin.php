@@ -46,6 +46,10 @@
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
 
+        if($stmt->rowCount() !== 1) {
+            $error = "utente non presente";
+            throw new Exception();
+        }
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (password_verify($password, $result['password'])) {
