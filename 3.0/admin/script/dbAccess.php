@@ -5,6 +5,7 @@
     $dbPass = "Minsk";
     $dbName = "S4116422";
 
+    echo '<script>alert('.$server.');</script>';
 /*
     $servername = "localhost";
     $dbUser = "root";
