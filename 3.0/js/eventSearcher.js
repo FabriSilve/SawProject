@@ -30,6 +30,7 @@
                     //console.info(events[0].lat+" "+events[0].lon);
                     showMap(events[0].lat, events[0].lon);
                     drawEventsList();
+                    document.getElementById("googleMap").scrollIntoView();
                 }
                 else {
                     alert("Ajax error: no data received");

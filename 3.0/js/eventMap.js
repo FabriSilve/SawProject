@@ -108,5 +108,4 @@ function showMap (latitude, longitude) {
             }
         })(event, j));
     }
-    document.getElementById("googleMap").scrollIntoView();
 }
