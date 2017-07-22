@@ -20,8 +20,8 @@
                     <p></p>
                     <p><input type="submit" value="Controlla"></p>
                 </form>
-                <?php if(isset($_GET["error"]) && $_GET["error"] !== "" ) {
-                    echo '<div class="well">'.$_GET["error"].'</div>';
+                <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                    echo '<div class="well">'.$_GET["message"].'</div>';
                 }
                 ?>
                 <hr>
