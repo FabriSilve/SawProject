@@ -13,30 +13,42 @@
         </div>
             <div class="col-sm-8 text-left">
                 <h1>Utenti</h1>
-                <p>
-                    <?php //TODO trasportare in script e incudere con require
-                   /* $DB = [];
-                    $count = 0;*/
-                    require("script/dbAccess.php");
-                    try {
-                        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $stmt = $conn->prepare("SELECT * FROM Users");
-                        $stmt->execute();
-                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) { //TODO disegnare come tabella
-                            echo 'username: '.$row['username']."<br/>";
-                            echo 'email: '.$row['email']."<br/>";
-                            echo "<br/>";
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>
+                            Username
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                    </tr>
+                    </thead>
+                    <?php
+                        require ("script/dbAccess.php");
+                        $error = "";
+                        try {
+                            $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $stmt = $conn->prepare("SELECT username, email FROM Users");
+                            $stmt->execute();
+                            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<tr><td>'.$row['username']."</td>";
+                                echo '<td>'.$row['email']."</td></tr>";
+                            }
+                            $conn = null;
                         }
-                        //echo json_encode($DB, JSON_PRETTY_PRINT);
-                        $conn = null;
-                    }
-                    catch(PDOException $e) {
-                        echo "ERROR ".$e->getMessage();
-                    }
+                        catch(PDOException $e) {
+                            $error = "ERROR ".$e->getMessage(); //TODO rimuovere in release
+                        }
                     ?>
-                </p>
+                </table>
                 <hr>
+                <?php
+                if(!empty($error)) {
+                    echo '<div class="well">'.$error.'</div>';
+                }
+                ?>
             </div>
         </div>
     </div>

@@ -10,6 +10,10 @@ require("shared/navbar.php");
             <div class="well">
                 <p><a href="pageDashboard.php"> Torna indietro</a></p>
             </div>
+            <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                echo '<div class="well">'.$_GET["message"].'</div>';
+            }
+            ?>
         </div>
         <div class="col-sm-8 text-left">
             <h1>Modifica i dati utente:</h1>
@@ -60,10 +64,6 @@ require("shared/navbar.php");
                 </p>
             </form>
             <hr>
-            <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
-                echo '<div class="well">'.$_GET["message"].'</div>';
-            }
-            ?>
         </div>
     </div>
 </div>

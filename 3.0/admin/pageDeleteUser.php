@@ -10,10 +10,15 @@
                 <div class="well">
                     <p><a href="pageDashboard.php"> Torna indietro</a></p>
                 </div>
+                <?php
+                    if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                        echo '<hr><div class="well">'.$_GET["message"].'</div>';
+                    }
+                ?>
             </div>
             <div class="col-sm-8 text-left">
                 <h1><b>Cancellazione degli utenti</b></h1>
-                    <form method="post" onsubmit="confirm('Cancellare utente?');" action="script/userDeleter.php"> <!--TODO inserire popup di conferma-->
+                    <form method="post" onsubmit="confirm('Cancellare utente?');" action="script/userDeleter.php">
                     <p>Inserisci il nome utente da eleminare:</p>
                         <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                         <p></p>
