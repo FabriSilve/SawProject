@@ -3,7 +3,6 @@
     require("dbAccess.php");
     $error = "";
     $username = "";
-    $email = "";
     $password = "";
 
     try {
@@ -56,7 +55,6 @@
 
         $stmt = $conn->prepare("INSERT INTO Users (username, password) VALUES (:username, :password);");
         $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
 
         $stmt->execute();
