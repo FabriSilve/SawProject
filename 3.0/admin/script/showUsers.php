@@ -10,26 +10,26 @@
     </tr>
     </thead>
     <?php
-    require ("dbAccess.php");
-    $error = "";
-    try {
-        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT username, email FROM Users");
-        $stmt->execute();
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo '<tr><td>'.$row['username'].'</td>';
-            echo '<td>'.$row['email'].'</td>';
+        require ("script/dbAccess.php");
+        $error = "";
+        try {
+            $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT username, email FROM Users");
+            $stmt->execute();
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo '<tr><td>'.$row['username'].'</td>';
+                echo '<td>'.$row['email'].'</td>';
+            }
+            $conn = null;
         }
-        $conn = null;
-    }
-    catch(PDOException $e) {
-        $error = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
-    }
+        catch(PDOException $e) {
+            $error = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+        }
 
-    echo "</table>";
+        echo "</table>";
 
-    if(!empty($error)) {
-        echo '<hr><div class="well">'.$error.'</div>';
-    }
-?>
+        if(!empty($error)) {
+            echo '<hr><div class="well">'.$error.'</div>';
+        }
+    ?>
