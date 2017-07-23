@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <?php
-        require("../shared/accessManager.php");
+        require("shared/accessManager.php");
         require ("script/dbAccess.php");
         $error = "";
         try {

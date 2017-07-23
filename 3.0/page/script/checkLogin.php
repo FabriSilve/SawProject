@@ -11,7 +11,7 @@
     }
 	try {
         if (isset($_POST["username"])) {
-            if ($_POST["username"] !== "" ) {
+            if (trim($_POST["username"]) !== "" ) {
                 $username = trim($_POST["username"]);
             } else {
                 $error="Username vuoto";
@@ -23,7 +23,7 @@
         }
 
         if (isset($_POST["password"])) {
-            if ($_POST["password"] !== "") {
+            if (trim($_POST["password"]) !== "") {
                 $password = trim($_POST["password"]);
             } else {
                 $error="Password vuota";
@@ -51,7 +51,8 @@
             throw new Exception();
         }
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        echo '<script>alert('.password_verify($password, $result['password']).');';
+        echo 'alert('.$password.');alert('.$result['password'].');</script>';
         if (password_verify($password, $result['password'])) {
             session_start();
             $_SESSION["EAauthorized"] = 1;
@@ -63,6 +64,7 @@
             header("Location: ../pageHomepage.php");  //automatically redirect to homepage on login success.
         } else {
             $error = "Credenziali non valide";
+            sleep(10);
             throw new Exception();
         }
 
