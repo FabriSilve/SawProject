@@ -1,5 +1,5 @@
 <?php
-
+    require("../shared/accessManager.php");
     $dbUser = "S4116422";
     $server = "localhost";
     $dbPass = "Minsk";

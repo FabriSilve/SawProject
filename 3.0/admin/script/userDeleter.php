@@ -1,4 +1,5 @@
 <?php
+    require("../shared/accessManager.php");
     require("dbAccess.php");
 
     $message = "";
