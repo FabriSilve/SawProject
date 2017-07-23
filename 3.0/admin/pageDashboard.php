@@ -62,10 +62,15 @@
        </div>
        <div class="col-sm-2 sidenav">
            <div class="well">
-               <p>ADS</p><!--TODO utente più attivo-->
+                 <div class="chip">
+                   <img src="../media/img_avatar.jpg" alt="Person" width="50" height="50">
+                    Admin
+               </div>
+             <!--TODO utente più attivo-->
            </div>
            <div class="well">
-               <p>ADS</p><!--TODO evento più seguito-->
+               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+               <p><a href="#" class="fa fa-google"></a></p><!--TODO evento più seguito-->
            </div>
            <!--TODO se vogliamo altro-->
        </div>
