@@ -4,6 +4,8 @@
     require("shared/header.php");
     require("shared/navbar.php");
 ?>
+
+
 <div class="container-fluid text-left">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -30,7 +32,33 @@
            <h1>Area Amministrativa</h1>
            <p> TESTO DA INSERIRE</p> <!--TODO inserire descrizione delle funzionalità dell'area amministrativa-->
            <hr>
-           <p>INSERIRE STATISTICHE</p><!--TODO inserire dei dati statistici (grafici?) del sistema-->
+           <p><b>STATISTICHE:</b></p><!--TODO inserire dei dati statistici (grafici?) del sistema-->
+           <div class="well">
+               <div id="piechart"></div>
+               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+               <script type="text/javascript">
+                   // Load google charts
+                   google.charts.load('current', {'packages':['corechart']});
+                   google.charts.setOnLoadCallback(drawChart);
+
+                   // Draw the chart and set the chart values
+                   function drawChart() {
+                       var data = google.visualization.arrayToDataTable([
+                           ['Task', 'Percentuale'],
+                           ['Visitors', 8],
+                           ['Page Views', 2],
+                           ['Users', 4]
+                       ]);
+
+                       // Optional; add a title and set the width and height of the chart
+                       var options = {'title':'Statistiche', 'width':550, 'height':400};
+
+                       // Display the chart inside the <div> element with id="piechart"
+                       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                       chart.draw(data, options);
+                   }
+               </script>
+           </div>
        </div>
        <div class="col-sm-2 sidenav">
            <div class="well">
