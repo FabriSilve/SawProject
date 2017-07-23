@@ -13,7 +13,6 @@
     </thead>
     <?php
     require("script/dbAccess.php");
-    $server = "localhost"; //TODO rimuovere e capire perche non funziona senza
     $error = "";
     try {
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);

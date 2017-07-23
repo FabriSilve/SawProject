@@ -1,9 +1,4 @@
-    function showValue(id, newValue) //TODO spostare in utils
-    {
-        document.getElementById(id).innerHTML=newValue+" ";
-    }
-
-    function searchEvents() {
+   function searchEvents() {
         urlSimple = "../script/eventsSearcher.php";
         if(document.getElementById('position').value === "")
             position = "default";

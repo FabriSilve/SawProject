@@ -18,3 +18,8 @@ function getXMLHttpRequestObject() {
     }
     return request;
 }
+
+function showValue(id, newValue)
+{
+    document.getElementById(id).innerHTML=newValue+" ";
+}
