@@ -28,10 +28,10 @@
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (password_verify($password, $result['password'])) {
+        if(password_verify($password, $result['password'])) {
             session_start();
             $_SESSION["EAadmin"] = 1;
-            header("Location: ../pageDashboard.php");  //automatically redirect to homepage on login success.
+            header("Location: ../pageDashboard.php");
 
         } else {
             $message = "Credenziali non valide";
