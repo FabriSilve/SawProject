@@ -4,8 +4,8 @@
     $server = "localhost";
     $dbPass = "Minsk";
     $dbName = "S4116422";
-/*
-    $servername = "localhost";
+
+  /*  $servername = "localhost";
     $dbUser = "root";
     $dbPass = "root";
     $dbName = "sawdb";*/
