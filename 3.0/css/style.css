@@ -126,14 +126,14 @@ h2 {
 }
 .star:before {
     content: "\2606";
-    color: darkorange;
-    position: absolute;
+    color: blue;
+    position: relative;
     visibility:visible;
 }
 .star:checked:before {
     content: "\2605";
-    color: darkorange;
-    position: absolute;
+    color: blue;
+    position: relative;
 }
 
 .fa {

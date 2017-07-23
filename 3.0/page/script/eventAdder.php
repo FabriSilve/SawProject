@@ -1,4 +1,5 @@
 <?php
+    require("accessControl.php");
     require("dbAccess.php");
     $error = "";
     $name = "";

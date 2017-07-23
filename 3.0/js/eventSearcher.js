@@ -1,5 +1,5 @@
    function searchEvents() {
-        urlSimple = "../script/eventsSearcher.php";
+        urlSimple = "script/eventsSearcher.php";
         if(document.getElementById('position').value === "")
             position = "default";
         else
@@ -25,7 +25,7 @@
                     //console.info(events[0].lat+" "+events[0].lon);
                     showMap(events[0].lat, events[0].lon);
                     drawEventsList();
-                    document.getElementById("googleMap").scrollIntoView();
+                    document.getElementById("searchForm").scrollIntoView();
                 }
                 else {
                     alert("Ajax error: no data received");

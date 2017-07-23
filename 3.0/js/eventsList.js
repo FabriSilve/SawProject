@@ -15,11 +15,13 @@ function drawEventsList() {
             }
             text += '<div class="col-sm-3 marginBottom" id="' + events[i].id + '">';
             text += '<div class="liteBackground radiusDiv">';
-            text += '<p ><h2>' + events[i].name + '</h2>';
-            text += '<h4>' + events[i].day + '</h4></p>';
+            text += '<p ><h2>' + events[i].name;
+            console.info(owner);
+            if(owner !== "0")
+                text += '<input id="check'+events[i].id+'" type="checkbox" title="Follow" onchange="updateFollowed(\''+events[i].id+'\');">';
+            text += '</h2><h4>' + events[i].day + '</h4></p>';
             text += '<img src = "' + events[i].image + '" class="img-responsive eventImage"  alt ="Image">';
             text += '<p>' + events[i].description + '</p>';
-            text += '<input id="'+events[i].id+'" type="checkbox" title="Follow" onchange="updateFollowed('+events[i].id+');">';
             text += '</div></div>';
 
         }
@@ -32,11 +34,12 @@ function drawEventsList() {
                 if (i < numEvents) {
                     text += '<div class="col-sm-3 marginBottom" id="' + events[i].id + '">';
                     text += '<div class="liteBackground radiusDiv">';
-                    text += '<p ><h2>' + events[i].name + '</h2>';
-                    text += '<h4>' + events[i].day + '</h4></p>';
+                    text += '<p ><h2>' + events[i].name;
+                    // TODO text += '<input id="\'+events[i].id+\'" type="checkbox" title="Follow" onchange="updateFollowed("'+events[i].id+'");">';
+                    text += '</h2><h4>' + events[i].day + '</h4></p>';
                     text += '<img src = "' + events[i].image + '" class="img-responsive eventImage" alt = "Image" >';
                     text += '<p>' + events[i].description + '</p>';
-                    text += '<input id="'+events[i].id+'" class="star" type="checkbox" title="Follow" onchange="updateFollowed('+events[i].id+');">';
+                    //text += '<input id="'+events[i].id+'" type="checkbox" title="Follow" onchange="updateFollowed("'+events[i].id+'");">';
                     text += '</div></div>';
                 }
             }
@@ -47,12 +50,14 @@ function drawEventsList() {
         document.getElementById('eventsList').innerHTML = text;
 }
 
-function updateFollowed(id) {
-    var check = document.getElementById(""+id+"").value;
+function updateFollowed(num) {
+    id = "check"+num;
+    check = document.getElementById(id).checked;
     console.info("check "+check);
     console.info("id "+id);
-    urlSimple = "../script/updateFollowed.php";
-    url = urlSimple+"?id="+id+"&check="+check+"&username="+owner;
+    console.info(owner);
+    urlSimple = "script/updateFollowed.php";
+    url = urlSimple+"?id="+num+"&check="+check+"&username="+owner;
     xhr = getXMLHttpRequestObject();
     xhr.onreadystatechange = updateCallback;
     xhr.open('GET',url,true);
@@ -65,7 +70,7 @@ function updateCallback() {
             if (xhr.responseText !== "") {
                 console.info("respose is: " + xhr.responseText);
                 if(xhr.responseText === "true")
-                    console.info("followed")
+                    console.info("updated")
                 else
                     console.info("errore followed");
             }

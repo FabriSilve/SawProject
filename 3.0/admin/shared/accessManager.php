@@ -1,4 +1,5 @@
 <?php
+    //TODO portare in comune con main
     $logged = 0;
     if(session_status() !== PHP_SESSION_ACTIVE ) {
         session_start();

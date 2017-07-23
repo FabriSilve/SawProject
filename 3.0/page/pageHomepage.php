@@ -18,7 +18,7 @@
 <br>
 <div class="container container-table">
     <div class="row vertical-center-row">
-        <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
+        <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground" id="searchForm">
             <p>
                 <input type="text" name="position" id="position" placeholder="Position" class="radiusDiv padding5">
                 <button class="radiusDiv" onclick="searchEvents()">

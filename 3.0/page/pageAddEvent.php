@@ -17,32 +17,23 @@
             <div class="row">
                 <div class="col-sm-4">
                     <input type="text" name="name" id="name" placeholder="Name" class="radiusDiv padding5 marginMin" required>
-                </div>
-                <div class="col-sm-4">
                     <input type="text" name="address" id="address" placeholder="Address" class="radiusDiv padding5 marginMin" required><br>
-                </div>
-                <div class="col-sm-4">
                     <input type="date" name="day" id="day" class="radiusDiv marginMin padding5" title="Day" required >
+                    <input name="owner" id="owner" value="owner" type="text" hidden>
                 </div>
             </div>
-            <div class="row text-center">
-                <div class="col-sm-6">
-                    <br>
-                    <p>Description:</p>
-                    <textarea cols="20" rows="5" name="description" id="description" class="radiusDiv marginMin padding5" title="Description" required>
+            <div class="col-sm-4">
+                <br>
+                <p>Description:</p>
+                <textarea cols="20" rows="5" name="description" id="description" class="radiusDiv marginMin padding5" title="Description" required>
                 </textarea>
-                </div>
-                <div class="col-sm-6">
+                <!--<div class="col-sm-6">
                     <img src="../media/camera.png" id="anteprima" name="anteprima" class="anteprima" >
-                </div>
+                </div>-->
             </div>
-            <div class="row text-center">
-                <div class="col-sm-6">.</div>
-                <div class="col-sm-6 text-center">
-                    <input type="file" id="image" name="image" class="align-center" required>
-                </div>
+            <div class="col-sm-4">
+                <input type="file" id="image" name="image" class="align-center" required>
             </div>
-            <input name="owner" id="owner" type="text" hidden>
             <div class="row">
                 <div class="col-sm-12">
                     <button type="submit" class="radiusDiv marginMin"">

@@ -1,4 +1,5 @@
 <?php
+    require("accessControl.php");
     $eventDB = array();
     $count = 0;
     require("dbAccess.php");
