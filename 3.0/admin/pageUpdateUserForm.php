@@ -28,14 +28,19 @@ require("shared/navbar.php");
                     </tr>
                 </thead>
                     <?php
+                        $username = "";
+                        if(isset($_GET["message"]) && isset($_GET["username"])) {
+                            $username = $_GET['username'];
+                        }
                         $message = "";
                         try {
-                            if(!isset($_POST["username"]) || empty(trim($_POST["username"]))) {
-                                $message = "Username non valido";
-                                throw new Exception();
+                            if($username == "") {
+                                if (!isset($_POST["username"]) || empty(trim($_POST["username"]))) {
+                                    $message = "Username non valido";
+                                    throw new Exception();
+                                }
+                                $username = trim($_POST["username"]);
                             }
-
-                            $username = trim($_POST["username"]);
 
                             $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

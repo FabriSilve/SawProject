@@ -3,12 +3,14 @@
     require("dbAccess.php");
 
     $message = "";
+    $usernameGet = "";
     try {
         if(!isset($_POST['oldUsername']) || !isset($_POST['newUsername']) || !isset($_POST['email']) || !isset($_POST['password'])) {
             $message = "Mancano dei campi";
             throw new Exception();
         }
         $oldUsername = trim($_POST['oldUsername']);
+        $usernameGet = $oldUsername;
         $newUsername = trim($_POST['newUsername']);
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
@@ -34,7 +36,7 @@
             $message = "Password non valida";
             throw new Exception();
         }
-        $password_crypt = password_hash($password, PASSWORD_BCRYPT);
+        $password = password_hash($password, PASSWORD_BCRYPT);
 
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -57,7 +59,7 @@
         }
 
 
-        $stmt = $conn->prepare("UPDATE Users SET username = :newUsername, email = :email,password = :password WHERE username = :oldUsername;");
+        $stmt = $conn->prepare("UPDATE Users SET username = :newUsername, email = :email, password = :password WHERE username = :oldUsername;");
         $stmt->bindParam(':newUsername', $newUsername);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
@@ -69,14 +71,14 @@
         header("Location: ../pageUpdateUser.php?message=".$message);
     }
     catch(PDOException $e){
-        $dbh->rollback();
+        $conn->rollback();
         $message = "Si è verificato un errore."." Error: " . $e->getMessage(); //TODO rimuovere in release
-        header("Location: ../pageUpdateUserForm.php?message=".$message);
-    } catch(Exception $k){
-        $dbh->rollback();
-        header("Location: ../pageUpdateUserForm.php?message=".$message);
+        header("Location: ../pageUpdateUserForm.php?message=".$message."&username=".$usernameGet);
+    } catch(Exception $e){
+        $conn->rollback();
+        header("Location: ../pageUpdateUserForm.php?message=".$message."&username=".$usernameGet);
     }
-    $dbh = null;
+    $conn = null;
 ?>
 
 
