@@ -20,12 +20,10 @@
             <form method="post" action="script/adminAdder.php">
                 <h1>Inserisci nuovo Admin</h1>
                 <p>Inserisci le credenziali:</p>
-                <p>
-                    <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
-                    <input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required>
-                    <input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required>
-                    <input type="submit" class="radiusDiv" value="Add">
-                </p>
+                <p><input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required></p>
+                <p><input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required></p>
+                <p><input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required></p>
+                <p><input type="submit" class="radiusDiv" value="Add"></p>
             </form>
         </div>
     </div>

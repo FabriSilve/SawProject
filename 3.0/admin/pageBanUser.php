@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-6 text-right">
                     <h1>Rimuovi Ban</h1>
-                    <form method="post" onsubmit="confirm('Rimuovere ban all\'utente?');" action="script/userUnbanner.php">
+                    <form method="post" action="script/userUnbanner.php"> <!--TODO inserire richiesta di conferma operazione-->
                         <p>Inserisci username:</p>
                         <p><input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required></p>
                         <p><input type="submit" value="Unban"></p>
