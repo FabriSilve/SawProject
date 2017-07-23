@@ -14,6 +14,7 @@
                     if(isset($logged) && $logged) {
                         echo '<li class="active"><a href="pageAddEvent.php">Add Event</a></li>';
                         echo '<li class="active"><a href="pageFollowed.php">Followed</a></li>';
+                        echo '<li class="active"><a href="pageProfile.php">Profile</a></li>';
                     }
                 ?>
                 <!--<li class="active"><a href="#">Eventi</a></li>
@@ -24,7 +25,7 @@
                 <li>
                     <?php
                     if(isset($logged) && $logged)
-                        echo '<a href="../script/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>';
+                        echo '<a href="script/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>';
                     else
                         echo '<a href="pageLogin.php"><span class="glyphicon glyphicon-log-in"></span> Login</a>';
                     ?>

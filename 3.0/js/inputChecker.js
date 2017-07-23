@@ -12,8 +12,7 @@ function checkLogin() {
 }
 
 function checkReg() {
-    //non funziona 2.0 mail valida
-    var pattern = new RegExp("[^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$]]");
+    var pattern = new RegExp("[^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$]]"); //TODO controllare exp reg e usarla
     username = document.getElementById("username").value;
     email1 = document.getElementById("email1").value;
     email2 = document.getElementById("email2").value;
