@@ -31,8 +31,10 @@
     catch(PDOException $e) {
         $conn->rollBack();
         $message = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+    } catch(Exception $e) {
+        $conn->rollBack();
     }
     $conn = null;
-    header("Location: ../pageBanUser.php?message=".$message);
+    header("Location: ../pageDeleteUser.php?message=".$message);
 ?>
 
