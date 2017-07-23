@@ -64,7 +64,6 @@
             header("Location: ../pageHomepage.php");  //automatically redirect to homepage on login success.
         } else {
             $error = "Credenziali non valide";
-            sleep(10);
             throw new Exception();
         }
 

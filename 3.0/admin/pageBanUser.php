@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-sm-6 text-left">
                     <h1>Esegui Ban</h1>
-                    <form method="post" onsubmit="confirm('Bannare l\'utente?');" action="script/userBanner.php">
+                    <form method="post" action="script/userBanner.php"> <!--TODO inserire richiesta di conferma operazione-->
                         <p>Inserisci username:</p>
                         <p><input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required></p>
                         <p><input type="submit" value="Ban"></p>

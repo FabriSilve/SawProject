@@ -23,3 +23,11 @@ function showValue(id, newValue)
 {
     document.getElementById(id).innerHTML=newValue+" ";
 }
+
+function clicked(text) {
+    if (confirm(text)) {
+        return true;
+    } else {
+        return false;
+    }
+}
