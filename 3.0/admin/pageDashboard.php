@@ -7,7 +7,7 @@
 
 
 <div class="container-fluid text-left">
-    <div class="row content">
+    <div class="row content adminbody">
         <div class="col-sm-2 sidenav">
             <ul>
                 <li>Utenti
