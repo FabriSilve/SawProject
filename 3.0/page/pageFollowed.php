@@ -12,6 +12,12 @@
         <h3>What's the Next?</h3>
     </div>
 <br>
+    <a href="pageFollowed.php">
+        <div class="container text-center liteBackground radiusDiv">
+            <img src="../media/update.png">
+        </div>
+    </a>
+<br>
     <div id="eventsList" class="container"></div>
     <script>drawEventsList(true);</script>
 <br>
