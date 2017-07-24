@@ -4,25 +4,32 @@
     $id = "";
     $check = "";
     $username = "";
-
+    echo "ciao";
     try {
-        if (!isset($_GET["id"]) || empty(trim($_GET["id"]))) {
+        echo "controllo id";
+        if (!isset($_GET['id']) || empty(trim($_GET['id']))) {
             $id="id non valido";
             throw new Exception();
         }
-        $id = $_GET("id");
+        $id = trim($_GET('id'));
 
-        if (!isset($_GET["check"]) || empty(trim($_GET["check"]))) {
+        echo "controllo check";
+        if (!isset($_GET['check']) || empty(trim($_GET['check']))) {
             $id="check non valido";
             throw new Exception();
         }
-        $check = $_GET("check");
-
-        if (!isset($_GET["username"]) || empty(trim($_GET["username"]))) {
+        $check = trim($_GET('check'));
+    //TODO sono rimasto qui: provare solo la pagina e capire perche non gli pace id
+        echo "controllo username";
+        if (!isset($_GET['username']) || empty(trim($_GET['username']))) {
             $username="username non valido";
             throw new Exception();
         }
-        $username = $_GET("username");
+        $username = $_GET('username');
+
+        echo $username."\r\n";
+        echo $id."\r\n";
+        echo $check."\r\n";
 
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -57,5 +64,7 @@
         $conn = null;
     } catch(PDOException $e) {
         echo "ERROR ".$e->getMessage();
+    } catch(Exception $e) {
+        echo "Error ".$e->getMessage();
     }
 ?>

@@ -11,36 +11,38 @@
 </div>
 <br>
 <div class="container bg-3 text-center radiusDiv liteBackground">
-    <div class="container-fluid text-center">
+    <div class="container-fluid">
         <h1>New Event</h1>
         <form enctype="multipart/form-data" name="formAddEvent" method="post" onsubmit="addEvent()" action="script/eventAdder.php">
-            <div class="row">
-                <div class="col-sm-4">
+            <div class="row text-center">
+                <div class="col-sm-4 text-center">
                     <input type="text" name="name" id="name" placeholder="Name" class="radiusDiv padding5 marginMin" required>
                     <input type="text" name="address" id="address" placeholder="Address" class="radiusDiv padding5 marginMin" required><br>
                     <input type="date" name="day" id="day" class="radiusDiv marginMin padding5" title="Day" required >
                     <input name="owner" id="owner" value="owner" type="text" hidden>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <br>
-                <p>Description:</p>
-                <textarea cols="20" rows="5" name="description" id="description" class="radiusDiv marginMin padding5" title="Description" required>
-                </textarea>
-                <!--<div class="col-sm-6">
-                    <img src="../media/camera.png" id="anteprima" name="anteprima" class="anteprima" >
-                </div>-->
-            </div>
-            <div class="col-sm-4">
-                <input type="file" id="image" name="image" class="align-center" required>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <button type="submit" class="radiusDiv marginMin"">
+                <div class="col-sm-4 text-center">
+                    <h5>Description:</h5>
+                    <textarea cols="20" rows="5" name="description" id="description" class="radiusDiv" title="Description" required>
+                    </textarea>
+                    <!--<div class="col-sm-6">
+                        <img src="../media/camera.png" id="anteprima" name="anteprima" class="anteprima" >
+                    </div>-->
+                </div>
+
+                <div class="col-sm-4">
+                    <button type="submit" class="radiusDiv marginMin">
                         <img src="../media/plus.png">
                     </button>
-                </div>
+                    <!--TODO chiedere permessi alla prof
+                     <p><input type="file" id="image" name="image" required></p>-->
+                 </div>
             </div>
+            <!--<div class="row">
+                <div class="col-sm-12 text-center">
+
+                </div>
+            </div>-->
         </form>
         <?php if(isset($_GET["addError"]) && $_GET["addError"] !== "" ) {
             echo '<h5>'.$_GET["addError"].'</h5>';
