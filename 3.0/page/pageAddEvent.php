@@ -10,28 +10,27 @@
     <h3>What's New?</h3>
 </div>
 <br>
-<div class="container bg-3 text-center radiusDiv liteBackground">
-    <div class="container-fluid">
+<div class="container bg-3 radiusDiv liteBackground">
+    <div class="container-fluid text-center">
         <h1>New Event</h1>
         <form enctype="multipart/form-data" name="formAddEvent" method="post" onsubmit="addEvent()" action="script/eventAdder.php">
-            <div class="row text-center">
-                <div class="col-sm-4 text-center">
+            <div class="row">
+                <div class="col-sm-4 ">
                     <input type="text" name="name" id="name" placeholder="Name" class="radiusDiv padding5 marginMin" required>
                     <input type="text" name="address" id="address" placeholder="Address" class="radiusDiv padding5 marginMin" required><br>
                     <input type="date" name="day" id="day" class="radiusDiv marginMin padding5" title="Day" required >
                     <input name="owner" id="owner" value="owner" type="text" hidden>
                 </div>
-                <div class="col-sm-4 text-center">
+                <div class="col-sm-4">
                     <h5>Description:</h5>
-                    <textarea cols="20" rows="5" name="description" id="description" class="radiusDiv" title="Description" required>
+                    <textarea cols="25" rows="5" name="description" id="description" class="radiusDiv" title="Description" required>
                     </textarea>
                     <!--<div class="col-sm-6">
                         <img src="../media/camera.png" id="anteprima" name="anteprima" class="anteprima" >
                     </div>-->
                 </div>
-
                 <div class="col-sm-4">
-                    <button type="submit" class="radiusDiv marginMin">
+                    <button type="submit" class="radiusDiv">
                         <img src="../media/plus.png">
                     </button>
                     <!--TODO chiedere permessi alla prof
