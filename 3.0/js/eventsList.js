@@ -49,7 +49,7 @@ function drawSingleEvent(event, check) {
     temp += '<img src = "' + event.image + '" class="img-responsive eventImage"  alt ="Image">';
     temp += '<p>' + event.description + '</p>';
     if(owner !== "0") {
-        temp += '<a class="signal marginMin" id="signal' + event.id + '" onclick="signalEvent(\'' + event.id + '\');">segnala</a>';
+        temp += '<p class="signaler marginMin" id="signal' + event.id + '" onclick="signalEvent(\'' + event.id + '\');">segnala</p>';
     }
     temp += '</div></div>';
     return temp;
