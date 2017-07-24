@@ -15,20 +15,23 @@ function drawEventsList(check) {
             }
             text += '<div class="col-sm-3 marginBottom" id="' + events[i].id + '">';
             text += '<div class="liteBackground radiusDiv">';
-            text += '<p ><h2>' + events[i].name;
-            console.info(owner);
             if(owner !== "0") {
-                text += '<input id="check' + events[i].id + '" type="checkbox" title="Follow" onchange="updateFollowed(\'' + events[i].id + '\');"';
+                text += '<p>segui: <input id="check' + events[i].id + '" type="checkbox" title="Follow" onchange="updateFollowed(\'' + events[i].id + '\');"';
                 if(check) {
                     text += ' checked ';
                 }
-                text += '>';
+                text += '></p>';
             }
-            text += '</h2><h4>' + events[i].day + '</h4></p>';
+            text += '<h2>' + events[i].name+'</h2>';
+            text += '<h5>' + events[i].day + '</h5>';
+            text += '<h5>' + events[i].address + '</h5>';
             text += '<img src = "' + events[i].image + '" class="img-responsive eventImage"  alt ="Image">';
             text += '<p>' + events[i].description + '</p>';
+            if(owner !== "0") {
+                text += '<p>segnala: <input id="signal' + events[i].id + '" type="checkbox" title="Follow" onchange="signalEvent(\'' + events[i].id + '\');"';
+                text += '></p>';
+            }
             text += '</div></div>';
-
         }
         text += '</div></div>';
 
@@ -36,22 +39,28 @@ function drawEventsList(check) {
             text += '<div class="container-fluid bg-3 text-center">';
             text += '<div class="row">';
             for (i = 5; i < 9; i++) {
-                if (i < numEvents) {
-                    text += '<div class="col-sm-3 marginBottom" id="' + events[i].id + '">';
-                    text += '<div class="liteBackground radiusDiv">';
-                    text += '<p ><h2>' + events[i].name;
-                    if(owner !== "0") {
-                        text += '<input id="check'+events[i].id+'" type="checkbox" title="Follow" onchange="updateFollowed(\''+events[i].id+'\');"';
-                        if(check) {
-                            text += ' checked ';
-                        }
-                        text += '>';
-                    }
-                    text += '</h2><h4>' + events[i].day + '</h4></p>';
-                    text += '<img src = "' + events[i].image + '" class="img-responsive eventImage" alt = "Image" >';
-                    text += '<p>' + events[i].description + '</p>';
-                    text += '</div></div>';
+                if (i >= numEvents) {
+                    break;
                 }
+                text += '<div class="col-sm-3 marginBottom" id="' + events[i].id + '">';
+                text += '<div class="liteBackground radiusDiv">';
+                if(owner !== "0") {
+                    text += '<p>segui: <input id="check' + events[i].id + '" type="checkbox" title="Follow" onchange="updateFollowed(\'' + events[i].id + '\');"';
+                    if(check) {
+                        text += ' checked ';
+                    }
+                    text += '></p>';
+                }
+                text += '<h2>' + events[i].name+'</h2>';
+                text += '<h5>' + events[i].day + '</h5>';
+                text += '<h5>' + events[i].address + '</h5>';
+                text += '<img src = "' + events[i].image + '" class="img-responsive eventImage"  alt ="Image">';
+                text += '<p>' + events[i].description + '</p>';
+                if(owner !== "0") {
+                    text += '<p>segnala: <input id="signal' + events[i].id + '" type="checkbox" title="Follow" onchange="signalEvent(\'' + events[i].id + '\');"';
+                    text += '></p>';
+                }
+                text += '</div></div>';
             }
             text += '</div></div>';
         }

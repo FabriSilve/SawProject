@@ -13,6 +13,7 @@
     <script src="../js/addEvent.js"></script>
     <script src="../js/utils.js"></script>
     <script src="../js/updateFollowed.js"></script>
+    <script src="../js/signalEvent.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
 
