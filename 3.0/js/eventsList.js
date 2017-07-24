@@ -37,19 +37,19 @@ function drawSingleEvent(event, check) {
     temp = '<div class="col-sm-3 marginBottom" id="' + event.id + '">';
     temp += '<div class="liteBackground radiusDiv">';
     if(owner !== "0") {
-        temp += 'segui: <input id="check' + event.id + '" type="checkbox" title="Follow" onchange="updateFollowed(\'' + event.id + '\');"';
+        temp += 'segui: <input id="check' + event.id + '" type="checkbox" class="marginMin" title="Follow" onchange="updateFollowed(\'' + event.id + '\');"';
         if(check) {
             temp += ' checked ';
         }
         temp += '></p>';
     }
-    temp += '<h2>' + event.name+'</h2>';
+    temp += '<h2 class="eventTitle">' + event.name+'</h2>';
     temp += '<h5>' + event.day + '</h5>';
     temp += '<h5>' + event.address + '</h5>';
     temp += '<img src = "' + event.image + '" class="img-responsive eventImage"  alt ="Image">';
     temp += '<p>' + event.description + '</p>';
     if(owner !== "0") {
-        temp += 'segnala: <input id="signal' + event.id + '" type="checkbox" title="Follow" onchange="signalEvent(\'' + event.id + '\');">';
+        temp += 'segnala: <input id="signal' + event.id + '" type="checkbox" class="marginMin" title="Follow" onchange="signalEvent(\'' + event.id + '\');">';
     }
     temp += '</div></div>';
     return temp;

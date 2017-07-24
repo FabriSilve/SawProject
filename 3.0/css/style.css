@@ -68,7 +68,10 @@ h2 {
     color: #FF8100;
     text-shadow: 4px 2px 4px #B2B2B2;
     font-weight: bold;
-    margin-top: 10px;
+}
+
+h2.eventTitle {
+    margin: 5px;
 }
 
 .padding5 {
