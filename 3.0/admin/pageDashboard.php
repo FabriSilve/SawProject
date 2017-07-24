@@ -61,7 +61,7 @@
        <div class="col-sm-2 sidenav">
            <div class="well">
                  <div class="chip">
-                   <img src="../media/img_avatar.jpg" alt="Person" width="50" height="50">
+                   <img src="../media/img_avatar.png" alt="Person" width="50" height="50">
                     Admin
                </div>
              <!--TODO utente più attivo-->
