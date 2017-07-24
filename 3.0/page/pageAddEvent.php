@@ -16,6 +16,7 @@
         <form enctype="multipart/form-data" name="formAddEvent" method="post" onsubmit="addEvent()" action="script/eventAdder.php">
             <div class="row">
                 <div class="col-sm-4 ">
+                    <br/>
                     <input type="text" name="name" id="name" placeholder="Name" class="radiusDiv padding5 marginMin" required>
                     <input type="text" name="address" id="address" placeholder="Address" class="radiusDiv padding5 marginMin" required><br>
                     <input type="date" name="day" id="day" class="radiusDiv marginMin padding5" title="Day" required >
@@ -30,6 +31,7 @@
                     </div>-->
                 </div>
                 <div class="col-sm-4">
+                    <br/>
                     <button type="submit" class="radiusDiv">
                         <img src="../media/plus.png">
                     </button>

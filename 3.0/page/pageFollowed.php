@@ -13,6 +13,6 @@
     </div>
 <br>
     <div id="eventsList" class="container"></div>
-    <script>drawEventsList();</script>
+    <script>drawEventsList(true);</script>
 <br>
 <?php require("shared/footer.php"); ?>

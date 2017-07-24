@@ -49,7 +49,7 @@
     </div>
 <br>
     <div id="eventsList" class="container"></div>
-    <script>drawEventsList();</script>
+    <script>drawEventsList(false);</script>
 <br>
 
 <?php require("shared/footer.php"); ?>
