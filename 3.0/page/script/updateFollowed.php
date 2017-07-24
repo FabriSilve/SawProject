@@ -4,60 +4,56 @@
     $id = "";
     $check = "";
     $username = "";
-    echo "ciao";
     try {
-        echo "controllo id";
         if (!isset($_GET['id']) || empty(trim($_GET['id']))) {
             $id="id non valido";
             throw new Exception();
         }
-        $id = trim($_GET('id'));
+        $id = $_GET["id"];
 
-        echo "controllo check";
         if (!isset($_GET['check']) || empty(trim($_GET['check']))) {
             $id="check non valido";
             throw new Exception();
         }
-        $check = trim($_GET('check'));
-    //TODO sono rimasto qui: provare solo la pagina e capire perche non gli pace id
-        echo "controllo username";
+        $check = trim($_GET['check']);
+
         if (!isset($_GET['username']) || empty(trim($_GET['username']))) {
             $username="username non valido";
             throw new Exception();
         }
-        $username = $_GET('username');
+        $username = $_GET['username' ];
 
-        echo $username."\r\n";
-        echo $id."\r\n";
-        echo $check."\r\n";
 
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if($check === "true") {
 
-            $stmt = $conn->prepare("SELECT * FROM Followed WHERE id = :id AND user = :user");
+            $stmt = $conn->prepare("SELECT * FROM Followed WHERE id = :id AND username = :username");
             $stmt->bindParam(":id", $id);
-            $stmt->bindParam(":user", $username);
+            $stmt->bindParam(":username", $username);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                die("true");
+                echo "true";
+                die();
             }
 
-            $stmt = $conn->prepare("INSERT INTO Followed ( id, user) VALUES ( :id, :user)");
+            $stmt = $conn->prepare("INSERT INTO Followed ( id, username) VALUES ( :id, :username)");
             $stmt->bindParam(":id", $id);
-            $stmt->bindParam(":user", $username);
+            $stmt->bindParam(":username", $username);
             $stmt->execute();
 
-            die("true");
+            echo "true";
+            die();
         } else if($check === "false") {
-            $stmt = $conn->prepare("DELETE FROM Followed WHERE id = :id AND user = :user");
+            $stmt = $conn->prepare("DELETE FROM Followed WHERE id = :id AND username = :username");
             $stmt->bindParam(":id", $id);
-            $stmt->bindParam(":user", $username);
+            $stmt->bindParam(":username", $username);
             $stmt->execute();
 
-            die("delete");
+            echo "delete";
+            die();
 
         }
         echo "error";

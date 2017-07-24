@@ -50,6 +50,8 @@ function drawEventsList() {
         document.getElementById('eventsList').innerHTML = text;
 }
 
+//TODO spostare in file updateFollowed.js
+
 function updateFollowed(num) {
     id = "check"+num;
     check = document.getElementById(id).checked;
@@ -69,10 +71,6 @@ function updateCallback() {
         if (xhr.status === 200) {
             if (xhr.responseText !== "") {
                 console.info("respose is: " + xhr.responseText);
-                if(xhr.responseText === "true")
-                    console.info("updated")
-                else
-                    console.info("errore followed");
             }
             else {
                 alert("Ajax error: no data received");

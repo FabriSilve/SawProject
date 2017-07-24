@@ -36,11 +36,11 @@
             $error="Data non inserita";
             throw new Exception();
         }
-
+        /*TODO IMMAGINI se ho permessi
         if (!isset($_FILES['image']) || !is_uploaded_file($_FILES['image']['tmp_name'])) {
             $error="Immagine non inserita";
             throw new Exception();
-        }
+        }*/
 
         if (isset($_POST['owner']) && $_POST['owner'] !== "") {
             $owner = $_POST['owner'];
@@ -49,29 +49,24 @@
             throw new Exception();
         }
 
-    } catch (Exception $e) {
-        header("Location: ../pageAddEvent.php?addError=".$error);
-    }
+        $lat = 0;
+        $lon = 0;
 
-    $lat = 0;
-    $lon = 0;
+        $position = urlencode($address);
+        $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=".$position."&sensor=true";
+        if(!($xml = simplexml_load_file($request_url))) {
+            $error="Indirizzo non valido";
+            throw new Exception();
+        }
+        $status = $xml->status;
+        if ($status=="OK") {
+            $lat = $xml->result->geometry->location->lat;
+            $lon = $xml->result->geometry->location->lng;
+        } else {
+            $error="Errore indirizzo";
+            throw new Exception();
+        }
 
-    $position = urlencode($address);
-    $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=".$position."&sensor=true";
-    if(!($xml = simplexml_load_file($request_url))) {
-        $error="Indirizzo non valido";
-        throw new Exception();
-    }
-    $status = $xml->status;
-    if ($status=="OK") {
-        $lat = $xml->result->geometry->location->lat;
-        $lon = $xml->result->geometry->location->lng;
-    } else {
-        $error="Errore indirizzo";
-        throw new Exception();
-    }
-
-    try {
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -104,8 +99,10 @@
         $image_name = $row['id'];
 
         $conn = null;
+        $error = "Evento Inserito con successo";
+        header("Location: ../pageAddEvent.php?addError=".$error);
 
-
+        /*TODO IMMAGINI da aggiungere quando ho i permessi
         //upload image
         $image_path = "../uploads/";
         $image_format = ".jpg";
@@ -115,9 +112,7 @@
             $error="Puoi inviare solo immagini";
             throw new Exception();
         }
-        echo "true";
 
-        /*TODO Farsi dare permessi dalla prof
        if (move_uploaded_file($image_tmp, $image_path . $image_name . $image_format)) {
            echo 'true';
        }else{
