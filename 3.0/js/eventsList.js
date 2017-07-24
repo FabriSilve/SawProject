@@ -49,7 +49,7 @@ function drawSingleEvent(event, check) {
     temp += '<img src = "' + event.image + '" class="img-responsive eventImage"  alt ="Image">';
     temp += '<p>' + event.description + '</p>';
     if(owner !== "0") {
-        temp += 'segnala: <input id="signal' + event.id + '" type="checkbox" class="marginMin" title="Follow" onchange="signalEvent(\'' + event.id + '\');">';
+        temp += '<a class="signal marginMin" id="signal' + event.id + '" onclick="signalEvent(\'' + event.id + '\');">segnala</a>';
     }
     temp += '</div></div>';
     return temp;

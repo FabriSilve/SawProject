@@ -1,19 +1,19 @@
 function signalEvent(num) {
-    console.info(confirm("Segnalare davvero evento id:"+num+"?"));
-    /*id = "check"+num;
-    check = document.getElementById(id).checked;
-    console.info("check "+check);
-    console.info("id "+id);
-    console.info(owner);
-    urlSimple = "script/updateFollowed.php";
-    url = urlSimple+"?id="+num+"&check="+check+"&username="+owner;
-    xhr = getXMLHttpRequestObject();
-    xhr.onreadystatechange = updateCallback;
-    xhr.open('GET',url,true);
-    xhr.send(null);*/
+    if(confirm("Segnalare davvero l'evento?")) {
+        id = "signal" + num;
+        console.info("id " + id);
+        console.info(owner);
+        urlSimple = "script/signalEvent.php";
+        url = urlSimple + "?id=" + num + "&username=" + owner;
+        xhr = getXMLHttpRequestObject();
+        xhr.onreadystatechange = signalCallback;
+        xhr.open('GET', url, true);
+        xhr.send(null);
+        document.getElementById(id).removeAttribute("onclick");
+    }
 }
 
-function updateCallback() {
+function signalCallback() {
     if (xhr.readyState === 4) {
         if (xhr.status === 200) {
             if (xhr.responseText !== "") {
