@@ -93,6 +93,10 @@ h2.eventTitle {
     margin: 5px;
 }
 
+.marginLeftMiddle {
+    margin-right: 15px;
+}
+
 .marginMax {
     margin: 200px;
 }
@@ -136,18 +140,18 @@ h2.eventTitle {
 
 .star {
     visibility:hidden;
-    font-size:40px;
+    font-size:35px;
     cursor:pointer;
 }
 .star:before {
     content: "\2606";
-    color: blue;
+    color: #000b9f;
     position: relative;
     visibility:visible;
 }
 .star:checked:before {
     content: "\2605";
-    color: blue;
+    color: #000b9f;
     position: relative;
 }
 

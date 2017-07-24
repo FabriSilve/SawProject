@@ -37,11 +37,11 @@ function drawSingleEvent(event, check) {
     temp = '<div class="col-sm-3 marginBottom" id="' + event.id + '">';
     temp += '<div class="liteBackground radiusDiv">';
     if(owner !== "0") {
-        temp += 'segui: <input id="check' + event.id + '" type="checkbox" class="marginMin" title="Follow" onchange="updateFollowed(\'' + event.id + '\');"';
+        temp += '<div class="text-right marginLeftMiddle"><input id="check' + event.id + '" type="checkbox" class=" star marginMin" title="Follow" onchange="updateFollowed(\'' + event.id + '\');"';
         if(check) {
             temp += ' checked ';
         }
-        temp += '></p>';
+        temp += '></div>';
     }
     temp += '<h2 class="eventTitle">' + event.name+'</h2>';
     temp += '<h5>' + event.day + '</h5>';
