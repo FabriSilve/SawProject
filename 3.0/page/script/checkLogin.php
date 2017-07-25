@@ -31,7 +31,7 @@
         $stmt->execute();
 
         if($stmt->rowCount() !== 1) {
-            $error = "utente non presente";
+            $error = "errore";
             throw new Exception();
         }
         $result = $stmt->fetch(PDO::FETCH_ASSOC);

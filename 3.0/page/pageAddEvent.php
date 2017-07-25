@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-sm-4">
                     <h5>Description:</h5>
-                    <textarea cols="25" rows="5" name="description" id="description" class="radiusDiv" title="Description" required>
+                    <textarea cols="25" rows="5" name="description" id="description" class="radiusDiv" placeholder="Descrizione" required>
                     </textarea>
                     <!--<div class="col-sm-6">
                         <img src="../media/camera.png" id="anteprima" name="anteprima" class="anteprima" >
