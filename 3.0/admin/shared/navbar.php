@@ -27,6 +27,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="pageEvents.php">Elenco eventi</a></li>
                         <li><a href="pageDeleteEvent.php"> DeleteEvento</a></li>
+                        <li><a href="pageSignaledEvent.php">Eventi Segnalati</a></li>
                     </ul>
                 </li>
             </ul>

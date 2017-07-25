@@ -1,11 +1,12 @@
 <table class="table table-striped table-bordered">
     <thead>
     <tr>
-        <th>Evento Segnalato</th>
-        <th>Utente</th>
-        <th>Imagina</th>
-        <th>Gmail</th>
-    </tr>
+        <th>Numero Utenti</th>
+        <th>Numero Eventi</th>
+        <th>Numero Eventi Segnalati</th>
+        <th>ID dell`ultimo evento inserito</th>
+        <th>L`ultimo utente inserito</th>
+         </tr>
     </thead>
 <?php
 require("shared/accessManager.php");
@@ -14,19 +15,36 @@ $error = "";
 try {
     $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM Signaled NATURAL JOIN Users ");
+    $stmt = $conn->prepare("SELECT COUNT(username) as username FROM Users");
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->execute();
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo '<tr>';
+        echo '<td>'.$row["username"].'</td>';
+    }
+    $stmt = $conn->prepare("SELECT COUNT(id) as id FROM Events");
     $stmt->bindParam(':id', $id, PDO::PARAM_STR);
     $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $image_file = "../uploads/default.jpg";
-        if(file_exists("../uploads/".$row["id"].".jpg"))
-            $image_file = "../uploads/".$row["id"].".jpg";
-
-        echo '<tr>';
         echo '<td>'.$row["id"].'</td>';
+    }
+    $stmt = $conn->prepare("SELECT COUNT(id) as id FROM Signaled");
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo '<td>'.$row["id"].'</td>';
+    }
+    $stmt = $conn->prepare("SELECT MAX(id) as id FROM Events");
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo '<td>' . $row["id"] . '</td>';
+    }
+    $stmt = $conn->prepare("SELECT MAX(username) as username FROM Users");
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->execute();
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo '<td>'.$row["username"].'</td>';
-        echo '<td><img src="'.$image_file.'" style="height:100px;"></td>';
-        echo '<td>'.$row["email"].'</td>';
         echo '</tr>';
     }
     $conn = null;

@@ -32,8 +32,6 @@
            <p><b>STATISTICHE:</b></p>
            <div class="well">
                <?php require("script/showStats.php"); ?>
-               <hr>
-               <?php require("script/showTable.php"); ?>
            </div>
        </div>
         <div class="col-sm-2">
