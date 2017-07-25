@@ -7,7 +7,7 @@
 <div class="container-fluid text-left">
     <div class="row content adminbody">
         <div class="col-sm-2 sidenav">
-            <ul>
+            <!--<ul>
                 <li>Utenti
                     <ul>
                         <li><a href="pageUsers.php">Utenti</a></li>
@@ -24,7 +24,7 @@
                    </ul>
                </li>
            </ul>
-
+            -->
        </div>
        <div class="col-sm-8 text-left">
            <h1>Area Amministrativa</h1>

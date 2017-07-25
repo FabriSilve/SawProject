@@ -33,7 +33,6 @@ try {
     $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo '<td>'.$row["id"].'</td>';
-        //echo '</tr>';
     }
     $stmt = $conn->prepare("SELECT MAX(id) as id FROM Events");
     $stmt->bindParam(':id', $id, PDO::PARAM_STR);
