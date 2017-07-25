@@ -13,9 +13,11 @@
         </div>
             <div class="col-sm-8 text-left">
                 <h1>Utenti</h1>
-                <?php
-                    require("script/showUsers.php");
-                ?>
+                <div class="well">
+                    <?php
+                        require("script/showUsers.php");
+                    ?>
+                </div>
             </div>
         </div>
     </div>

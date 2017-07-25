@@ -1,5 +1,9 @@
 .adminbody {
-    background: rgb(242, 239, 233);
+    background: rgb(245, 242, 236);
+}
+
+.trasparentBackground {
+    background: transparent;
 }
 
 .mainbody {
@@ -155,7 +159,7 @@ h2.eventTitle {
     position: relative;
 }
 
-.fa {
+/*.fa {
     padding: 20px;
     font-size: 30px;
     width: 50px;
@@ -171,4 +175,4 @@ h2.eventTitle {
 .fa-google {
      background: #dd4b39;
      color: white;
- }
+ }*/

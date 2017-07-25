@@ -54,7 +54,6 @@ catch(PDOException $e) {
 }
 
 echo '</table>';
-echo '<hr>';
 
 if(!empty($error)) {
     echo '<div class="well">'.$error.'</div>';
