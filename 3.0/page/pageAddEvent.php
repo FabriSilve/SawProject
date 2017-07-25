@@ -7,7 +7,7 @@
 
 <div class="container text-center liteOrange radiusDiv">
     <h1>Add Event</h1>
-    <h3>What's New?</h3>
+    <h3>What's New <?php echo $_SESSION["EAusername"]; ?>?</h3>
 </div>
 <br>
 <div class="container bg-3 radiusDiv liteBackground">
@@ -16,6 +16,7 @@
         <form enctype="multipart/form-data" name="formAddEvent" method="post" onsubmit="addEvent()" action="script/eventAdder.php">
             <div class="row">
                 <div class="col-sm-4 ">
+                    <br/>
                     <br/>
                     <input type="text" name="name" id="name" placeholder="Name" class="radiusDiv padding5 marginMin" required>
                     <input type="text" name="address" id="address" placeholder="Address" class="radiusDiv padding5 marginMin" required><br>
@@ -32,21 +33,21 @@
                 </div>
                 <div class="col-sm-4">
                     <br/>
-                    <button type="submit" class="radiusDiv">
-                        <img src="../media/plus.png">
-                    </button>
-                    <!--TODO chiedere permessi alla prof
-                     <p><input type="file" id="image" name="image" required></p>-->
+                    <br/>
+                    <input type="file" id="image" name="image" required>
+                    <!--<input type="text" id="owner" name="owner" hidden>-->
                  </div>
             </div>
-            <!--<div class="row">
+            <div class="row">
                 <div class="col-sm-12 text-center">
-
+                    <button type="submit" class="radiusDiv"">
+                        <img src="../media/plus.png">
+                    </button>
                 </div>
-            </div>-->
+            </div>
         </form>
-        <?php if(isset($_GET["addError"]) && $_GET["addError"] !== "" ) {
-            echo '<h5>'.$_GET["addError"].'</h5>';
+        <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+            echo '<h5>'.$_GET["message"].'</h5>';
         }
         ?>
     </div>
