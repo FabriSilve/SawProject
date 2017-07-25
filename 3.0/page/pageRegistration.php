@@ -26,18 +26,9 @@ require("shared/header.php");
             </form>
             <hr><h4 id="formError"></h4>
             <?php
-            if(!empty($_GET["registerError"])) {
-                if($_GET["registerError"] == "k")
-                    echo "<h5> Si è verificato un errore, riprova. </h5>";
-                else
-                    echo "<h5> Username or password error. Password must contain at least:
-                        1 lower case,
-                        1 upper case,
-                        1 decimal number,
-                        1 special char,
-                        must be at least 8 total chars length</h5>";
-            }
-
+                if(!empty($_GET["message"])) {
+                    echo "<h5>".$_GET["message"]."</h5>";
+                }
             ?>
         </div>
     </div>

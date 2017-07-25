@@ -1,65 +1,69 @@
 <?php
 
-require("dbAccess.php");
+    require("dbAccess.php");
+    $message = "";
 
-try {
-    $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    try {
+        $username = trim($_POST["username"]);
+        $pass_pre_hash = trim($_POST["password1"]);
 
-    $stmt = $conn->prepare("INSERT INTO Users (username, password) VALUES (:username, :password);");
+        if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))){
+            $message = "Username non valido";
+            throw new Exception();
+        }
 
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':password', $password);
+        if(empty($pass_pre_hash)){
+            $message = "Password non inserita";
+            throw new Exception();
+        }
 
-    $username = trim($_POST["username"]);
-    $pass_pre_hash = trim($_POST["password1"]);
+        if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
+            $message = "Password non valido";
+            throw new Exception();
+        }
+        $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
-    if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))){
-        throw new Exception();
+        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $stmt = $conn->prepare("INSERT INTO Users (username, password) VALUES (:username, :password);");
+
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+
+
+        //libsodium extension from paragon.
+        /*$password = \Sodium\crypto_pwhash_str(
+                                                $pass_pre_hash,
+                                                \Sodium\CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE,
+                                                \Sodium\CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE
+                                                );*/
+
+        $stmt->execute();
+
+        $conn = null;
+
+        if(isset($_COOKIE['EAkeep'])) {
+            setcookie('EAkeep',null);
+        }
+        if(isset($_COOKIE['EAusername'])) {
+            setcookie('EAusername',null);
+        }
+        session_unset();
+        session_destroy();
+        session_start();
+        $_SESSION["EAauthorized"] = 1;
+        $_SESSION["EAusername"] = $username;
+        header("Location: ../pageHomepage.php");
+
     }
-
-    if(empty($pass_pre_hash)){
-        throw new Exception();
+    catch(PDOException $e){
+        $conn = null;
+        $message =  "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
+        header("Location: ../pageRegistration.php?message=".$message);
     }
-
-    if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
-        throw new Exception();
+    catch(Exception $e) {
+        $conn = null;
+        header("Location: ../pageRegistration.php?message=".$message);
     }
-    $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
-    //libsodium extension from paragon.
-    /*$password = \Sodium\crypto_pwhash_str(
-                                            $pass_pre_hash,
-                                            \Sodium\CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE,
-                                            \Sodium\CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE
-                                            );*/
-
-    $stmt->execute();
-
-    $conn = null;
-
-    if(isset($_COOKIE['EAkeep'])) {
-        setcookie('EAkeep',null);
-    }
-    if(isset($_COOKIE['EAusername'])) {
-        setcookie('EAusername',null);
-    }
-    session_unset();
-    session_destroy();
-    session_start();
-    $_SESSION["EAauthorized"] = 1;
-    $_SESSION["EAusername"] = $username;
-    header("Location: ../pageHomepage.php");
-
-}
-catch(PDOException $e){
-    $conn = null;
-    //$error =  "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
-    $error = "k";
-    header("Location: ../pageRegistration.php?registerError=".$error);
-}
-catch(Exception $e) {
-    $conn = null;
-    $error = "error";
-    header("Location: ../pageRegistration.php?registerError=".$error);
-}
 ?>
