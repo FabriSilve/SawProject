@@ -66,7 +66,7 @@
         );
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $image_file = "../uploads/default.jpg";
-            if(file_exists("../uploads/".$row["id"].".jpg"))
+            if(file_exists("../../uploads/".$row["id"].".jpg"))
                 $image_file = "../uploads/".$row["id"].".jpg";
             $eventDB[$count++] = array(
                 "id" => $row["id"],
