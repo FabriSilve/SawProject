@@ -7,7 +7,13 @@
 <div class="container-fluid text-left trasparentBackground">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <!--<ul>
+                <div class="well">
+                    <div class="chip">
+                        <img src="../media/img_avatar.png" alt="Person" width="50" height="50">
+                        Admin
+                    </div>
+                </div>
+                      <!--<ul>
                 <li>Utenti
                     <ul>
                         <li><a href="pageUsers.php">Utenti</a></li>
@@ -34,14 +40,7 @@
                <?php require("script/showStats.php"); ?>
            </div>
        </div>
-        <div class="col-sm-2">
-           <div class="well">
-                 <div class="chip">
-                   <img src="../media/img_avatar.png" alt="Person" width="50" height="50">
-                    Admin
-               </div>
-           </div>
-        </div>
+
 
 <?php
     require("shared/footer.php");
