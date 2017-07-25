@@ -43,11 +43,7 @@
                     Admin
                </div>
            </div>
-           <div class="well">
-               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-               <p><a href="https://mail.google.com/mail/" class="fa fa-google"></a> Gmail </p>
-           </div>
-       </div>
+        </div>
 
 <?php
     require("shared/footer.php");
