@@ -19,6 +19,7 @@
         <div class="col-sm-8 text-left">
             <form method="post" action="script/adminAdder.php">
                 <h1>Inserisci nuovo Admin</h1>
+                <div
                 <p>Inserisci le credenziali:</p>
                 <p><input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required></p>
                 <p><input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required></p>
