@@ -57,6 +57,6 @@
 	catch(Exception $f){
         header("Location: ../pageLogin.php?loginError=".$error);
 	}
-	$conn = null;
+	$conn = null;   
 
 ?>

@@ -11,7 +11,7 @@
         <p>The events that surround you!</p>
         <?php
             if(isset($logged) && $logged)
-                echo "<p>Ciao ".$_SESSION["EAusername"]."!</p>";
+                echo "<p>Ciao ".htmlspecialchars($_SESSION["EAusername"])."!</p>";
         ?>
     </div>
 
