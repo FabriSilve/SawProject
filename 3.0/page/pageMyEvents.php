@@ -9,14 +9,14 @@
     </script>
     <div class="container text-center liteOrange radiusDiv">
         <h1>My Event</h1>
-        <h3>You remember their?</h3>
+        <h3>You remember?</h3>
     </div>
     <br>
-    <a href="pageMyEvents.php">
+    <!--<a href="pageMyEvents.php">
         <div class="container text-center liteBackground radiusDiv">
             <img src="../media/update.png">
         </div>
-    </a>
+    </a>-->
     <br>
     <div id="eventsList" class="container"></div>
     <script>drawEventsList(null);</script>
