@@ -1,6 +1,8 @@
 <?php
-require("shared/header.php");
-//require("navbar.php");
+    require("shared/accessManager.php");
+    require("shared/header.php");
+    if(!isset($logged)||!$logged)
+        header("Location: pageHomepage.php");
 ?>
 
     <div class="container container-table">
