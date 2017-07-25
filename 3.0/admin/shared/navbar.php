@@ -18,7 +18,6 @@
                         <li><a href="pageUpdateUser.php">ModUser</a></li>
                         <li><a href="pageDeleteUser.php">DeleteUser</a></li>
                         <li><a href="pageBanUser.php">BanUser</a></li>
-                        <li><a href="pageAddAdmin.php">AddAdmin</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -28,6 +27,13 @@
                         <li><a href="pageEvents.php">Elenco eventi</a></li>
                         <li><a href="pageDeleteEvent.php"> DeleteEvento</a></li>
                         <li><a href="pageSignaledEvent.php">Eventi Segnalati</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Admin
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pageAddAdmin.php">AddAdmin</a></li>
                     </ul>
                 </li>
             </ul>
