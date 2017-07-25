@@ -14,6 +14,7 @@
                     if(isset($logged) && $logged) {
                         echo '<li class="active"><a href="pageAddEvent.php">Add Event</a></li>';
                         echo '<li class="active"><a href="pageFollowed.php">Followed</a></li>';
+                        echo '<li class="active"><a href="pageMyEvents.php">My Events</a></li>';
                         echo '<li class="active"><a href="">Profile</a></li>';
                     }
                 ?>

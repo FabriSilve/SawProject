@@ -36,7 +36,7 @@ function drawEventsList(check) {
 function drawSingleEvent(event, check) {
     temp = '<div class="col-sm-3 marginBottom" id="' + event.id + '">';
     temp += '<div class="liteBackground radiusDiv">';
-    if(owner !== "0") {
+    if(owner !== "0" && check !== null) {
         temp += '<div class="text-right marginLeftMiddle"><input id="check' + event.id + '" type="checkbox" class=" star marginMin" title="Follow" onchange="updateFollowed(\'' + event.id + '\');"';
         if(check) {
             temp += ' checked ';
@@ -48,7 +48,7 @@ function drawSingleEvent(event, check) {
     temp += '<h5>' + event.address + '</h5>';
     temp += '<img src = "' + event.image + '" class="img-responsive eventImage"  alt ="Image">';
     temp += '<p>' + event.description + '</p>';
-    if(owner !== "0") {
+    if(owner !== "0" && check !== null) {
         temp += '<p class="signaler marginMin" id="signal' + event.id + '" onclick="signalEvent(\'' + event.id + '\');">segnala</p>';
     }
     temp += '</div></div>';
