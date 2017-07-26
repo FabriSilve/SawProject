@@ -58,7 +58,7 @@
         session_start();
         $_SESSION["EAauthorized"] = 1;
         $_SESSION["EAusername"] = $username;
-        header("Location: ../pageHomepage.php");
+        header("Location: ../pageRegisterProfile.php");
 
     }
     catch(PDOException $e){

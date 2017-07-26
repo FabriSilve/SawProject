@@ -54,9 +54,9 @@ try {
 catch(PDOException $e){
     //$error=  "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
     $error = "k";
-    header("Location: ../pageProfile.php?profileError=".$error);
+    header("Location: ../pageRegisterProfile.php?profileError=".$error);
 }
 catch(Exception $e) {
-    header("Location: ../pageProfile.php?profileError=".$error);
+    header("Location: ../pageRegisterProfile.php?profileError=".$error);
 }
 ?>
