@@ -12,7 +12,7 @@ function checkLogin() {
 }
 
 function checkReg() {
-    var user_regexp = new RegExp("/^[a-zA-Z0-9]+([-_\\.][a-zA-Z0-9]+)*[a-zA-Z0-9]$/");
+    var user_regexp = new RegExp("/^[a-zA-Z0-9]+$/");
     var pass_regexp = new RegExp("/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/");
     username = document.getElementById("username").value;
     pass1 = document.getElementById("password1").value;
