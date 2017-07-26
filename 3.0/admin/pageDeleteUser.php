@@ -18,7 +18,7 @@
             </div>
             <div class="col-sm-8 text-left">
                 <h1><b>Cancellazione degli utenti</b></h1>
-                    <form method="post" action="confirm.php"> <!--TODO inserire richiesta di conferma operazione-->
+                    <form method="post" action="confDelUser.php"> <!--TODO inserire richiesta di conferma operazione-->
                         <p>Cerca l`utente da eleminare:</p>
                         <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                         <p></p>
