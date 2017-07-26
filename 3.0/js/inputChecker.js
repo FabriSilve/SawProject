@@ -25,7 +25,7 @@ function checkReg() {
     document.getElementById("formError").innerText = "";
     if(user_regexp.test(username)) {
         document.getElementById("username").focus();
-        document.getElementById("formError").innerText = "Username non valida JS";
+        document.getElementById("formError").innerText = "Username non valido";
         return false;
     }
 
