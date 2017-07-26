@@ -13,25 +13,7 @@
                         Admin
                     </div>
                 </div>
-                      <!--<ul>
-                <li>Utenti
-                    <ul>
-                        <li><a href="pageUsers.php">Utenti</a></li>
-                        <li><a href="pageUpdateUser.php">ModUser</a></li>
-                        <li><a href="pageDeleteUser.php">DeleteUser</a></li>
-                        <li><a href="pageBanUser.php">BanUser</a></li>
-                        <li><a href="pageAddAdmin.php">AddAdmin</a></li>
-                   </ul>
-               </li>
-               <li>Eventi
-                   <ul>
-                       <li><a href="pageEvents.php"> Eventi</a></li>
-                       <li><a href="pageDeleteEvent.php"> DeleteEvento</a></li>
-                   </ul>
-               </li>
-           </ul>
-            -->
-       </div>
+        </div>
        <div class="col-sm-8 text-left">
            <h1>Area Amministrativa</h1>
            <hr>
@@ -40,6 +22,8 @@
                <?php require("script/showStats.php"); ?>
            </div>
        </div>
+    </div>
+</div>
 
 
 <?php

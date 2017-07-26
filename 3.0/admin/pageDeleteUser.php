@@ -18,8 +18,8 @@
             </div>
             <div class="col-sm-8 text-left">
                 <h1><b>Cancellazione degli utenti</b></h1>
-                    <form method="post" action="script/userDeleter.php"> <!--TODO inserire richiesta di conferma operazione-->
-                    <p>Inserisci il nome utente da eleminare:</p>
+                    <form method="post" action="confirm.php"> <!--TODO inserire richiesta di conferma operazione-->
+                        <p>Cerca l`utente da eleminare:</p>
                         <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                         <p></p>
                     <p><input type="submit" value="Controlla"></p>
