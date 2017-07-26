@@ -1,25 +1,23 @@
 <?php
 
     require("dbAccess.php");
-    $message = "ERROR: Invalid username and/or password.<br>Remember that password must contain at least:<br>
-- 1 upper case letter<br>- 1 lower case letter<br>- 1 decimal number<br>- 1 special character.";
+    $message = "ERROR: Invalid username and/or password.<br>Remember that password must contain at least:<br>- 1 upper case letter<br>- 1 lower case letter<br>- 1 decimal number<br>- 1 special character<br>and must be at least 8 characters long.";
 
     try {
         $username = trim($_POST["username"]);
         $pass_pre_hash = trim($_POST["password1"]);
 
-        if ((empty($username)) || (!preg_match("/^[A-Za-z][A-Za-z0-9]{4,}$/",$username))){
+        if ((empty($username)) || (!preg_match("/^[A-Za-z][A-Za-z0-9]{3,}$/",$username))){
             throw new Exception();
         }
 
         if(empty($pass_pre_hash)){
             throw new Exception();
         }
-
-        if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
-            $message = "La password deve essere lunga almeno 8 caratteri<br>e deve contenere almeno:<br>-1 lower case letter<br>-1 upper case letter<br>-1 decimal number<br>-1 special character";
+        //TODO commento per debugging, da aggiornare a termine progetto
+        /*if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
             throw new Exception();
-        }
+        }*/
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
 
