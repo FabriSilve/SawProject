@@ -18,15 +18,20 @@
             </div>
             <div class="col-sm-8 text-left">
                 <h1><b>Cancellazione degli utenti</b></h1>
+                <div class="well">
                     <form method="post" action="confDelUser.php"> <!--TODO inserire richiesta di conferma operazione-->
                         <p>Cerca l`utente da eleminare:</p>
                         <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                         <p></p>
                     <p><input type="submit" value="Controlla"></p>
                 </form>
+                </div>
+                <hr>
+                <div class="well">
                 <?php
                     require("script/showUsers.php");
                 ?>
+                </div>
             </div>
         </div>
     </div>

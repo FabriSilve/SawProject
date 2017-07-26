@@ -18,6 +18,7 @@
             </div>
             <div class="col-sm-8 text-left">
                 <h1>Modifica degli Utenti</h1>
+                <div class="well"
                 <form method="post" action="pageUpdateUserForm.php"> <!--TODO inserire richiesta di conferma operazione-->
                     <p>Inserisci il nome utente da modificare:</p>
                     <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
@@ -25,7 +26,9 @@
                     <p></p>
                     <p><input type="submit" value="Controlla"></p>
                 </form>
+            </div>
                 <hr>
+            <div class="well">
                 <?php
                     require("script/showUsers.php");
                 ?>

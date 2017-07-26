@@ -19,17 +19,21 @@
             </div>
             <div class="col-sm-8 text-left">
                 <h1><b>Cancellazione degli eventi</b></h1>
+                <div class="well">
                 <form method="post" action="confDelEvent.php"> <!--TODO inserire richiesta di conferma operazione-->
                     <p>Inserisci ID dell`evento da eleminare:</p>
                     <input type="text" name="id" id="id" placeholder="Event id" class="radiusDiv padding5" required>
                     <p></p>
                     <p><input type="submit" value="Cerca"></p>
                 </form>
+                </div>
                 <hr>
+                <div class="well">
                 <h2>Eventi</h2>
                 <?php
                     require("script/showEvents.php");
                 ?>
+                </div>
             </div>
         </div>
     </div>
