@@ -52,7 +52,7 @@ function checkProfile() {
     console.info(email1);
     console.info(email2);
 
-    if(!email_regexp.test(email1)) {
+    if(email_regexp.test(email1)) {
         document.getElementById("email1").focus();
         document.getElementById("error").innerText = "Email non valida";
         return false;
