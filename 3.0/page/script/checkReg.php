@@ -1,26 +1,25 @@
 <?php
 
     require("dbAccess.php");
-    $message = "";
+    $message = "ERROR: Invalid username and/or password.<br>Remember that password must contain at least:<br>
+- 1 upper case letter<br>- 1 lower case letter<br>- 1 decimal number<br>- 1 special character.";
 
     try {
         $username = trim($_POST["username"]);
         $pass_pre_hash = trim($_POST["password1"]);
 
-        if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))){
-            $message = "Username non valido";
+        if ((empty($username)) || (!preg_match("/^[A-Za-z][A-Za-z0-9]{4,}$/",$username))){
             throw new Exception();
         }
 
         if(empty($pass_pre_hash)){
-            $message = "Password non inserita";
             throw new Exception();
         }
-        /*TODO funziona ma sospeso per facilitare test
+
         if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
             $message = "La password deve essere lunga almeno 8 caratteri<br>e deve contenere almeno:<br>-1 lower case letter<br>-1 upper case letter<br>-1 decimal number<br>-1 special character";
             throw new Exception();
-        }*/
+        }
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
 
@@ -60,7 +59,7 @@
     }
     catch(PDOException $e){
         $conn = null;
-        $message =  "Error: " . $e->getMessage(); //TODO for debug only ****TO BE REMOVED****
+        $message = "Error: " . $e->getMessage(); //TODO for debug only ****TO BE REMOVED****
         header("Location: ../pageRegistration.php?message=".$message);
     } catch(Exception $e) {
         $conn = null;
