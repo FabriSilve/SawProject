@@ -121,7 +121,7 @@
             throw new Exception();
         }
 
-        $stmt = $conn->prepare("INSERT INTO Profiles (username, nome, cognome, email, residenza, link_social, auto_descrizione) VALUES (:username, :name, :surname, :email, :residence, :link, :description);");
+        $stmt = $conn->prepare("INSERT INTO Profiles (username, name, surname, email, residence, link, description) VALUES (:username, :name, :surname, :email, :residence, :link, :description);");
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':surname', $surname);
