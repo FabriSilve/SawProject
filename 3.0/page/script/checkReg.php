@@ -4,6 +4,7 @@
     $message = "";
 
     try {
+        //TODO refactoring controllo dati input
         if(!isset($_POST["username"]) || !isset($_POST["password1"])) {
             $message = "inizializzare tutti i campi";
             throw new Exception();
@@ -56,7 +57,7 @@
         session_unset();
         session_destroy();
         session_start();
-        $_SESSION["EAauthorized"] = 1;
+        //$_SESSION["EAauthorized"] = 1;
         $_SESSION["EAusername"] = $username;
         header("Location: ../pageRegisterProfile.php");
 

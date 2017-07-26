@@ -16,6 +16,7 @@
     </div>
 
 <br>
+<!--TODO rimuovere div non necessari-->
 <div class="container container-table">
     <div class="row vertical-center-row">
         <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground" id="searchForm">
