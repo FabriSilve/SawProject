@@ -12,7 +12,8 @@ function checkLogin() {
 }
 
 function checkReg() {
-    var pattern = new RegExp("[^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$]]"); //TODO controllare exp reg e usarla
+    var user_regexp = new RegExp("/^[ -~]*$/");
+    var pass_regexp = new RegExp("/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/");
     username = document.getElementById("username").value;
     pass1 = document.getElementById("password1").value;
     pass2 = document.getElementById("password2").value;
@@ -22,22 +23,18 @@ function checkReg() {
     console.info(pass2);
 
     document.getElementById("formError").innerText = "";
-    if(username === "") {
+    if(!user_regexp.test(username)) {
         document.getElementById("username").focus();
-        document.getElementById("formError").innerText = "Username non valido";
+        document.getElementById("formError").innerText = "Username non valida JS";
         return false;
     }
 
-    if(pass1 === "") {
+    if(!pass_regexp.test(pass1)) {
         document.getElementById("password1").focus();
-        document.getElementById("formError").innerText = "Password non valido";
+        document.getElementById("formError").innerText = "Password non valida";
         return false;
     }
-    if(pass2 === "") {
-        document.getElementById("password2").focus();
-        document.getElementById("formError").innerText = "Password non valido";
-        return false;
-    }
+
     if(pass1 !== pass2) {
         document.getElementById("password2").focus();
         document.getElementById("formError").innerText = "Password diversa";
@@ -47,22 +44,20 @@ function checkReg() {
 }
 
 function checkProfile() {
+
+    var email_regexp = new RegExp("/^(([^<>()[\\]\\\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/")
     email1 = document.getElementById("email1").value;
     email2 = document.getElementById("email2").value;
 
     console.info(email1);
     console.info(email2);
 
-    if(email1 === "" ) { //TODO inserire pattern per controllo mail
+    if(!email_regexp.test(email1)) {
         document.getElementById("email1").focus();
         document.getElementById("error").innerText = "Email non valida";
         return false;
     }
-    if(email2 === "" ) { //TODO inserire pattern per controllo mail
-        document.getElementById("email2").focus();
-        document.getElementById("error").innerText = "Email non valida";
-        return false;
-    }
+
     if(email1 !== email2) {
         document.getElementById("email2").focus();
         document.getElementById("error").innerText = "Email diversa";

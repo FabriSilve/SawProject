@@ -1,14 +1,9 @@
 <?php
 
-    require("dbAccess.php");
+    //require("dbAccess.php");
     $message = "";
 
     try {
-        //TODO refactoring controllo dati input
-        if(!isset($_POST["username"]) || !isset($_POST["password1"])) {
-            $message = "inizializzare tutti i campi";
-            throw new Exception();
-        }
         $username = trim($_POST["username"]);
         $pass_pre_hash = trim($_POST["password1"]);
 
@@ -23,11 +18,16 @@
         }
         /*TODO funziona ma sospeso per facilitare test
         if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
-            $message = "Password non valido";
+            $message = "La password deve essere lunga almeno 8 caratteri<br>e deve contenere almeno:<br>-1 lower case letter<br>-1 upper case letter<br>-1 decimal number<br>-1 special character";
             throw new Exception();
         }*/
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
+
+        $server = "localhost";
+        $dbUser = "root";
+        $dbPass = "sawforthewin666";
+        $dbName = "saw";
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
