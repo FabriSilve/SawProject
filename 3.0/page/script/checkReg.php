@@ -1,6 +1,6 @@
 <?php
 
-    //require("dbAccess.php");
+    require("dbAccess.php");
     $message = "";
 
     try {
@@ -24,10 +24,6 @@
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
 
-        $server = "localhost";
-        $dbUser = "root";
-        $dbPass = "sawforthewin666";
-        $dbName = "saw";
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
