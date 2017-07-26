@@ -12,29 +12,16 @@ function drawEventsList(check) {
         text = '<div class="container-fluid bg-3">';
         for(j=1;j<numEvents;j++)
         {
-            text += drawSingleEvent(events[j], check);
+            text += drawSingleEvent(j, check);
         }
         text += "</div>";
-
-
-        /*if (numEvents > 5) {
-            text += '<div class="container-fluid bg-3 text-center">';
-            text += '<div class="row">';
-            for (i = 5; i < 9; i++) {
-                if (i >= numEvents) {
-                    break;
-                }
-                text += drawSingleEvent(events[i], check);
-            }
-            text += '</div></div>';
-        }*/
     }
     if (text !== null)
         document.getElementById('eventsList').innerHTML = text;
 }
 
-function drawSingleEvent(event, check) {
-
+function drawSingleEvent(j, check) {
+    event = events[j]
     temp = '<div class="row liteBackground radiusDiv marginBottom align-middle" id="' + event.id + '">';
     if(owner !== "0" && check !== null) {
         temp += '<div class="col-sm-1 vertical-middle">';
@@ -44,13 +31,13 @@ function drawSingleEvent(event, check) {
         }
         temp += '></div>';
     }
-    temp += '<div class="col-sm-3 text-right">';
+    temp += '<div class="col-sm-3 text-center">';
     temp += '<h2 class="eventTitle">' + event.name+'</h2>';
     temp += '<h5>' + event.day + '</h5>';
     temp += '<h5>' + event.address + '</h5>';
     temp += '</div>';
-    temp += '<div class="col-sm-3">';
-    temp += '<p>' + event.description + '</p>';
+    temp += '<div class="col-sm-3 text-center" id="divDesc'+j+'">';
+    temp += '<h5>' + event.description + '</h5>';
     temp += '</div>';
     temp += '<div class="col-sm-4">';
     temp += '<img src = "' + event.image + '" class="img-responsive eventImage"  alt ="Image">';
@@ -62,7 +49,9 @@ function drawSingleEvent(event, check) {
     } else if(owner !== "0" && check === null) {
         temp += '<div class="col-sm-1 text-right"></div>';
         temp += '<div class="col-sm-1 text-right">';
-        temp += '<img src="../media/modify.png" id="modify' + event.id + '" onclick="alert(\'' + event.id + '\');">';
+        temp += '<span id="modifySave'+j+'">';
+        temp += '<img src="../media/modify.png" id="modify' + event.id + '" onclick="eventModify(' + j + ');">';
+        temp += '</span>';
         temp += '<br><br>';
         temp += '<img src="../media/delete.png" id="delete' + event.id + '" onclick="alert(\'' + event.id + '\');">';
         temp += '</div>';

@@ -1,8 +1,8 @@
 function signalEvent(num) {
     if(confirm("Segnalare davvero l'evento?")) {
         id = "signal" + num;
-        console.info("id " + id);
-        console.info(owner);
+        console.info("id " + id); //TODO remove
+        console.info(owner); //todo REMOVE
         urlSimple = "script/signalEvent.php";
         url = urlSimple + "?id=" + num + "&username=" + owner;
         xhr = getXMLHttpRequestObject();
@@ -20,11 +20,11 @@ function signalCallback() {
                 console.info("respose is: " + xhr.responseText);
             }
             else {
-                alert("Ajax error: no data received");
+                console.error("Ajax error: no data received");
             }
         }
         else {
-            alert("Ajax error: " + xhr.responseText);
+            console.error("Ajax error: " + xhr.responseText);
         }
     }
 }
