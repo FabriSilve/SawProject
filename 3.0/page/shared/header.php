@@ -15,6 +15,7 @@
     <script src="../js/updateFollowed.js"></script>
     <script src="../js/signalEvent.js"></script>
     <script src="../js/eventModify.js"></script>
+    <script src="../js/eventDelete.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
 

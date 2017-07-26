@@ -53,7 +53,7 @@ function drawSingleEvent(j, check) {
         temp += '<img src="../media/modify.png" id="modify' + event.id + '" onclick="eventModify(' + j + ');">';
         temp += '</span>';
         temp += '<br><br>';
-        temp += '<img src="../media/delete.png" id="delete' + event.id + '" onclick="alert(\'' + event.id + '\');">';
+        temp += '<img src="../media/delete.png" id="delete' + event.id + '" onclick="eventDelete(' + j + ');">';
         temp += '</div>';
     }
     temp += '</div>';
