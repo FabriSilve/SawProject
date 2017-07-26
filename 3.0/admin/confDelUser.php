@@ -69,7 +69,7 @@ require("shared/navbar.php");
                     <p>Conferma la cancellazione, rimmittendo il username: </p>
                     <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
                     <p></p>
-                    <p><input type="submit" value="Conferma Eliminaazione"></p>
+                    <p><input type="submit" value="Conferma"></p>
                 </form>
         </div>
     </div>

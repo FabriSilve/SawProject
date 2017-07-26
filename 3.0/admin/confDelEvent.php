@@ -81,7 +81,7 @@ require("shared/navbar.php");
                     <p>Conferma la cancellazione, rimmittendo il ID: </p>
                     <input type="text" name="id" id="id" placeholder="Event id" class="radiusDiv padding5" required>
                     <p></p>
-                    <p><input type="submit" value="Conferma Eliminazione"></p>
+                    <p><input type="submit" value="Conferma"></p>
                 </form>
             </div>
         </div>
