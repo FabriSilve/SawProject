@@ -7,7 +7,7 @@ require("shared/navbar.php");
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="pageDeleteUser.php"> Torna indietro</a></p>
+                <p><a href="pageDeleteEvent.php"> Torna indietro</a></p>
             </div>
             <?php
             if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
@@ -41,7 +41,7 @@ require("shared/navbar.php");
                     $stmt = $conn->prepare("SELECT username, email FROM Users NATURAL JOIN Profiles WHERE username = :username");
                     $stmt->bindParam(":username", $username);
                     $stmt->execute();
-                    echo '<h1>Seguente utente: </h1>';
+                    echo '<h1>Seguente utente e` stato trovato: </h1>';
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo '<tr><td>'.$row['username'].'</td>';
                         echo '<td>'.$row['email'].'</td>';

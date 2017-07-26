@@ -19,8 +19,14 @@ require("shared/navbar.php");
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>Username</th>
-                    <th>Email</th>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>day</th>
+                    <th>address</th>
+                    <th>lat</th>
+                    <th>lon</th>
+                    <th>owner</th>
                 </tr>
                 </thead>
                 <?php

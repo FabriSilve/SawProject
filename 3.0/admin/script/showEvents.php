@@ -7,8 +7,6 @@
         <th>day</th>
         <th>address</th>
         <th>image</th>
-        <!--<th>lat</th>
-        <th>lon</th>-->
     </tr>
     </thead>
     <?php
