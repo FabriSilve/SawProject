@@ -4,6 +4,10 @@
     $message = "";
 
     try {
+        if(!isset($_POST["username"]) || !isset($_POST["password1"])) {
+            $message = "inizializzare tutti i campi";
+            throw new Exception();
+        }
         $username = trim($_POST["username"]);
         $pass_pre_hash = trim($_POST["password1"]);
 
@@ -16,11 +20,11 @@
             $message = "Password non inserita";
             throw new Exception();
         }
-
+        /*TODO funziona ma sospeso per facilitare test
         if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
             $message = "Password non valido";
             throw new Exception();
-        }
+        }*/
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
@@ -59,10 +63,9 @@
     }
     catch(PDOException $e){
         $conn = null;
-        $message =  "Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
+        $message =  "Error: " . $e->getMessage(); //TODO for debug only ****TO BE REMOVED****
         header("Location: ../pageRegistration.php?message=".$message);
-    }
-    catch(Exception $e) {
+    } catch(Exception $e) {
         $conn = null;
         header("Location: ../pageRegistration.php?message=".$message);
     }
