@@ -23,13 +23,13 @@ function checkReg() {
     console.info(pass2);
 
     document.getElementById("formError").innerText = "";
-    if(!user_regexp.test(username)) {
+    if(user_regexp.test(username)) {
         document.getElementById("username").focus();
         document.getElementById("formError").innerText = "Username non valida JS";
         return false;
     }
 
-    if(!pass_regexp.test(pass1)) {
+    if(pass_regexp.test(pass1)) {
         document.getElementById("password1").focus();
         document.getElementById("formError").innerText = "Password non valida";
         return false;
