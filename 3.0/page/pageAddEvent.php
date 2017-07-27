@@ -34,7 +34,7 @@
                 <div class="col-sm-4">
                     <br/>
                     <br/>
-                    <input type="file" id="image" name="image" required>
+                    <input type="file" id="image" name="image" value="Select a photo" required>
                     <!--<input type="text" id="owner" name="owner" hidden>-->
                  </div>
             </div>

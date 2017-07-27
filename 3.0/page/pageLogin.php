@@ -22,8 +22,8 @@
                 <button type="submit" class="radiusDiv">
                     accedi
                 </button>
-                <?php if(isset($_GET["loginError"]) && $_GET["loginError"] !== "" ) {
-                    echo '<h5>'.$_GET["loginError"].'</h5>';
+                <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                    echo '<h5>'.$_GET["message"].'</h5>';
                 }
                 ?>
                 <hr>
