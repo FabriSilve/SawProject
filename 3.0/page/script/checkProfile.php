@@ -94,15 +94,14 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
 
-        //TODO non serve usiamo $_SESSION per username (già nel database)
-      /*$stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username");
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username");
         $stmt->bindParam(":username", $username);
         $stmt->execute();
 
         if($stmt->rowCount() !== 1) {
             $message = "Utente non trovato";
             throw new Exception();
-        }*/
+        }
 
         $stmt = $conn->prepare("SELECT * FROM Profiles WHERE username = :username");
         $stmt->bindParam(":username", $username);
