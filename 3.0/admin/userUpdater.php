@@ -1,11 +1,11 @@
 <?php
-    require("../shared/accessManager.php");
-    require("dbAccess.php");
+require("shared/accessManager.php");
+require("script/dbAccess.php");
 
     $message = "";
     $usernameGet = "";
     try {
-        if(!isset($_POST['oldUsername']) || !isset($_POST['newUsername']) || !isset($_POST['email']) || !isset($_POST['password'])) {
+        if (!isset($_POST['oldUsername']) || !isset($_POST['newUsername']) || !isset($_POST['email']) || !isset($_POST['password'])) {
             $message = "Mancano dei campi";
             throw new Exception();
         }
@@ -59,24 +59,34 @@
         }
 
 
-        $stmt = $conn->prepare("UPDATE Users SET username = :newUsername, email = :email, password = :password WHERE username = :oldUsername;");
+        $stmt = $conn->prepare("UPDATE Users 
+                                          SET username = :newUsername, password = :password
+                                          WHERE username = :oldUsername;");
         $stmt->bindParam(':newUsername', $newUsername);
-        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
         $stmt->bindParam(':oldUsername', $oldUsername);
-
         $stmt->execute();
+
+        $stmt = $conn->prepare("UPDATE Profiles 
+                                          SET username = :newUsername, email = :email
+                                          WHERE username = :oldUsername;");
+        $stmt->bindParam(':newUsername', $newUsername);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':oldUsername', $oldUsername);
+        $stmt->execute();
+
         $conn->commit();
+
         $message = "Modifica eseguita con successo";
-        header("Location: ../pageUpdateUser.php?message=".$message);
+        header("Location: TrovaUpdateUser.php?message=" . $message);
     }
     catch(PDOException $e){
         $conn->rollback();
         $message = "Si è verificato un errore."." Error: " . $e->getMessage(); //TODO rimuovere in release
-        header("Location: ../pageUpdateUserForm.php?message=".$message."&username=".$usernameGet);
+        header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
     } catch(Exception $e){
         $conn->rollback();
-        header("Location: ../pageUpdateUserForm.php?message=".$message."&username=".$usernameGet);
+        header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
     }
     $conn = null;
 ?>
