@@ -32,11 +32,12 @@ function drawSingleEvent(j, check) {
     }
     temp += '<div class="col-sm-3 text-center">';
     temp += '<h2 class="eventTitle">' + event.name+'</h2>';
-    temp += '<h5>' + event.day + '</h5>';
-    temp += '<h5>' + event.address + '</h5>';
+    temp += '<h3>' + event.day + '</h3>';
+    temp += '<h3>' + event.address + '</h3>';
+    temp += '<a href="pageOtherProfile?username='+event.owner+'" target="blank"><h4>'+event.owner+'</h4></a>';
     temp += '</div>';
     temp += '<div class="col-sm-3 text-center" id="divDesc'+j+'">';
-    temp += '<h5>' + event.description + '</h5>';
+    temp += '<h4>' + event.description + '</h4>';
     temp += '</div>';
     temp += '<div class="col-sm-4">';
     temp += '<img src = "' + event.image + '" class="img-responsive eventImage"  alt ="Image">';
