@@ -8,7 +8,7 @@
         var events = <?php require('script/userEvents.php'); ?> ;
     </script>
     <div class="container text-center liteOrange radiusDiv">
-        <h1>My Event</h1>
+        <h1>My Events</h1>
         <h3>Do you remember?</h3>
     </div>
     <br>

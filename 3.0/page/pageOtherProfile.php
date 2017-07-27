@@ -3,12 +3,17 @@
     require("shared/header.php");
     if(!isset($logged)||!$logged)
         header("Location: pageHomepage.php");
-    $username = $_SESSION["EAusername"];
+    if(empty($_GET["username"])) {
+        header("location: ../");
+    }
+    $username = $_GET["username"];
 ?>
+
     <script> userData = <?php require("script/userData.php"); ?>; </script>
+
     <div class="container text-center liteOrange radiusDiv">
         <h1>Profile</h1>
-        <h3>About you..</h3>
+        <h3>Have you met..?</h3>
     </div>
     <br>
     <div class="container radiusDiv liteBackground">
@@ -21,8 +26,8 @@
                     <div id="link"></div>
                 </div>
                 <br/>
-                <div class="row" id="modifyUser">
-                    <img src="../media/modify.png" id="modify" onclick="userModify();">
+                <div class="row" id="messageUser">
+                    <img src="../media/mex.png" id="mex" onclick="userMessage();">
                 </div>
             </div>
         </div>

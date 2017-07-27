@@ -1,10 +1,9 @@
 <?php
     require("dbAccess.php");
     require("accessControl.php");
-    if(!isset($_SESSION["EAusername"]) || empty($_SESSION["EAusername"])) {
+    if(empty($username)) {
         header("Location: ../../");
     }
-    $username = $_SESSION["EAusername"];
     $message = "";
     $numEventi = 0;
     $numFans = 0;
@@ -66,13 +65,12 @@
             "signaled" => $numSignaled
         );
 
-        /*header("Content-Type: application/json");*/
         echo json_encode($userData, JSON_PRETTY_PRINT);
         $conn->commit();
         $conn = null;
     }catch(PDOException $e) {
-        echo "[{}]; //ERROR PDO:".$e->getMessage();
+        echo "[]; //ERROR PDO:".$e->getMessage();
     } catch(Exception $e) {
-        echo "[{}]; //ERROR ".$message;
+        echo "[]; //ERROR ".$message;
     }
 ?>

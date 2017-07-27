@@ -34,7 +34,9 @@ function drawSingleEvent(j, check) {
     temp += '<h2 class="eventTitle">' + event.name+'</h2>';
     temp += '<h3>' + event.day + '</h3>';
     temp += '<h3>' + event.address + '</h3>';
-    temp += '<a href="pageOtherProfile?username='+event.owner+'" target="blank"><h4>'+event.owner+'</h4></a>';
+    if(owner !== "0" && check !== null) {
+        temp += '<a href="pageOtherProfile.php?username=' + event.owner + '" target="blank"><h4>' + event.owner + '</h4></a>';
+    }
     temp += '</div>';
     temp += '<div class="col-sm-3 text-center" id="divDesc'+j+'">';
     temp += '<h4>' + event.description + '</h4>';
