@@ -16,3 +16,6 @@ STRUTTURA GENERALE:
         2) aggiungere e modificare/cancellare I PROPRI eventi
         3) contattare i proprietari di un evento
         4) gestione profilo
+
+AMMINISTRAZIONE DEL SITO:
+    -si accede
