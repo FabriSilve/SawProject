@@ -11,6 +11,7 @@
                     <p><a href="pageDashboard.php"> Torna indietro</a></p>
                 </div>
                 <?php
+                echo $_POST["username"];
                     if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
                         echo '<div class="well">'.$_GET["message"].'</div>';
                     }
@@ -29,6 +30,7 @@
                 </div>
                 <hr>
                 <div class="well">
+                    <h4>Utenti attualmente presenti nel database:</h4>
                     <?php
                     require("script/showUsers.php");
                     ?>

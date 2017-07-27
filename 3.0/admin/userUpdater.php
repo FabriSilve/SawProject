@@ -37,57 +37,61 @@ require("script/dbAccess.php");
             throw new Exception();
         }
         $password = password_hash($password, PASSWORD_BCRYPT);
+    } catch (Exception $e) {
+        header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
+        die();
+    }
+try {
 
-        $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->beginTransaction();
+    $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->beginTransaction();
 
-        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
-        $stmt->bindParam(':username', $oldUsername, PDO::PARAM_STR);
-        $stmt->execute();
-        if($stmt -> rowCount() !== 1) {
-            $message = "Utente non presente";
-            throw new Exception();
-        }
+    $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
+    $stmt->bindParam(':username', $oldUsername, PDO::PARAM_STR);
+    $stmt->execute();
+    if($stmt -> rowCount() !== 1) {
+        $message = "Utente non presente";
+        throw new Exception();
+    }
 
-        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
-        $stmt->bindParam(':username', $newUsername, PDO::PARAM_STR);
-        $stmt->execute();
-        if($stmt -> rowCount() > 0) {
-            $message = "Nuovo username già utilizzato";
-            throw new Exception();
-        }
+    $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username;");
+    $stmt->bindParam(':username', $newUsername, PDO::PARAM_STR);
+    $stmt->execute();
+    if($stmt -> rowCount() > 0) {
+        $message = "Nuovo username già utilizzato";
+        throw new Exception();
+    }
 
 
-        $stmt = $conn->prepare("UPDATE Users 
+    $stmt = $conn->prepare("UPDATE Users 
                                           SET username = :newUsername, password = :password
                                           WHERE username = :oldUsername;");
-        $stmt->bindParam(':newUsername', $newUsername);
-        $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':oldUsername', $oldUsername);
-        $stmt->execute();
+    $stmt->bindParam(':newUsername', $newUsername);
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':oldUsername', $oldUsername);
+    $stmt->execute();
 
-        $stmt = $conn->prepare("UPDATE Profiles 
+    $stmt = $conn->prepare("UPDATE Profiles 
                                           SET username = :newUsername, email = :email
                                           WHERE username = :oldUsername;");
-        $stmt->bindParam(':newUsername', $newUsername);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':oldUsername', $oldUsername);
-        $stmt->execute();
+    $stmt->bindParam(':newUsername', $newUsername);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':oldUsername', $oldUsername);
+    $stmt->execute();
 
-        $conn->commit();
+    $conn->commit();
 
-        $message = "Modifica eseguita con successo";
-        header("Location: TrovaUpdateUser.php?message=" . $message);
-    }
-    catch(PDOException $e){
-        $conn->rollback();
-        $message = "Si è verificato un errore."." Error: " . $e->getMessage(); //TODO rimuovere in release
-        header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
-    } catch(Exception $e){
-        $conn->rollback();
-        header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
-    }
+    $message = "Modifica eseguita con successo";
+    header("Location: TrovaUpdateUser.php?message=" . $message);
+} catch(PDOException $e){
+    $conn->rollback();
+    $message = "Si è verificato un errore."." Error: " . $e->getMessage(); //TODO rimuovere in release
+    header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
+} catch(Exception $e){
+    $conn->rollback();
+    header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
+}
     $conn = null;
 ?>
 
