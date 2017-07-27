@@ -132,15 +132,6 @@
 
         $stmt->execute();
 
-        //TODO valutare se lasciare
-        $stmt = $conn->prepare("SELECT * FROM Profiles WHERE email = :email");
-        $stmt->bindParam(":email", $email1);
-        $stmt->execute();
-        if($stmt->rowCount() !== 1) {
-            $message = "errore inserimento";
-            throw new Exception();
-        }
-
         $conn->commit();
 
         session_start();
