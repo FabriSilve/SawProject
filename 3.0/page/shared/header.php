@@ -16,6 +16,7 @@
     <script src="../js/signalEvent.js"></script>
     <script src="../js/eventModify.js"></script>
     <script src="../js/eventDelete.js"></script>
+    <script src="../js/drawUserData.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
 
