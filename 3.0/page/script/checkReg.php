@@ -1,32 +1,25 @@
 <?php
 
     require("dbAccess.php");
-    $message = "";
+    $message = "ERROR: Invalid username and/or password.<br>Remember that password must contain at least:<br>- 1 upper case letter<br>- 1 lower case letter<br>- 1 decimal number<br>- 1 special character<br>and must be at least 8 characters long.";
 
     try {
-        //TODO refactoring controllo dati input
-        if(!isset($_POST["username"]) || !isset($_POST["password1"])) {
-            $message = "inizializzare tutti i campi";
-            throw new Exception();
-        }
         $username = trim($_POST["username"]);
         $pass_pre_hash = trim($_POST["password1"]);
 
-        if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))){
-            $message = "Username non valido";
+        if ((empty($username)) || (!preg_match("/^[A-Za-z][A-Za-z0-9]{3,}$/",$username))){
             throw new Exception();
         }
 
         if(empty($pass_pre_hash)){
-            $message = "Password non inserita";
             throw new Exception();
         }
-        /*TODO funziona ma sospeso per facilitare test
-        if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
-            $message = "Password non valido";
+        //TODO commento per debugging, da aggiornare a termine progetto
+        /*if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
             throw new Exception();
         }*/
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
+
 
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -64,7 +57,7 @@
     }
     catch(PDOException $e){
         $conn = null;
-        $message =  "Error: " . $e->getMessage(); //TODO for debug only ****TO BE REMOVED****
+        $message = "Error: " . $e->getMessage(); //TODO for debug only ****TO BE REMOVED****
         header("Location: ../pageRegistration.php?message=".$message);
     } catch(Exception $e) {
         $conn = null;
