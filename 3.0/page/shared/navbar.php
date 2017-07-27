@@ -16,6 +16,7 @@
                         echo '<li class="active"><a href="pageFollowed.php">Followed</a></li>';
                         echo '<li class="active"><a href="pageMyEvents.php">My Events</a></li>';
                         echo '<li class="active"><a href="pageMyProfile.php">Profile</a></li>';
+                        echo '<li class="active"><a href="pageMessages.php">Messages</a></li>';
                     }
                 ?>
                 <!--<li class="active"><a href="#">Eventi</a></li>

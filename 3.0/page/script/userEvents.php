@@ -37,6 +37,7 @@
         $conn = null;
     } catch(PDOException $e) {
         $message = "ERROR ".$e->getMessage();
+        echo "[{}]; /*".$message."*/";
     } catch(Exception $e) {
         echo "[{}]; /*".$message."*/";
     }

@@ -1,5 +1,4 @@
 function drawEventsList(check) {
-    //todo ottimizzare cicli
     numEvents = events.length;
     if(numEvents <= 1) {
         text = '<div class="container-fluid bg-3 text-center">';
