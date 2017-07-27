@@ -1,7 +1,7 @@
 <?php
 
     require("dbAccess.php");
-    $message = "";//"ERROR: Invalid username and/or password.<br>Remember that password must contain at least:<br>- 1 upper case letter<br>- 1 lower case letter<br>- 1 decimal number<br>- 1 special character<br>and must be at least 8 characters long.";
+    $message = "ERROR: Invalid username and/or password.<br>Remember that password must contain at least:<br>- 1 upper case letter<br>- 1 lower case letter<br>- 1 decimal number<br>- 1 special character<br>and must be at least 8 characters long.";
 
     try {
         $username = trim($_POST["username"]);
