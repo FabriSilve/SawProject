@@ -11,7 +11,6 @@
                     <p><a href="pageDashboard.php"> Torna indietro</a></p>
                 </div>
                 <?php
-                echo $_POST["username"];
                     if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
                         echo '<div class="well">'.$_GET["message"].'</div>';
                     }
