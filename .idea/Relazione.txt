@@ -1,0 +1,18 @@
+Fabrizio Silvestri, Stefano Beltrame, Vera Maroz.
+
+************************ EVENT AROUND **************************
+Il nostro lavoro consiste nella creazione di un sito web con lo scopo di gestire eventi in tutto il mondo.
+Il sito prevede un form di registrazione per gli utenti che desiderano avere privilegi avanzati,
+che spiegheremo in seguito.
+
+STRUTTURA GENERALE:
+    -   Gli utenti NON registrati possono visionare eventi in una specifica zona.
+        La zona di default è la posizione attuale del dispositivo dal quale avviene la richiesta,
+        ma è possibile specificare una zona a piacere.
+        questo grazie ai metodi di Geolocalizzazione forniti da google maps.
+
+    -   Gli utenti registrati possono usufruire di funzionalità aggiuntive quali:
+        1) seguire eventi
+        2) aggiungere e modificare/cancellare I PROPRI eventi
+        3) contattare i proprietari di un evento
+        4) gestione profilo

@@ -30,15 +30,14 @@ require("shared/navbar.php");
                     $message = "";
                     try {
 
-                        if (!empty(trim($_POST["username"]))) {
-                            $username = htmlspecialchars(trim($_POST["username"]));
-                        } else if (!empty(trim($_GET["username"]))) {
+                        //if (!empty(trim($_POST["username"]))) {
+                            $username = trim($_POST["username"]);
+                       /* } else if (!empty(trim($_GET["username"]))) {
                             $username = $_GET["username"];
                         } else {
                             $message = "Username non valido";
                             throw new Exception();
-                        }
-
+                        }*/
 
                         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -46,12 +45,13 @@ require("shared/navbar.php");
                         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
                         $stmt->execute();
 
-                        if ($stmt->rowCount() !== 1) {
+                        /*if ($stmt->rowCount() !== 1) {
                             $message = "Utente non presente nel sistema";
                             throw new Exception();
-                        }
+                        }*/
 
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            //$_GET["oldUsername"] = $row['username'];
                             echo '<tr><td>' . $row['username'] . '</td>';
                             echo '<td>' . $row['email'] . '</td>';
                         }
@@ -69,14 +69,13 @@ require("shared/navbar.php");
             <hr>
             <div class="well">
                 <h3>Inserisci i nuovi dati:</h3>
-                <form method="post" action="userUpdater.php">
-                    <input type="text" hidden name="oldUsername" id="username" placeholder="Old Username"
-                           class="radiusDiv padding5" value="<?php echo $username; ?>">
+                <form method="post" action="updaterUser.php">
                     <input type="text" name="username" id="username" placeholder="New Username"
                            class="radiusDiv padding5" required>
-                    <input type="text" name="email" id="email" placeholder="email" class="radiusDiv padding5" required>
-                    <input type="password" name="password" id="password" placeholder="Password"
+                    <!--<input type="text" name="email" id="email" placeholder="email"
                            class="radiusDiv padding5" required>
+                    <input type="password" name="password" id="password" placeholder="Password"
+                           class="radiusDiv padding5" required>-->
                     <h4><br>Conferma il cambiamento:</h4>
                     <p><input type="submit" value="Conferma"></p>
                 </form>
