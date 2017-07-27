@@ -35,7 +35,10 @@
             throw new Exception();
         }
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        echo $password."\n";
+        echo password_hash($password, PASSWORD_BCRYPT)."\n";
+        echo $result["password"]."\n";
+        echo password_verify($password, $result["password"])."\n";
         //TODO non setta ne session ne coockie
         if(password_verify($password, $result["password"])) {
             session_start();
@@ -48,7 +51,8 @@
             header("Location: ../pageHomepage.php");
         } else {
             $error = "Credenziali non valide";
-            throw new Exception();
+            echo $error;
+            //throw new Exception();
         }
 
     }catch(PDOException $e){

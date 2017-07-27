@@ -13,6 +13,6 @@ if(!isset($logged)||!$logged)
     <br>
     <div id="userData" class="container radiusDiv liteBackground">
     </div>
-    <script>drawUserData(userData);</script>
+    <script>drawUserData();</script>
     <br>
 <?php require("shared/footer.php"); ?>
