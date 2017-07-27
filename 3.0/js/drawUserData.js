@@ -31,7 +31,7 @@ function drawUserData() {
     text += '       </div>';
     text += '       <div class="col-sm-6 text-center" id="userData2">';
     text += '           <h5>'+userData.description+'</h5>';
-    if(userData.link !== null) {
+    if(userData.link !== "") {
         text += '       <p class="text-center"><a href="' + userData.link + '" target="blank">link</a></p>';
     }
     text += '       </div>';
@@ -60,16 +60,16 @@ function userModify() {
 
     userData1  = '<table class="table-responsive text-left">';
     userData1 += '    <tr><td>username:</td><td class="padding5">'+userData.username+'</td></tr>';
-    userData1 += '    <tr><td>nome:</td><td class="padding5"><input name="name" id="name" type="text" value="'+userData.name+'"></td></tr>';
-    userData1 += '    <tr><td>cognome:</td><td class="padding5"><input name="surname" id="surname" type="text" value="'+userData.surname+'"></td></tr>';
-    userData1 += '    <tr><td>residenza:</td><td class="padding5"><input name="residence" id="residence" type="text" value="'+userData.residence+'"></td></tr>';
+    userData1 += '    <tr><td>nome:</td><td class="padding5"><input name="name" id="name" placeholder="Name" class="radiusDiv" type="text" value="'+userData.name+'"></td></tr>';
+    userData1 += '    <tr><td>cognome:</td><td class="padding5"><input name="surname" id="surname" placeholder="Surname" class="radiusDiv" type="text" value="'+userData.surname+'"></td></tr>';
+    userData1 += '    <tr><td>residenza:</td><td class="padding5"><input name="residence" id="residence" placeholder="Residence" class="radiusDiv" type="text" value="'+userData.residence+'"></td></tr>';
     userData1 += '</table>';
     document.getElementById("userData1").innerHTML = userData1;
 
-    //TODO modifica anche per descrizione e link
-    /*text = '<textarea id="description'+num+'" cols="20" rows="5">'+events[num].description+'</textarea>';
+    userData2  = '<textarea cols="50" rows="6" name="description" id="description" placeholder="Description" class="radiusDiv">'+userData.description+'</textarea><br>';
+    userData2 += '<input type="url" name="link" id="link" placeholder="Link Social" class="radiusDiv padding5" value="'+userData.link+'">';
 
-    document.getElementById("divDesc"+num).innerHTML = text;*/
+    document.getElementById("userData2").innerHTML = userData2;
 
 
 }
@@ -78,14 +78,11 @@ function confirmUserModify() {
     name = document.getElementById("name").value;
     surname = document.getElementById("surname").value;
     residence = document.getElementById("residence").value;
-
-    //TODO remove
-    console.info(name);
-    console.info(surname);
-    console.info(residence);
+    description = document.getElementById("description").value;
+    link = document.getElementById("link").value;
 
     urlSimple = "script/userModifier.php";
-    url = urlSimple + "?username=" +owner+"&name=" + name + "&surname="+surname+"&residence="+residence;
+    url = urlSimple + "?username=" +owner+"&name=" + name + "&surname="+surname+"&residence="+residence+"&description="+description+"&link="+link;
     xhr = getXMLHttpRequestObject();
     xhr.onreadystatechange = modifyUserCallback;
     xhr.open('GET', url, true);
@@ -96,7 +93,7 @@ function modifyUserCallback() {
     if (xhr.readyState === 4) {
         if (xhr.status === 200) {
             if (xhr.responseText !== "") {
-                console.info(xhr.responseText)
+                console.info(xhr.responseText);
                 location.reload();
             }
             else {
