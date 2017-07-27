@@ -42,7 +42,7 @@
         "lon BETWEEN (".$lon."-".$distance.") AND (".$lon."+".$distance.")";
     $where_days = "day BETWEEN CURDATE() AND (CURDATE() + INTERVAL ".$days." DAY) ";
 
-    $sql = "SELECT id, name, description, address, day, lat, lon FROM Events WHERE (".$where_position.") AND (".$where_days."); ";
+    $sql = "SELECT id, name, description, address, day, lat, lon, owner FROM Events WHERE (".$where_position.") AND (".$where_days."); ";
     //------------------------
 
 
@@ -62,7 +62,8 @@
             "day" => "",
             "lat" => "".$lat."",
             "lon" => "".$lon."",
-            "image" => ""
+            "image" => "",
+            "owner" => ""
         );
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $image_file = "../uploads/default.jpg";
@@ -76,7 +77,8 @@
                 "day" => $row["day"],
                 "lat" => $row["lat"],
                 "lon" => $row["lon"],
-                "image" => $image_file
+                "image" => $image_file,
+                "owner" => $row["owner"]
             );
         }
         echo json_encode($eventDB, JSON_PRETTY_PRINT);
