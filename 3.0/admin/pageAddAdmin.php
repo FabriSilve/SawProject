@@ -16,16 +16,22 @@
                 }
             ?>
         </div>
+
         <div class="col-sm-8 text-left">
+            <div class="well">
             <form method="post" action="script/adminAdder.php">
                 <h1>Inserisci nuovo Admin</h1>
                 <div
-                <p>Inserisci le credenziali:</p>
+                <p><b>Inserisci le credenziali:</b></p>
                 <p><input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required></p>
                 <p><input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required></p>
                 <p><input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required></p>
                 <p><input type="submit" class="radiusDiv" value="Add"></p>
             </form>
+            </div>
+        </div>
+        <div class="well">
+            <?php require("script/showAdmin.php");?>
         </div>
     </div>
 </div>

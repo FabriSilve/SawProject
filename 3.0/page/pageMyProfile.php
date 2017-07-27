@@ -13,6 +13,7 @@ if(!isset($logged)||!$logged)
     <br>
     <div id="userData" class="container radiusDiv liteBackground">
     </div>
-    <script>drawUserData();</script>
+    <script>drawUserData(userData);</script>
+<?php require("script/chat.php") ?>
     <br>
 <?php require("shared/footer.php"); ?>

@@ -11,12 +11,12 @@
     </thead>
     <?php
         require("shared/accessManager.php");
-        require ("script/dbAccess.php");
+        require("script/dbAccess.php");
         $error = "";
         try {
             $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT username, email FROM Users");
+            $stmt = $conn->prepare("SELECT username, email FROM Users NATURAL JOIN Profiles");
             $stmt->execute();
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<tr><td>'.$row['username'].'</td>';
@@ -34,3 +34,5 @@
             echo '<hr><div class="well">'.$error.'</div>';
         }
     ?>
+</table>
+
