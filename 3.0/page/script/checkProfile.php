@@ -20,19 +20,19 @@
     $description = "";
 
     try {
-        if (!isset($_SESSION['EAusername']) || empty(trim($_SESSION['EAusername']))) {
+        if (empty(trim($_SESSION['EAusername']))) {
             $message = "username non valido";
             throw new Exception();
         }
         $username = $_SESSION["EAusername"];
 
-        if (!isset($_POST['email1']) || empty(trim($_POST['email1']))) {
+        if (empty(trim($_POST['email1']))) {
             $message = "email_1 non valida";
             throw new Exception();
         }
         $email1 = $_POST['email1'];
 
-        if (!isset($_POST['email2']) || empty(trim($_POST['email2']))) {
+        if (empty(trim($_POST['email2']))) {
             $message = "email_2 non valida";
             throw new Exception();
         }
@@ -44,31 +44,19 @@
             throw new Exception();
         }*/
 
-        if (!isset($_POST['name'])) {
-            $name = "null";
-            throw new Exception();
-        }else{
+        if (!empty($_POST['name'])) {
             $name = $_POST['name'];
         }
 
-        if (!isset($_POST['surname'])) {
-            $surname = "null";
-            throw new Exception();
-        }else{
+        if (!empty($_POST['surname'])) {
             $surname = $_POST['surname'];
         }
 
-        if (!isset($_POST['residence'])) {
-            $residence = "null";
-            throw new Exception();
-        }else{
+        if (!empty($_POST['residence'])) {
             $residence = $_POST['residence'];
         }
 
-        if (!isset($_POST['link'])) {
-            $link = "null";
-            throw new Exception();
-        }else{
+        if (!empty($_POST['link'])) {
             $link = $_POST['link'];
             /*TODO controllare controllo link
             if (!filter_var($link, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED)) {
@@ -77,10 +65,7 @@
             }*/
         }
 
-        if (!isset($_POST['description'])) {
-            $description = "null";
-            throw new Exception();
-        }else {
+        if (!empty($_POST['description'])) {
             $description = $_POST['description'];
         }
 
@@ -94,15 +79,14 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
 
-        //TODO non serve usiamo $_SESSION per username (già nel database)
-      /*$stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username");
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE username = :username");
         $stmt->bindParam(":username", $username);
         $stmt->execute();
 
         if($stmt->rowCount() !== 1) {
             $message = "Utente non trovato";
             throw new Exception();
-        }*/
+        }
 
         $stmt = $conn->prepare("SELECT * FROM Profiles WHERE username = :username");
         $stmt->bindParam(":username", $username);
@@ -132,15 +116,6 @@
         $stmt->bindParam(':description', $description);
 
         $stmt->execute();
-
-        //TODO valutare se lasciare
-        $stmt = $conn->prepare("SELECT * FROM Profiles WHERE email = :email");
-        $stmt->bindParam(":email", $email1);
-        $stmt->execute();
-        if($stmt->rowCount() !== 1) {
-            $message = "errore inserimento";
-            throw new Exception();
-        }
 
         $conn->commit();
 

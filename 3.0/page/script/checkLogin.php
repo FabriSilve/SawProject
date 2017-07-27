@@ -37,7 +37,7 @@
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //TODO non setta ne session ne coockie
-        if(1){//TODO  non funziona password_verify($password, $result['password'])) {
+        if(1){//password_verify($password, $result["password"])) {
             session_start();
             $_SESSION["EAauthorized"] = 1;
             $_SESSION["EAusername"] = $username;
@@ -48,14 +48,15 @@
             header("Location: ../pageHomepage.php");
         } else {
             $error = "Credenziali non valide";
-            throw new Exception();
+            echo $error;
+            //throw new Exception();
         }
 
     }catch(PDOException $e){
-        header ("Location: ../pageLogin.php?loginErr="."Error: " . $e->getMessage());
+        header ("Location: ../pageLogin.php?message="."Error: " . $e->getMessage());
 	}
 	catch(Exception $f){
-        header("Location: ../pageLogin.php?loginError=".$error);
+        header("Location: ../pageLogin.php?message=".$error);
 	}
 	$conn = null;   
 
