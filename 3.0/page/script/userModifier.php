@@ -13,28 +13,38 @@ $message = "";
 
 try {
     if (empty(trim($_GET['username']))) {
-        $message="username non valido";
-        throw new Exception();
+        $message = "username not valid";
+        echo $message;
+        die();
     }
     $username = $_GET['username' ];
 
     if (!empty(trim($_GET['name']))) {
-        $message="name non valido";
-        throw new Exception();
+        $name = trim($_GET['name']);
     }
-    $id = $_GET["id"];
 
-    if (!isset($_GET['description']) || empty(trim($_GET['description']))) {
-        $message="descrizione non valida";
-        throw new Exception();
+    if (!empty(trim($_GET['surname']))) {
+        $surname = trim($_GET['surname']);
     }
-    $description = $_GET["description"];
+
+    if (!empty(trim($_GET['residence']))) {
+        $residence = trim($_GET['residence']);
+    }
+
+    if (!empty(trim($_GET['description']))) {
+        $description = trim($_GET['description']);
+    }
+
+    if (!empty(trim($_GET['link']))) {
+        $link = trim($_GET['link']);
+    }
+
 
     $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->beginTransaction();
 
-    $stmt = $conn->prepare("SELECT username FROM Users WHERE username = :username");
+    $stmt = $conn->prepare("SELECT username FROM Profiles WHERE username = :username");
     $stmt->bindParam(":username", $username);
     $stmt->execute();
     if ($stmt->rowCount() !== 1) {
@@ -42,19 +52,13 @@ try {
         throw new Exception();
     }
 
-    $stmt = $conn->prepare("SELECT * FROM Events WHERE id = :id");
-    $stmt->bindParam(":id", $id);
-    $stmt->execute();
-    if ($stmt->rowCount() !== 1) {
-        $message = "Event not found";
-        throw new Exception();
-    }
-
-
-    $stmt = $conn->prepare("UPDATE Events SET description = :description WHERE id = :id AND owner = :owner");
+    $stmt = $conn->prepare("UPDATE Profiles SET name = :name, surname = :surname, residence = :residence, description = :description, link = :link WHERE username = :username");
+    $stmt->bindParam(":name", $name);
+    $stmt->bindParam(":surname", $surname);
+    $stmt->bindParam(":residence", $residence);
     $stmt->bindParam(":description", $description);
-    $stmt->bindParam(":id", $id);
-    $stmt->bindParam(":owner", $username);
+    $stmt->bindParam(":link", $link);
+    $stmt->bindParam(":username", $username);
     $stmt->execute();
 
     $conn->commit();
