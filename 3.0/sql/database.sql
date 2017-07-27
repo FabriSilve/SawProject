@@ -68,7 +68,10 @@ CREATE TABLE IF NOT EXISTS `Events` (
   `lat` double NOT NULL,
   `lon` double NOT NULL,
   `owner` varchar(40) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+)
+  ENGINE = innoDB
+  AUTO_INCREMENT = 28
+  DEFAULT CHARSET = latin1;
 
 --
 -- Dump dei dati per la tabella `Events`
@@ -106,7 +109,9 @@ INSERT INTO `Events` (`id`, `name`, `description`, `day`, `address`, `lat`, `lon
 CREATE TABLE IF NOT EXISTS `Followed` (
   `id` int(11) NOT NULL,
   `username` varchar(40) CHARACTER SET ascii NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+)
+  ENGINE = innoDB
+  DEFAULT CHARSET = latin1;
 
 --
 -- Dump dei dati per la tabella `Followed`
@@ -144,7 +149,9 @@ CREATE TABLE IF NOT EXISTS `Profiles` (
   `residence` varchar(40) CHARACTER SET ascii DEFAULT NULL,
   `link` varchar(128) CHARACTER SET ascii DEFAULT NULL,
   `description` varchar(255) CHARACTER SET ascii DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+)
+  ENGINE = innoDB
+  DEFAULT CHARSET = latin1;
 
 --
 -- Dump dei dati per la tabella `Profiles`
@@ -170,7 +177,9 @@ INSERT INTO `Profiles` (`username`, `name`, `surname`, `email`, `residence`, `li
 CREATE TABLE IF NOT EXISTS `Signaled` (
   `id` int(11) NOT NULL,
   `username` varchar(40) CHARACTER SET ascii NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+)
+  ENGINE = innoDB
+  DEFAULT CHARSET = latin1;
 
 --
 -- Dump dei dati per la tabella `Signaled`
@@ -196,7 +205,9 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `username` varchar(40) CHARACTER SET ascii NOT NULL,
   `password` varchar(50) CHARACTER SET ascii NOT NULL,
   `banned` bit(1) NOT NULL DEFAULT b'0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+)
+  ENGINE = innoDB
+  DEFAULT CHARSET = latin1;
 
 --
 -- Dump dei dati per la tabella `Users`

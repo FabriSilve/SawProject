@@ -17,7 +17,7 @@ require("shared/navbar.php");
         </div>
         <div class="col-sm-8 text-left">
             <h1>Modifica i dati utente:</h1>
-            <form method="post" action="script/userUpdater.php"> <!--TODO inserire richiesta di conferma operazione-->
+            <form method="post" action="userUpdater.php">
                 <h3>Dati attuali:</h3>
                 <table class="table table-striped table-bordered">
                     <thead>

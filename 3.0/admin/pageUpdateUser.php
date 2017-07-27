@@ -17,19 +17,23 @@
                 ?>
             </div>
             <div class="col-sm-8 text-left">
-                <h1>Modifica degli Utenti</h1>
-                <form method="post" action="pageUpdateUserForm.php"> <!--TODO inserire richiesta di conferma operazione-->
-                    <p>Inserisci il nome utente da modificare:</p>
-                    <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
-                    <span id="status"></span>
-                    <p></p>
-                    <p><input type="submit" value="Controlla"></p>
-                </form>
+                <h1><b>Modifica degli Utenti</b></h1>
+                <div class="well">
+                    <form method="post" action="TrovaUpdateUser.php">
+                        <p>Inserisci il nome utente da modificare:</p>
+                        <input type="text" name="username" id="username" placeholder="Username"
+                               class="radiusDiv padding5" required><span id="status"></span>
+                        <p></p>
+                        <p><input type="submit" value="Controlla"></p>
+                    </form>
+                </div>
                 <hr>
-                <?php
+                <div class="well">
+                    <h4>Utenti attualmente presenti nel database:</h4>
+                    <?php
                     require("script/showUsers.php");
-                ?>
-            </div>
+                    ?>
+                </div>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 <?php
-    require("../shared/accessManager.php");
-    require("dbAccess.php");
+    require("shared/accessManager.php");
+    require("script/dbAccess.php");
 
     $message = "";
     try {
@@ -31,7 +31,7 @@
     catch(PDOException $e) {
         $message = "ERROR ".$e->getMessage();
     } catch(Exception $e) {}
-    header("Location: ../pageDeleteEvent.php?message=".$message);
+    header("Location: pageDeleteEvent.php?message=".$message);
 ?>
 
 

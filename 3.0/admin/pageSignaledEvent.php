@@ -13,9 +13,11 @@
         </div>
         <div class="col-sm-8 text-left">
             <h1>Eventi Segnalati</h1>
+            <div class="well">
             <?php
                 require("script/showSignaled.php");
             ?>
+            </div>
         </div>
     </div>
 </div>
