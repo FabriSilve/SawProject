@@ -52,10 +52,10 @@
         }
 
     }catch(PDOException $e){
-        header ("Location: ../pageLogin.php?loginErr="."Error: " . $e->getMessage());
+        header ("Location: ../pageLogin.php?message="."Error: " . $e->getMessage());
 	}
 	catch(Exception $f){
-        header("Location: ../pageLogin.php?loginError=".$error);
+        header("Location: ../pageLogin.php?message=".$error);
 	}
 	$conn = null;   
 
