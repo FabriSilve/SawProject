@@ -7,6 +7,9 @@
         header("location: ../");
     }
     $username = $_GET["username"];
+    if($username === $_SESSION["EAusername"]) {
+        header("location: pageMyProfile.php");
+    }
 ?>
 
     <script> userData = <?php require("script/userData.php"); ?>; </script>

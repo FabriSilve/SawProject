@@ -18,7 +18,7 @@ function drawUserData() {
     document.getElementById("surname").innerHTML = "surname <h3>"+userData.surname+"</h3>";
     document.getElementById("residence").innerHTML = "residence <h3>"+userData.residence+"</h3>";
     if(userData.link !== "") {
-        document.getElementById("link").innerHTML = '<a href="'+userData.link+'" target="_blank"><img src="../media/social.png"></a>';
+        document.getElementById("link").innerHTML = '<a href="'+userData.link+'" target="blank"><img src="../media/social.png"></a>';
     } else {
         document.getElementById("link").innerHTML = '';
     }
