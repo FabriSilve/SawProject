@@ -22,12 +22,12 @@ function drawUserData() {
     } else {
         document.getElementById("link").innerHTML = '';
     }
-    document.getElementById("description").innerHTML = "Description: <h5>"+userData.description+"</h5>";
+    document.getElementById("description").innerHTML = '<h3>Description:</h3> <h5 class="padding20">'+userData.description+'</h5>';
 
-    document.getElementById("events").innerHTML = "insert events: "+userData.events;
-    document.getElementById("fans").innerHTML = "fans: "+userData.fans;
-    document.getElementById("followed").innerHTML = "followed: "+userData.followed;
-    document.getElementById("signaled").innerHTML = "signaled: "+userData.signaled;
+    document.getElementById("events").innerHTML = '<h1 class="align-middle"><img src="../media/events.png"> '+userData.events+'</h1>';
+    document.getElementById("fans").innerHTML = '<h1 class="align-middle"><img src="../media/fans.png"> '+userData.fans+'</h1>';
+    document.getElementById("followed").innerHTML = '<h1 class="align-middle"><img src="../media/followed.png"> '+userData.followed+'</h1>';
+    document.getElementById("signaled").innerHTML = '<h1 class="align-middle"><img src="../media/signaled.png"> '+userData.signaled+'</h1>';
 }
 
 function userModify() {
