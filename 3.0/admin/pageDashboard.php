@@ -21,6 +21,9 @@
            <div class="well">
                <?php require("script/showStats.php"); ?>
            </div>
+           <div class="well">
+               <?php require("script/graf.php"); ?>
+           </div>
        </div>
     </div>
 </div>
