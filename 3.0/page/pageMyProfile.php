@@ -20,7 +20,7 @@ if(!isset($logged)||!$logged)
                 <div class="row">
                     <div id="link"></div>
                 </div>
-                <hr>
+                <br/>
                 <div class="row" id="modifyUser">
                     <img src="../media/modify.png" id="modify" onclick="userModify();">
                 </div>
