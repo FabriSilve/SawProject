@@ -36,6 +36,15 @@
         }
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        echo "password inserita: ".$password."--";
+        $provaHash = password_hash('nonna', PASSWORD_BCRYPT)."--";
+        echo "paswHash: ".$provaHash."--";
+        $verify = $provaHash === password_hash('nonna', PASSWORD_BCRYPT);
+        echo "verify1: ".$verify."--";
+        echo "passdb: ".$result["password"]."--";
+        $verify = password_verify($password, $result["password"])."--";
+        echo "verify2: ".$verify."";
+
         //TODO non setta ne session ne coockie
         if(password_verify($password, $result["password"])) {
             session_start();
