@@ -19,12 +19,14 @@
             <div class="col-sm-8 text-left">
                 <h1><b>Modifica degli Utenti</b></h1>
                 <div class="well">
-                    <form method="post" action="TrovaUpdateUser.php">
+                    <form method="post" action="updaterUser.php">
                         <p>Inserisci il nome utente da modificare:</p>
-                        <input type="text" name="username" id="username" placeholder="Username"
+                        <input type="text" name="oldUsername" id="oldUsername" placeholder="oldUsername"
+                               class="radiusDiv padding5" required><span id="status"></span>
+                        <input type="text" name="newUsername" id="newUsername" placeholder="newUsername"
                                class="radiusDiv padding5" required><span id="status"></span>
                         <p></p>
-                        <p><input type="submit" value="Controlla"></p>
+                        <p><input type="submit" value="Modifica"></p>
                     </form>
                 </div>
                 <hr>
