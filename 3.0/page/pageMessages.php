@@ -5,20 +5,26 @@
         header("Location: pageHomepage.php");
 ?>
     <script>
-        var events = <?php require('script/userEvents.php'); ?> ;
+        var messages = <?php require("script/userMessages.php"); ?>
     </script>
+
     <div class="container text-center liteOrange radiusDiv">
-        <h1>My Events</h1>
-        <h3>Do you remember?</h3>
+        <h1>Messages</h1>
+        <h3>Read your mail!</h3>
     </div>
     <br>
-    <!--<a href="pageMyEvents.php">
+    <a href="pageMessages.php">
         <div class="container text-center liteBackground radiusDiv">
             <img src="../media/update.png">
         </div>
-    </a>-->
+    </a>
     <br>
-    <div id="eventsList" class="container"></div>
-    <script>drawEventsList(null);</script>
+    <div id="messages" class="container liteBackground radiusDiv"></div>
+    <script>drawMessages();</script>
     <br>
+
 <?php require("shared/footer.php"); ?>
+
+
+
+

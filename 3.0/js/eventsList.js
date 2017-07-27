@@ -1,5 +1,4 @@
 function drawEventsList(check) {
-    //todo ottimizzare cicli
     numEvents = events.length;
     if(numEvents <= 1) {
         text = '<div class="container-fluid bg-3 text-center">';
@@ -33,11 +32,14 @@ function drawSingleEvent(j, check) {
     }
     temp += '<div class="col-sm-3 text-center">';
     temp += '<h2 class="eventTitle">' + event.name+'</h2>';
-    temp += '<h5>' + event.day + '</h5>';
-    temp += '<h5>' + event.address + '</h5>';
+    temp += '<h3>' + event.day + '</h3>';
+    temp += '<h3>' + event.address + '</h3>';
+    if(owner !== "0" && check !== null) {
+        temp += '<a href="pageOtherProfile.php?username=' + event.owner + '" target="blank"><h4>' + event.owner + '</h4></a>';
+    }
     temp += '</div>';
     temp += '<div class="col-sm-3 text-center" id="divDesc'+j+'">';
-    temp += '<h5>' + event.description + '</h5>';
+    temp += '<h4>' + event.description + '</h4>';
     temp += '</div>';
     temp += '<div class="col-sm-4">';
     temp += '<img src = "' + event.image + '" class="img-responsive eventImage"  alt ="Image">';

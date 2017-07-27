@@ -6,7 +6,7 @@
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("SELECT id, name, description, address, day, lat, lon FROM Events NATURAL JOIN Followed WHERE day > CURDATE() GROUP BY(id) ORDER BY Count(username) ASC LIMIT 8");
+        $stmt = $conn->prepare("SELECT id, name, description, address, day, lat, lon, owner FROM Events NATURAL JOIN Followed WHERE day > CURDATE() GROUP BY(id) ORDER BY Count(username) ASC LIMIT 10");
         $stmt->execute();
         $eventDB[$count++] = array();
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -21,7 +21,8 @@
                 "day" => $row["day"],
                 "lat" => $row["lat"],
                 "lon" => $row["lon"],
-                "image" => $image_file
+                "image" => $image_file,
+                "owner" => $row["owner"]
             );
         }
         /*header("Content-Type: application/json");*/

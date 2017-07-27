@@ -8,10 +8,12 @@
         $pass_pre_hash = trim($_POST["password1"]);
 
         if ((empty($username)) || (!preg_match("/^[A-Za-z][A-Za-z0-9]{3,}$/",$username))){
+            $message = "username non valido";
             throw new Exception();
         }
 
         if(empty($pass_pre_hash)){
+            $message = "Remember that password must contain at least:<br>- 1 upper case letter<br>- 1 lower case letter<br>- 1 decimal number<br>- 1 special character<br>and must be at least 8 characters long.";
             throw new Exception();
         }
         //TODO commento per debugging, da aggiornare a termine progetto
