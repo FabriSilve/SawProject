@@ -49,8 +49,7 @@
             header("Location: ../pageHomepage.php");
         } else {
             $error = "Credenziali non valide";
-            echo $error;
-            //throw new Exception();
+            throw new Exception();
         }
 
     }catch(PDOException $e){
