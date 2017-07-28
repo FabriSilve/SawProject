@@ -17,7 +17,7 @@ try {
     $stmt->bindParam(":username", $username);
     $stmt->execute();
     if ($stmt->rowCount() == 0) {
-        $message = "Utente non presente nel sistema";
+        $message = "User is not present in the system";
         throw new Exception();
     }
 
@@ -37,10 +37,10 @@ try {
     $stmt->execute();
 
     $conn->commit();
-    $message = "Utente modificato con successo";
+    $message = "User was successfully modified";
 } catch (PDOException $e) {
     $conn->rollBack();
-    $message = "Errore nel database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
+    $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
 } catch (Exception $e) {
     $conn->rollBack();
 }
