@@ -16,7 +16,7 @@ try {
     $stmt = $conn->prepare("SELECT username, email FROM Users NATURAL JOIN Profiles WHERE username = :username;");
     $stmt->bindParam(":username", $username);
     $stmt->execute();
-    if ($stmt->rowCount() == 1) {
+    if ($stmt->rowCount() == 0) {
         $message = "Utente non presente nel sistemaxx";
         throw new Exception();
     }
