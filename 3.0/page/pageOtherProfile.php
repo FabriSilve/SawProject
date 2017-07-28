@@ -30,7 +30,7 @@
                 </div>
                 <br/>
                 <div class="row" id="messageUser">
-                    <img src="../media/mex.png" id="mex" onclick="showMessageForm();">
+                    <img src="../media/mex.png" id="mex" onclick="showForm('mailForm');">
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
 
     <!--TODO esportare file?-->
     <div id="mailForm" class="mailForm radiusDiv">
-        <img onclick="hideMessageForm()" class="text-left padding5" src="../media/delete.png">
+        <img onclick="hideForm('mailForm')" class="text-left padding5" src="../media/delete.png">
         <form name="sendMessage" method="post" onsubmit="return checkMessage();" action="script/messageSender.php">
             <input type="text" id="sender" name="sender"  value="<?php echo $_SESSION["EAusername"]; ?>" hidden>
             <input type="text" id="receiver" name="receiver" value="<?php echo $userData["username"]; ?>"  hidden>

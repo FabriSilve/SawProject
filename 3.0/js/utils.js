@@ -1,3 +1,7 @@
+/**
+ * funzione per mostrare o nascondere il div 'filter' contenente i filtri
+ * di ricerca in homepage
+ */
 var hider = true;
 function showFilter() {
     if(hider) {
@@ -9,6 +13,34 @@ function showFilter() {
     }
 }
 
+/**
+ * funzione che inserisce il valore 'newValue' in un campo con id 'id'
+ * @param id
+ * @param newValue
+ */
+function showValue(id, newValue)
+{
+    document.getElementById(id).innerHTML=newValue;
+}
+
+/**
+ * mostra div con id 'id'
+ */
+function showForm(id) {
+    document.getElementById(id).style.display = "block";
+}
+
+/**
+ * nasconde div con id 'id'
+ */
+function hideForm(id) {
+    document.getElementById('id').style.display = "none";
+}
+
+/**
+ * funzione per gestire un httpxmlrequest su diversi browser
+ * @returns {*}
+ */
 function getXMLHttpRequestObject() {
     var request = null;
     if (window.XMLHttpRequest) {
@@ -17,33 +49,4 @@ function getXMLHttpRequestObject() {
         request = new ActiveXObject("MSXML2.XMLHTTP.3.0");
     }
     return request;
-}
-
-function showValue(id, newValue)
-{
-    document.getElementById(id).innerHTML=newValue+" ";
-}
-
-/*function clicked(text) {
-    if (confirm(text)) {
-        return true;
-    } else {
-        return false;
-    }
-}*/
-
-function showMessageForm() {
-    document.getElementById('mailForm').style.display = "block";
-}
-
-function hideMessageForm() {
-    document.getElementById('mailForm').style.display = "none";
-}
-
-function showAdmin() {
-    document.getElementById('admin').style.display = "block";
-}
-
-function hideAdmin() {
-    document.getElementById('admin').style.display = "none";
 }
