@@ -26,6 +26,11 @@ try {
     $stmt->bindParam(":newUsername", $newUsername);
     $stmt->execute();
 
+    $stmt = $conn->prepare("UPDATE Profiles SET  username = :newUsername WHERE username = :username");
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(":newUsername", $newUsername);
+    $stmt->execute();
+
     $stmt = $conn->prepare("UPDATE Profiles SET  email = :newEmail WHERE username = :username");
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(":newEmail", $newEmail);
