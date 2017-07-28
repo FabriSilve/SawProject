@@ -35,7 +35,7 @@ require("shared/navbar.php");
                         } else if (!empty(trim($_GET["username"]))) {
                             $username = $_GET["username"];
                         } else {
-                            $message = "Invalid usernamexx";
+                            $message = "Invalid username";
                             throw new Exception();
                         }
 
@@ -51,7 +51,7 @@ require("shared/navbar.php");
                             echo '<td>' . $row['email'] . '</td>';
                         }
 
-                        if ($stmt->rowCount() !== 1) {
+                        if ($stmt->rowCount() == 0) {
                             $message = "User is not present in the system";
                             throw new Exception();
                         }
@@ -71,11 +71,13 @@ require("shared/navbar.php");
                 <form method="post" action="script/userMod.php">
                     <input type="text" hidden name="username" id="username" placeholder="username"
                            class="radiusDiv padding5" value="<?php echo $username; ?>">
-                    <input type="text" hidden name="email" id="email" placeholder="email"
+                    <input type="email" hidden name="email" id="email" placeholder="email"
                            class="radiusDiv padding5" value="<?php echo $email; ?>">
                     <input type="text" name="newUsername" id="newUsername" placeholder="New Username"
                            class="radiusDiv padding5" required>
-                    <input type="text" name="newEmail" id="newEmail" placeholder="New Email" class="radiusDiv padding5"
+                    <input type="email" name="newEmail" id="newEmail" placeholder="New Email" class="radiusDiv padding5"
+                           required>
+                    <input type="password" name="newPassword" id="newPassword" placeholder="New Password" class="radiusDiv padding5"
                            required>
                     <p><br><input type="submit" value="Confirmation"></p>
                 </form>
