@@ -63,7 +63,7 @@ try {
         }
     }
 
-    if(!empty($newPassword)){
+    if(!empty($newPassword)){ //TODO AGGIORNARE STATEMENTS TO UPDATE
         $newPassword_hash = password_hash($newPassword, PASSWORD_BCRYPT);
         if (preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $newPassword)) {
             if (empty($newUsername)) {
