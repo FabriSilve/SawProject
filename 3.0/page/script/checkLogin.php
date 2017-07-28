@@ -4,11 +4,12 @@
 	$username = "";
 	$password = "";
 
-	if(isset($_POST["keepme"])) {
+	/*if(isset($_POST["keepme"])) {
         $keep = $_POST["keepme"];
     } else {
-        $keep = 0;
-    }
+        $keep = false;
+    }*/
+    $keep = !empty($_POST['keepme']) ? $_POST['keepme'] : 'no';
 	try {
         if (!isset($_POST["username"]) || empty(trim($_POST["username"]))) {
             $message="Username non valido";
@@ -42,9 +43,11 @@
             session_start();
             $_SESSION["EAauthorized"] = 1;
             $_SESSION["EAusername"] = $username;
-            if ($keep == 1) {
-                setcookie('EAkeep', 'true', time() + 86400);
-                setcookie("EAusername", $username, time() + 86400);
+            if ($keep === "keep") {
+                $cookie_username = "EAusernameC";
+                $cookie_keep = "EAkeepC";
+                setcookie($cookie_keep, $keep, time() + 86400, "/");
+                setcookie($cookie_username, $username, time() + 86400, "/");
             }
             header("Location: ../pageHomepage.php");
         } else {
