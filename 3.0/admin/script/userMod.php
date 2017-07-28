@@ -75,7 +75,7 @@ try {
                 $stmt->bindParam(":username", $username);
                 $stmt->bindParam(":newPassword", $newPassword_hash);
             } else {
-                $stmt = $conn->prepare("DELETE FROM Users WHERE username = newUsername");
+                $stmt = $conn->prepare("DELETE FROM Users WHERE username = :newUsername");
                 $stmt->bindParam(":newUsername", $newUsername);
                 $stmt->execute();
 
