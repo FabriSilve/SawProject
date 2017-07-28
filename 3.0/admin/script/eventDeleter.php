@@ -5,7 +5,7 @@ require("dbAccess.php");
     $message = "";
     try {
         if(!isset($_POST['id']) || empty($_POST['id']) ) {
-            $message = "Id non valido";
+            $message = "Invalid ID";
             throw new Exception();
         }
         $id = trim($_POST['id']);
@@ -18,7 +18,7 @@ require("dbAccess.php");
         $stmt->execute();
 
         if($stmt->rowCount() !== 1) {
-            $message = "Evento non presente";
+            $message = "Event not present in the Sistem";
             throw new Exception();
         }
 
@@ -26,7 +26,7 @@ require("dbAccess.php");
         $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
         $conn = null;
-        $message = "Evento elimintato!";
+        $message = "Event was deleted!";
     }
     catch(PDOException $e) {
         $message = "ERROR ".$e->getMessage();

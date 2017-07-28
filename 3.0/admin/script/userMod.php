@@ -17,7 +17,7 @@ try {
     $stmt->bindParam(":username", $username);
     $stmt->execute();
     if ($stmt->rowCount() == 0) {
-        $message = "Utente non presente nel sistemaxx";
+        $message = "User is not present in the system";
         throw new Exception();
     }
 
@@ -31,16 +31,16 @@ try {
     $stmt->bindParam(":newUsername", $newUsername);
     $stmt->execute();
 
-    $stmt = $conn->prepare("UPDATE Profiles SET  email = :newEmail WHERE username = :username");
-    $stmt->bindParam(':username', $username);
+    $stmt = $conn->prepare("UPDATE Profiles SET  email = :newEmail WHERE username = :newUsername");
+    $stmt->bindParam(':newUsername', $newUsername);
     $stmt->bindParam(":newEmail", $newEmail);
     $stmt->execute();
 
     $conn->commit();
-    $message = "Utente modificato con successo";
+    $message = "User was successfully modified";
 } catch (PDOException $e) {
     $conn->rollBack();
-    $message = "Errore nel database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
+    $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
 } catch (Exception $e) {
     $conn->rollBack();
 }

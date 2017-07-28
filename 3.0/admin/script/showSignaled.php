@@ -1,10 +1,10 @@
 <table class="table table-striped table-bordered">
     <thead>
     <tr>
-        <th>Evento Segnalato</th>
-        <th>Utente</th>
-        <th>Imagina</th>
-        <th>Gmail</th>
+        <th>The marked event</th>
+        <th>User</th>
+        <th>Image</th>
+        <th>Email</th>
     </tr>
     </thead>
 <?php
