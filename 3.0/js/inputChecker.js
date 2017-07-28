@@ -52,15 +52,20 @@ function checkProfile() {
     console.info(email1);
     console.info(email2);
 
+    if(email1 === ""){
+        document.getElementById("email1").focus();
+        document.getElementById("error").innerText = "Email must NOT be empty"
+    }
+
     if(email_regexp.test(email1)) {
         document.getElementById("email1").focus();
-        document.getElementById("error").innerText = "Email non valida";
+        document.getElementById("error").innerText = "Invalid email";
         return false;
     }
 
     if(email1 !== email2) {
         document.getElementById("email2").focus();
-        document.getElementById("error").innerText = "Email diversa";
+        document.getElementById("error").innerText = "Emails are different!";
         return false;
     }
 
