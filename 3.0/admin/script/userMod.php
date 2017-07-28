@@ -45,7 +45,7 @@ try {
     }
 
     if(!empty($newEmail)) {
-        if (preg_match("/[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]/", $newEmail)) {
+        if (filter_var($newEmail, FILTER_VALIDATE_EMAIL)) {
             if (empty($newUsername)) {//TODO controllare presenza mail da sistema
                 $stmt = $conn->prepare("UPDATE Profiles SET email = :newEmail WHERE username = :username");
                 $stmt->bindParam(":username", $username);
