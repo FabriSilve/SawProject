@@ -16,12 +16,17 @@ try {
     $stmt = $conn->prepare("SELECT username, email FROM Users NATURAL JOIN Profiles WHERE username = :username;");
     $stmt->bindParam(":username", $username);
     $stmt->execute();
-    if ($stmt->rowCount() !== 1) {
-        $message = "User is not present in the system";
+    if ($stmt->rowCount() == 0) {
+        $message = "Utente non presente nel sistemaxx";
         throw new Exception();
     }
 
     $stmt = $conn->prepare("UPDATE Users SET  username = :newUsername WHERE username = :username");
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(":newUsername", $newUsername);
+    $stmt->execute();
+
+    $stmt = $conn->prepare("UPDATE Profiles SET  username = :newUsername WHERE username = :username");
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(":newUsername", $newUsername);
     $stmt->execute();
@@ -32,10 +37,10 @@ try {
     $stmt->execute();
 
     $conn->commit();
-    $message = "User was successfully modified";
+    $message = "Utente modificato con successo";
 } catch (PDOException $e) {
     $conn->rollBack();
-    $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
+    $message = "Errore nel database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
 } catch (Exception $e) {
     $conn->rollBack();
 }

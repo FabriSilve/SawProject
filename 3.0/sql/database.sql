@@ -203,7 +203,7 @@ INSERT INTO `Signaled` (`id`, `username`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Users` (
   `username` varchar(40) CHARACTER SET ascii NOT NULL,
-  `password` varchar(50) CHARACTER SET ascii NOT NULL,
+  `password` varchar(255) CHARACTER SET ascii NOT NULL,
   `banned` bit(1) NOT NULL DEFAULT b'0'
 )
   ENGINE = innoDB
@@ -223,7 +223,7 @@ INSERT INTO `Users` (`username`, `password`, `banned`) VALUES
   ('aaa', '$2y$10$unaKfqu2bFh.va.Foj3Ncuhf33OPCeAlNNCHa8UCmHW', b'0'),
   ('ppp', '$2y$10$xEgyN2Rbs/HoL8.c0nOqIubzXt3bb8p0PJMEqwQrI1T', b'0'),
   ('qqq', '$2y$10$BT63H5jRqAvNbT.RkXj/KeCHbZIdTfAHICCv.bN7H/k', b'0'),
-  ('pluto''''', '$2y$10$2fUgKSVwceH31520BPj3SeXHtoMGN1Y3YkYe5M0lsAk', b'0'),
+  ('pluto', '$2y$10$2fUgKSVwceH31520BPj3SeXHtoMGN1Y3YkYe5M0lsAk', b'0'),
   ('kkk', '$2y$10$hOUFKO00bnKS23ytYTt27.4SJn7U4lSFCNuI94tOJEx', b'0'),
   ('mmm', '$2y$10$CBree1bhugHvOM8.vXkFJOPy0uxU3yGDJrJc17foNZR', b'0'),
   ('nnn', '$2y$10$5yet6kRyYYp/tDf5ItLbLe0wMUZA6kvTl8ubqXR21V0', b'0'),
