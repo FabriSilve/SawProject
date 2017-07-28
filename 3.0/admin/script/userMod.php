@@ -81,6 +81,7 @@ try {
                 $stmt = $conn->prepare("INSERT INTO Users (username, password) VALUES (:newUsername, :newPassword);");
                 $stmt->bindParam(":newUsername", $newUsername);
                 $stmt->bindParam(":newPassword", $newPassword);
+                $stmt->execute();
             }
         }else{
             $message = "New password is invalid";
