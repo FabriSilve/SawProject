@@ -49,6 +49,7 @@ require("shared/navbar.php");
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo '<tr><td>' . $row['username'] . '</td>';
                             echo '<td>' . $row['email'] . '</td>';
+                            $email = $row["email"];
                         }
 
                         if ($stmt->rowCount() !== 1) {
@@ -67,16 +68,13 @@ require("shared/navbar.php");
             </div>
             <hr>
             <div class="well">
-                <h3>Enter a new data:</h3>
+                <h3>Enter a new data:</h3><!--TODO controlli javascript-->
                 <form method="post" action="script/userMod.php">
-                    <input type="text" hidden name="username" id="username" placeholder="username"
-                           class="borderRadius padding5" value="<?php echo $username; ?>">
-                    <input type="text" hidden name="email" id="email" placeholder="email"
-                           class="borderRadius padding5" value="<?php echo $email; ?>">
-                    <input type="text" name="newUsername" id="newUsername" placeholder="New Username"
-                           class="borderRadius padding5" required>
-                    <input type="text" name="newEmail" id="newEmail" placeholder="New Email" class="borderRadius padding5"
-                           required>
+                    <input hidden type="text" name="username" id="username" class="radiusDiv padding5" value="<?php echo $username; ?>">
+                    <input hidden type="email" name="email" id="email" class="radiusDiv padding5" value="<?php echo $email; ?>">
+                    <input type="text" name="newUsername" id="newUsername" placeholder="New Username" class="radiusDiv padding5">
+                    <input type="email" name="newEmail" id="newEmail" placeholder="New Email" class="radiusDiv padding5">
+                    <input type="password" name="newPassword" id="newPassword" placeholder="New Password" class="radiusDiv padding5">
                     <p><br><input type="submit" value="Confirmation"></p>
                 </form>
             </div>

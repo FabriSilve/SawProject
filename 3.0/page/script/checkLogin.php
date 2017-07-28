@@ -4,21 +4,14 @@
 	$username = "";
 	$password = "";
 
-	/*if(isset($_POST["keepme"])) {
-        $keep = $_POST["keepme"];
-    } else {
-        $keep = false;
-    }*/
     $keep = !empty($_POST['keepme']) ? $_POST['keepme'] : 'no';
 	try {
         if (!isset($_POST["username"]) || empty(trim($_POST["username"]))) {
-            $message="Username non valido";
             throw new Exception();
         }
         $username = trim($_POST["username"]);
 
         if (!isset($_POST["password"]) || empty(trim($_POST["password"]))) {
-            $message="Password non valida";
             throw new Exception();
         }
         $password = trim($_POST["password"]);
@@ -32,13 +25,11 @@
         $stmt->execute();
 
         if($stmt->rowCount() !== 1) {
-            $error = "errore";
+            $error = "Error: Invalid credentials";
             throw new Exception();
         }
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-        //TODO non setta ne session ne coockie
         if(password_verify($password, $result["password"])) {
             session_start();
             $_SESSION["EAauthorized"] = 1;
@@ -51,14 +42,15 @@
             }
             header("Location: ../pageHomepage.php");
         } else {
-            $error = "Credenziali non valide";
             throw new Exception();
         }
 
     }catch(PDOException $e){
-        header ("Location: ../pageLogin.php?message="."Error: " . $e->getMessage());
+	    $error = "Ops.. An error has occured";
+        header ("Location: ../pageLogin.php?message=".$error);
 	}
 	catch(Exception $f){
+        $error = "Invalid credentials.";
         header("Location: ../pageLogin.php?message=".$error);
 	}
 	$conn = null;   
