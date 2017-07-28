@@ -29,6 +29,7 @@ require("shared/navbar.php");
                     </thead>
                     <?php
                     $message = "";
+                    $email = "";
                     try {
                         if (!empty(trim($_POST["username"]))) {
                             $username = htmlspecialchars(trim($_POST["username"]));
@@ -49,6 +50,7 @@ require("shared/navbar.php");
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo '<tr><td>' . $row['username'] . '</td>';
                             echo '<td>' . $row['email'] . '</td>';
+                            $email = $row["email"];
                         }
 
                         if ($stmt->rowCount() == 0) {
@@ -67,10 +69,10 @@ require("shared/navbar.php");
             </div>
             <hr>
             <div class="well">
-                <h3>Enter a new data:</h3>
+                <h3>Enter a new data:</h3><!--TODO controlli javascript-->
                 <form method="post" action="script/userMod.php">
-                    <input type="text" hidden name="username" id="username" placeholder="username" class="radiusDiv padding5" value="<?php echo $username; ?>">
-                    <input type="email" hidden name="email" id="email" placeholder="email" class="radiusDiv padding5" value="<?php echo $email; ?>">
+                    <input type="text" name="username" id="username" class="radiusDiv padding5" value="<?php echo $username; ?>">
+                    <input type="email" name="email" id="email" class="radiusDiv padding5" value="<?php echo $email; ?>">
                     <input type="text" name="newUsername" id="newUsername" placeholder="New Username" class="radiusDiv padding5">
                     <input type="email" name="newEmail" id="newEmail" placeholder="New Email" class="radiusDiv padding5">
                     <input type="password" name="newPassword" id="newPassword" placeholder="New Password" class="radiusDiv padding5">
