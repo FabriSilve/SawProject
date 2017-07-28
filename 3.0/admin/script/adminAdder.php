@@ -5,7 +5,7 @@
     $message = "";
     try {
         if(!isset($_POST["username"]) || !isset($_POST["email"]) || !isset($_POST["password"])) {
-            $message = "errore invio campi";
+            $message = "Error sending fields";
             throw new Exception();
         }
 
@@ -14,17 +14,17 @@
         $password = trim($_POST["password"]);
 
         if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))) {
-            $message = "username non valido";
+            $message = "Invalid username";
             throw new Exception();
         }
 
         if ((empty($email))) { /*TODO (!preg_match("/[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]/",$email))) {*/
-            $message = "email non valida";
+            $message = "Invalid email";
             throw new Exception();
         }
 
         if(empty($password)){ //TODO inserire controllo con espressione regolare
-            $message = "password non valida";
+            $message = "Invalid password";
             throw new Exception();
         }
         $password_hash = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
@@ -40,10 +40,10 @@
         $stmt_acc->bindParam(':password', $password_hash);
 
         $stmt_acc->execute();
-        $message = "Admin inserito con successo";
+        $message = "Admin was inserted successfully";
     }
     catch(PDOException $e){
-        $message = "Username già utilizzato <br> Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
+        $message = "Username is already used <br> Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
     }
     catch(Exception $k){}
     $dbh = null;  //termino la connessione.

@@ -41,7 +41,7 @@ require("shared/navbar.php");
                     $stmt = $conn->prepare("SELECT username, email FROM Users NATURAL JOIN Profiles WHERE username = :username");
                     $stmt->bindParam(":username", $username);
                     $stmt->execute();
-                    echo '<h1>Seguente utente e` stato trovato: </h1>';
+
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo '<tr><td>'.$row['username'].'</td>';
                         echo '<td>'.$row['email'].'</td>';
@@ -69,7 +69,7 @@ require("shared/navbar.php");
 
             <div class="col-sm-8 text-left">
                 <form method="post" action="script/userDeleter.php">
-                    <p>Conferma la cancellazione: </p>
+                    <p>Confirm deletion: </p>
                     <input type="text" hidden name="username" placeholder="Username" class="radiusDiv padding5"
                            value="<?php echo $username; ?>">
                     <p></p>

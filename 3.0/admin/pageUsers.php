@@ -8,13 +8,13 @@
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="pageDashboard.php"> Torna indietro</a></p>
+                <p><a href="pageDashboard.php">Back</a></p>
             </div>
         </div>
             <div class="col-sm-8 text-left">
-                <h1>Utenti</h1>
+                <h1>Users</h1>
                 <div class="well">
-                    <h4>Utenti attualmente presenti nel database:</h4><br>
+                    <h4>Current users in the database</h4><br>
                     <?php require("script/showUsers.php"); ?>
                 </div>
             </div>

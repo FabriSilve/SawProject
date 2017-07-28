@@ -7,7 +7,7 @@ require("shared/navbar.php");
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="pageDeleteEvent.php"> Torna indietro</a></p>
+                <p><a href="pageDeleteEvent.php">Back</a></p>
             </div>
             <?php
             if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
@@ -80,7 +80,7 @@ require("shared/navbar.php");
 
             <div class="col-sm-8 text-left">
                 <form method="post" action="script/eventDeleter.php">
-                    <p>Conferma la cancellazione: </p>
+                    <p>Confirm deletion: </p>
                     <input type="text" hidden name="id" id="id" placeholder="Event id" class="radiusDiv padding5"
                            value="<?php echo $id; ?>">
                     <p></p>

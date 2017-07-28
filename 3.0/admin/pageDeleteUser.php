@@ -4,31 +4,31 @@
     require("shared/navbar.php");
 ?>
 
-    <div class="container-fluid text-center">
-        <div class="row content">
-            <div class="col-sm-2 sidenav">
-                <div class="well">
-                    <p><a href="pageDashboard.php"> Torna indietro</a></p>
-                </div>
-                <?php
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <div class="well">
+                <p><a href="pageDashboard.php"> Torna indietro</a></p>
+            </div>
+            <?php
                     if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
                         echo '<hr><div class="well">'.$_GET["message"].'</div>';
                     }
                 ?>
             </div>
             <div class="col-sm-8 text-left">
-                <h1><b>Cancellazione degli utenti</b></h1>
+                <h1><b>Deleting Users</b></h1>
                 <div class="well">
                     <form method="post" action="confDelUser.php">
-                        <p>Cerca l`utente da eleminare:</p>
+                        <p>Search user for delete:</p>
                         <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
                         <p></p>
-                    <p><input type="submit" value="Controlla"></p>
+                        <p><input type="submit" value="Search"></p>
                 </form>
                 </div>
                 <hr>
                 <div class="well">
-                    <h4>Utenti attualmente presenti nel database:</h4>
+                    <h4>Users currently in the database:</h4><br>
                     <?php require("script/showUsers.php"); ?>
                 </div>
             </div>

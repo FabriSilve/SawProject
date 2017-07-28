@@ -8,7 +8,7 @@
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="pageDashboard.php"> Torna indietro</a></p>
+                <p><a href="pageDashboard.php">Back</a></p>
             </div>
             <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
                 echo '<hr><div class="well">'.$_GET["message"].'</div>';
@@ -18,20 +18,20 @@
         <div class="col-sm-8">
             <div class="row">
                 <div class="col-sm-6 text-left">
-                    <h1>Esegui Ban:</h1>
+                    <h1>Run Ban:</h1>
                     <div class="well">
-                    <form method="post" action="script/userBanner.php"> <!--TODO inserire richiesta di conferma operazione-->
-                        <p>Inserisci username:</p>
+                        <form method="post" action="script/userBanner.php">
+                            <p>Enter username:</p>
                         <p><input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required></p>
                         <p><input type="submit" value="Ban"></p>
                     </form>
                     </div>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <h1>Rimuovi Ban</h1>
+                    <h1>Remove Ban</h1>
                     <div class="well">
-                    <form method="post" action="script/userUnbanner.php"> <!--TODO inserire richiesta di conferma operazione-->
-                        <p>Inserisci username:</p>
+                        <form method="post" action="script/userUnbanner.php">
+                            <p>Enter username:</p>
                         <p><input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required></p>
                         <p><input type="submit" value="Unban"></p>
                     </form>
@@ -40,7 +40,7 @@
             </div>
             <div class="well">
             <div class="row">
-                <h3>Utenti Bannati</h3>
+                <h3>Banned Users</h3>
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>

@@ -15,9 +15,9 @@
                 </div>
         </div>
        <div class="col-sm-8 text-left">
-           <h1>Area Amministrativa</h1>
+           <h1>Administrative area</h1>
            <hr>
-           <p><b>STATISTICHE:</b></p>
+           <p><b>STATISTICS:</b></p>
            <div class="well">
                <?php require("script/showStats.php"); ?>
            </div>

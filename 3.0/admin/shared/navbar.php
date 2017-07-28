@@ -11,29 +11,29 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Utenti
+                    <a class="dropdown-toggle" data-toggle="dropdown">Users
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="pageUsers.php">Elenco utenti</a></li>
-                        <li><a href="pageUpdateUser.php">ModUser</a></li>
-                        <li><a href="pageDeleteUser.php">DeleteUser</a></li>
-                        <li><a href="pageBanUser.php">BanUser</a></li>
+                        <li><a href="pageUsers.php">User List</a></li>
+                        <li><a href="pageUpdateUser.php">Mod User</a></li>
+                        <li><a href="pageDeleteUser.php">Delete User</a></li>
+                        <li><a href="pageBanUser.php">Ban User</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Eventi
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="pageEvents.php">Elenco eventi</a></li>
-                        <li><a href="pageDeleteEvent.php"> DeleteEvento</a></li>
-                        <li><a href="pageSignaledEvent.php">Eventi Segnalati</a></li>
+                        <li><a href="pageEvents.php">Event List</a></li>
+                        <li><a href="pageDeleteEvent.php"> Delete Event</a></li>
+                        <li><a href="pageSignaledEvent.php">Events Signed</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Admin
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="pageAddAdmin.php">AddAdmin</a></li>
+                        <li><a href="pageAddAdmin.php">Add Admin</a></li>
                     </ul>
                 </li>
             </ul>

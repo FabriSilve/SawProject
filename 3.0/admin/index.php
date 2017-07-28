@@ -17,7 +17,7 @@
                     <input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required>
                 </p>
                 <button type="submit" class="radiusDiv">
-                    accedi
+                    Login
                 </button>
             </form>
                 <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {

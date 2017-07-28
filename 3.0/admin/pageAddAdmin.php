@@ -8,7 +8,7 @@
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="pageDashboard.php"> Torna indietro</a></p>
+                <p><a href="pageDashboard.php">Back</a></p>
             </div>
             <?php
                 if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
@@ -20,9 +20,9 @@
         <div class="col-sm-8 text-left">
             <div class="well">
             <form method="post" action="script/adminAdder.php">
-                <h1>Inserisci nuovo Admin</h1>
+                <h1>Enter new Admin</h1>
                 <div
-                <p><b>Inserisci le credenziali:</b></p>
+                <p><b>Enter your credentials:</b></p>
                 <p><input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required></p>
                 <p><input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required></p>
                 <p><input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required></p>

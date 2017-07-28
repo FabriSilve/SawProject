@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Eventi Segnalati</h1>
+            <h1>Reported Events</h1>
             <div class="well">
-                <h4>Eventi attualmente presenti nel database:</h4><br>
+                <h4>Current events in the database:</h4><br>
                 <?php require("script/showSignaled.php"); ?>
             </div>
         </div>

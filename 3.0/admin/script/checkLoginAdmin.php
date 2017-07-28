@@ -7,13 +7,13 @@
 	$message = "";
 	try {
         if (!isset($_POST["username"]) || empty(trim($_POST["username"]))) {
-            $message="Username non valido";
+            $message = "Invalid username";
             throw new Exception();
         }
         $username = trim($_POST["username"]);
 
         if (!isset($_POST["password"]) || empty(trim($_POST["password"]))) {
-            $message="Password non valida";
+            $message = "Invalid password";
             throw new Exception();
         }
         $password = trim($_POST["password"]);
@@ -34,13 +34,13 @@
             header("Location: ../pageDashboard.php");
 
         } else {
-            $message = "Credenziali non valide";
+            $message = "Invalid credentials";
             throw new Exception();
         }
         $conn = null;
 
     }catch(PDOException $e){
-	    $message = "Errore Database!"."Error: " . $e->getMessage(); //TODO rimuovere errore in release
+        $message = "Error in Database!" . "Error: " . $e->getMessage(); //TODO rimuovere errore in release
         header("Location: ../index.php?message=".$message);
     }
     catch(Exception $f){
