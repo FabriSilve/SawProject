@@ -35,7 +35,7 @@ require("shared/navbar.php");
                         } else if (!empty(trim($_GET["username"]))) {
                             $username = $_GET["username"];
                         } else {
-                            $message = "Invalid username";
+                            $message = "Invalid usernamexx";
                             throw new Exception();
                         }
 

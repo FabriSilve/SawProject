@@ -9,6 +9,10 @@ try {
     $newUsername = trim($_POST['newUsername']);
     $newEmail = trim($_POST['newEmail']);
 
+    /*if(!empty($username)){
+        if(empty(new
+    }*/
+
     $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->beginTransaction();
