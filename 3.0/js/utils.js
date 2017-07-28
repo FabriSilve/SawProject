@@ -39,3 +39,11 @@ function showMessageForm() {
 function hideMessageForm() {
     document.getElementById('mailForm').style.display = "none";
 }
+
+function showAdmin() {
+    document.getElementById('admin').style.display = "block";
+}
+
+function hideAdmin() {
+    document.getElementById('admin').style.display = "none";
+}

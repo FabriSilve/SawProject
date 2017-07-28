@@ -57,9 +57,7 @@
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 if (xhr.responseText !== "") {
-                    console.info("respose is: " + xhr.responseText);
                     events = JSON.parse(xhr.responseText);
-                    //console.info(events[0].lat+" "+events[0].lon);
                     showMap(events[0].lat, events[0].lon);
                     drawEventsList();
                     document.getElementById("searchForm").scrollIntoView();
