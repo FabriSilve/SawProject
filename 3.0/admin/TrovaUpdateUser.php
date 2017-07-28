@@ -74,7 +74,7 @@ require("shared/navbar.php");
                     <input type="email" hidden name="email" id="email" placeholder="email"
                            class="radiusDiv padding5" value="<?php echo $email; ?>">
                     <input type="text" name="newUsername" id="newUsername" placeholder="New Username"
-                           class="radiusDiv padding5" required>
+                           class="radiusDiv padding5">
                     <input type="email" name="newEmail" id="newEmail" placeholder="New Email" class="radiusDiv padding5">
                     <input type="password" name="newPassword" id="newPassword" placeholder="New Password" class="radiusDiv padding5">
                     <p><br><input type="submit" value="Confirmation"></p>
