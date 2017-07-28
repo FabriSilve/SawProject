@@ -29,15 +29,15 @@ require("shared/navbar.php");
                     <?php
                     $message = "";
                     try {
-
-                        if (!empty(trim($_POST["username"]))) {
-                            $username = htmlspecialchars(trim($_POST["username"]));
-                        } else if (!empty(trim($_GET["username"]))) {
-                            $username = $_GET["username"];
-                        } else {
-                            $message = "Username non valido";
-                            throw new Exception();
-                        }
+                        /*
+                                                if (!empty(trim($_POST["username"]))) {
+                                                    $username = htmlspecialchars(trim($_POST["username"]));
+                                                } else if (!empty(trim($_GET["username"]))) {
+                                                    $username = $_GET["username"];
+                                                } else {
+                                                    $message = "Username non valido";
+                                                    throw new Exception();
+                                                }*/
 
 
                         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
@@ -45,12 +45,12 @@ require("shared/navbar.php");
                         $stmt = $conn->prepare("SELECT username, email  FROM Users NATURAL JOIN Profiles WHERE username = :username;");
                         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
                         $stmt->execute();
-
-                        if ($stmt->rowCount() !== 1) {
-                            $message = "Utente non presente nel sistema";
-                            throw new Exception();
-                        }
-
+                        /*
+                                                if ($stmt->rowCount() !== 1) {
+                                                    $message = "Utente non presente nel sistema";
+                                                    throw new Exception();
+                                                }
+                        */
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo '<tr><td>' . $row['username'] . '</td>';
                             echo '<td>' . $row['email'] . '</td>';

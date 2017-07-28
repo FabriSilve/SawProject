@@ -65,7 +65,7 @@ require("shared/navbar.php");
             </table>
 
             <div class="col-sm-8 text-left">
-                <form method="post" action="userDeleter.php">
+                <form method="post" action="script/userDeleter.php">
                     <p>Conferma la cancellazione, rimmittendo il username: </p>
                     <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
                     <p></p>

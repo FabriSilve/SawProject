@@ -1,6 +1,6 @@
 <?php
-    require("shared/accessManager.php");
-    require("script/dbAccess.php");
+require("../shared/accessManager.php");
+require("dbAccess.php");
     $conn = null;
     $message = "";
     try {
@@ -38,6 +38,6 @@
         $conn->rollBack();
     }
     $conn = null;
-    header("Location: pageDeleteUser.php?message=".$message);
+header("Location: ../pageDeleteUser.php?message=" . $message);
 ?>
 

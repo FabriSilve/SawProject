@@ -77,7 +77,7 @@ require("shared/navbar.php");
             </table>
 
             <div class="col-sm-8 text-left">
-                <form method="post" action="eventDeleter.php">
+                <form method="post" action="script/eventDeleter.php">
                     <p>Conferma la cancellazione, rimmittendo il ID: </p>
                     <input type="text" name="id" id="id" placeholder="Event id" class="radiusDiv padding5" required>
                     <p></p>

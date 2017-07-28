@@ -50,6 +50,5 @@
         </div>
     </div>
     <script>drawUserData(userData);</script>
-<?php require("script/chat.php") ?>
     <br>
 <?php require("shared/footer.php"); ?>

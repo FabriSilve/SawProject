@@ -38,7 +38,7 @@ require("script/dbAccess.php");
         }
         $password = password_hash($password, PASSWORD_BCRYPT);
     } catch (Exception $e) {
-        header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
+        //header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
         die();
     }
 try {
@@ -83,14 +83,14 @@ try {
     $conn->commit();
 
     $message = "Modifica eseguita con successo";
-    header("Location: TrovaUpdateUser.php?message=" . $message);
+    //header("Location: TrovaUpdateUser.php?message=" . $message);
 } catch(PDOException $e){
     $conn->rollback();
-    $message = "Si è verificato un errore."." Error: " . $e->getMessage(); //TODO rimuovere in release
-    header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
+    //$message = "Si è verificato un errore."." Error: " . $e->getMessage(); //TODO rimuovere in release
+    //header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
 } catch(Exception $e){
     $conn->rollback();
-    header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
+    //header("Location: TrovaUpdateUser.php?message=" . $message . "&username=" . $usernameGet);
 }
     $conn = null;
 ?>
