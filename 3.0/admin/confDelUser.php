@@ -55,7 +55,10 @@ require("shared/navbar.php");
                 }
                 catch(PDOException $e) {
                     $error = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+                } catch (Exception $e) {
+                    header("Location: pageDeleteUser.php?message=" . $message . "&username=" . $usernameGet);
                 }
+
                 echo "</table>";
 
                 if(!empty($error)) {
@@ -66,8 +69,9 @@ require("shared/navbar.php");
 
             <div class="col-sm-8 text-left">
                 <form method="post" action="script/userDeleter.php">
-                    <p>Conferma la cancellazione, rimmittendo il username: </p>
-                    <input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required>
+                    <p>Conferma la cancellazione: </p>
+                    <input type="text" hidden name="username" placeholder="Username" class="radiusDiv padding5"
+                           value="<?php echo $username; ?>">
                     <p></p>
                     <p><input type="submit" value="Conferma"></p>
                 </form>
