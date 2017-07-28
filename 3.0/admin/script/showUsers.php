@@ -25,7 +25,7 @@
             $conn = null;
         }
         catch(PDOException $e) {
-            $error = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+            $error = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
         }
 
         echo "</table>";
