@@ -19,7 +19,7 @@
             <div class="col-sm-8 text-left">
                 <h1><b>Users update</b></h1>
                 <div class="well">
-                    <form method="post" action="intermedia.php">
+                    <form method="post" action="TrovaUpdateUser.php">
                         <p>Insert user to be modified:</p>
                         <input type="text" name="username" id="username" placeholder="Username"
                                class="radiusDiv padding5" required><span id="status"></span>
