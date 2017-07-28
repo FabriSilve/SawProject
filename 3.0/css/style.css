@@ -188,3 +188,7 @@ h2.eventTitle {
     width: 90%;
     height: 50%;
 }
+
+#filter {
+    display: none;
+}

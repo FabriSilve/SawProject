@@ -1,4 +1,9 @@
 <?php
+    /*
+     * - se trovo un coockie attivo autorizzo l'utente
+     * - se l'utente è autorizzato inizializzo variabile logged = 1, = 0 altrimenti
+     */
+
     $logged = 0;
     $username = null;
 
@@ -18,4 +23,10 @@
     if(isset($_SESSION["EAauthorized"]) && $_SESSION["EAauthorized"] == 1) {
         $logged = 1;
     }
+
+    /*
+     * var:
+     *      $logged
+     *      $username
+     */
 ?>

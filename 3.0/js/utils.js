@@ -24,10 +24,18 @@ function showValue(id, newValue)
     document.getElementById(id).innerHTML=newValue+" ";
 }
 
-function clicked(text) {
+/*function clicked(text) {
     if (confirm(text)) {
         return true;
     } else {
         return false;
     }
+}*/
+
+function showMessageForm() {
+    document.getElementById('mailForm').style.display = "block";
+}
+
+function hideMessageForm() {
+    document.getElementById('mailForm').style.display = "none";
 }

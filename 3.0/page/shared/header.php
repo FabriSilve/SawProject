@@ -1,3 +1,10 @@
+<?php
+    /*
+     * - header di tutte le pagine in cui importo i file js, stile e bootstrap
+     * - inizializzo variabile owner glogale js con username utente
+     */
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -24,11 +31,11 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <!--<script src="http://maps.google.com/maps/api/js?key=AIzaSyAQO1FBU7ngY0Wv20d3-gPI1sj5_ApCZ3M&sensor=true"></script>-->
 
     <script>
-        var owner = "<?php if(isset($_SESSION["EAusername"])) echo $_SESSION["EAusername"]; else echo 0; ?>";
+        var owner = "<?php if(isset($_SESSION["EAusername"])) echo htmlspecialchars($_SESSION["EAusername"]); else echo 0; ?>";
     </script>
 </head>
 <body class="mainbody">
     <?php require("navbar.php"); ?>
+

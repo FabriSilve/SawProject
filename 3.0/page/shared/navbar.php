@@ -1,3 +1,9 @@
+<?php
+    /*
+     * - menu di tutte le pagine con tutte le funzionalità se l'utente è autorizzato
+     */
+?>
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -19,9 +25,6 @@
                         echo '<li class="active"><a href="pageMessages.php">Messages</a></li>';
                     }
                 ?>
-                <!--<li class="active"><a href="#">Eventi</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Contact</a></li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
