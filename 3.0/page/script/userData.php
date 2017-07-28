@@ -4,8 +4,9 @@
     if(empty($username)) {
         header("Location: ../../");
     }
+    $userData = null;
     $message = "";
-    $numEventi = 0;
+    $numEvents = 0;
     $numFans = 0;
     $numFollowed = 0;
     $numSignaled = 0;
@@ -26,7 +27,7 @@
         $stmt = $conn->prepare("SELECT id FROM Events WHERE owner = :username");
         $stmt->bindParam(":username", $username);
         $stmt->execute();
-        $numEventi = $stmt->rowCount();
+        $numEvents = $stmt->rowCount();
 
         $stmt = $conn->prepare("SELECT * FROM Followed NATURAL JOIN Events WHERE owner = :username");
         $stmt->bindParam(":username", $username);
@@ -59,7 +60,7 @@
             "residence" => $row["residence"],
             "link" => $row["link"],
             "description" => $row["description"],
-            "events" => $numEventi,
+            "events" => $numEvents,
             "fans" => $numFans,
             "followed" => $numFollowed,
             "signaled" => $numSignaled

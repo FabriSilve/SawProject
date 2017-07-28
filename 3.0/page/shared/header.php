@@ -18,7 +18,7 @@
     <script src="../js/eventDelete.js"></script>
     <script src="../js/drawUserData.js"></script>
     <script src="../js/drawMessages.js"></script>
-    <script src="../js/userMessage.js"></script>
+    <script src="../js/messageForm.js"></script>
 
     <link rel="stylesheet" href="../css/style.css">
 
