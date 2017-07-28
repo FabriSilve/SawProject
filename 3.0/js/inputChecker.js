@@ -71,3 +71,42 @@ function checkProfile() {
 
     return true;
 }
+
+function checkMessage() {
+    alert("ciao");
+    sender = document.getElementById("sender").value;
+    receiver = document.getElementById("receiver").value;
+    text = document.getElementById("text").value;
+
+    console.info(sender);
+    console.info(receiver);
+    console.info(text);
+
+    if(sender === "") {
+        console.error("Sender not found");
+        document.getElementById("error").innerText = "Errore. Refresh the page";
+        return false;
+    }
+
+    if(receiver === "") {
+        console.error("receiver not found");
+        document.getElementById("error").innerText = "Errore. Refresh the page";
+        return false;
+    }
+
+    if(text === "") {
+        document.getElementById("error").innerText = "Empty message";
+        return false;
+    }
+
+    if(text.length < 20 ) {
+        document.getElementById("error").innerText = "Message too short, at least 20 char";
+        return false;
+    }
+
+    if(text.length >= 300 ) {
+        document.getElementById("error").innerText = "Message too short, at max 300 char";
+        return false;
+    }
+    return true;
+}

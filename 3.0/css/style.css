@@ -164,20 +164,27 @@ h2.eventTitle {
     position: relative;
 }
 
-/*.fa {
-    padding: 20px;
-    font-size: 30px;
-    width: 50px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
+.mailForm {
+    position: fixed;
+    top: 0;
+    margin-top: 10%;
+    margin-left: 25%;
+
+    height: auto;
+    width: 50%;
+    font-size: 25px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    z-index: 4;
+    border: 1px solid orangered;
+    display: none;
 }
 
-.fa:hover {
-    opacity: 0.7;
+.mailMessageBox {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    height: 50%;
 }
-
-.fa-google {
-     background: #dd4b39;
-     color: white;
- }*/

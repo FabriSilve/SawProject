@@ -30,7 +30,7 @@
                 </div>
                 <br/>
                 <div class="row" id="messageUser">
-                    <img src="../media/mex.png" id="mex" onclick="userMessage();">
+                    <img src="../media/mex.png" id="mex" onclick="showMessageForm();">
                 </div>
             </div>
         </div>
@@ -57,7 +57,23 @@
             </div>
         </div>
     </div>
-    <script>drawUserData(userData);</script>
-<?php require("script/chat.php") ?>
     <br>
+    <script>drawUserData(userData);</script>
+
+    <!--TODO esportare file?-->
+    <div id="mailForm" class="mailForm radiusDiv">
+        <img onclick="hideMessageForm()" class="text-left padding5" src="../media/delete.png">
+        <form name="sendMessage" method="post" onsubmit="return checkMessage();" action="script/messageSender.php">
+            <input type="text" id="sender" name="sender"  value="<?php echo $_SESSION["EAusername"]; ?>" hidden>
+            <input type="text" id="receiver" name="receiver" value="<?php echo $userData["username"]; ?>"  hidden>
+            <p class="sendMailItem" >
+                <textarea class="mailMessageBox" cols="25" rows="8" id="text" name="text" placeholder="Message"></textarea>
+            </p>
+            <p class="text-center">
+                <input type="submit" class="radiusDiv" value="send">
+            </p>
+            <h4 id="error" class="text-center"></h4>
+        </form>
+    </div>
+
 <?php require("shared/footer.php"); ?>

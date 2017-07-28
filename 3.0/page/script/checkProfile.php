@@ -70,7 +70,7 @@
         }
 
     } catch(Exception $e) {
-        header("Location: ../pageRegisterProfile.php?message=".$error);
+        header("Location: ../pageRegisterProfile.php?message=".$message);
         die();
     }
 
