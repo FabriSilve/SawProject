@@ -69,12 +69,9 @@ require("shared/navbar.php");
             <div class="well">
                 <h3>Enter a new data:</h3>
                 <form method="post" action="script/userMod.php">
-                    <input type="text" hidden name="username" id="username" placeholder="username"
-                           class="radiusDiv padding5" value="<?php echo $username; ?>">
-                    <input type="email" hidden name="email" id="email" placeholder="email"
-                           class="radiusDiv padding5" value="<?php echo $email; ?>">
-                    <input type="text" name="newUsername" id="newUsername" placeholder="New Username"
-                           class="radiusDiv padding5">
+                    <input type="text" hidden name="username" id="username" placeholder="username" class="radiusDiv padding5" value="<?php echo $username; ?>">
+                    <input type="email" hidden name="email" id="email" placeholder="email" class="radiusDiv padding5" value="<?php echo $email; ?>">
+                    <input type="text" name="newUsername" id="newUsername" placeholder="New Username" class="radiusDiv padding5">
                     <input type="email" name="newEmail" id="newEmail" placeholder="New Email" class="radiusDiv padding5">
                     <input type="password" name="newPassword" id="newPassword" placeholder="New Password" class="radiusDiv padding5">
                     <p><br><input type="submit" value="Confirmation"></p>
