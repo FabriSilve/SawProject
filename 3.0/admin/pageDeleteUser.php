@@ -28,9 +28,8 @@
                 </div>
                 <hr>
                 <div class="well">
-                <?php
-                    require("script/showUsers.php");
-                ?>
+                    <h4>Utenti attualmente presenti nel database:</h4>
+                    <?php require("script/showUsers.php"); ?>
                 </div>
             </div>
         </div>

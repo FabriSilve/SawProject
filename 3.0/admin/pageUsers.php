@@ -14,9 +14,8 @@
             <div class="col-sm-8 text-left">
                 <h1>Utenti</h1>
                 <div class="well">
-                    <?php
-                        require("script/showUsers.php");
-                    ?>
+                    <h4>Utenti attualmente presenti nel database:</h4><br>
+                    <?php require("script/showUsers.php"); ?>
                 </div>
             </div>
         </div>

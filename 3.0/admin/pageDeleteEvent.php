@@ -29,7 +29,7 @@
                 </div>
                 <hr>
                 <div class="well">
-                <h2>Eventi</h2>
+                    <h2>Eventi attualmente presenti nel database:</h2><br>
                 <?php
                     require("script/showEvents.php");
                 ?>

@@ -14,7 +14,7 @@ $error = "";
 try {
     $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM Signaled NATURAL JOIN Users ");
+    $stmt = $conn->prepare("SELECT id, username, email FROM Signaled NATURAL JOIN  Users NATURAL JOIN Profiles");
     $stmt->bindParam(':id', $id, PDO::PARAM_STR);
     $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
