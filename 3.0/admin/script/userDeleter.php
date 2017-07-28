@@ -23,21 +23,21 @@ require("dbAccess.php");
             throw new Exception();
         }
 
-
         $stmt = $conn->prepare("DELETE FROM Users WHERE username = :username;");
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         $conn->commit();
+        $conn = null;
         $message = "Utente cancellato con successo";
 
     }
     catch(PDOException $e) {
         $conn->rollBack();
         $message = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         $conn->rollBack();
+        header("Location: ../pageDeleteUser.php?message=" . $message);
     }
-    $conn = null;
 header("Location: ../pageDeleteUser.php?message=" . $message);
 ?>
 

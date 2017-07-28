@@ -67,6 +67,8 @@ require("shared/navbar.php");
                     }
                     catch(PDOException $e) {
                         $error = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+                    } catch (Exception $e) {
+                        header("Location: pageDeleteEvent.php?message=" . $message . "&id=" . $idGet);
                     }
                     echo "</table>";
 
@@ -78,8 +80,9 @@ require("shared/navbar.php");
 
             <div class="col-sm-8 text-left">
                 <form method="post" action="script/eventDeleter.php">
-                    <p>Conferma la cancellazione, rimmittendo il ID: </p>
-                    <input type="text" name="id" id="id" placeholder="Event id" class="radiusDiv padding5" required>
+                    <p>Conferma la cancellazione: </p>
+                    <input type="text" hidden name="id" id="id" placeholder="Event id" class="radiusDiv padding5"
+                           value="<?php echo $id; ?>">
                     <p></p>
                     <p><input type="submit" value="Conferma"></p>
                 </form>
