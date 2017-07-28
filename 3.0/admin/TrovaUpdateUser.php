@@ -1,4 +1,5 @@
 <?php
+require("shared/accessManager.php");
 require("script/dbAccess.php");
 require("shared/header.php");
 require("shared/navbar.php");
@@ -51,12 +52,12 @@ require("shared/navbar.php");
                         }
 
                         if ($stmt->rowCount() !== 1) {
-                            $message = "Utente non presente nel sistema";
+                            $message = "User is not present in the system";
                             throw new Exception();
                         }
                         $conn = null;
                     } catch (PDOException $e) {
-                        $message = "Errore nel database" . " ERROR " . $e->getMessage(); //TODO rimuovere errore in release
+                        $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere errore in release
                         header("Location: pageUpdateUser.php?message=" . $message);
                     } catch (Exception $e) {
                         header("Location: pageUpdateUser.php?message=" . $message);
@@ -66,7 +67,7 @@ require("shared/navbar.php");
             </div>
             <hr>
             <div class="well">
-                <h3>Enter the new data:</h3>
+                <h3>Enter a new data:</h3>
                 <form method="post" action="script/userMod.php">
                     <input type="text" hidden name="username" id="username" placeholder="username"
                            class="radiusDiv padding5" value="<?php echo $username; ?>">

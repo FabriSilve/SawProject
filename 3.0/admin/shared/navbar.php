@@ -15,7 +15,7 @@
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="pageUsers.php">User List</a></li>
-                        <li><a href="pageUpdateUser.php">Mod User</a></li>
+                        <li><a href="pageUpdateUser.php">Edit user</a></li>
                         <li><a href="pageDeleteUser.php">Delete User</a></li>
                         <li><a href="pageBanUser.php">Ban User</a></li>
                     </ul>

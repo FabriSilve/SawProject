@@ -18,7 +18,7 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $conn->prepare("SELECT username, email FROM Admin");
         $stmt->execute();
-        echo '<h2>Administratori presenti in Sistema:</h2><br>';
+        echo '<h2>Administrators present in the System:</h2><br>';
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo '<tr><td>'.$row['username'].'</td>';
             echo '<td>'.$row['email'].'</td>';
@@ -26,7 +26,7 @@
         $conn = null;
     }
     catch(PDOException $e) {
-        $error = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+        $error = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
     }
 
     echo "</table>";

@@ -1,11 +1,11 @@
 <table class="table table-striped table-bordered">
     <thead>
     <tr>
-        <th>Numero Utenti</th>
-        <th>Numero Eventi</th>
-        <th>Numero Eventi Segnalati</th>
-        <th>ID dell`ultimo evento inserito</th>
-        <th>L`ultimo utente inserito</th>
+        <th>Number of users</th>
+        <th>Number of events</th>
+        <th>Number of marked event</th>
+        <th>ID of last event entered</th>
+        <th>The last user entered</th>
          </tr>
     </thead>
 <?php

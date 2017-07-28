@@ -28,12 +28,12 @@ require("dbAccess.php");
         $stmt->execute();
         $conn->commit();
         $conn = null;
-        $message = "Utente cancellato con successo";
+        $message = "User was deleted successfully";
 
     }
     catch(PDOException $e) {
         $conn->rollBack();
-        $message = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+        $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
     } catch (Exception $e) {
         $conn->rollBack();
         header("Location: ../pageDeleteUser.php?message=" . $message);
