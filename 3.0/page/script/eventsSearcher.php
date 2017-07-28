@@ -1,6 +1,7 @@
 <?php
     /*
-     * TODO add description
+     * script che restituisce un json contenente le informazioni degli eventi risultati
+     * da una ricerca con determinati parametri
      */
 
     require("dbAccess.php");
@@ -15,18 +16,19 @@
     $eventDB = [];
     $count = 0;
 
-    if(!empty($_GET['position']))
-        $position = trim($_GET['position']);
+    if(!empty(trim($_GET['position'])))
+        if(preg_match("^[a-zA-Z0-9]+$^",trim($_GET['position'])))
+            $position = trim($_GET['position']);
 
-    if(!empty($_GET['distance']))
+    if(!empty(trim($_GET['distance'])))
         $distance = trim($_GET['distance'])*0.005;
 
-    if(!empty($_GET['days']))
+    if(!empty(trim($_GET['days'])))
         $days = trim($_GET['days']);
 
-    if($position === "" && !empty($_GET['lat']) && !empty($_GET['lon'])) {
-        $lat = $_GET['lat'];
-        $lon = $_GET['lon'];
+    if($position === "" && !empty(trim($_GET['lat'])) && !empty(trim($_GET['lon']))) {
+        $lat = trim($_GET['lat']);
+        $lon = trim($_GET['lon']);
     } else {
         if ($position === "") {
             $position = "genova";

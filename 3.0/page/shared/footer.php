@@ -1,5 +1,5 @@
-<footer class="container text-center liteOrange radiusDiv">
-    <div class="row">
+<footer class="container text-center liteOrange borderRadius">
+    <div class="row padding20">
         <div class="col-sm-1 text-center">
             <a href="https://twitter.com" target="_blank"><img src="../media/twitter.png" alt="twitter"></a>
         </div>
@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div id="admin" class="mailForm radiusDiv">
+    <div id="admin" class="mailForm borderRadius">
         <img onclick="hideForm('admin')" class="text-left padding5" src="../media/delete.png">
         <form name="formAdmin" method="post" onsubmit="return checkMessage();" action="script/messageSender.php">
             <input type="text" id="sender" name="sender"  value="<?php echo $_SESSION["EAusername"]; ?>" hidden>
@@ -23,7 +23,7 @@
                 <textarea class="mailMessageBox" cols="25" rows="8" id="text" name="text" placeholder="Message"></textarea>
             </p>
             <p class="text-center">
-                <input type="submit" class="radiusDiv " value="send">
+                <input type="submit" class="borderRadius " value="send">
             </p>
             <h4 id="error" class="text-center"></h4>
         </form>

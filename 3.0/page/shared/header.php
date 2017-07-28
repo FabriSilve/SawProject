@@ -17,7 +17,6 @@
     <script src="../js/eventSearcher.js"></script>
     <script src="../js/eventMap.js"></script>
     <script src="../js/eventsList.js"></script>
-    <script src="../js/addEvent.js"></script>
     <script src="../js/utils.js"></script>
     <script src="../js/updateFollowed.js"></script>
     <script src="../js/signalEvent.js"></script>

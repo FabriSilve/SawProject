@@ -5,53 +5,44 @@
         header("Location: pageHomepage.php");
 ?>
 
-<div class="container text-center liteOrange radiusDiv">
+<div class="container text-center liteOrange borderRadius">
     <h1>Add Event</h1>
-    <h3>What's New <?php echo $_SESSION["EAusername"]; ?>?</h3>
+    <h3>What's New <?php echo $username; ?>?</h3>
 </div>
 <br>
-<div class="container bg-3 radiusDiv liteBackground">
-    <div class="container-fluid text-center">
+
+    <div class="container text-center borderRadius liteBackground">
         <h1>New Event</h1>
-        <form enctype="multipart/form-data" name="formAddEvent" method="post" onsubmit="addEvent()" action="script/eventAdder.php">
+        <form enctype="multipart/form-data" name="formAddEvent" method="post" onsubmit="checkAddEvent()" action="script/eventAdder.php">
             <div class="row">
                 <div class="col-sm-4 ">
-                    <br/>
-                    <br/>
-                    <input type="text" name="name" id="name" placeholder="Name" class="radiusDiv padding5 marginMin" required>
-                    <input type="text" name="address" id="address" placeholder="Address" class="radiusDiv padding5 marginMin" required><br>
-                    <input type="date" name="day" id="day" class="radiusDiv marginMin padding5" title="Day" required >
-                    <input name="owner" id="owner" value="owner" type="text" hidden>
+                    <input name="name" id="name" placeholder="Name" class="borderRadius padding5 marginMin" required>
+                    <input name="address" id="address" placeholder="Address" class="borderRadius padding5 marginMin" required><br>
+                    <input type="date" name="day" id="day" class="borderRadius marginMin padding5" title="Day" required >
                 </div>
                 <div class="col-sm-4">
-                    <h5>Description:</h5>
-                    <textarea cols="25" rows="5" name="description" id="description" class="radiusDiv" placeholder="Descrizione" required>
-                    </textarea>
-                    <!--<div class="col-sm-6">
-                        <img src="../media/camera.png" id="anteprima" name="anteprima" class="anteprima" >
-                    </div>-->
+                    <textarea cols="25" rows="5" name="description" id="description" class="borderRadius padding5" placeholder="Description" required></textarea>
                 </div>
                 <div class="col-sm-4">
-                    <br/>
-                    <br/>
-                    <input type="file" id="image" name="image" value="Select a photo" required>
-                    <!--<input type="text" id="owner" name="owner" hidden>-->
+                    <input type="file" id="image" name="image" value="Select a photo" placeholder="Select a photo" required>
                  </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <button type="submit" class="radiusDiv"">
-                        <img src="../media/plus.png">
+                    <button class="borderRadius">
+                        <img src="../media/plus.png" alt="add event">
                     </button>
                 </div>
             </div>
         </form>
-        <?php if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
-            echo '<h5>'.$_GET["message"].'</h5>';
-        }
+        <?php
+            if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                echo '<h5 class="error">'.$_GET["message"].'</h5>';
+            }
         ?>
+        <div id="error" class="error"></div>
     </div>
-</div>
+
 <br>
 
 <?php

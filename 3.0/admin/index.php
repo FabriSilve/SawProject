@@ -7,16 +7,16 @@
 
 <div class="container container-table marginMax">
     <div class="row vertical-center-row marginMin">
-        <div class="text-center col-md-4 col-md-offset-4 radiusDiv liteBackground">
+        <div class="text-center col-md-4 col-md-offset-4 borderRadius liteBackground">
             <h2>Admin Login</h2>
             <form name="loginAdminForm" method="post" action="script/checkLoginAdmin.php" onsubmit="return checkLogin()">
                 <p>
-                    <input type="name" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
+                    <input type="name" name="username" id="username" placeholder="Username" class="borderRadius padding5" required>
                 </p>
                 <p>
-                    <input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required>
+                    <input type="password" name="password" id="password" placeholder="Password" class="borderRadius padding5" required>
                 </p>
-                <button type="submit" class="radiusDiv">
+                <button type="submit" class="borderRadius">
                     Login
                 </button>
             </form>

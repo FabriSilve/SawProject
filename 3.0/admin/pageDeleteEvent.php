@@ -22,7 +22,7 @@
                 <div class="well">
                     <form method="post" action="confDelEvent.php">
                         <p>Enter event ID to be deleted:</p>
-                    <input type="text" name="id" id="id" placeholder="Event id" class="radiusDiv padding5" required>
+                    <input type="text" name="id" id="id" placeholder="Event id" class="borderRadius padding5" required>
                     <p></p>
                         <p><input type="submit" value="Search"></p>
                 </form>

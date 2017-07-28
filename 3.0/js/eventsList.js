@@ -6,7 +6,7 @@
 function drawEventsList(check) {
     if(events.length <= 1) {
         text  = '<div class="row">';
-        text += '   <div class="col-sm-12 marginMin text-center liteBackground radiusDiv">';
+        text += '   <div class="col-sm-12 marginMin text-center liteBackground borderRadius">';
         text += '       <h3>Nessun Evento</h3>';
         text += '   </div>';
         text += '</div>';
@@ -29,7 +29,7 @@ function drawEventsList(check) {
  */
 function drawSingleEvent(j, check) {
     event = events[j];
-    temp = '<div class="row liteBackground radiusDiv marginBottom align-middle" id="' + event.id + '">';
+    temp = '<div class="row liteBackground borderRadius marginBottom align-middle" id="' + event.id + '">';
     if(owner !== "0" && check !== null) {
         temp += '<div class="col-sm-1">';
         temp += '<input id="check' + event.id + '" type="checkbox" class="star marginMin" title="Follow" onchange="updateFollowed(\'' + event.id + '\');"';
@@ -43,7 +43,7 @@ function drawSingleEvent(j, check) {
     temp += '<h3>' + event.day + '</h3>';
     temp += '<h3>' + event.address + '</h3>';
     if(owner !== "0" && check !== null) {
-        temp += '<a href="pageOtherProfile.php?username=' + event.owner + '" target="blank"><h4>' + event.owner + '</h4></a>';
+        temp += '<a href="pageOtherProfile.php?username=' + event.owner + '" target="blank" class="link"><h4>' + event.owner + '</h4></a>';
     }
     temp += '</div>';
     temp += '<div class="col-sm-3 text-center" id="divDesc'+j+'">';

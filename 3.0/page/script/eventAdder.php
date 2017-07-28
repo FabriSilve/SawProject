@@ -1,63 +1,59 @@
 <?php
     require("accessControl.php");
     require("dbAccess.php");
+
     $message = "";
-    $conn;
+    $conn = null;
     $name = "";
     $description = "";
     $address = "";
+    $lat = 0;
+    $lon = 0;
     $day = "";
     $owner = "";
 
-
     try {
-        if (isset($_POST['name']) && $_POST['name'] !== "") {
+        if (!empty(trim($_POST['name']))) {
             $name = trim($_POST['name']);
         } else {
-            $message = "Nome non inserito";
+            $message = "Name not valid";
             throw new Exception();
         }
-
-        if (isset($_POST['description']) && $_POST['description'] !== "") {
-            $description = trim($_POST['description']);
+        if (!empty(trim($_POST['description']))) {
+            $description = htmlspecialchars(trim($_POST['description']));
         } else {
-            $message = "Descrizione non inserita";
+            $message = "Description not valid";
             throw new Exception();
         }
-
-        if (isset($_POST['address']) && $_POST['address'] !== "") {
+        if (!empty(trim($_POST['address']))) {
             $address = trim($_POST['address']);
         } else {
-            $message = "Indirizzo non inserito";
+            $message = "Address not valid";
             throw new Exception();
         }
-
-        if (isset($_POST['day']) && $_POST['day'] !== "") {
+        if (!empty(trim($_POST['day']))) {
             $day = trim($_POST['day']);
         } else {
-            $message = "Data non inserita";
+            $message = "Date not valid";
             throw new Exception();
         }
 
         if (!isset($_FILES['image']) || !is_uploaded_file($_FILES['image']['tmp_name'])) {
-            $message = "Immagine non inserita";
+            $message = "image not valid";
             throw new Exception();
         }
 
         if (isset($_SESSION["EAusername"])) {
             $owner = $_SESSION["EAusername"];
         } else {
-            $message = "Proprietario non definito";
+            $message = "Owner not define";
             throw new Exception();
         }
-
-        $lat = 0;
-        $lon = 0;
 
         $position = urlencode($address);
         $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=" . $position . "&sensor=true";
         if (!($xml = simplexml_load_file($request_url))) {
-            $message = "Indirizzo non valido";
+            $message = "Address not valid";
             throw new Exception();
         }
         $status = $xml->status;
@@ -65,13 +61,12 @@
             $lat = $xml->result->geometry->location->lat;
             $lon = $xml->result->geometry->location->lng;
         } else {
-            $message = "Errore indirizzo";
+            $message = "Address error";
             throw new Exception();
         }
     }catch(Exception $e) {
-        echo $message;
         header("Location: ../pageAddEvent.php?message=".$message);
-        die();
+        exit;
     }
 
     try{
@@ -86,7 +81,7 @@
         $stmt->bindParam(":lon",$lon);
         $stmt->execute();
         if($stmt->rowCount() > 0) {
-            $message="Giorno e luogo già utilizzati";
+            $message="Day and place already used";
             throw new Exception();
         }
 
@@ -95,7 +90,7 @@
 
         $stmt->execute();
         if($stmt->rowCount() !== 1) {
-            $message="Utente ".$owner." non trovato";
+            $message="User ".$owner." not valid";
             throw new Exception();
         }
 
@@ -117,27 +112,25 @@
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $image_name = $row['id'];
 
-        //upload image
         $image_path = "../../uploads/";
         $image_format = ".jpg";
         $image_tmp = $_FILES['image']['tmp_name'];
         $is_img = getimagesize($image_tmp);
         if (!$is_img) {
-            $message="Puoi inviare solo immagini";
+            $message="You can send only image";
             throw new Exception();
         }
-
         if (move_uploaded_file($image_tmp, $image_path . $image_name . $image_format)) {
-            $message = "Evento Inserito con successo";
+            $message = "Event added successfully";
         }else{
-            $message = "Errore update";
+            $message = "Update error";
             throw new Exception();
         }
 
         $conn->commit();
     } catch(PDOException $e) {
         $conn->rollBack();
-        $message = "ERROR ".$e->getMessage();
+        $message = "Database error";
     } catch (Exception $e) {
         $conn->rollBack();
     }

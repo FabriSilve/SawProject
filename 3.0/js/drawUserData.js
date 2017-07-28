@@ -39,13 +39,13 @@ function userModify() {
     document.getElementById("modifyUser").innerHTML = btn;
 
     text  = '<div class="col-sm-6 text-center">';
-    text += '<div class="row"><input name="name" id="name" placeholder="Name" class="radiusDiv padding5" type="text" value="'+userData.name+'"></div>';
-    text += '<div class="row"><input name="surname" id="surname" placeholder="Surname" class="radiusDiv padding5" type="text" value="'+userData.surname+'"></div>';
-    text += '<div class="row"><input name="residence" id="residence" placeholder="Residence" class="radiusDiv padding5" type="text" value="'+userData.residence+'"></div>';
-    text += '<div class="row"><input type="url" name="link" id="link" placeholder="Link Social" class="radiusDiv padding5" value="'+userData.link+'"></div>';
+    text += '<div class="row"><input name="name" id="name" placeholder="Name" class="borderRadius padding5" type="text" value="'+userData.name+'"></div>';
+    text += '<div class="row"><input name="surname" id="surname" placeholder="Surname" class="borderRadius padding5" type="text" value="'+userData.surname+'"></div>';
+    text += '<div class="row"><input name="residence" id="residence" placeholder="Residence" class="borderRadius padding5" type="text" value="'+userData.residence+'"></div>';
+    text += '<div class="row"><input type="url" name="link" id="link" placeholder="Link Social" class="borderRadius padding5" value="'+userData.link+'"></div>';
     text += '</div>';
     text += '<div class="col-sm-6 text-center">';
-    text += '<textarea cols="50" rows="6" name="description" id="description" placeholder="Description" class="radiusDiv padding5">'+userData.description+'</textarea>';
+    text += '<textarea cols="50" rows="6" name="description" id="description" placeholder="Description" class="borderRadius padding5">'+userData.description+'</textarea>';
     text += '</div>';
 
     console.info(text);

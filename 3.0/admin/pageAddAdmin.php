@@ -23,10 +23,10 @@
                 <h1>Enter new Admin</h1>
                 <div
                 <p><b>Enter your credentials:</b></p>
-                <p><input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required></p>
-                <p><input type="email" name="email" id="email" placeholder="Email" class="radiusDiv padding5" required></p>
-                <p><input type="password" name="password" id="password" placeholder="Password" class="radiusDiv padding5" required></p>
-                <p><input type="submit" class="radiusDiv" value="Add"></p>
+                <p><input type="text" name="username" id="username" placeholder="Username" class="borderRadius padding5" required></p>
+                <p><input type="email" name="email" id="email" placeholder="Email" class="borderRadius padding5" required></p>
+                <p><input type="password" name="password" id="password" placeholder="Password" class="borderRadius padding5" required></p>
+                <p><input type="submit" class="borderRadius" value="Add"></p>
             </form>
             </div>
         </div>

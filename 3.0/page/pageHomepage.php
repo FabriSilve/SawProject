@@ -16,7 +16,7 @@
         var events = <?php require("script/mainEvents.php"); ?>;
     </script>
 
-    <div class="container text-center liteOrange radiusDiv">
+    <div class="container text-center liteOrange borderRadius">
         <h1>Event Around</h1>
         <p>The events that surround you!</p>
         <?php
@@ -27,9 +27,9 @@
 
 <br>
 <div class="container container-table">
-    <div class="container row radiusDiv liteBackground text-center" id="searchForm">
+    <div class="container row borderRadius liteBackground text-center" id="searchForm">
         <p>
-            <input type="text" name="position" id="position" placeholder="Position" class="radiusDiv padding5">
+            <input name="position" id="position" placeholder="Position" class="borderRadius padding5">
             <img src="../media/search.png" onclick="searchEvents()" alt="search">
             <img src="../media/filter.png" onclick="showFilter()" alt="filter">
         </p>

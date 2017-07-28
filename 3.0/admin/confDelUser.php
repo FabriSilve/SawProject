@@ -70,7 +70,7 @@ require("shared/navbar.php");
             <div class="col-sm-8 text-left">
                 <form method="post" action="script/userDeleter.php">
                     <p>Confirm deletion: </p>
-                    <input type="text" hidden name="username" placeholder="Username" class="radiusDiv padding5"
+                    <input type="text" hidden name="username" placeholder="Username" class="borderRadius padding5"
                            value="<?php echo $username; ?>">
                     <p></p>
                     <p><input type="submit" value="Conferma"></p>

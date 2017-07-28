@@ -6,12 +6,12 @@
     $username = $_SESSION["EAusername"];
 ?>
     <script> userData = <?php require("script/userData.php"); ?>; </script>
-    <div class="container text-center liteOrange radiusDiv">
+    <div class="container text-center liteOrange borderRadius">
         <h1>Profile</h1>
         <h3>About you..</h3>
     </div>
     <br>
-    <div class="container radiusDiv liteBackground">
+    <div class="container borderRadius liteBackground">
         <div class="row">
             <div class="col-sm-11 text-right">
                 <h1 id="username"></h1>

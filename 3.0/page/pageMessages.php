@@ -4,24 +4,24 @@
     if(!isset($logged)||!$logged)
         header("Location: pageHomepage.php");
 ?>
-    <div class="container text-center liteOrange radiusDiv">
+    <div class="container text-center liteOrange borderRadius">
         <h1>Messages</h1>
         <h3>Read your mail!</h3>
     </div>
     <br>
     <a href="pageMessages.php">
-        <div class="container text-center liteBackground radiusDiv">
+        <div class="container text-center liteBackground borderRadius">
             <img src="../media/update.png">
         </div>
     </a>
     <br>
-    <div id="messages" class="container liteBackground radiusDiv padding5">
+    <div id="messages" class="container liteBackground borderRadius padding5">
         <?php
             require("script/userMessages.php");
             if(empty($messages)) {
                 echo '<div class="row">';
                 echo '   <div class="col-sm-12 marginMin text-center">';
-                echo '       <h3 class="liteBackground radiusDiv">MailBox Empty</h3>';
+                echo '       <h3 class="liteBackground borderRadius">MailBox Empty</h3>';
                 echo '   </div>';
                 echo '</div>';
             }else {
@@ -33,7 +33,7 @@
                 for ($j = 0; $j < count($messages); $j++) {
                     $message = $messages[$j];
 
-                    echo '<div class="row marginMin liteBackground radiusDiv">';
+                    echo '<div class="row marginMin liteBackground borderRadius">';
                     echo '   <div class="col-sm-3">'.$message["sender"].'</div>';
                     echo '   <div class="col-sm-2">';
                     echo '       <div class=row">'.$message["day"].'</div>';

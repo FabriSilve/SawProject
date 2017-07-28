@@ -18,21 +18,21 @@
         background: rgb(255, 203, 103);
     }
 }
-
-/* Remove the navbar's default margin-bottom and rounded borders */
+/*
+/* Remove the navbar's default margin-bottom and rounded borders
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
 }
 
-/* Add a gray background color and some padding to the footer */
+/* Add a gray background color and some padding to the footer
 footer {
     padding: 25px;
 }
 
 .jumbotron {
     padding: 0;
-}
+}*/
 
 .liteBackground {
     background-color: rgba(225, 225, 225, 0.8);
@@ -43,7 +43,7 @@ footer {
     background: rgba(255, 154, 0, 0.9);
 }
 
-.radiusDiv {
+.borderRadius {
     border-radius: 20px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -60,6 +60,18 @@ footer {
 .link {
     color: #FF8100;
     font-weight: bold;
+}
+
+.link:hover {
+    color: orangered;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.link:visited {
+    color: #c86400;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 h1 {
@@ -191,4 +203,9 @@ h2.eventTitle {
 
 #filter {
     display: none;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
 }
