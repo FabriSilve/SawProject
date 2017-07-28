@@ -17,7 +17,7 @@ try {
     $stmt->bindParam(":username", $username);
     $stmt->execute();
     if ($stmt->rowCount() == 0) {
-        $message = "Utente non presente nel sistemaxx";
+        $message = "Utente non presente nel sistema";
         throw new Exception();
     }
 
@@ -31,8 +31,8 @@ try {
     $stmt->bindParam(":newUsername", $newUsername);
     $stmt->execute();
 
-    $stmt = $conn->prepare("UPDATE Profiles SET  email = :newEmail WHERE username = :username");
-    $stmt->bindParam(':username', $username);
+    $stmt = $conn->prepare("UPDATE Profiles SET  email = :newEmail WHERE username = :newUsername");
+    $stmt->bindParam(':newUsername', $newUsername);
     $stmt->bindParam(":newEmail", $newEmail);
     $stmt->execute();
 
