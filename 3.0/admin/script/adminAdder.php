@@ -13,21 +13,21 @@
         $email = trim($_POST["email"]);
         $password = trim($_POST["password"]);
 
-        if ((empty($username)) || (!preg_match("/^[ -~]*$/",$username))) {
+        if ((empty($username)) || !preg_match("/^[A-Za-z][A-Za-z0-9]{3,}$/",$username)) {
             $message = "Invalid username";
             throw new Exception();
         }
 
-        if ((empty($email))) { /*TODO (!preg_match("/[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]/",$email))) {*/
+        if ((empty($email)) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $message = "Invalid email";
             throw new Exception();
         }
 
-        if(empty($password)){ //TODO inserire controllo con espressione regolare
+        if(empty($password) || !preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){ //TODO inserire controllo con espressione regolare
             $message = "Invalid password";
             throw new Exception();
         }
-        $password_hash = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
+        $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
         $dbh = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
@@ -43,11 +43,11 @@
         $message = "Admin was inserted successfully";
     }
     catch(PDOException $e){
-        $message = "Username is already used <br> Error: " . $e->getMessage(); //for debug only ****TO BE REMOVED****
+        $message = "Database error, try a different username/email.";
     }
-    catch(Exception $k){}
-    $dbh = null;  //termino la connessione.
-
+    catch(Exception $k){
+    }
+    $dbh = null;
     header("Location: ../pageAdminAdd.php?message=".$message);
 ?>
 

@@ -45,24 +45,23 @@
         }*/
 
         if (!empty($_POST['name'])) {
-            $name = $_POST['name'];
+            $name = trim($_POST['name']);
         }
 
         if (!empty($_POST['surname'])) {
-            $surname = $_POST['surname'];
+            $surname = trim($_POST['surname']);
         }
 
         if (!empty($_POST['residence'])) {
-            $residence = $_POST['residence'];
+            $residence = trim($_POST['residence']);
         }
 
         if (!empty($_POST['link'])) {
-            $link = $_POST['link'];
-            /*TODO controllare controllo link
+            $link = trim($_POST['link']);
             if (!filter_var($link, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED)) {
-                $error = "Link con formato non valido.";
+                $error = "Link format is invalid.";
                 throw new Exception();
-            }*/
+            }
         }
 
         if (!empty($_POST['description'])) {
