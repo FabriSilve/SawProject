@@ -29,6 +29,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="info.php"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
                 <li>
+                    <a href="info.php"><span class="glyphicon glyphicon-info"></span> info</a>
+                </li>
+                <li>
                     <?php
                     if(isset($logged) && $logged)
                         echo '<a href="script/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>';
