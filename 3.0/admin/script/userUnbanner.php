@@ -27,14 +27,14 @@
         $stmt->execute();
 
         $conn->commit();
-        $message = "Ban was removed to the user";
+        $message = "User unbanned";
     }
     catch(PDOException $e) {
         $conn->rollBack();
-        $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
+        $message = "Database error";
     } catch (Exception $e) {
         $conn->rollBack();
     }
     $conn = null;
-    header("Location: ../pageBanUser.php?message=".$message);
+    header("Location: ../pageUserBan.php?message=".$message);
 ?>

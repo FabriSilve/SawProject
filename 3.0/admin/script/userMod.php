@@ -85,15 +85,15 @@ try {
     }
 
     $conn->commit();
-    $message = "User was successfully modified";
+    $message = "User successfully modified";
 
 } catch (PDOException $e) {
     $conn->rollBack();
-    $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
+    $message = "Error in database";
 } catch (Exception $e) {
     $conn->rollBack();
 }
 $conn = null;
-header("Location: ../pageUpdateUser.php?message=" . $message);
+header("Location: ../pageUserUpdate.php?message=" . $message);
 
 ?>

@@ -31,9 +31,9 @@ require("dbAccess.php");
     catch(PDOException $e) {
         $message = "ERROR ".$e->getMessage();
     } catch (Exception $e) {
-        header("Location: ../pageDeleteEvent.php?message=" . $message);
+        header("Location: ../pageEventDelete.php?message=" . $message);
     }
-header("Location: ../pageDeleteUser.php?message=" . $message);
+header("Location: ../pageUserDelete.php?message=" . $message);
 ?>
 
 

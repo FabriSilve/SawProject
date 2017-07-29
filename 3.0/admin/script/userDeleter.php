@@ -5,7 +5,7 @@ require("dbAccess.php");
     $message = "";
     try {
         if(!isset($_POST['username']) || empty($_POST['username'])) {
-            $message = "Username mancante";
+            $message = "Username error";
             throw new Exception();
         }
         $username = trim($_POST['username']);
@@ -19,7 +19,7 @@ require("dbAccess.php");
         $stmt->execute();
 
         if($stmt->rowCount() !== 1) {
-            $message = "Utente non presente";
+            $message = "User not found";
             throw new Exception();
         }
 
@@ -28,7 +28,7 @@ require("dbAccess.php");
         $stmt->execute();
         $conn->commit();
         $conn = null;
-        $message = "User was deleted successfully";
+        $message = "User successfully deleted ";
 
     }
     catch(PDOException $e) {
@@ -36,8 +36,8 @@ require("dbAccess.php");
         $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
     } catch (Exception $e) {
         $conn->rollBack();
-        header("Location: ../pageDeleteUser.php?message=" . $message);
+        header("Location: ../pageUserDelete.php?message=" . $message);
     }
-header("Location: ../pageDeleteUser.php?message=" . $message);
+header("Location: ../pageUserDelete.php?message=" . $message);
 ?>
 

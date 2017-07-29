@@ -48,7 +48,7 @@
     catch(Exception $k){}
     $dbh = null;  //termino la connessione.
 
-    header("Location: ../pageAddAdmin.php?message=".$message);
+    header("Location: ../pageAdminAdd.php?message=".$message);
 ?>
 
 
