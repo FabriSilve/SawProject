@@ -24,25 +24,18 @@
             $message = "username non valido";
             throw new Exception();
         }
-        $username = $_SESSION["EAusername"];
+        $username = trim($_SESSION["EAusername"]);
 
-        if (empty(trim($_POST['email1']))) {
-            $message = "email_1 non valida";
+        $email1 = trim($_POST['email1']);
+        if (empty($email1) || !filter_var($email1, FILTER_VALIDATE_EMAIL)) {
+            $message = "email non valida";
             throw new Exception();
         }
-        $email1 = $_POST['email1'];
-
-        if (empty(trim($_POST['email2']))) {
-            $message = "email_2 non valida";
+        $email2 = trim($_POST['email2']);
+        if ($email1 !== $email2) {
+            $message = "emails are different";
             throw new Exception();
         }
-        $email2 = $_POST['email2'];
-
-        /*TODO controllo mail da controllare
-        if (!preg_match("/[a-z0-9_]+@[a-z0-9\-]+\.[a-z0-9\-\.]+$]/", $email1) || ($email1 !== $email2)) {
-            $error = "Email non valida";
-            throw new Exception();
-        }*/
 
         if (!empty($_POST['name'])) {
             $name = trim($_POST['name']);
@@ -65,7 +58,7 @@
         }
 
         if (!empty($_POST['description'])) {
-            $description = $_POST['description'];
+            $description = trim($_POST['description']);
         }
 
     } catch(Exception $e) {
@@ -127,7 +120,7 @@
     }
     catch(PDOException $e){
         $conn->rollBack();
-        $message = "Errore database, contatta admin"." Error: " . $e->getMessage(); //TODO for debug only ****TO BE REMOVED****
+        $message = "An ERROR has occurred, try again. If this error persists, contact the administrator.";
         header("Location: ../pageRegisterProfile.php?message=".$message);
     }
     catch(Exception $e) {
