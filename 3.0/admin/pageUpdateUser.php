@@ -20,7 +20,7 @@
             <h1><b>Editing Users</b></h1>
             <div class="well">
                 <form method="post" action="TrovaUpdateUser.php">
-                    <p>Search user for delete:</p>
+                    <p>Search user to modify:</p>
                     <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
                     <br/>
                     <p><input type="submit" value="Search"></p>
