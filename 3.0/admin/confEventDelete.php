@@ -7,7 +7,7 @@ require("shared/navbar.php");
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="pageDeleteEvent.php">Back</a></p>
+                <p><a href="pageEventDelete.php">Back</a></p>
             </div>
             <?php
             if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
@@ -68,7 +68,7 @@ require("shared/navbar.php");
                     catch(PDOException $e) {
                         $error = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
                     } catch (Exception $e) {
-                        header("Location: pageDeleteEvent.php?message=" . $message . "&id=" . $idGet);
+                        header("Location: pageEventDelete.php?message=" . $message . "&id=" . $idGet);
                     }
                     echo "</table>";
 

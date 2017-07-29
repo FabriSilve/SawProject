@@ -9,7 +9,7 @@ require("shared/navbar.php");
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="pageUpdateUser.php">Back</a></p>
+                <p><a href="pageUserUpdate.php">Back</a></p>
             </div>
             <?php if (isset($_GET["message"]) && $_GET["message"] !== "") {
                 echo '<div class="well">' . $_GET["message"] . '</div>';
@@ -59,9 +59,9 @@ require("shared/navbar.php");
                         $conn = null;
                     } catch (PDOException $e) {
                         $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere errore in release
-                        header("Location: pageUpdateUser.php?message=" . $message);
+                        header("Location: pageUserUpdate.php?message=" . $message);
                     } catch (Exception $e) {
-                        header("Location: pageUpdateUser.php?message=" . $message);
+                        header("Location: pageUserUpdate.php?message=" . $message);
                     }
                     ?>
                 </table>

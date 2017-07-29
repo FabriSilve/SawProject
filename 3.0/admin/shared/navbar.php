@@ -15,9 +15,9 @@
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="pageUsers.php">User List</a></li>
-                        <li><a href="pageUpdateUser.php">Edit user</a></li>
-                        <li><a href="pageDeleteUser.php">Delete User</a></li>
-                        <li><a href="pageBanUser.php">Ban User</a></li>
+                        <li><a href="pageUserUpdate.php">Edit user</a></li>
+                        <li><a href="pageUserDelete.php">Delete User</a></li>
+                        <li><a href="pageUserBan.php">Ban User</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -25,15 +25,15 @@
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="pageEvents.php">Event List</a></li>
-                        <li><a href="pageDeleteEvent.php"> Delete Event</a></li>
-                        <li><a href="pageSignaledEvent.php">Events Signed</a></li>
+                        <li><a href="pageEventDelete.php"> Delete Event</a></li>
+                        <li><a href="pageEventSignaled.php">Events Signed</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Admin
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="pageAddAdmin.php">Add Admin</a></li>
+                        <li><a href="pageAdminAdd.php">Add Admin</a></li>
                     </ul>
                 </li>
             </ul>

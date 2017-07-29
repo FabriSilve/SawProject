@@ -5,7 +5,7 @@
     $message = "";
     try{
         if(!isset($_POST["username"]) || empty($_POST["username"])) {
-            $message="Username non valido";
+            $message="Invalid username";
             throw new Exception();
         }
         $username = trim($_POST["username"]);
@@ -18,7 +18,7 @@
         $stmt->bindParam(":username", $username);
         $stmt->execute();
         if($stmt->rowCount() !== 1) {
-            $message = "Utente non presente nel sistema";
+            $message = "User not found";
             throw new Exception();
         }
 
@@ -27,14 +27,14 @@
         $stmt->execute();
 
         $conn->commit();
-        $message = "Utente bannato con successo";
+        $message = "User succesfully banned";
     }
     catch(PDOException $e) {
         $conn->rollBack();
-        $message = "Errore nel database"." ERROR ".$e->getMessage(); //TODO rimuovere in release
+        $message = "Database error";
     } catch (Exception $e) {
         $conn->rollBack();
     }
     $conn = null;
-    header("Location: ../pageBanUser.php?message=".$message);
+    header("Location: ../pageUserBan.php?message=".$message);
 ?>

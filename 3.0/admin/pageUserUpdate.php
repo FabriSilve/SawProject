@@ -19,9 +19,9 @@
         <div class="col-sm-8 text-left">
             <h1><b>Editing Users</b></h1>
             <div class="well">
-                <form method="post" action="TrovaUpdateUser.php">
-                    <p>Search user for delete:</p>
-                    <input type="text" name="username" id="username" placeholder="Username" class="borderRadius padding5" required>
+                <form method="post" action="findUserUpdate.php">
+                    <p>Search user to modify:</p>
+                    <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required>
                     <br/>
                     <p><input type="submit" value="Search"></p>
                 </form>

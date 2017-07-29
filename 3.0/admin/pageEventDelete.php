@@ -20,7 +20,7 @@
             <div class="col-sm-8 text-left">
                 <h1><b>Deleting events</b></h1>
                 <div class="well">
-                    <form method="post" action="confDelEvent.php">
+                    <form method="post" action="confEventDelete.php">
                         <p>Enter event ID to be deleted:</p>
                     <input type="text" name="id" id="id" placeholder="Event id" class="borderRadius padding5" required>
                     <p></p>
