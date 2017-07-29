@@ -27,6 +27,7 @@
                 ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="info.php"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
                 <li>
                     <?php
                     if(isset($logged) && $logged)
