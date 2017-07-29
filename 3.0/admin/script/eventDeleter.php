@@ -33,7 +33,7 @@ require("dbAccess.php");
     } catch (Exception $e) {
         header("Location: ../pageEventDelete.php?message=" . $message);
     }
-header("Location: ../pageUserDelete.php?message=" . $message);
+header("Location: ../pageEventDelete.php?message=" . $message);
 ?>
 
 
