@@ -36,8 +36,8 @@
             $_SESSION["EAusername"] = $username;
             if ($keep === "keep") {
                 $cookie_username = "EAusernameC";
-                $cookie_keep = "EAkeepC";
-                setcookie($cookie_keep, $keep, time() + 86400, "/");
+                /*$cookie_keep = "EAkeepC";
+                setcookie($cookie_keep, $keep, time() + 86400, "/");*/
                 setcookie($cookie_username, $username, time() + 86400, "/");
             }
             header("Location: ../pageHomepage.php");

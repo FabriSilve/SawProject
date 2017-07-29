@@ -8,15 +8,13 @@
     $username = null;
 
     session_start();
-    if(isset($_COOKIE["EAkeepC"])) {
-        if($_COOKIE["EAkeepC"] == "keep") {
-            $logged = 1;
-            if(isset($_COOKIE["EAusernameC"])) {
-                $username = $_COOKIE["EAusernameC"];
-                $_SESSION["EAauthorized"] = 1;
-                $_SESSION["EAusername"] = $username;
-            }
-        }
+
+
+    if(!empty($_COOKIE["EAusernameC"])) {
+        $logged = 1;
+        $username = $_COOKIE["EAusernameC"];
+        $_SESSION["EAauthorized"] = 1;
+        $_SESSION["EAusername"] = $username;
     }
 
     if(!empty($_SESSION["EAauthorized"]) && $_SESSION["EAauthorized"] == 1) {
