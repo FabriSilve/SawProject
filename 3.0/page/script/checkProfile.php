@@ -27,11 +27,11 @@
         $username = trim($_SESSION["EAusername"]);
 
         $email1 = trim($_POST['email1']);
+        $email2 = trim($_POST['email2']);
         if (empty($email1) || !filter_var($email1, FILTER_VALIDATE_EMAIL)) {
-            $message = "email non valida";
+            $message = "Invalid email";
             throw new Exception();
         }
-        $email2 = trim($_POST['email2']);
         if ($email1 !== $email2) {
             $message = "emails are different";
             throw new Exception();
@@ -51,7 +51,7 @@
 
         if (!empty($_POST['link'])) {
             $link = trim($_POST['link']);
-            if (!filter_var($link, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED)) {
+            if (!filter_var($link, FILTER_VALIDATE_URL)) {
                 $error = "Link format is invalid.";
                 throw new Exception();
             }
@@ -76,7 +76,7 @@
         $stmt->execute();
 
         if($stmt->rowCount() !== 1) {
-            $message = "Utente non trovato";
+            $message = "User not found";
             throw new Exception();
         }
 
@@ -85,7 +85,7 @@
         $stmt->execute();
 
         if($stmt->rowCount() !== 0) {
-            $message = "Profilo già presente";
+            $message = "Profile is already in use";
             throw new Exception();
         }
 
@@ -94,7 +94,7 @@
         $stmt->execute();
 
         if($stmt->rowCount() !== 0) {
-            $message = "email gia utilizzata nel sistema";
+            $message = "email already in use";
             throw new Exception();
         }
 
