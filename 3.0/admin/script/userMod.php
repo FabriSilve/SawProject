@@ -4,7 +4,7 @@ require("dbAccess.php");
 
 $message = "";
 try {
-    if (!isset($_POST["newEmail"]) || !isset($_POST["newUsername"]) || !isset($_POST["newPassword"])){
+    if (!isset($_POST["newEmail"]) && !isset($_POST["newUsername"]) && !isset($_POST["newPassword"])){
         $message = "No fields were changed.";
         throw new Exception();
     }
