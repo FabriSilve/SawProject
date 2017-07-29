@@ -67,21 +67,15 @@ try {
         $newPassword_hash = password_hash($newPassword, PASSWORD_BCRYPT);
         if (preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $newPassword)) {
             if (empty($newUsername)) {
-                $stmt = $conn->prepare("DELETE FROM Users WHERE username = :username");
+                $stmt = $conn->prepare("UPDATE Users SET password = :newPassword_hash WHERE username = :username");
                 $stmt->bindParam(":username", $username);
+                $stmt->bindParam(":newPassword_hash", $newPassword_hash);
                 $stmt->execute();
 
-                $stmt = $conn->prepare("INSERT INTO Users (username, password) VALUES (:username, :newPassword);");
-                $stmt->bindParam(":username", $username);
-                $stmt->bindParam(":newPassword", $newPassword_hash);
             } else {
-                $stmt = $conn->prepare("DELETE FROM Users WHERE username = :newUsername");
+                $stmt = $conn->prepare("UPDATE Users SET password = :newPassword_hash WHERE username = :newUsername");
                 $stmt->bindParam(":newUsername", $newUsername);
-                $stmt->execute();
-
-                $stmt = $conn->prepare("INSERT INTO Users (username, password) VALUES (:newUsername, :newPassword);");
-                $stmt->bindParam(":newUsername", $newUsername);
-                $stmt->bindParam(":newPassword", $newPassword_hash);
+                $stmt->bindParam(":newPassword_hash", $newPassword_hash);
                 $stmt->execute();
             }
         }else{
