@@ -1,8 +1,13 @@
 <?php
+    /*
+     * script che restituisce un json contenente le informazioni degli eventi risultati
+     * da una ricerca con determinati parametri
+     */
+
     require("dbAccess.php");
     header("Content-Type: application/json");
 
-    $position = "genova";
+    $position = "";
     $distance = 0.01;
     $days = 2;
     $lat = 0;
@@ -11,49 +16,54 @@
     $eventDB = [];
     $count = 0;
 
-    if(isset($_GET['position']) && $_GET['position'] !== "default")
-        $position = trim($_GET['position']);
+    if(!empty(trim($_GET['position'])))
+        if(preg_match("/^[a-zA-Z0-9]+$/",trim($_GET['position'])))
+            $position = trim($_GET['position']);
 
-    if(isset($_GET['distance']))
+    if(!empty(trim($_GET['distance'])))
         $distance = trim($_GET['distance'])*0.005;
 
-    if(isset($_GET['days']))
+    if(!empty(trim($_GET['days'])))
         $days = trim($_GET['days']);
 
-    $Address = urlencode($position);
-
-
-    $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=".$Address."&sensor=true";
-    if(!($xml = simplexml_load_file($request_url))) {
-        die("not valid address");
-    }
-    $status = $xml->status;
-
-    if ($status=="OK") {
-        $lat = $xml->result->geometry->location->lat;
-        $lon = $xml->result->geometry->location->lng;
+    if($position === "" && !empty(trim($_GET['lat'])) && !empty(trim($_GET['lon']))) {
+        $lat = trim($_GET['lat']);
+        $lon = trim($_GET['lon']);
     } else {
-        //TODO INSERIRE OUTPUT
-        die("xml status faild");
+        if ($position === "") {
+            $position = "genova";
+        }
+        $address = urlencode($position);
+        $request_url = "http://maps.googleapis.com/maps/api/geocode/xml?address=" . $address . "&sensor=true";
+        if (!($xml = simplexml_load_file($request_url))) {
+            echo '[]';
+            exit;
+        }
+        $status = $xml->status;
+        if ($status == "OK") {
+            $lat = $xml->result->geometry->location->lat;
+            $lon = $xml->result->geometry->location->lng;
+        } else {
+            echo '[]';
+            exit;
+        }
     }
 
-
-    $where_position = "lat BETWEEN (".$lat."-".$distance.") AND (".$lat."+".$distance.") AND ".
-        "lon BETWEEN (".$lon."-".$distance.") AND (".$lon."+".$distance.")";
-    $where_days = "day BETWEEN CURDATE() AND (CURDATE() + INTERVAL ".$days." DAY) ";
-
-    $sql = "SELECT id, name, description, address, day, lat, lon, owner FROM Events WHERE (".$where_position.") AND (".$where_days."); ";
-    //------------------------
-
+    $sql = "SELECT id, name, description, address, day, lat, lon, owner FROM Events WHERE 
+            (lat BETWEEN (:lat-:distance) AND (:lat+:distance) AND lon BETWEEN (:lon-:distance) AND (:lon+:distance)) AND
+            (day BETWEEN CURDATE() AND (CURDATE() + INTERVAL :days DAY)); ";
 
     try {
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":lat", $lat);
+        $stmt->bindParam(":lon", $lon);
+        $stmt->bindParam(":distance", $distance);
+        $stmt->bindParam(":days", $days);
         $stmt->execute();
-        $count = 0;
+
         $eventDB[$count++] = array(
             "id" => "000",
             "name" => "You",
@@ -84,6 +94,6 @@
         echo json_encode($eventDB, JSON_PRETTY_PRINT);
         $conn = null;
     } catch(PDOException $e) {
-        echo "ERROR ".$e->getMessage();
+        echo "[]";
     }
 ?>

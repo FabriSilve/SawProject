@@ -81,7 +81,7 @@ require("shared/navbar.php");
             <div class="col-sm-8 text-left">
                 <form method="post" action="script/eventDeleter.php">
                     <p>Confirm deletion: </p>
-                    <input type="text" hidden name="id" id="id" placeholder="Event id" class="radiusDiv padding5"
+                    <input type="text" hidden name="id" id="id" placeholder="Event id" class="borderRadius padding5"
                            value="<?php echo $id; ?>">
                     <p></p>
                     <p><input type="submit" value="Conferma"></p>

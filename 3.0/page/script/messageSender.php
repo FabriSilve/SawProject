@@ -25,11 +25,17 @@
             throw new Exception();
         }
         $text = $_POST["text"];
-        echo "input acquisiti";
+        if(strlen($text) <20) {
+            $message = "text too short, at least 20 chars";
+            throw new Exception();
+        }
+        if(strlen($text) >300) {
+            $message = "text too long, mex 300 chars";
+            throw new Exception();
+        }
 
     }catch(Exception $e) {
-        echo $message;
-        //header("Location: ../pageAddEvent.php?message=".$message);
+        header("Location: ../pageOtherProfile.php?username=".$receiver."&message=".$message);
         exit;
     }
 
@@ -72,6 +78,5 @@
         $conn->rollBack();
     }
     $conn = null;
-    echo $message;
-    //header("Location: ../pageAddEvent.php?message=".$message);
+    header("Location: ../pageOtherProfile.php?username=".$receiver."&message=".$message);
 ?>

@@ -22,7 +22,7 @@
                     <div class="well">
                         <form method="post" action="script/userBanner.php">
                             <p>Enter username:</p>
-                        <p><input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required></p>
+                        <p><input type="text" name="username" placeholder="Username" class="borderRadius padding5" required></p>
                         <p><input type="submit" value="Ban"></p>
                     </form>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="well">
                         <form method="post" action="script/userUnbanner.php">
                             <p>Enter username:</p>
-                        <p><input type="text" name="username" placeholder="Username" class="radiusDiv padding5" required></p>
+                        <p><input type="text" name="username" placeholder="Username" class="borderRadius padding5" required></p>
                         <p><input type="submit" value="Unban"></p>
                     </form>
                     </div>

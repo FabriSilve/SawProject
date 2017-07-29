@@ -16,7 +16,7 @@
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("SELECT sender, day, time, text, readed FROM Messages WHERE receiver = :username");
+        $stmt = $conn->prepare("SELECT id, sender, day, time, text, readed FROM Messages WHERE receiver = :username");
         $stmt->bindParam(":username", $username);
         $stmt->execute();
 
@@ -26,6 +26,7 @@
         }
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $messages[$count++] = array(
+                "id" => $row["id"],
                 "sender" => $row["sender"],
                 "day" => $row["day"],
                 "time" => $row["time"],
@@ -33,12 +34,12 @@
                 "readed" => $row["readed"]
             );
         }
-        echo json_encode($messages, JSON_PRETTY_PRINT).";";
+        //echo json_encode($messages, JSON_PRETTY_PRINT).";";
         $conn = null;
     } catch(PDOException $e) {
         $message = "ERROR ".$e->getMessage();
-        echo "[]; /*".$message."*/";
+        //echo "[]; /*".$message."*/";
     } catch(Exception $e) {
-        echo "[]; /*".$message."*/";
+        //echo "[]; /*".$message."*/";
     }
 ?>

@@ -4,12 +4,7 @@
 	$username = "";
 	$password = "";
 
-
-	if(isset($_POST["keepme"])) {
-        $keep = $_POST["keepme"];
-    } else {
-        $keep = 0;
-    }
+    $keep = !empty($_POST['keepme']) ? $_POST['keepme'] : 'no';
 	try {
         if (!isset($_POST["username"]) || empty(trim($_POST["username"]))) {
             throw new Exception();
@@ -17,7 +12,6 @@
         $username = trim($_POST["username"]);
 
         if (!isset($_POST["password"]) || empty(trim($_POST["password"]))) {
-            $message="Error: Invalid credentials";
             throw new Exception();
         }
         $password = trim($_POST["password"]);
@@ -30,21 +24,21 @@
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
 
-        if($stmt->rowCount() == 0) {
+        if($stmt->rowCount() !== 1) {
             $error = "Error: Invalid credentials";
             throw new Exception();
         }
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-        //TODO non setta ne session ne coockie
         if(password_verify($password, $result["password"])) {
             session_start();
             $_SESSION["EAauthorized"] = 1;
             $_SESSION["EAusername"] = $username;
-            if ($keep == 1) {
-                setcookie('EAkeep', 'true', time() + 86400);
-                setcookie("EAusername", $username, time() + 86400);
+            if ($keep === "keep") {
+                $cookie_username = "EAusernameC";
+                /*$cookie_keep = "EAkeepC";
+                setcookie($cookie_keep, $keep, time() + 86400, "/");*/
+                setcookie($cookie_username, $username, time() + 86400, "/");
             }
             header("Location: ../pageHomepage.php");
         } else {
@@ -52,13 +46,11 @@
         }
 
     }catch(PDOException $e){
-        $error = "Error: an error has occured";
+	    $error = "Ops.. An error has occured";
         header ("Location: ../pageLogin.php?message=".$error);
-
-        header ("Location: ../pageLogin.php?message="."Error: " . $e->getMessage());
 	}
 	catch(Exception $f){
-        $error = "Error: Invalid credentials.";
+        $error = "Invalid credentials.";
         header("Location: ../pageLogin.php?message=".$error);
 	}
 	$conn = null;   

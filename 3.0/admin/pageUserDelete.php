@@ -21,7 +21,7 @@
                 <div class="well">
                     <form method="post" action="confUserDelete.php">
                         <p>Search user for delete:</p>
-                        <input type="text" name="username" id="username" placeholder="Username" class="radiusDiv padding5" required><span id="status"></span>
+                        <input type="text" name="username" id="username" placeholder="Username" class="borderRadius padding5" required><span id="status"></span>
                         <p></p>
                         <p><input type="submit" value="Search"></p>
                 </form>

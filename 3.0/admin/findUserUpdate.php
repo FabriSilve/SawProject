@@ -29,7 +29,6 @@ require("shared/navbar.php");
                     </thead>
                     <?php
                     $message = "";
-                    $email = "";
                     try {
                         if (!empty(trim($_POST["username"]))) {
                             $username = htmlspecialchars(trim($_POST["username"]));
@@ -53,7 +52,7 @@ require("shared/navbar.php");
                             $email = $row["email"];
                         }
 
-                        if ($stmt->rowCount() == 0) {
+                        if ($stmt->rowCount() !== 1) {
                             $message = "User is not present in the system";
                             throw new Exception();
                         }
