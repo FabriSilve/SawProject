@@ -33,12 +33,12 @@
                 "readed" => $row["readed"]
             );
         }
-        echo json_encode($messages, JSON_PRETTY_PRINT).";";
+        //echo json_encode($messages, JSON_PRETTY_PRINT).";";
         $conn = null;
     } catch(PDOException $e) {
         $message = "ERROR ".$e->getMessage();
-        echo "[]; /*".$message."*/";
+        //echo "[]; /*".$message."*/";
     } catch(Exception $e) {
-        echo "[]; /*".$message."*/";
+        //echo "[]; /*".$message."*/";
     }
 ?>

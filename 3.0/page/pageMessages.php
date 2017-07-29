@@ -33,15 +33,24 @@
                 for ($j = 0; $j < count($messages); $j++) {
                     $message = $messages[$j];
 
-                    echo '<div class="row marginMin liteBackground borderRadius">';
-                    echo '   <div class="col-sm-3">'.$message["sender"].'</div>';
+                    echo '<div class="row marginMin liteBackground borderRadius" onclick="showMessage(\'message'.$j.'\')">';
+                    echo '   <div class="col-sm-2">Message From: <strong>'.$message["sender"].'</strong></div>';
                     echo '   <div class="col-sm-2">';
                     echo '       <div class=row">'.$message["day"].'</div>';
+                    echo '   </div>';
+                    echo '   <div class="col-sm-2">';
                     echo '       <div class=row">'.$message["time"].'</div>';
                     echo '   </div>';
-                    echo '   <div class="col-sm-6">'.$message["text"].'</div>';
-                    echo '   <div class="col-sm-1">'.$message["readed"].'</div>';
+                    echo '   <div class="col-sm-5"></div>';
+                    echo '   <div class="col-sm-1">';
+                    if($message["readed"] === '0') {
+                        echo '<img src="../media/unread.png">';
+                    } else {
+                        echo '<img src="../media/readed.png">';
+                    }
+                    echo '    </div>';
                     echo '</div>';
+                    echo '<div id="message'.$j.'" class="hidden row table-bordered"><hr>'.$message["text"].'</div>';
                 }
             }
         ?>

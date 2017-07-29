@@ -17,7 +17,7 @@
     $count = 0;
 
     if(!empty(trim($_GET['position'])))
-        if(preg_match("^[a-zA-Z0-9]+$^",trim($_GET['position'])))
+        if(preg_match("/^[a-zA-Z0-9]+$/",trim($_GET['position'])))
             $position = trim($_GET['position']);
 
     if(!empty(trim($_GET['distance'])))

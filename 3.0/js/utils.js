@@ -37,6 +37,14 @@ function hideForm(id) {
     document.getElementById('id').style.display = "none";
 }
 
+function showMessage(id) {
+    value = document.getElementById(id).style.display.value;
+    console.info(value);
+    if(value === "none") {
+        document.getElementById(id).style.display = ;
+    }
+}
+
 /**
  * funzione per gestire un httpxmlrequest su diversi browser
  * @returns {*}
