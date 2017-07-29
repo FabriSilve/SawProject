@@ -51,8 +51,8 @@
 
         if (!empty($_POST['link'])) {
             $link = trim($_POST['link']);
-            if (!filter_var($link, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED)) {
-                $error = "Link format is invalid.";
+            if (!filter_var($link, FILTER_VALIDATE_URL)) {
+                $message = "Link format is invalid.";
                 throw new Exception();
             }
         }
