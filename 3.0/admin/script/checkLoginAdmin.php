@@ -1,22 +1,17 @@
 <?php
     require("../shared/accessManager.php");
 	require("dbAccess.php");
-	$username = "";
-	$password = "";
 
 	$message = "";
 	try {
-        if (!isset($_POST["username"]) || empty(trim($_POST["username"]))) {
-            $message = "Invalid username";
-            throw new Exception();
-        }
-        $username = trim($_POST["username"]);
 
-        if (!isset($_POST["password"]) || empty(trim($_POST["password"]))) {
-            $message = "Invalid password";
+        $username = trim($_POST["username"]);
+        $password = trim($_POST["password"]);
+
+        if (empty(trim($_POST["username"])) || empty(trim($_POST["password"]))) {
+            $message = "Invalid username and/or password";
             throw new Exception();
         }
-        $password = trim($_POST["password"]);
 
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
@@ -28,7 +23,7 @@
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if(password_verify($password, $result['password'])) {
+        if(password_verify($password, $result["password"])) {
             session_start();
             $_SESSION["EAadmin"] = 1;
             header("Location: ../pageDashboard.php");
@@ -40,7 +35,7 @@
         $conn = null;
 
     }catch(PDOException $e){
-        $message = "Error in Database!" . "Error: " . $e->getMessage(); //TODO rimuovere errore in release
+        $message = "Database error";
         header("Location: ../index.php?message=".$message);
     }
     catch(Exception $f){
