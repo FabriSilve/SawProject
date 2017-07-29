@@ -21,7 +21,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Eventi
+                    <a class="dropdown-toggle" data-toggle="dropdown">Events
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="pageEvents.php">Event List</a></li>
