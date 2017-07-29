@@ -18,14 +18,6 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->beginTransaction();
 
-    /*$stmt = $conn->prepare("SELECT username, email FROM Users NATURAL JOIN Profiles WHERE username = :username;");
-    $stmt->bindParam(":username", $username);
-    $stmt->execute();
-    if ($stmt->rowCount() == 0) {
-        $message = "User is not present in the system";
-        throw new Exception();
-    }*/
-
     if(!empty($newUsername)){
         if (preg_match("/^[A-Za-z][A-Za-z0-9]{3,}$/", $newUsername)) {
             $stmt = $conn->prepare("UPDATE Users SET  username = :newUsername WHERE username = :username");
@@ -85,7 +77,6 @@ try {
     }
 
     $conn->commit();
-    $message = "User successfully modified";
 
 } catch (PDOException $e) {
     $conn->rollBack();
@@ -94,6 +85,6 @@ try {
     $conn->rollBack();
 }
 $conn = null;
+$message = "User successfully modified";
 header("Location: ../pageUserUpdate.php?message=" . $message);
-
 ?>
