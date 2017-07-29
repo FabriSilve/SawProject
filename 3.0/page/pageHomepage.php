@@ -18,7 +18,7 @@
 
     <div class="container text-center liteOrange borderRadius">
         <h1>Event Around</h1>
-        <p>The events that surround you!</p>
+        <h3>The events that surround you!</h3>
         <?php
             if(isset($logged) && $logged)
                 echo "<p>Ciao ".$username."!</p>";

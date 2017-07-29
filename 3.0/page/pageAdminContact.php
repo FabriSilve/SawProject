@@ -7,7 +7,7 @@
 
     <div class="container text-center liteOrange borderRadius">
         <h1>Admin's contact</h1>
-        <p>How can I help you</p>
+        <h3>How can I help you</h3>
     </div>
     <br/>
     <div class="container borderRadius liteBackground padding20">
