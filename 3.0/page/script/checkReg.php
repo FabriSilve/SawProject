@@ -16,12 +16,11 @@
             $message = "Remember that password must contain at least:<br>- 1 upper case letter<br>- 1 lower case letter<br>- 1 decimal number<br>- 1 special character<br>and must be at least 8 characters long.";
             throw new Exception();
         }
-        //TODO commento per debugging, da aggiornare a termine progetto
-        /*if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
-            throw new Exception();
-        }*/
-        $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
+        if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
+            throw new Exception();
+        }
+        $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
 
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -30,7 +29,6 @@
 
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);
-
 
         //libsodium extension from paragon.
         /*$password = \Sodium\crypto_pwhash_str(
@@ -43,23 +41,19 @@
 
         $conn = null;
 
-        if(isset($_COOKIE['EAkeep'])) {
-            setcookie('EAkeep',null);
-        }
         if(isset($_COOKIE['EAusername'])) {
             setcookie('EAusername',null);
         }
         session_unset();
         session_destroy();
         session_start();
-        //$_SESSION["EAauthorized"] = 1;
         $_SESSION["EAusername"] = $username;
         header("Location: ../pageRegisterProfile.php");
 
     }
     catch(PDOException $e){
         $conn = null;
-        $message = "Error: " . $e->getMessage(); //TODO for debug only ****TO BE REMOVED****
+        $message = "An ERROR has occured, retry.";
         header("Location: ../pageRegistration.php?message=".$message);
     } catch(Exception $e) {
         $conn = null;

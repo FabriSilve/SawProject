@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="79a0250c-3877-43ed-b945-cd71d779883b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.~lock.RelazioneAdmin.odt#" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3.0/admin/script/checkLoginAdmin.php" afterPath="$PROJECT_DIR$/3.0/admin/script/checkLoginAdmin.php" />
+    <list default="true" id="79a0250c-3877-43ed-b945-cd71d779883b" name="Default" comment="parte admin edit users completata">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3.0/page/script/checkReg.php" afterPath="$PROJECT_DIR$/3.0/page/script/checkReg.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="checkLoginAdmin.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="checkLoginAdmin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/3.0/admin/script/checkLoginAdmin.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="64">
@@ -23,6 +22,16 @@
               <folding>
                 <marker date="1501334881314" expanded="true" signature="630:683" ph="SELECT passw... Admin" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="accessManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/3.0/admin/shared/accessManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -39,12 +48,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="accessManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/3.0/admin/shared/accessManager.php">
+      <file leaf-file-name="checkReg.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/3.0/page/script/checkReg.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="2" lean-forward="false" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-              <folding />
+            <state relative-caret-position="432">
+              <caret line="24" column="58" lean-forward="false" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
+              <folding>
+                <marker date="1501335338214" expanded="true" signature="1272:1340" ph="INSERT INTO Users... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,7 +74,6 @@
         <option value="$PROJECT_DIR$/3.0/sql/profiles.sql" />
         <option value="$PROJECT_DIR$/3.0/page/script/checkProfile.php" />
         <option value="$PROJECT_DIR$/3.0/js/inputChecker.js" />
-        <option value="$PROJECT_DIR$/3.0/page/script/checkReg.php" />
         <option value="$PROJECT_DIR$/3.0/admin/script/showUsers.php" />
         <option value="$PROJECT_DIR$/.idea/Relazione.txt" />
         <option value="$PROJECT_DIR$/3.0/sql/database.sql" />
@@ -89,6 +99,7 @@
         <option value="$PROJECT_DIR$/3.0/admin/shared/accessManager.php" />
         <option value="$PROJECT_DIR$/3.0/admin/script/dbAccess.php" />
         <option value="$PROJECT_DIR$/3.0/admin/script/checkLoginAdmin.php" />
+        <option value="$PROJECT_DIR$/3.0/page/script/checkReg.php" />
       </list>
     </option>
   </component>
@@ -297,14 +308,7 @@
       <updated>1500986400901</updated>
       <workItem from="1500986402998" duration="4334000" />
       <workItem from="1500990794290" duration="9000" />
-      <workItem from="1500990842321" duration="64166000" />
-    </task>
-    <task id="LOCAL-00001" summary="prova, mdoficato Js e checkreg + access">
-      <created>1501079847919</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1501079847919</updated>
+      <workItem from="1500990842321" duration="64623000" />
     </task>
     <task id="LOCAL-00002" summary="prova, mdoficato Js e checkreg + access">
       <created>1501080024423</created>
@@ -642,11 +646,18 @@
       <option name="project" value="LOCAL" />
       <updated>1501327135290</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="parte admin edit users completata">
+      <created>1501334885853</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1501334885859</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68509000" />
+    <option name="totallyTimeSpent" value="68966000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -713,7 +724,7 @@
           <line>6</line>
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -965,16 +976,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/3.0/page/script/checkReg.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="49" lean-forward="false" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
-          <folding>
-            <marker date="1501170929404" expanded="true" signature="1348:1416" ph="INSERT INTO Users... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/3.0/admin/script/provaG.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1174,6 +1175,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/3.0/admin/script/checkLoginAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="16" column="46" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+          <folding>
+            <marker date="1501334881314" expanded="true" signature="630:683" ph="SELECT passw... Admin" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/3.0/admin/script/adminAdder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -1184,12 +1195,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/3.0/admin/script/checkLoginAdmin.php">
+    <entry file="file://$PROJECT_DIR$/3.0/page/script/checkReg.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="16" column="46" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+        <state relative-caret-position="432">
+          <caret line="24" column="58" lean-forward="false" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
           <folding>
-            <marker date="1501334881314" expanded="true" signature="630:683" ph="SELECT passw... Admin" />
+            <marker date="1501335338214" expanded="true" signature="1272:1340" ph="INSERT INTO Users... " />
           </folding>
         </state>
       </provider>
