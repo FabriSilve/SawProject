@@ -23,7 +23,7 @@
             throw new Exception();
         }
 
-        if(empty($password) || !preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){ //TODO inserire controllo con espressione regolare
+        if(empty($password) || !preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $password)){
             $message = "Invalid password";
             throw new Exception();
         }
