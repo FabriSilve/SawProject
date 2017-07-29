@@ -3,11 +3,13 @@ require("../shared/accessManager.php");
 require("dbAccess.php");
 
 $message = "";
+if (!isset($_POST["newEmail"]) && !isset($_POST["newUsername"]) && !isset($_POST["newPassword"])){
+    $message = "No fields were changed.";
+    header("Location: ../pageUserUpdate.php?message=" . $message);
+    exit();
+}
+
 try {
-    if (!isset($_POST["newEmail"]) && !isset($_POST["newUsername"]) && !isset($_POST["newPassword"])){
-        $message = "No fields were changed.";
-        throw new Exception();
-    }
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $newUsername = trim($_POST['newUsername']);
@@ -77,6 +79,7 @@ try {
     }
 
     $conn->commit();
+    $message = "User successfully modified";
 
 } catch (PDOException $e) {
     $conn->rollBack();
@@ -85,6 +88,5 @@ try {
     $conn->rollBack();
 }
 $conn = null;
-$message = "User successfully modified";
 header("Location: ../pageUserUpdate.php?message=" . $message);
 ?>
