@@ -29,7 +29,7 @@
         $email1 = trim($_POST['email1']);
         $email2 = trim($_POST['email2']);
         if (empty($email1) || !filter_var($email1, FILTER_VALIDATE_EMAIL)) {
-            $message = "Invalid email";
+            $message = "email non valida";
             throw new Exception();
         }
         if ($email1 !== $email2) {
@@ -52,7 +52,7 @@
         if (!empty($_POST['link'])) {
             $link = trim($_POST['link']);
             if (!filter_var($link, FILTER_VALIDATE_URL)) {
-                $error = "Link format is invalid.";
+                $message = "Link format is invalid.";
                 throw new Exception();
             }
         }

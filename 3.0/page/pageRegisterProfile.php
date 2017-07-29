@@ -34,7 +34,7 @@
         <hr><h4 id="error" class="text-center"></h4>
         <?php
         if(!empty($_GET["message"])) {
-            echo '<h5 class="text-center">'.$_GET["message"].'</h5>';
+            echo '<h5 class="error text-center">'.$_GET["message"].'</h5>';
         }
         ?>
     </div>

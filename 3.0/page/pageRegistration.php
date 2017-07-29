@@ -24,10 +24,10 @@ require("shared/header.php");
                     </button>
                 </p>
             </form>
-            <hr><h4 id="formError"></h4>
+            <hr><h4 id="formError" class="error"></h4>
             <?php
                 if(!empty($_GET["message"])) {
-                    echo "<h5>".$_GET["message"]."</h5>";
+                    echo "<h5 class='error'>".$_GET["message"]."</h5>";
                 }
             ?>
         </div>
