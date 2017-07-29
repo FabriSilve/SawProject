@@ -25,7 +25,7 @@
             <p class="text-center">
                 <input type="submit" class="borderRadius " value="send">
             </p>
-            <h4 id="error" class="text-center"></h4>
+            <h4 id="errorAdmin" class="text-center"></h4>
         </form>
     </div>
 

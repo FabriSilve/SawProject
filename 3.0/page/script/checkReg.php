@@ -43,9 +43,6 @@
 
         $conn = null;
 
-        if(isset($_COOKIE['EAkeep'])) {
-            setcookie('EAkeep',null);
-        }
         if(isset($_COOKIE['EAusername'])) {
             setcookie('EAusername',null);
         }
