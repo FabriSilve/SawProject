@@ -35,7 +35,7 @@
 
                     echo '<div class=" marginMin liteBackground borderRadius" onclick="showMessage(\''.$message["id"].'\',\''.$message["readed"].'\')">'; //
                     echo '<div class="row">';
-                    echo '   <div class="col-sm-4">Message From: <strong>'.$message["sender"].'</strong></div>';
+                    echo '   <div class="col-sm-4">Message From: <a href="pageOtherProfile.php?username='.$message["sender"].'" target="_blanck" class="link">'.$message["sender"].'</a></div>';
                     echo '   <div class="col-sm-2">';
                     echo '       <div class=row">'.$message["day"].'</div>';
                     echo '   </div>';
