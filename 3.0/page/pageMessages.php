@@ -33,24 +33,26 @@
                 for ($j = 0; $j < count($messages); $j++) {
                     $message = $messages[$j];
 
-                    echo '<div class="row marginMin liteBackground borderRadius" onclick="showMessage(\'message'.$j.'\')">';
-                    echo '   <div class="col-sm-2">Message From: <strong>'.$message["sender"].'</strong></div>';
+                    echo '<div class=" marginMin liteBackground borderRadius" onclick="showMessage(\''.$message["id"].'\',\''.$message["readed"].'\')">'; //
+                    echo '<div class="row">';
+                    echo '   <div class="col-sm-4">Message From: <strong>'.$message["sender"].'</strong></div>';
                     echo '   <div class="col-sm-2">';
                     echo '       <div class=row">'.$message["day"].'</div>';
                     echo '   </div>';
                     echo '   <div class="col-sm-2">';
                     echo '       <div class=row">'.$message["time"].'</div>';
                     echo '   </div>';
-                    echo '   <div class="col-sm-5"></div>';
-                    echo '   <div class="col-sm-1">';
+                    echo '   <div class="col-sm-3"></div>';
+                    echo '   <div class="col-sm-1" id="read'.$message["id"].'">';
                     if($message["readed"] === '0') {
-                        echo '<img src="../media/unread.png">';
+                        echo '<img src="../media/unread.png" alt="unreaded">';
                     } else {
-                        echo '<img src="../media/readed.png">';
+                        echo '<img src="../media/readed.png" alt="readed">';
                     }
                     echo '    </div>';
                     echo '</div>';
-                    echo '<div id="message'.$j.'" class="hidden row table-bordered"><hr>'.$message["text"].'</div>';
+                    echo '  <div id="'.$message["id"].'"  class="message text-center marginMin liteBackground">'.$message["text"].'</div>'; //
+                    echo '</div>';
                 }
             }
         ?>

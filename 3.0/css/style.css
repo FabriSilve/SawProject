@@ -209,3 +209,7 @@ h2.eventTitle {
     color: red;
     font-weight: bold;
 }
+
+.message {
+    display:none;
+}
