@@ -46,6 +46,4 @@
     catch(Exception $f){
         header("Location: ../index.php?message=".$message);
     }
-
-
 ?>
