@@ -73,6 +73,11 @@
                 <input type="submit" class="borderRadius" value="send">
             </p>
             <h4 id="error" class="text-center"></h4>
+            <?php
+            if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+                echo '<h5 class="error">'.$_GET["message"].'</h5>';
+            }
+            ?>
         </form>
     </div>
 
