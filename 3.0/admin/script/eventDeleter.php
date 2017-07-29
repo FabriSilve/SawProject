@@ -18,7 +18,7 @@ require("dbAccess.php");
         $stmt->execute();
 
         if($stmt->rowCount() !== 1) {
-            $message = "Event not present in the Sistem";
+            $message = "Event not present in the system";
             throw new Exception();
         }
 
@@ -26,7 +26,7 @@ require("dbAccess.php");
         $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
         $conn = null;
-        $message = "Event was deleted!";
+        $message = "Event successfully deleted!";
     }
     catch(PDOException $e) {
         $message = "ERROR ".$e->getMessage();

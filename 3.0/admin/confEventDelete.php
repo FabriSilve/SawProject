@@ -35,7 +35,7 @@ require("shared/navbar.php");
                     $message = "";
                     try {
                         if(!isset($_POST["id"]) || empty($_POST["id"])) {
-                            $message="ID non valido";
+                            $message="Invalid ID";
                             throw new Exception();
                         }
                         $id = trim($_POST["id"]);
@@ -47,10 +47,10 @@ require("shared/navbar.php");
                         $stmt->execute();
 
                         if($stmt->rowCount() !== 1) {
-                            $message = "ID non presente nel sistema";
+                            $message = "ID not present in the system";
                             throw new Exception();
                         }
-                        echo '<h1>Seguente evento e` stato trovato: </h1>';
+                        echo '<h1>Event found: </h1>';
                         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo '<tr>';
                             echo '<td>'.$row["id"].'</td>';
@@ -66,7 +66,7 @@ require("shared/navbar.php");
                         $conn = null;
                     }
                     catch(PDOException $e) {
-                        $error = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+                        $error = "Database error.";
                     } catch (Exception $e) {
                         header("Location: pageEventDelete.php?message=" . $message . "&id=" . $idGet);
                     }
@@ -80,11 +80,11 @@ require("shared/navbar.php");
 
             <div class="col-sm-8 text-left">
                 <form method="post" action="script/eventDeleter.php">
-                    <p>Confirm deletion: </p>
+                    <p>Confirm delete: </p>
                     <input type="text" hidden name="id" id="id" placeholder="Event id" class="borderRadius padding5"
                            value="<?php echo $id; ?>">
                     <p></p>
-                    <p><input type="submit" value="Conferma"></p>
+                    <p><input type="submit" value="Submit"></p>
                 </form>
             </div>
         </div>
