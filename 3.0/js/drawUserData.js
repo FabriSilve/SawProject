@@ -31,18 +31,14 @@ function drawUserData() {
 }
 
 function userModify() {
-    //todo remove
-    console.info(userData.username);
-
-
-    btn = '<img src="../media/save.png" onclick="confirmUserModify();">';
+    btn = '<button><img src="../media/save.png" alt="save"></button>';
     document.getElementById("modifyUser").innerHTML = btn;
 
     text  = '<div class="col-sm-6 text-center">';
     text += '<div class="row"><input name="name" id="name" placeholder="Name" class="borderRadius padding5" type="text" value="'+userData.name+'"></div>';
     text += '<div class="row"><input name="surname" id="surname" placeholder="Surname" class="borderRadius padding5" type="text" value="'+userData.surname+'"></div>';
     text += '<div class="row"><input name="residence" id="residence" placeholder="Residence" class="borderRadius padding5" type="text" value="'+userData.residence+'"></div>';
-    text += '<div class="row"><input type="url" name="link" id="link" placeholder="Link Social" class="borderRadius padding5" value="'+userData.link+'"></div>';
+    text += '<div class="row"><input name="link" id="link" type="url" placeholder="Link Social" class="borderRadius padding5" value="'+userData.link+'"></div>';
     text += '</div>';
     text += '<div class="col-sm-6 text-center">';
     text += '<textarea cols="50" rows="6" name="description" id="description" placeholder="Description" class="borderRadius padding5">'+userData.description+'</textarea>';
@@ -54,8 +50,8 @@ function userModify() {
 
 }
 
-function confirmUserModify() {
-    name = document.getElementById("name").value;
+/*function confirmUserModify(id) {
+    document.getElementById(id).;
     surname = document.getElementById("surname").value;
     residence = document.getElementById("residence").value;
     description = document.getElementById("description").value;
@@ -84,5 +80,5 @@ function modifyUserCallback() {
             console.error("Ajax error: " + xhr.responseText);
         }
     }
-}
+}*/
 

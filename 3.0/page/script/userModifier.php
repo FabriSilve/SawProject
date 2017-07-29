@@ -12,32 +12,32 @@
     $message = "";
 
     try {
-        if (empty(trim($_GET['username']))) {
+        if (empty(trim($_SESSION['EAusername']))) {
             $message = "username not valid";
             echo $message;
             exit;
         }
-        $username = trim($_GET['username' ]);
+        $username = trim($_SESSION['EAusername' ]);
 
-        if (!empty(trim($_GET['name']))) {
-            $name = trim($_GET['name']);
+        if (!empty(trim($_POST['name']))) {
+            $name = trim($_POST['name']);
         }
 
-        if (!empty(trim($_GET['surname']))) {
-            $surname = trim($_GET['surname']);
+        if (!empty(trim($_POST['surname']))) {
+            $surname = trim($_POST['surname']);
         }
 
-        if (!empty(trim($_GET['residence']))) {
-            $residence = trim($_GET['residence']);
+        if (!empty(trim($_POST['residence']))) {
+            $residence = trim($_POST['residence']);
         }
 
-        if (!empty(trim($_GET['description']))) {
-            $description = trim($_GET['description']);
+        if (!empty(trim($_POST['description']))) {
+            $description = trim($_POST['description']);
         }
 
-        if (!empty(trim($_GET['link']))) {
-            if (filter_var(trim($_GET['link']), FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED)) {
-                $link = trim($_GET['link']);
+        if (!empty(trim($_POST['link']))) {
+            if (filter_var(trim($_POST['link']), FILTER_VALIDATE_URL)) {
+                $link = trim($_POST['link']);
             }
         }
 
@@ -72,5 +72,5 @@
         $conn->rollBack();
     }
     $conn = null;
-    echo $message;
+    header("location: ../pageMyProfile.php?message=".$message);
 ?>
