@@ -20,7 +20,7 @@
         }
         $receiver = $_POST["receiver"];
 
-        if (empty(trim($_POST['text']))) { //TODO inserire controllo lunghezza testo
+        if (empty(trim($_POST['text']))) {
             $message = "text not valid";
             throw new Exception();
         }

@@ -66,7 +66,7 @@
         <form name="sendMessage" method="post" onsubmit="return checkMessage();" action="script/messageSender.php">
             <input type="text" id="sender" name="sender"  value="<?php echo $_SESSION["EAusername"]; ?>" hidden>
             <input type="text" id="receiver" name="receiver" value="<?php echo $userData["username"]; ?>"  hidden>
-            <p class="sendMailItem" >
+            <p>
                 <textarea class="mailMessageBox" cols="25" rows="8" id="text" name="text" placeholder="Message"></textarea>
             </p>
             <p class="text-center">
@@ -74,7 +74,7 @@
             </p>
             <h4 id="error" class="text-center"></h4>
             <?php
-            if(isset($_GET["message"]) && $_GET["message"] !== "" ) {
+            if(!empty($_GET["message"])) {
                 echo '<h5 class="error">'.$_GET["message"].'</h5>';
             }
             ?>
