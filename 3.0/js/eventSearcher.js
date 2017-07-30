@@ -63,12 +63,12 @@
                     document.getElementById("searchForm").scrollIntoView();
                 }
                 else {
-                    alert("Ajax error: no data received");
+                    console.error("Ajax error: no data received");
                     events = [];
                 }
             }
             else {
-                alert("Ajax error: " + xhr.responseText);
+                console.error("Ajax error: " + xhr.responseText);
                 events = [];
             }
         }

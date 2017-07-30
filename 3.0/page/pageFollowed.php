@@ -1,8 +1,10 @@
 <?php
     require("shared/accessManager.php");
     require("shared/header.php");
+
     if(!isset($logged)||!$logged)
         header("Location: pageHomepage.php");
+
 ?>
     <script>
         var events = <?php require("script/followedEvents.php"); ?>;

@@ -8,13 +8,12 @@
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-                <p><a href="pageDashboard.php"> Torna indietro</a></p>
+                <p><a href="pageDashboard.php"> back</a></p>
             </div>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Reported Events</h1>
+            <h1>Signaled Events</h1>
             <div class="well">
-                <h4>Current events in the database:</h4><br>
                 <?php require("script/showSignaled.php"); ?>
             </div>
         </div>
