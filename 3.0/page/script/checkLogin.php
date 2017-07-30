@@ -20,7 +20,7 @@
         $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("SELECT password FROM Users WHERE username = :username;");
+        $stmt = $conn->prepare("SELECT password, banned FROM Users WHERE username = :username;");
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
 
@@ -29,6 +29,11 @@
             throw new Exception();
         }
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result["banned"] == 1){
+            $error = "You are banned! please contact the admin.";
+            throw new Exception();
+        }
+
 
         if(password_verify($password, $result["password"])) {
             session_start();
@@ -42,15 +47,16 @@
             }
             header("Location: ../pageHomepage.php");
         } else {
+            $error = "Error: Invalid credentials";
             throw new Exception();
         }
 
     }catch(PDOException $e){
-	    $error = "Ops.. An error has occured";
+	    $error = "An error has occurred, please try again";
         header ("Location: ../pageLogin.php?message=".$error);
 	}
 	catch(Exception $f){
-        $error = "Invalid credentials.";
+
         header("Location: ../pageLogin.php?message=".$error);
 	}
 	$conn = null;   
