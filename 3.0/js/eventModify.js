@@ -1,5 +1,5 @@
 function eventModify(num) {
-    text = '<textarea id="description'+num+'" cols="20" rows="5">'+events[num].description+'</textarea>';
+    text = '<textarea id="description'+num+'" cols="20" rows="10">'+events[num].description+'</textarea>';
     btn = '<img src="../media/save.png" onclick="confirmModify('+num+');">';
     document.getElementById("divDesc"+num).innerHTML = text;
     document.getElementById("modifySave"+num).innerHTML = btn;
