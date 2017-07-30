@@ -45,9 +45,9 @@
                     echo '   <div class="col-sm-3"></div>';
                     echo '   <div class="col-sm-1" id="read'.$message["id"].'">';
                     if($message["readed"] === '0') {
-                        echo '<img src="../media/unread.png" alt="unreaded">';
+                        echo '<img src="../media/unread.png" alt="unread">';
                     } else {
-                        echo '<img src="../media/readed.png" alt="readed">';
+                        echo '<img src="../media/read.png" alt="read">';
                     }
                     echo '    </div>';
                     echo '</div>';

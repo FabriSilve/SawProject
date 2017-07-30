@@ -13,7 +13,7 @@ function showMessage(id, readed) {
         document.getElementById(id).style.display = "block";
         if(readed === "0"){
             setReadedMessage(id);
-            document.getElementById("read"+id).innerHTML = '<img src="../media/readed.png" alt="readed">';
+            document.getElementById("read"+id).innerHTML = '<img src="../media/read.png" alt="read">';
         }
     }
 }
