@@ -33,7 +33,7 @@
                 for ($j = 0; $j < count($messages); $j++) {
                     $message = $messages[$j];
 
-                    echo '<div class=" marginMin liteBackground borderRadius" onclick="showMessage(\''.$message["id"].'\',\''.$message["readed"].'\')">'; //
+                    echo '<div class=" marginMin liteBackground borderRadius" onclick="showMessage(\''.$message["id"].'\',\''.$message["read"].'\')">'; //
                     echo '<div class="row">';
                     echo '   <div class="col-sm-4">Message From: <a href="pageOtherProfile.php?username='.$message["sender"].'" target="_blanck" class="link">'.$message["sender"].'</a></div>';
                     echo '   <div class="col-sm-2">';
@@ -44,7 +44,7 @@
                     echo '   </div>';
                     echo '   <div class="col-sm-3"></div>';
                     echo '   <div class="col-sm-1" id="read'.$message["id"].'">';
-                    if($message["readed"] === '0') {
+                    if($message["read"] === '0') {
                         echo '<img src="../media/unread.png" alt="unread">';
                     } else {
                         echo '<img src="../media/read.png" alt="read">';

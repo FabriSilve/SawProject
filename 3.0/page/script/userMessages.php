@@ -16,7 +16,7 @@
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("SELECT id, sender, day, time, text, readed FROM Messages WHERE receiver = :username");
+        $stmt = $conn->prepare("SELECT id, sender, day, time, text, isread FROM Messages WHERE receiver = :username");
         $stmt->bindParam(":username", $username);
         $stmt->execute();
 
@@ -31,7 +31,7 @@
                 "day" => $row["day"],
                 "time" => $row["time"],
                 "text" => $row["text"],
-                "readed" => $row["readed"]
+                "read" => $row["isread"]
             );
         }
         //echo json_encode($messages, JSON_PRETTY_PRINT).";";
