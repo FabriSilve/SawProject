@@ -7,20 +7,22 @@
         $username = trim($_POST["username"]);
         $pass_pre_hash = trim($_POST["password1"]);
 
-        if ((empty($username)) || (!preg_match("/^[A-Za-z][A-Za-z0-9]{3,}$/",$username))){
-            $message = "username non valido";
+        if (empty($username) || !preg_match("/^[A-Za-z][A-Za-z0-9]{3,}$/",$username)){
             throw new Exception();
         }
 
-        if(empty($pass_pre_hash)){
-            $message = "Remember that password must contain at least:<br>- 1 upper case letter<br>- 1 lower case letter<br>- 1 decimal number<br>- 1 special character<br>and must be at least 8 characters long.";
+        if(empty($pass_pre_hash) || !preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
             throw new Exception();
         }
 
-        if (!preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/", $pass_pre_hash)){
-            throw new Exception();
-        }
         $password = password_hash($pass_pre_hash, PASSWORD_BCRYPT);
+
+        //libsodium extension from paragon.
+        /*$password = \Sodium\crypto_pwhash_str(
+                                                $pass_pre_hash,
+                                                \Sodium\CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE,
+                                                \Sodium\CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE
+                                                );*/
 
         $conn = new PDO("mysql:host=$server;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -30,15 +32,7 @@
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);
 
-        //libsodium extension from paragon.
-        /*$password = \Sodium\crypto_pwhash_str(
-                                                $pass_pre_hash,
-                                                \Sodium\CRYPTO_PWHASH_OPSLIMIT_INTERACTIVE,
-                                                \Sodium\CRYPTO_PWHASH_MEMLIMIT_INTERACTIVE
-                                                );*/
-
         $stmt->execute();
-
         $conn = null;
 
         if(isset($_COOKIE['EAusername'])) {
