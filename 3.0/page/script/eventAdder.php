@@ -46,7 +46,7 @@
         if (isset($_SESSION["EAusername"])) {
             $owner = $_SESSION["EAusername"];
         } else {
-            $message = "Owner not define";
+            $message = "Owner not defined";
             throw new Exception();
         }
 
