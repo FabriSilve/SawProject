@@ -5,7 +5,6 @@
         header("Location: pageMyProfile.php");
 
 ?>
-<!--todo refactor div-->
 <div class="container container-table">
     <div class="row vertical-center-row marginMin">
         <div class="text-center col-md-4 col-md-offset-4 borderRadius liteBackground">
