@@ -4,7 +4,6 @@
     if(isset($logged) && $logged)
         header("Location: pageMyProfile.php");
 
-    //TODO se l'utente è stato bannato non deve poter accedere e visualizzare un messaggio "sei stato bannato contatta l'admin"
 ?>
 <!--todo refactor div-->
 <div class="container container-table">

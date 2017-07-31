@@ -9,12 +9,6 @@ function eventModify(num) {
 function confirmModify(num) {
     desc = document.getElementById('description'+num).value;
 
-    //TODO remove
-    console.info(num+"\n"+num);
-    console.info(owner);
-    console.info(events[num].id);
-    console.info(desc);
-
     urlSimple = "script/eventModifier.php";
     url = urlSimple + "?username=" +owner+"&id=" + events[num].id + "&description="+desc;
     xhr = getXMLHttpRequestObject();

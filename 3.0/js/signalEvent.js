@@ -1,8 +1,6 @@
 function signalEvent(num) {
     if(confirm("Segnalare davvero l'evento?")) {
         id = "signal" + num;
-        console.info("id " + id); //TODO remove
-        console.info(owner); //todo REMOVE
         urlSimple = "script/signalEvent.php";
         url = urlSimple + "?id=" + num + "&username=" + owner;
         xhr = getXMLHttpRequestObject();

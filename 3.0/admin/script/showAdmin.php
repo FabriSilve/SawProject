@@ -26,7 +26,7 @@
         $conn = null;
     }
     catch(PDOException $e) {
-        $error = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
+        $error = "An Error has occurred, please retry.";
     }
 
     echo "</table>";

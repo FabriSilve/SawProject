@@ -54,7 +54,7 @@ require("shared/navbar.php");
                     $conn = null;
                 }
                 catch(PDOException $e) {
-                    $error = "Errore nel database". " ERROR ".$e->getMessage(); //TODO rimuovere in release
+                    $error = "An Error has occurred, please retry.";
                 } catch (Exception $e) {
                     header("Location: pageUserDelete.php?message=" . $message . "&username=" . $usernameGet);
                 }

@@ -58,7 +58,7 @@ require("shared/navbar.php");
                         }
                         $conn = null;
                     } catch (PDOException $e) {
-                        $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere errore in release
+                        $message = "An Error has occurred, please retry";
                         header("Location: pageUserUpdate.php?message=" . $message);
                     } catch (Exception $e) {
                         header("Location: pageUserUpdate.php?message=" . $message);
@@ -68,7 +68,7 @@ require("shared/navbar.php");
             </div>
             <hr>
             <div class="well">
-                <h3>Enter a new data:</h3><!--TODO controlli javascript-->
+                <h3>Enter a new data:</h3><
                 <form method="post" action="script/userMod.php">
                     <input hidden type="text" name="username" id="username" class="radiusDiv padding5" value="<?php echo $username; ?>">
                     <input hidden type="email" name="email" id="email" class="radiusDiv padding5" value="<?php echo $email; ?>">

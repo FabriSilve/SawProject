@@ -33,7 +33,7 @@ require("dbAccess.php");
     }
     catch(PDOException $e) {
         $conn->rollBack();
-        $message = "Error in database" . " ERROR " . $e->getMessage(); //TODO rimuovere in release
+        $message = "An Error has occurred, please retry.";
     } catch (Exception $e) {
         $conn->rollBack();
         header("Location: ../pageUserDelete.php?message=" . $message);

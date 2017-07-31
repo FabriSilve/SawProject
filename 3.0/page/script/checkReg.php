@@ -47,7 +47,7 @@
     }
     catch(PDOException $e){
         $conn = null;
-        $message = "An ERROR has occured, retry.";
+        $message = "An ERROR has occurred, retry.";
         header("Location: ../pageRegistration.php?message=".$message);
     } catch(Exception $e) {
         $conn = null;
